@@ -14,3 +14,7 @@ node_modules/
 # Company-specific knowledge (per-project, not shared upstream)
 # Bootstrap with: cp -r knowledge/company.example knowledge/company
 knowledge/company/
+
+# Feedback knowledge: company-specific performance numbers & learnings (per-project, not shared upstream)
+# Bootstrap with: cp -r knowledge/feedback.example knowledge/feedback
+knowledge/feedback/

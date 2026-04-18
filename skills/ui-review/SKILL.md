@@ -24,7 +24,7 @@ Read: knowledge/company/icp.md
 Read: knowledge/company/positioning.md
 Read: knowledge/foundation/marketing-mindset.md
 Read: knowledge/latest/platform-updates.md
-Read: knowledge/latest/performance-data.md
+Read: knowledge/feedback/performance-data.md
 ```
 
 ## Review Framework

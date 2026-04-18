@@ -24,7 +24,7 @@ Read: knowledge/company/positioning.md
 Read: knowledge/company/competitors.md
 Read: knowledge/foundation/metrics-glossary.md
 Read: knowledge/latest/platform-updates.md
-Read: knowledge/latest/performance-data.md
+Read: knowledge/feedback/performance-data.md
 ```
 
 ## Capabilities
