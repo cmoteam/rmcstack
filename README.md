@@ -131,8 +131,8 @@ knowledge/results/performance-data.md   ← 直近のパフォーマンスデー
 
 ```
 cmobot/
-├── CLAUDE.md                    # Main orchestration
-├── AGENTS.md                    # Agent definitions & org chart
+├── AGENTS.md                    # Canonical: agents, SAAF, knowledge, workflows
+├── CLAUDE.md                    # Stub importing AGENTS.md (for Claude Code)
 ├── .claude/settings.json        # Skill definitions
 │
 ├── knowledge/                   # 4-tier knowledge base
