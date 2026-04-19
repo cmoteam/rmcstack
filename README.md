@@ -125,17 +125,17 @@ memory/results/performance-data.md   ← 直近のパフォーマンスデータ
 | `/pricing-strategy` | Pricing | 価格設定・プラン設計・パッケージング戦略 |
 | `/churn-prevention` | Retention | 解約防止・リテンション改善・Save Offer設計 |
 
-### CRO Agents（コンバージョン率最適化スペシャリスト）
-**CRO = Conversion Rate Optimization（コンバージョン率最適化）**。各ファネル段階でのユーザー行動完了率（CVR）を数字で上げる診断・改修を専門とする。`/ui-designer` が UI/UX 全般を見るのに対し、CRO 系はファネル段階別に特化。
+### Optimization Agents（最適化スペシャリスト）
+各ファネル段階でのユーザー行動完了率（CVR）を数字で上げる診断・改修を専門とする。`/ui-designer` が UI/UX 全般を見るのに対し、最適化系はファネル段階別に特化。
 
 | Command | Target | Description |
 |---------|--------|-------------|
-| `/cro-page` | Marketing Pages | LP/Product/Feature/Pricing等のCVR最適化 |
-| `/cro-signup-flow` | Signup | 登録〜初回ログインの完了率最適化 |
-| `/cro-onboarding` | Activation | Aha Moment 到達・Activation 最適化 |
-| `/cro-form` | Lead Forms | デモ/資料DL/問い合わせフォームの完了率最適化 |
-| `/cro-popup` | Popups/Modals | Exit intent・Newsletter・告知系の設計と最適化 |
-| `/cro-paywall` | Paywall/Upsell | Free→Paid・アプリ内アップセルのCVR最適化 |
+| `/optimize-page` | Marketing Pages | LP/Product/Feature/Pricing等のCVR最適化 |
+| `/optimize-signup-flow` | Signup | 登録〜初回ログインの完了率最適化 |
+| `/optimize-onboarding` | Activation | Aha Moment 到達・Activation 最適化 |
+| `/optimize-form` | Lead Forms | デモ/資料DL/問い合わせフォームの完了率最適化 |
+| `/optimize-popup` | Popups/Modals | Exit intent・Newsletter・告知系の設計と最適化 |
+| `/optimize-paywall` | Paywall/Upsell | Free→Paid・アプリ内アップセルのCVR最適化 |
 
 ### Workflows（統合ワークフロー）
 | Command | Description |
@@ -180,12 +180,12 @@ sarfstack/
 │   ├── customer-research/SKILL.md
 │   ├── pricing-strategy/SKILL.md
 │   ├── churn-prevention/SKILL.md
-│   ├── cro-page/SKILL.md
-│   ├── cro-signup-flow/SKILL.md
-│   ├── cro-onboarding/SKILL.md
-│   ├── cro-form/SKILL.md
-│   ├── cro-popup/SKILL.md
-│   ├── cro-paywall/SKILL.md
+│   ├── optimize-page/SKILL.md
+│   ├── optimize-signup-flow/SKILL.md
+│   ├── optimize-onboarding/SKILL.md
+│   ├── optimize-form/SKILL.md
+│   ├── optimize-popup/SKILL.md
+│   ├── optimize-paywall/SKILL.md
 │   ├── flow-campaign-launch/SKILL.md
 │   ├── flow-content-review/SKILL.md
 │   ├── flow-landing-page/SKILL.md

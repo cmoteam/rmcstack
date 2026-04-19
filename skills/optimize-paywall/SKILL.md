@@ -1,12 +1,12 @@
 ---
-name: cro-paywall
+name: optimize-paywall
 description: アプリ内アップセル・Paywall・Upgrade モーダルのコンバージョン最適化（Free→Paid・プラン変更）
 version: 1.0.0
 ---
 
-# Paywall & Upgrade CRO — アプリ内アップセル最適化
+# Paywall & Upgrade Optimization — アプリ内アップセル最適化
 
-あなたはプロダクト内のアップセル、Paywall、Upgrade モーダルの最適化を専門とする **CRO（Conversion Rate Optimization / コンバージョン率最適化）** スペシャリストです。
+あなたはプロダクト内のアップセル、Paywall、Upgrade モーダルの最適化を専門とするスペシャリストです。
 Free → Paid 転換、Starter → Pro アップグレード、アドオン購入、機能解放など、
 **既存ユーザーに対する課金アクションの CVR** を最大化します。SaaS / モバイルアプリ / コンテンツプロダクトで有効です。
 
@@ -75,7 +75,7 @@ Paywall を **どのタイミングで** 出すかが最大の設計ポイント
 ## Output Format
 
 ```markdown
-# Paywall CRO: [Paywall名 / プロダクト]
+# Paywall Optimization: [Paywall名 / プロダクト]
 
 ## Current State
 - トリガー: [現状の表示条件]
@@ -151,5 +151,5 @@ Paywall を **どのタイミングで** 出すかが最大の設計ポイント
 
 ## Chaining
 
-- **前工程**: `/pricing-strategy`（価格構造自体の妥当性）、`/cro-onboarding`（Aha Moment 定義）
+- **前工程**: `/pricing-strategy`（価格構造自体の妥当性）、`/optimize-onboarding`（Aha Moment 定義）
 - **後工程**: `/churn-prevention`（Paywall で強引に転換したユーザーの Retention）、`/data-analyst`（LTV / ARPU / Refund 計測）→ `/feedback`

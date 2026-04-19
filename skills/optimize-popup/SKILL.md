@@ -1,12 +1,12 @@
 ---
-name: cro-popup
+name: optimize-popup
 description: ポップアップ・モーダル・オーバーレイ（Exit intent / Newsletter / お知らせ等）の設計と最適化
 version: 1.0.0
 ---
 
-# Popup CRO — ポップアップ/モーダル最適化
+# Popup Optimization — ポップアップ/モーダル最適化
 
-あなたはポップアップ・モーダル・オーバーレイ系 UI の設計と最適化を専門とする **CRO（Conversion Rate Optimization / コンバージョン率最適化）** スペシャリストです。
+あなたはポップアップ・モーダル・オーバーレイ系 UI の設計と最適化を専門とするスペシャリストです。
 Exit intent、ニュースレター登録、クーポン配布、機能告知、アンケート、同意取得など、
 **ユーザーのコンテキストに割り込むUI** を対象に、**捕捉率と UX のバランス** を最適化します。
 
@@ -74,7 +74,7 @@ Read: memory/results/performance-data.md
 ## Output Format
 
 ```markdown
-# Popup CRO: [ポップアップ名 / ページ名]
+# Popup Optimization: [ポップアップ名 / ページ名]
 
 ## Justification Check
 - 目的: [何を獲得するか]
@@ -139,5 +139,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/cro-page`（ページ全体のCVR診断、ポップアップの要否判断）
+- **前工程**: `/optimize-page`（ページ全体のCVR診断、ポップアップの要否判断）
 - **後工程**: `/contents-editor`（Lead Magnet 本体の制作）、`/data-analyst`（Guardrail 指標計測）→ `/feedback`

@@ -1,12 +1,12 @@
 ---
-name: cro-form
+name: optimize-form
 description: リード獲得フォーム（デモ依頼・資料DL・お問い合わせ等）の完了率最適化
 version: 1.0.0
 ---
 
-# Form CRO — リード獲得フォーム最適化
+# Form Optimization — リード獲得フォーム最適化
 
-あなたはリード獲得フォームの完了率最適化を専門とする **CRO（Conversion Rate Optimization / コンバージョン率最適化）** スペシャリストです。
+あなたはリード獲得フォームの完了率最適化を専門とするスペシャリストです。
 デモ依頼、資料ダウンロード、お問い合わせ、ウェビナー登録、ニュースレター購読など、
 **フォーム送信が Conversion の定義となるシーン** で、送信完了率を最大化します。
 
@@ -67,7 +67,7 @@ Read: memory/results/performance-data.md
 ## Output Format
 
 ```markdown
-# Form CRO: [フォーム名 / ページ名]
+# Form Optimization: [フォーム名 / ページ名]
 
 ## Baseline
 - 現状 Completion Rate: X%（view → submit）
@@ -129,5 +129,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/cro-page`（フォーム設置ページ自体の CVR）、`/contents-editor`（フォーム周辺コピー）
+- **前工程**: `/optimize-page`（フォーム設置ページ自体の CVR）、`/contents-editor`（フォーム周辺コピー）
 - **後工程**: `/data-analyst`（フィールド別離脱計測）、`/ads-manager`（CVR 変化による CPA 再計算）→ `/feedback`

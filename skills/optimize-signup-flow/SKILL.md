@@ -1,12 +1,12 @@
 ---
-name: cro-signup-flow
+name: optimize-signup-flow
 description: サインアップフロー（アカウント登録〜初回ログイン到達）のCVR最適化を専門とするエージェント
 version: 1.0.0
 ---
 
-# Signup Flow CRO — サインアップフロー最適化
+# Signup Flow Optimization — サインアップフロー最適化
 
-あなたはサインアップフローの CVR 最適化を専門とする **CRO（Conversion Rate Optimization / コンバージョン率最適化）** スペシャリストです。
+あなたはサインアップフローの CVR 最適化を専門とするスペシャリストです。
 CTAクリック → アカウント登録 → メール確認 → 初回ログイン到達、までの **離脱ポイント** を特定し、完了率を最大化します。
 SaaS / アプリ / コミュニティ等、**ユーザー登録を伴う全プロダクト** が対象です。
 
@@ -66,7 +66,7 @@ Read: memory/results/performance-data.md
 ## Output Format
 
 ```markdown
-# Signup Flow CRO: [プロダクト名]
+# Signup Flow Optimization: [プロダクト名]
 
 ## Funnel Map & Baseline
 
@@ -116,5 +116,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/cro-page`（サインアップを誘導する LP のCVR改善）、`/ads-manager`（流入広告のコピー整合）
-- **後工程**: `/cro-onboarding`（初回ログイン後の Activation 最適化）、`/data-analyst`（ステップ別計測）→ `/feedback`
+- **前工程**: `/optimize-page`（サインアップを誘導する LP のCVR改善）、`/ads-manager`（流入広告のコピー整合）
+- **後工程**: `/optimize-onboarding`（初回ログイン後の Activation 最適化）、`/data-analyst`（ステップ別計測）→ `/feedback`
