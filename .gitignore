@@ -18,3 +18,9 @@ knowledge/company/
 # Results knowledge: company-specific performance numbers & learnings (per-project, not shared upstream)
 # Bootstrap with: cp -r knowledge/results.example knowledge/results
 knowledge/results/
+
+# Generated artifacts (per-project outputs; not shared upstream)
+# All skills write their deliverables under output/
+output/*
+!output/.gitkeep
+!output/README.md

@@ -1,5 +1,5 @@
 ---
-name: analytics
+name: data-analyst
 description: マーケティングKPIの分析・レポーティング・アトリビューション・改善提案を行うアナリティクスエージェント
 version: 1.0.0
 ---
@@ -125,7 +125,7 @@ Awareness    → Interest     → Consideration → Purchase    → Advocacy
 
 | Priority | Action | Expected Impact | Effort | Owner |
 |----------|--------|----------------|--------|-------|
-| 1 | ... | ... | H/M/L | /ads, /seo, etc. |
+| 1 | ... | ... | H/M/L | /ads-manager, /seo-consultant, etc. |
 | 2 | ... | ... | H/M/L | ... |
 | 3 | ... | ... | H/M/L | ... |
 ```
@@ -140,5 +140,5 @@ Awareness    → Interest     → Consideration → Purchase    → Advocacy
 
 ## Chaining
 
-- **前工程**: 各チャネルのパフォーマンスデータ、`/ads` `/seo` `/content` の成果
+- **前工程**: 各チャネルのパフォーマンスデータ、`/ads-manager` `/seo-consultant` `/contents-editor` の成果
 - **後工程**: `/ask-cmo`（戦略見直し）、`/flow-weekly-retro`（振り返り）

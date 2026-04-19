@@ -1,5 +1,5 @@
 ---
-name: ui-review
+name: ui-designer
 description: マーケティング用LP・広告LP・WebページのUI/UXレビューと改善を行うUIエージェント
 version: 1.0.0
 ---
@@ -114,5 +114,5 @@ Read: knowledge/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/flow-landing-page` ワークフロー、`/content`（LP用コピー）
-- **後工程**: `/ask-creative-director`（全体品質チェック）、`/seo`（技術SEO確認）
+- **前工程**: `/flow-landing-page` ワークフロー、`/contents-editor`（LP用コピー）
+- **後工程**: `/creative-director`（全体品質チェック）、`/seo-consultant`（技術SEO確認）

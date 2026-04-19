@@ -12,7 +12,7 @@ version: 1.0.0
 ## SAAF Alignment
 
 - **Position**: Workflow（Feedback → Set 還元）
-- **Set Preflight**: 今週の施策ログと数値が手元にあることが前提。なければ `/analytics` を先に実行してから戻ってくる
+- **Set Preflight**: 今週の施策ログと数値が手元にあることが前提。なければ `/data-analyst` を先に実行してから戻ってくる
 - **Feedback Hook**: Step 5 で `/set-latest` と `/feedback` を必ず呼び出す。これを省略するとサイクルが閉じず、次週の Set 精度が今週と同じレベルに留まる
 
 **SAAF上の位置づけ**: このワークフローは **Feedback → Set** のブリッジを担います。今週のAction結果を数値と定性で集約し、来週の Set（特に `knowledge/results/` `knowledge/latest/` `knowledge/company/`）を更新するのが最終目的です。単なる報告会ではなく、AIの次のサイクルの入力精度を上げる儀式として位置づけてください。
@@ -22,7 +22,7 @@ version: 1.0.0
 ```
 SAAFでの位置: ──Action結果── → Feedback集約 → Setに還元 → 次のAsk
 
-Step 1: /analytics   — 週次パフォーマンスレポート（Feedbackの数値面）
+Step 1: /data-analyst — 週次パフォーマンスレポート（Feedbackの数値面）
 Step 2: /ask-cmo  — 戦略的インサイトの抽出（Feedbackの定性面）
 Step 3: /ask-ceo  — 経営インパクトの評価
 Step 4: Next Week    — 来週のアクションプラン策定（次のAsk）
@@ -31,7 +31,7 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 
 ## Step 1: Performance Analysis（パフォーマンス分析）
 
-**エージェント**: `/analytics`
+**エージェント**: `/data-analyst`
 
 直近1週間のデータを分析:
 
@@ -53,7 +53,7 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 
 **エージェント**: `/ask-cmo`
 
-`/analytics` の結果を受けて、戦略的な視点で解釈:
+`/data-analyst` の結果を受けて、戦略的な視点で解釈:
 
 - 数字の裏にある「Why」の考察
 - チャネルミックスの見直し必要性
@@ -86,9 +86,9 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 ### Must Do（必須）
 | # | Action | Owner | KPI | Deadline |
 |---|--------|-------|-----|----------|
-| 1 | ... | /ads | ... | Mon |
-| 2 | ... | /content | ... | Wed |
-| 3 | ... | /seo | ... | Fri |
+| 1 | ... | /ads-manager | ... | Mon |
+| 2 | ... | /contents-editor | ... | Wed |
+| 3 | ... | /seo-consultant | ... | Fri |
 
 ### Should Do（推奨）
 | # | Action | Owner | KPI |
