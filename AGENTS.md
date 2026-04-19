@@ -318,6 +318,16 @@ SARF:   Feedback             → 集約 → 次のSet更新           → 次の
         Analytics → CMO Review → CEO Review → Next Week Plan → knowledge/update/ 更新
 ```
 
+## Integrations（外部ツール直結レイヤー）
+
+SARFStack の各スキルは、Figma / Google Ads / GA4 / Search Console / Meta / X / LinkedIn / TikTok / HubSpot / Salesforce / Stripe / Notion / Slack / Google Drive / BigQuery / PostHog / Amplitude / Intercom 等と **MCP サーバ経由で直接接続** できます。接続があれば CSV 手入力をスキップして直接 pull / push し、SARF の Set（データ取り込み）と Release（本番反映）の両方を加速します。
+
+- **カタログ**: [`knowledge/foundation/integrations.md`](knowledge/foundation/integrations.md)（どのスキルがどの MCP を使うか）
+- **設定**: ルートの [`.mcp.json.example`](.mcp.json.example) をコピーして `.mcp.json` を作成。シークレットは環境変数経由で注入。`.mcp.json` と `.claude/settings.local.json` は gitignore 済み
+- **ガードレール**: Write 操作は必ずユーザー承認ゲート経由 / Read-only から始める / 最小 scope / PII は匿名化 or 集計値のみ
+
+各 SKILL.md 末尾の「Integrations（optional）」セクションに、そのスキルが使う可能性のある接続と未接続時の Fallback（従来の CSV 手入力）が列挙されています。接続が増えるほど SARF サイクルの回転速度が上がる設計です。
+
 ## Knowledge Architecture
 
 情報は **`knowledge/`（共有ベース / tracked）** と **`memory/`（プロジェクト固有 / gitignored）** の2つのルートに分離されています。ひと目で「upstream に流れるか／流れないか」が判別できる構造です。

@@ -95,6 +95,20 @@ knowledge/update/industry-trends.md     ← 業界トレンド（共有可）
 memory/results/performance-data.md   ← 直近のパフォーマンスデータ（gitignore）
 ```
 
+### 6. Connect Integrations（外部ツール直結・optional）
+
+Figma / Google Ads / GA4 / Search Console / Meta / X / LinkedIn / TikTok / HubSpot / Salesforce / Stripe / Notion / Slack / BigQuery / PostHog / Amplitude / Intercom などと **MCP サーバ経由で直接繋ぐ** ことができます。接続があれば CSV 手入力をスキップして SARF サイクルが一段速く回ります（未接続でも従来通り動作します）。
+
+```bash
+cp .mcp.json.example .mcp.json
+# .mcp.json を編集し、使うサーバを残して API Key / Token を環境変数で注入
+```
+
+- 詳細カタログ: [`knowledge/foundation/integrations.md`](knowledge/foundation/integrations.md)
+- `.mcp.json` と `.claude/settings.local.json` は gitignore 済み（シークレット保護）
+- Write 操作は必ずユーザー承認ゲート経由 / Read-only から始めるのが既定
+- 最小推奨セット: Figma + Google Ads + GA4 + Meta + Slack + GitHub
+
 ## Available Skills
 
 ### SARF Ops（サイクル運用）
@@ -152,6 +166,7 @@ sarfstack/
 ├── AGENTS.md                    # Canonical: agents, SARF, knowledge, workflows
 ├── CLAUDE.md                    # Stub importing AGENTS.md (for Claude Code)
 ├── .claude/settings.json        # Skill definitions
+├── .mcp.json.example            # MCP server template (copy to .mcp.json, gitignored)
 │
 ├── knowledge/                   # Base: shared, tracked
 │   ├── foundation/              # Stable: frameworks, mindset

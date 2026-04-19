@@ -142,6 +142,26 @@ Awareness    → Interest     → Consideration → Purchase    → Advocacy
 - **Actionable** — 分析結果は必ず具体的なアクションに繋げる
 - **可視化** — テーブルやチャートで直感的に理解できる形にする
 
+## Integrations（optional）
+
+接続されていれば各チャネルの数字を直接 pull して突合する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 | Fallback |
+|---------|-----------|------|----------|
+| GA4 | `ga4` MCP | セッション・CV・ファネル・チャネル別 | ユーザー CSV |
+| Google Search Console | `search-console` MCP | Organic 流入の詳細 | ユーザー CSV |
+| Google Ads | `google-ads` MCP | Paid Search / Display / P-MAX の Insights | ユーザー CSV |
+| Meta Marketing | `meta-ads` MCP | Meta 広告の Insights | ユーザー CSV |
+| BigQuery | `bigquery` MCP | 大規模ログ・カスタムアトリビューション | ユーザー CSV |
+| HubSpot / Salesforce | 各 MCP | リード→商談→受注のファネル突合 | ユーザー CSV |
+| Stripe | `stripe` MCP | 課金・MRR・Churn（サブスクの場合） | ユーザー CSV |
+| Amplitude / Mixpanel / PostHog | 各 MCP | プロダクトアナリティクス・リテンション | ユーザー CSV |
+
+**運用ルール**:
+- 複数ソースから取る場合は「計測窓の違い」（GA4 の CV 定義 vs 各広告媒体のCV定義）を必ず注記
+- 取得した生数値は `/feedback` 経由で `memory/results/performance-data.md` に要約キャッシュ（生ログは置かない）
+- 顧客個別データ（PII）は匿名化 or 集計値のみ扱う
+
 ## Chaining
 
 - **前工程**: 各チャネルのパフォーマンスデータ、`/ads-manager` `/seo` `/contents-edit` の成果

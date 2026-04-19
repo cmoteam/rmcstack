@@ -1,0 +1,151 @@
+{
+  "_comment": "SARFStack MCP server template. Copy to .mcp.json and fill in credentials. DO NOT commit .mcp.json (it is gitignored). For details see knowledge/foundation/integrations.md",
+  "mcpServers": {
+    "figma": {
+      "_note": "Figma Dev Mode MCP. Design file read for /ui-design /creative-direction /optimize-page /landing-page",
+      "command": "npx",
+      "args": ["-y", "figma-developer-mcp"],
+      "env": {
+        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
+      }
+    },
+    "google-ads": {
+      "_note": "Google Ads API wrapper. Campaign / bidding / insights for /ads-manager /data-analytics",
+      "command": "npx",
+      "args": ["-y", "google-ads-mcp"],
+      "env": {
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "${GOOGLE_ADS_DEVELOPER_TOKEN}",
+        "GOOGLE_ADS_CLIENT_ID": "${GOOGLE_ADS_CLIENT_ID}",
+        "GOOGLE_ADS_CLIENT_SECRET": "${GOOGLE_ADS_CLIENT_SECRET}",
+        "GOOGLE_ADS_REFRESH_TOKEN": "${GOOGLE_ADS_REFRESH_TOKEN}",
+        "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "${GOOGLE_ADS_LOGIN_CUSTOMER_ID}"
+      }
+    },
+    "ga4": {
+      "_note": "Google Analytics 4 Data API. Sessions / conversions / funnel for /data-analytics /seo /optimize-*",
+      "command": "npx",
+      "args": ["-y", "ga4-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS}",
+        "GA4_PROPERTY_ID": "${GA4_PROPERTY_ID}"
+      }
+    },
+    "search-console": {
+      "_note": "Google Search Console API. Query / position / CTR for /seo",
+      "command": "npx",
+      "args": ["-y", "search-console-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS}",
+        "GSC_SITE_URL": "${GSC_SITE_URL}"
+      }
+    },
+    "meta-ads": {
+      "_note": "Meta Marketing API (Graph). Campaigns / ad sets / insights for /ads-manager /data-analytics",
+      "command": "npx",
+      "args": ["-y", "meta-ads-mcp"],
+      "env": {
+        "META_ACCESS_TOKEN": "${META_ACCESS_TOKEN}",
+        "META_AD_ACCOUNT_ID": "${META_AD_ACCOUNT_ID}",
+        "META_APP_ID": "${META_APP_ID}",
+        "META_APP_SECRET": "${META_APP_SECRET}"
+      }
+    },
+    "x-ads": {
+      "_note": "X (Twitter) Ads API. Campaign management / insights for /ads-manager",
+      "command": "npx",
+      "args": ["-y", "x-ads-mcp"],
+      "env": {
+        "X_API_KEY": "${X_API_KEY}",
+        "X_API_SECRET": "${X_API_SECRET}",
+        "X_ACCESS_TOKEN": "${X_ACCESS_TOKEN}",
+        "X_ACCESS_TOKEN_SECRET": "${X_ACCESS_TOKEN_SECRET}",
+        "X_ADS_ACCOUNT_ID": "${X_ADS_ACCOUNT_ID}"
+      }
+    },
+    "linkedin-ads": {
+      "_note": "LinkedIn Marketing API. Sponsored content / lead gen for /ads-manager",
+      "command": "npx",
+      "args": ["-y", "linkedin-ads-mcp"],
+      "env": {
+        "LINKEDIN_ACCESS_TOKEN": "${LINKEDIN_ACCESS_TOKEN}",
+        "LINKEDIN_AD_ACCOUNT_ID": "${LINKEDIN_AD_ACCOUNT_ID}"
+      }
+    },
+    "tiktok-ads": {
+      "_note": "TikTok Marketing API. Campaigns / insights for /ads-manager",
+      "command": "npx",
+      "args": ["-y", "tiktok-ads-mcp"],
+      "env": {
+        "TIKTOK_ACCESS_TOKEN": "${TIKTOK_ACCESS_TOKEN}",
+        "TIKTOK_ADVERTISER_ID": "${TIKTOK_ADVERTISER_ID}"
+      }
+    },
+    "hubspot": {
+      "_note": "HubSpot MCP. Contacts / deals / workflows for /data-analytics /churn-prevention /pricing-strategy",
+      "command": "npx",
+      "args": ["-y", "@hubspot/mcp-server"],
+      "env": {
+        "HUBSPOT_ACCESS_TOKEN": "${HUBSPOT_ACCESS_TOKEN}"
+      }
+    },
+    "stripe": {
+      "_note": "Stripe MCP. MRR / churn / plans for /pricing-strategy /churn-prevention /data-analytics",
+      "command": "npx",
+      "args": ["-y", "@stripe/mcp"],
+      "env": {
+        "STRIPE_API_KEY": "${STRIPE_API_KEY}"
+      }
+    },
+    "notion": {
+      "_note": "Notion MCP. Content calendar / briefs for /contents-edit /campaign-launch",
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_KEY": "${NOTION_API_KEY}"
+      }
+    },
+    "slack": {
+      "_note": "Slack MCP. Approvals / notifications / FAQ collection for /campaign-launch /weekly-retro",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
+      }
+    },
+    "google-drive": {
+      "_note": "Google Drive MCP. Docs / sheets for /contents-edit /estimate /customer-research",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS}"
+      }
+    },
+    "bigquery": {
+      "_note": "BigQuery MCP. Large-scale log / attribution analysis for /data-analytics",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-bigquery"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS}",
+        "BIGQUERY_PROJECT_ID": "${BIGQUERY_PROJECT_ID}"
+      }
+    },
+    "posthog": {
+      "_note": "PostHog MCP. Product analytics / session replay for /optimize-* /data-analytics",
+      "command": "npx",
+      "args": ["-y", "@posthog/mcp"],
+      "env": {
+        "POSTHOG_API_KEY": "${POSTHOG_API_KEY}",
+        "POSTHOG_HOST": "${POSTHOG_HOST}"
+      }
+    },
+    "intercom": {
+      "_note": "Intercom MCP. Support tickets / conversations for /customer-research /churn-prevention",
+      "command": "npx",
+      "args": ["-y", "intercom-mcp"],
+      "env": {
+        "INTERCOM_ACCESS_TOKEN": "${INTERCOM_ACCESS_TOKEN}"
+      }
+    }
+  }
+}

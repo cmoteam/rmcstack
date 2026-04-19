@@ -115,6 +115,23 @@ Read: memory/results/performance-data.md
 - **Social Proof**: 人は他者の行動を参考にする。数字・事例を適切に配置
 - **Loss Aversion**: 人は「得る」より「失う」に敏感。フレーミングを工夫
 
+## Integrations（optional）
+
+接続されていればデザインファイル・ヒートマップを直接読み取る。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 | Fallback |
+|---------|-----------|------|----------|
+| Figma | `figma` MCP（Dev Mode） | デザインファイル読取、コンポーネント→HTML 生成、スペック抽出 | ユーザーが画像/HTMLを貼る |
+| PostHog | `posthog` MCP | Session Replay / ヒートマップで実際のユーザー挙動を観察 | 想像ベース |
+| GA4 | `ga4` MCP | ページ別 CVR・滞在時間・スクロール深度 | ユーザー CSV |
+| GitHub | GitHub MCP | 修正HTML/CSS の PR 化 | patch をユーザーが貼る |
+| Vercel / Netlify | 各 MCP | Preview URL 取得・デプロイ状況 | URL をユーザーが貼る |
+
+**運用ルール**:
+- Figma の read scope は Dev Mode の **read-only** に限定（編集権限は不要）
+- Session Replay に PII が映る場合は匿名化状態で取得
+- 本番HTML の差し替えは PR ベース（直接 main push しない）
+
 ## Chaining
 
 - **前工程**: `/landing-page` ワークフロー、`/contents-edit`（LP用コピー）

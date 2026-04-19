@@ -24,3 +24,9 @@ memory/results/
 output/*
 !output/.gitkeep
 !output/README.md
+
+# MCP server config: may contain API keys / tokens for third-party integrations
+# Bootstrap with: cp .mcp.json.example .mcp.json
+# See knowledge/foundation/integrations.md
+.mcp.json
+.claude/settings.local.json

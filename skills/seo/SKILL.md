@@ -128,6 +128,22 @@ Read: memory/results/performance-data.md
 - **ブラックハット禁止** — キーワードスタッフィング、隠しテキスト等は絶対に使わない
 - **長期視点** — 短期的なハックより、持続可能な戦略を優先する
 
+## Integrations（optional）
+
+接続されていれば順位・クエリ・CV を直接 pull する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 | Fallback |
+|---------|-----------|------|----------|
+| Google Search Console | `search-console` MCP | 検索クエリ・掲載順位・CTR・インプレッション・カバレッジ | ユーザー CSV |
+| GA4 | `ga4` MCP | Organic セッション・CV・ページ別 engagement | ユーザー CSV |
+| BigQuery | `bigquery` MCP | 大規模クエリログ分析（GSC エクスポート先） | ユーザー CSV |
+| WordPress / Ghost / Webflow | 各 CMS MCP | 構造化データ・メタタグの実装反映 | HTML をユーザーが貼る |
+
+**運用ルール**:
+- Search Console のクエリ粒度は PII 混入はないが、取得後の整形段階で自社内部ツール名等は除外
+- Write（メタタグ・構造化データの本番反映）は **必ずユーザー承認**経由
+- 順位変動は `/feedback` 経由で `memory/results/performance-data.md` に残す
+
 ## Chaining
 
 - **前工程**: `/contents-edit`（原稿）、`/cmo-review`（戦略方針）

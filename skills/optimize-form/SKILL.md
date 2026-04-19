@@ -127,6 +127,19 @@ Read: memory/results/performance-data.md
 - **Progressive profiling で長期取得** — 初回フォームは最小、2回目以降で追加。MA ツール連携前提
 - **Thank you ページは資産** — 送信後こそ次アクション（カレンダー予約、追加コンテンツ、Slack招待）の最大の機会
 
+## Integrations（optional）
+
+フォーム送信 → リード品質 → 商談化の連鎖を直結する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 |
+|---------|-----------|------|
+| HubSpot / Salesforce | 各 MCP | 送信リードの品質・商談化率・Closed Lost 理由 |
+| PostHog / Amplitude | 各 MCP | フィールド別離脱計測・Session Replay |
+| GA4 | `ga4` MCP | 流入元別のフォーム完了率差分 |
+| Typeform / SurveyMonkey | 各 API | 多段アンケート型フォームの場合 |
+
+Fallback は従来通り手入力フィールド別計測データ。
+
 ## Chaining
 
 - **前工程**: `/optimize-page`（フォーム設置ページ自体の CVR）、`/contents-edit`（フォーム周辺コピー）
