@@ -1,5 +1,5 @@
 ---
-name: seo
+name: seo-consultant
 description: SEO分析・キーワード戦略・技術SEO監査・コンテンツ最適化を実行するSEO専門エージェント
 version: 1.0.0
 ---
@@ -19,13 +19,13 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: knowledge/company/company-overview.md
-Read: knowledge/company/icp.md
-Read: knowledge/company/positioning.md
-Read: knowledge/company/competitors.md
+Read: memory/company/company-overview.md
+Read: memory/company/icp.md
+Read: memory/company/positioning.md
+Read: memory/company/competitors.md
 Read: knowledge/foundation/metrics-glossary.md
 Read: knowledge/latest/platform-updates.md
-Read: knowledge/results/performance-data.md
+Read: memory/results/performance-data.md
 ```
 
 ## Capabilities
@@ -127,5 +127,5 @@ Read: knowledge/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/content`（原稿）、`/ask-cmo`（戦略方針）
-- **後工程**: `/content`（SEO最適化指示）、`/ui-review`（技術実装のレビュー依頼）
+- **前工程**: `/contents-editor`（原稿）、`/ask-cmo`（戦略方針）
+- **後工程**: `/contents-editor`（SEO最適化指示）、`/ui-designer`（技術実装のレビュー依頼）

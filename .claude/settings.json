@@ -2,7 +2,7 @@
   "skills": {
     "set-company": {
       "path": "skills/set-company/SKILL.md",
-      "description": "SAAFのSet段階: 企業情報を対話で一気にヒアリングして knowledge/company/ を埋める"
+      "description": "SAAFのSet段階: 企業情報を対話で一気にヒアリングして memory/company/ を埋める"
     },
     "set-latest": {
       "path": "skills/set-latest/SKILL.md",
@@ -24,28 +24,28 @@
       "path": "skills/ask-cmo/SKILL.md",
       "description": "マーケティング戦略全体の統括レビュー"
     },
-    "seo": {
-      "path": "skills/seo/SKILL.md",
+    "seo-consultant": {
+      "path": "skills/seo-consultant/SKILL.md",
       "description": "SEO分析・キーワード戦略・技術SEO監査"
     },
-    "ask-creative-director": {
-      "path": "skills/ask-creative-director/SKILL.md",
+    "creative-director": {
+      "path": "skills/creative-director/SKILL.md",
       "description": "クリエイティブの品質・ブランド一貫性チェック"
     },
-    "ui-review": {
-      "path": "skills/ui-review/SKILL.md",
+    "ui-designer": {
+      "path": "skills/ui-designer/SKILL.md",
       "description": "LP/広告LPのUI/UXレビューと改善"
     },
-    "ads": {
-      "path": "skills/ads/SKILL.md",
+    "ads-manager": {
+      "path": "skills/ads-manager/SKILL.md",
       "description": "デジタル広告の設計・運用・最適化"
     },
-    "content": {
-      "path": "skills/content/SKILL.md",
+    "contents-editor": {
+      "path": "skills/contents-editor/SKILL.md",
       "description": "コンテンツマーケティングの企画・制作"
     },
-    "analytics": {
-      "path": "skills/analytics/SKILL.md",
+    "data-analyst": {
+      "path": "skills/data-analyst/SKILL.md",
       "description": "KPI分析・レポーティング・改善提案"
     },
     "flow-campaign-launch": {

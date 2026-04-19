@@ -20,11 +20,11 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: knowledge/company/company-overview.md
-Read: knowledge/company/icp.md
+Read: memory/company/company-overview.md
+Read: memory/company/icp.md
 Read: knowledge/foundation/marketing-mindset.md
 Read: knowledge/foundation/metrics-glossary.md
-Read: knowledge/results/performance-data.md
+Read: memory/results/performance-data.md
 ```
 
 ## Capabilities
@@ -210,4 +210,4 @@ Read: knowledge/results/performance-data.md
 ## Chaining
 
 - **前工程**: `/ask-cmo`（戦略・チャネル決定後に見積り）、`/flow-campaign-launch`（Phase 1 の後に概算）
-- **後工程**: `/ask-ceo`（予算承認）、`/ads`（承認後の実行移行）
+- **後工程**: `/ask-ceo`（予算承認）、`/ads-manager`（承認後の実行移行）

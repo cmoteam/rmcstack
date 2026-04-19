@@ -13,20 +13,20 @@ LPの設計からコピーライティング、HTML/CSS実装、SEO最適化、C
 
 - **Position**: Workflow（Ask → Action → Feedback設計）
 - **Set Preflight**: `icp.md` `positioning.md` `brand-guidelines.md` の3つが揃っていないと LP コピーが刺さらない。開始前に `/saaf-check` を推奨、欠けていれば `/set-company` に先回りする
-- **Feedback Hook**: 公開後の CVR・フォーム離脱率・ヒートマップ結果を `/analytics` → `/feedback` へ。A/B テスト結果は `performance-data.md` に時系列で蓄積する
+- **Feedback Hook**: 公開後の CVR・フォーム離脱率・ヒートマップ結果を `/data-analyst` → `/feedback` へ。A/B テスト結果は `performance-data.md` に時系列で蓄積する
 
-**SAAF上の位置づけ**: Step 1がAsk（戦略設計）、Step 2-6がAction（制作・最適化）、Step 7がFeedback設計（計測の仕込み）です。公開後は `/analytics` でCVR実績を取得し、`knowledge/results/performance-data.md` に書き戻してサイクルを閉じてください。
+**SAAF上の位置づけ**: Step 1がAsk（戦略設計）、Step 2-6がAction（制作・最適化）、Step 7がFeedback設計（計測の仕込み）です。公開後は `/data-analyst` でCVR実績を取得し、`memory/results/performance-data.md` に書き戻してサイクルを閉じてください。
 
 ## Workflow
 
 ```
 Step 1: /ask-cmo        — LP戦略・構成設計
-Step 2: /content            — LPコピーライティング
-Step 3: /ui-review          — UI実装・レビュー
-Step 4: /seo                — SEO・技術最適化
-Step 5: /ask-creative-director  — 全体品質レビュー
-Step 6: /ads                — 広告連携設計
-Step 7: /analytics          — 計測設計
+Step 2: /contents-editor    — LPコピーライティング
+Step 3: /ui-designer        — UI実装・レビュー
+Step 4: /seo-consultant     — SEO・技術最適化
+Step 5: /creative-director  — 全体品質レビュー
+Step 6: /ads-manager        — 広告連携設計
+Step 7: /data-analyst       — 計測設計
 ```
 
 ## Step 1: Strategy & Structure（戦略・構成）
@@ -57,7 +57,7 @@ LPの目的と構成を設計:
 
 ## Step 2: Copywriting（コピーライティング）
 
-**エージェント**: `/content`
+**エージェント**: `/contents-editor`
 
 各セクションのコピーを執筆:
 - ヒーローヘッドライン（複数パターン）
@@ -71,7 +71,7 @@ LPの目的と構成を設計:
 
 ## Step 3: UI Implementation & Review（UI実装・レビュー）
 
-**エージェント**: `/ui-review`
+**エージェント**: `/ui-designer`
 
 Step 2のコピーを使ってLPをHTML/CSSで実装し、レビュー:
 - レスポンシブ対応のHTML/CSS出力
@@ -83,7 +83,7 @@ Step 2のコピーを使ってLPをHTML/CSSで実装し、レビュー:
 
 ## Step 4: SEO Optimization（SEO最適化）
 
-**エージェント**: `/seo`
+**エージェント**: `/seo-consultant`
 
 - title / meta description の最適化
 - OGP設定
@@ -95,7 +95,7 @@ Step 2のコピーを使ってLPをHTML/CSSで実装し、レビュー:
 
 ## Step 5: Creative Quality Check（品質チェック）
 
-**エージェント**: `/ask-creative-director`
+**エージェント**: `/creative-director`
 
 全体を通したクリエイティブ品質レビュー:
 - メッセージの一貫性
@@ -107,7 +107,7 @@ Step 2のコピーを使ってLPをHTML/CSSで実装し、レビュー:
 
 ## Step 6: Ads Integration（広告連携）
 
-**エージェント**: `/ads`
+**エージェント**: `/ads-manager`
 
 LPへの流入経路となる広告の設計:
 - Google検索広告のコピー
@@ -119,7 +119,7 @@ LPへの流入経路となる広告の設計:
 
 ## Step 7: Measurement Setup（計測設計）
 
-**エージェント**: `/analytics`
+**エージェント**: `/data-analyst`
 
 効果測定の設計:
 - コンバージョン定義

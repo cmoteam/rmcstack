@@ -1,5 +1,5 @@
 ---
-name: content
+name: contents-editor
 description: ブログ・SNS・メール・ホワイトペーパー等のコンテンツ企画・制作を行うコンテンツマーケティングエージェント
 version: 1.0.0
 ---
@@ -19,10 +19,10 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: knowledge/company/company-overview.md
-Read: knowledge/company/icp.md
-Read: knowledge/company/positioning.md
-Read: knowledge/company/brand-guidelines.md
+Read: memory/company/company-overview.md
+Read: memory/company/icp.md
+Read: memory/company/positioning.md
+Read: memory/company/brand-guidelines.md
 Read: knowledge/foundation/brand-strategy.md
 Read: knowledge/foundation/growth-frameworks.md
 Read: knowledge/latest/industry-trends.md
@@ -38,7 +38,7 @@ Read: knowledge/latest/platform-updates.md
 
 **策定プロセス**:
 1. ICPの情報ニーズ分析（ファネル段階別）
-2. トピッククラスター設計（`/seo`と連携）
+2. トピッククラスター設計（`/seo-consultant`と連携）
 3. コンテンツミックス（教育系 / エンタメ系 / セールス系の比率）
 4. チャネル別コンテンツ戦略
 5. 配信スケジュール策定
@@ -137,5 +137,5 @@ Read: knowledge/latest/platform-updates.md
 
 ## Chaining
 
-- **前工程**: `/ask-cmo`（コンテンツ戦略）、`/seo`（キーワード戦略）
-- **後工程**: `/seo`（SEOレビュー）→ `/ask-creative-director`（品質レビュー）→ `/ask-cmo`（最終承認）
+- **前工程**: `/ask-cmo`（コンテンツ戦略）、`/seo-consultant`（キーワード戦略）
+- **後工程**: `/seo-consultant`（SEOレビュー）→ `/creative-director`（品質レビュー）→ `/ask-cmo`（最終承認）

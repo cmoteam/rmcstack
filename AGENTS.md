@@ -27,17 +27,17 @@ SAAFの各段階はCMObotの構造に対応しています:
 
 | SAAF | CMObotでの担い手 |
 |------|-----------------|
-| Set | `/set-company` `/set-latest` `/saaf-check` + `knowledge/` 4層（foundation / company / latest / results） |
-| Ask | レビュー系スキル（`/ask-cmo` `/ask-ceo` `/seo` `/ask-creative-director` 等） |
-| Action | 制作系スキル / ワークフロー（`/content` `/ads` `/flow-landing-page` `/flow-campaign-launch` 等） |
-| Feedback | 分析系スキル（`/analytics` `/flow-weekly-retro`）＋ `/feedback`（検証ゲート付きで results/ 生データと company/ 検証済み知見に還元） |
+| Set | `/set-company` `/set-latest` `/saaf-check` + `knowledge/`（foundation / latest）と `memory/`（company / results） |
+| Ask | レビュー系スキル（`/ask-cmo` `/ask-ceo` `/seo-consultant` `/creative-director` 等） |
+| Action | 制作系スキル / ワークフロー（`/contents-editor` `/ads-manager` `/flow-landing-page` `/flow-campaign-launch` 等） |
+| Feedback | 分析系スキル（`/data-analyst` `/flow-weekly-retro`）＋ `/feedback`（検証ゲート付きで results/ 生データと company/ 検証済み知見に還元） |
 
 ```
-Set（情報を渡す）      → /set-company /set-latest + knowledge/ 4層
+Set（情報を渡す）      → /set-company /set-latest + knowledge/（base） + memory/（per-project）
 Meta（サイクル診断）   → /saaf-check
-Ask（問いに答える）    → /ask-ceo /ask-cmo /ask-creative-director /seo /ui-review
-Action（実装する）     → /content /ads /estimate /flow-landing-page /flow-campaign-launch
-Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → knowledge 層に還元
+Ask（問いに答える）    → /ask-ceo /ask-cmo /creative-director /seo-consultant /ui-designer
+Action（実装する）     → /contents-editor /ads-manager /estimate /flow-landing-page /flow-campaign-launch
+Feedback（結果を戻す） → /data-analyst /flow-weekly-retro /feedback → knowledge 層に還元
 ```
 
 単体スキルを使う場合も、この位置づけを意識することで正しい期待値を持てます。
@@ -50,7 +50,7 @@ Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → kn
 以下のスラッシュコマンドで各エージェントを呼び出せます:
 
 ### SAAF Ops（サイクル運用）
-- `/set-company` — Set段階。企業情報を対話で一括ヒアリングし `knowledge/company/` を埋める
+- `/set-company` — Set段階。企業情報を対話で一括ヒアリングし `memory/company/` を埋める
 - `/set-latest` — Set段階。業界トレンド・プラットフォーム仕様変更を `knowledge/latest/` に書き戻す（自社実績は対象外 → `/feedback`）
 - `/saaf-check` — サイクル診断。Set充足率・次の一手を提示
 - `/feedback` — Feedback段階。施策結果を検証ゲート付きで knowledge 層に反映
@@ -60,12 +60,12 @@ Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → kn
 - `/ask-cmo` — マーケティング戦略全体の統括レビュー
 
 ### Specialist Agents（専門エージェント）
-- `/seo` — SEO分析・キーワード戦略・技術SEO監査
-- `/ui-review` — LP/広告クリエイティブのUI/UXレビュー
-- `/ads` — 広告運用（Google/Meta/X）の設計・分析・最適化
-- `/ask-creative-director` — クリエイティブの品質・ブランド一貫性チェック
-- `/content` — コンテンツマーケティング（記事・SNS・メール）
-- `/analytics` — KPI分析・レポーティング・アトリビューション
+- `/seo-consultant` — SEO分析・キーワード戦略・技術SEO監査
+- `/ui-designer` — LP/広告クリエイティブのUI/UXレビュー
+- `/ads-manager` — 広告運用（Google/Meta/X）の設計・分析・最適化
+- `/creative-director` — クリエイティブの品質・ブランド一貫性チェック
+- `/contents-editor` — コンテンツマーケティング（記事・SNS・メール）
+- `/data-analyst` — KPI分析・レポーティング・アトリビューション
 - `/estimate` — 見積り・工数計算・費用対効果シミュレーション（代理店視点）
 
 ### Workflows（統合ワークフロー）
@@ -114,7 +114,7 @@ Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → kn
 ## Agent Definitions
 
 ### Set Company (`/set-company`)
-- **役割**: 企業情報を対話で一括ヒアリングし `knowledge/company/` を埋める
+- **役割**: 企業情報を対話で一括ヒアリングし `memory/company/` を埋める
 - **入力**: ユーザーの事業・ICP・ブランド・競合に関する情報（崩れた文体でも可）
 - **出力**: 5つの company ファイルへの書き込み + 充足率サマリー
 - **知識**: company + saaf-framework
@@ -155,42 +155,42 @@ Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → kn
 - **知識**: foundation + company
 - **トリガー**: 施策の企画段階、四半期計画、チャネルミックスの見直し
 
-### SEO Specialist (`/seo`)
+### SEO Consultant (`/seo-consultant`)
 - **役割**: 検索エンジン最適化の分析・戦略立案・技術監査・実装
 - **入力**: URL、キーワード候補、コンテンツ原稿、サイト構造
 - **出力**: キーワード戦略、技術SEO監査レポート、コンテンツ最適化案、実装コード
 - **知識**: foundation + company + latest
 - **トリガー**: コンテンツ制作時、サイト改修時、順位変動時
 
-### Creative Director (`/ask-creative-director`)
+### Creative Director (`/creative-director`)
 - **役割**: クリエイティブの品質管理・ブランド一貫性・トーン&マナーの監督
 - **入力**: コピー、ビジュアル案、LP構成、広告クリエイティブ
 - **出力**: クリエイティブ評価 + 具体的な修正指示 + ブランド適合度スコア
 - **知識**: foundation + company（特にbrand-guidelines）
 - **トリガー**: クリエイティブ制作後のレビュー、ブランドガイドライン更新時
 
-### UI Review (`/ui-review`)
+### UI Designer (`/ui-designer`)
 - **役割**: マーケティング用のLP・広告LPのUI/UXレビューと改善
 - **入力**: HTML/CSS、デザインファイル、ワイヤーフレーム
 - **出力**: UI改善提案 + 修正済みコード + コンバージョン最適化案
 - **知識**: foundation + company + latest
 - **トリガー**: LP制作後、A/Bテスト設計時、CVR改善施策時
 
-### Ads Specialist (`/ads`)
+### Ads Manager (`/ads-manager`)
 - **役割**: デジタル広告（Google/Meta/X等）の設計・運用・最適化
 - **入力**: 広告アカウント情報、クリエイティブ、ターゲティング設定、パフォーマンスデータ
 - **出力**: 広告設計書、入稿データ、最適化提案、予算配分案
 - **知識**: foundation + company + latest
 - **トリガー**: 新規キャンペーン設計時、パフォーマンス悪化時、予算見直し時
 
-### Content Specialist (`/content`)
+### Contents Editor (`/contents-editor`)
 - **役割**: コンテンツマーケティング（ブログ・SNS・メール・ホワイトペーパー）の企画・制作
 - **入力**: テーマ、ターゲット、チャネル、参考情報
 - **出力**: 完成原稿 + SEO対応メタ情報 + 配信スケジュール案
 - **知識**: foundation + company + latest
 - **トリガー**: コンテンツカレンダー更新時、キャンペーン企画時
 
-### Analytics (`/analytics`)
+### Data Analyst (`/data-analyst`)
 - **役割**: マーケティングKPIの分析・レポーティング・アトリビューション・改善提案
 - **入力**: パフォーマンスデータ、KPI目標、ファネルデータ
 - **出力**: 分析レポート + インサイト + ネクストアクション提案
@@ -229,27 +229,50 @@ SAAF:   Feedback             → 集約 → 次のSet更新           → 次の
 
 ## Knowledge Architecture
 
-知識ベースは4層に分離されています。各スキルは必要に応じて適切な層を読み込みます。
+情報は **`knowledge/`（共有ベース / tracked）** と **`memory/`（プロジェクト固有 / gitignored）** の2つのルートに分離されています。ひと目で「upstream に流れるか／流れないか」が判別できる構造です。
+
+```
+knowledge/   — shared base (tracked, upstream に流れる)
+  foundation/   — 不変フレームワーク・マインドセット
+  latest/       — 外部揮発情報（プラットフォーム仕様・業界トレンド）
+
+memory/      — per-project memory (gitignored, 各プロジェクト管理)
+  company/      — 事業概要・ICP・ポジショニング・ブランドガイドライン・競合
+  company.example/   — company/ のテンプレート（tracked）
+  results/      — パフォーマンスデータ・施策検証ログ
+  results.example/   — results/ のテンプレート（tracked）
+```
 
 ### Foundation（不変の知識 / tracked）
 `knowledge/foundation/` — マーケティングのフレームワーク、マインドセット、原則。
 めったに変更されない普遍的な知識。全スキルの基盤として暗黙的に参照される。
 
-### Company（企業固有情報 / gitignored）
-`knowledge/company/` — 事業概要、ICP、ポジショニング、ブランドガイドライン、競合情報。
-プロジェクト開始時にユーザーが記入する。施策レビュー時に必ず参照される。
-
-> このディレクトリは **gitignore 対象**（各プロジェクトのローカル管理）です。upstream には共通テンプレート `knowledge/company.example/` のみが入っています。初回は `cp -r knowledge/company.example knowledge/company` で複製するか、`/set-company` に任せてください。企業の実情報は必ず `knowledge/company/` 側に書き、`knowledge/company.example/` は書き換えないでください（upstreamに流れます）。
-
 ### Latest（外部揮発情報 / tracked）
 `knowledge/latest/` — プラットフォームアップデート、業界トレンド。**外から入ってくる** 公開情報ベースの揮発層。
-`/set-latest` で更新する。自社の実績数値（CVR・CPA 等）はここではなく `results/` 側。
+`/set-latest` で更新する。自社の実績数値（CVR・CPA 等）はここではなく `memory/results/` 側。
+
+### Company（企業固有情報 / gitignored）
+`memory/company/` — 事業概要、ICP、ポジショニング、ブランドガイドライン、競合情報。
+プロジェクト開始時にユーザーが記入する。施策レビュー時に必ず参照される。
+
+> このディレクトリは **gitignore 対象**（各プロジェクトのローカル管理）です。upstream には共通テンプレート `memory/company.example/` のみが入っています。初回は `cp -r memory/company.example memory/company` で複製するか、`/set-company` に任せてください。企業の実情報は必ず `memory/company/` 側に書き、`memory/company.example/` は書き換えないでください（upstreamに流れます）。
 
 ### Results（企業固有の結果ログ / gitignored）
-`knowledge/results/` — 直近のパフォーマンスデータ（CVR・CPA・ROAS・売上 等）、施策ごとの検証ログ、普遍化前の観測仮説。
+`memory/results/` — 直近のパフォーマンスデータ（CVR・CPA・ROAS・売上 等）、施策ごとの検証ログ、普遍化前の観測仮説。
 **中から出てくる** 機密性の高い数値のため gitignore 対象。SAAFのFeedback段階で `/feedback` スキルが書き込む保管先。
 
-> upstream には共通テンプレート `knowledge/results.example/` のみ。初回は `cp -r knowledge/results.example knowledge/results` で複製するか、`/feedback` に任せてください。`knowledge/results.example/` は書き換え禁止（upstreamに流れます）。
+> upstream には共通テンプレート `memory/results.example/` のみ。初回は `cp -r memory/results.example memory/results` で複製するか、`/feedback` に任せてください。`memory/results.example/` は書き換え禁止（upstreamに流れます）。
+
+## Output Directory（成果物の書き込み先）
+
+全スキルの **一次成果物**（原稿・HTML/CSS・広告コピー・分析レポート・見積書等）は必ず `output/` 配下に書き込みます。
+
+- `output/` は **gitignore 対象**（`.gitkeep` と `README.md` のみ tracked）。企業固有のコピー・数値を安全に置けます。
+- プロジェクトルートや `skills/` 内に直接ファイルを作らないこと。
+- 推奨ファイル名: `YYYYMMDD-{skill}-{slug}.{ext}`（例: `20260419-contents-editor-hero-copy.md`）。
+- 成果物を `knowledge/` に書くのはNG。knowledge は「次サイクルのSetに効く蓄積」専用で、`output/` は「その瞬間の成果物」。役割が違うので混同しないこと。
+
+詳細は [`output/README.md`](output/README.md) を参照。
 
 ## How Knowledge Loading Works
 
@@ -257,10 +280,10 @@ SAAF:   Feedback             → 集約 → 次のSet更新           → 次の
 
 ```
 # Required Knowledge
-Read: knowledge/company/company-overview.md
-Read: knowledge/company/icp.md
+Read: memory/company/company-overview.md
+Read: memory/company/icp.md
 Read: knowledge/foundation/growth-frameworks.md
-Read: knowledge/results/performance-data.md
+Read: memory/results/performance-data.md
 ```
 
 スキルの性質に応じて読み込む知識層が異なります:
@@ -277,7 +300,7 @@ Read: knowledge/results/performance-data.md
 2. **実行ベース** — アドバイスだけでなく、実際の成果物（コピー、HTML、設定値）を出力する。Actionまで到達して初めて完了。
 3. **根拠を示す** — すべての提案に理由・データ・フレームワークの裏付けを添える。
 4. **SAAFサイクルを回す** — Set→Ask→Action→Feedbackのループを1つのワークフローで完結させる。Feedbackを怠らない。
-5. **知識を分離する** — 普遍的な知識と揮発性の情報を混ぜない。SetとFeedbackが汚染されないよう、検証済みの知見のみをknowledge/companyに記入する。
+5. **知識を分離する** — 普遍的な知識と揮発性の情報を混ぜない。SetとFeedbackが汚染されないよう、検証済みの知見のみをmemory/companyに記入する。
 
 ## Canonical SAAF Flow
 
@@ -286,7 +309,7 @@ Read: knowledge/results/performance-data.md
 1. `/set-company` — 企業情報を一括ヒアリング（Set）
 2. `/saaf-check` — 充足率を確認し、不足があれば再 `/set-company`
 3. `/ask-cmo` or `/flow-campaign-launch` — 施策レビュー／全工程開始（Ask + Action）
-4. `/analytics` or `/flow-weekly-retro` — 結果集約（Feedback）
+4. `/data-analyst` or `/flow-weekly-retro` — 結果集約（Feedback）
 5. `/set-latest` + `/feedback` — Set層への還元（サイクルを閉じる）
 
 各 SKILL.md 冒頭には `SAAF Alignment` セクションがあり、そのスキルの **Position / Set Preflight / Feedback Hook** が明記されています。スキル呼び出し前に確認してください。
