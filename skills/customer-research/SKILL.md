@@ -170,8 +170,8 @@ Positioning / コピー候補を実際のターゲットに見せて反応を測
 
 ## Handoff
 - `/feedback` で `memory/company/` への反映を提案
-- `/contents-editor` に Objection Bank を渡してコピー改善
-- `/ask-cmo` に Positioning Update を提案
+- `/contents-edit` に Objection Bank を渡してコピー改善
+- `/cmo-review` に Positioning Update を提案
 ```
 
 ## Principles
@@ -185,6 +185,6 @@ Positioning / コピー候補を実際のターゲットに見せて反応を測
 
 ## Chaining
 
-- **前工程**: `/set-company`（既存 ICP の棚卸し）、`/ask-consultant`（ICP 前提を揺さぶる）
-- **後工程**: `/feedback`（検証結果を company 層に反映）、`/contents-editor`（Objection Bank をコピーに反映）、`/ask-cmo`（Positioning 再設計）
+- **前工程**: `/set-company`（既存 ICP の棚卸し）、`/consultant-review`（ICP 前提を揺さぶる）
+- **後工程**: `/feedback`（検証結果を company 層に反映）、`/contents-edit`（Objection Bank をコピーに反映）、`/cmo-review`（Positioning 再設計）
 - **関連**: `/churn-prevention`（解約インタビューの実施）、`/pricing-strategy`（Van Westendorp の実施）

@@ -16,40 +16,40 @@
       "path": "skills/feedback/SKILL.md",
       "description": "SARFのFeedback段階: 施策結果を検証ゲート付きで knowledge 層に反映する"
     },
-    "ask-ceo": {
-      "path": "skills/ask-ceo/SKILL.md",
+    "ceo-review": {
+      "path": "skills/ceo-review/SKILL.md",
       "description": "収益性・ビジネス観点からマーケティング施策をレビュー"
     },
-    "ask-cmo": {
-      "path": "skills/ask-cmo/SKILL.md",
+    "cmo-review": {
+      "path": "skills/cmo-review/SKILL.md",
       "description": "マーケティング戦略全体の統括レビュー"
     },
-    "ask-consultant": {
-      "path": "skills/ask-consultant/SKILL.md",
+    "consultant-review": {
+      "path": "skills/consultant-review/SKILL.md",
       "description": "外部コンサル視点でのゼロベース率直フィードバック"
     },
-    "seo-specialist": {
-      "path": "skills/seo-specialist/SKILL.md",
+    "seo": {
+      "path": "skills/seo/SKILL.md",
       "description": "SEO分析・キーワード戦略・技術SEO監査"
     },
-    "creative-director": {
-      "path": "skills/creative-director/SKILL.md",
+    "creative-direction": {
+      "path": "skills/creative-direction/SKILL.md",
       "description": "クリエイティブの品質・ブランド一貫性チェック"
     },
-    "ui-designer": {
-      "path": "skills/ui-designer/SKILL.md",
+    "ui-design": {
+      "path": "skills/ui-design/SKILL.md",
       "description": "LP/広告LPのUI/UXレビューと改善"
     },
     "ads-manager": {
       "path": "skills/ads-manager/SKILL.md",
       "description": "デジタル広告の設計・運用・最適化"
     },
-    "contents-editor": {
-      "path": "skills/contents-editor/SKILL.md",
+    "contents-edit": {
+      "path": "skills/contents-edit/SKILL.md",
       "description": "コンテンツマーケティングの企画・制作"
     },
-    "data-analyst": {
-      "path": "skills/data-analyst/SKILL.md",
+    "data-analytics": {
+      "path": "skills/data-analytics/SKILL.md",
       "description": "KPI分析・レポーティング・改善提案"
     },
     "customer-research": {
@@ -88,20 +88,20 @@
       "path": "skills/optimize-paywall/SKILL.md",
       "description": "Paywall・Upgradeモーダル・アプリ内アップセルのCVR最適化"
     },
-    "flow-campaign-launch": {
-      "path": "skills/flow-campaign-launch/SKILL.md",
+    "campaign-launch": {
+      "path": "skills/campaign-launch/SKILL.md",
       "description": "キャンペーン企画→制作→レビュー→ローンチの全工程"
     },
-    "flow-content-review": {
-      "path": "skills/flow-content-review/SKILL.md",
+    "content-review": {
+      "path": "skills/content-review/SKILL.md",
       "description": "コンテンツ制作→多角的レビューサイクル"
     },
-    "flow-landing-page": {
-      "path": "skills/flow-landing-page/SKILL.md",
+    "landing-page": {
+      "path": "skills/landing-page/SKILL.md",
       "description": "LP設計→制作→最適化サイクル"
     },
-    "flow-weekly-retro": {
-      "path": "skills/flow-weekly-retro/SKILL.md",
+    "weekly-retro": {
+      "path": "skills/weekly-retro/SKILL.md",
       "description": "週次マーケティング振り返り"
     }
   }

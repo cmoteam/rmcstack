@@ -1,5 +1,5 @@
 ---
-name: flow-weekly-retro
+name: weekly-retro
 description: 週次マーケティング振り返りを実施し、来週のアクションプランを策定するワークフロー
 version: 1.0.0
 ---
@@ -12,12 +12,12 @@ version: 1.0.0
 ## SARF Alignment
 
 - **Position**: Workflow（Feedback → Set 還元）
-- **Set Preflight**: 今週の施策ログと数値が手元にあることが前提。なければ `/data-analyst` を先に実行してから戻ってくる
+- **Set Preflight**: 今週の施策ログと数値が手元にあることが前提。なければ `/data-analytics` を先に実行してから戻ってくる
 - **Feedback Hook**: Step 5 で `/set-update` と `/feedback` を必ず呼び出す。これを省略するとサイクルが閉じず、次週の Set 精度が今週と同じレベルに留まる
 - **[Optional] Retro Funnel Focus**: 指定があればその段階の転換率・ボトルネックを中心にレビュー（例: 今週は MOFU 改善ウィーク）。未指定ならファネル全体を俯瞰
 - **[Optional] Retro Segment Focus**: 指定があればそのセグメントに絞ってセグメント別反応を分析。未指定なら全体＋主要セグメントを並列
 - **[Optional] Retro Primary KPI**: 指定があればその KPI を単一の評価軸に（週次目標 vs 実績）。未指定なら CVR / CPA / ROAS / LTV を並列追跡
-- **[Optional] 4-Axis Feedback**: データが揃えば Step 1 の `/data-analyst` が Funnel Conversion / Segment Response / Attribution / Unit Economics Update の4軸で出力し、Step 5 の Feedback 書き戻しもこの構造に従う（Marketing Extension）。揃わなければ従来構造
+- **[Optional] 4-Axis Feedback**: データが揃えば Step 1 の `/data-analytics` が Funnel Conversion / Segment Response / Attribution / Unit Economics Update の4軸で出力し、Step 5 の Feedback 書き戻しもこの構造に従う（Marketing Extension）。揃わなければ従来構造
 
 **SARF上の位置づけ**: このワークフローは **Feedback → Set** のブリッジを担います。今週のRelease結果（実配信された施策）を数値と定性で集約し、来週の Set（特に `memory/results/` `knowledge/update/` `memory/company/`）を更新するのが最終目的です。単なる報告会ではなく、AIの次のサイクルの入力精度を上げる儀式として位置づけてください。
 
@@ -26,16 +26,16 @@ version: 1.0.0
 ```
 SARFでの位置: ──Release結果── → Feedback集約 → Setに還元 → 次のAsk
 
-Step 1: /data-analyst — 週次パフォーマンスレポート（Feedbackの数値面）
-Step 2: /ask-cmo  — 戦略的インサイトの抽出（Feedbackの定性面）
-Step 3: /ask-ceo  — 経営インパクトの評価
+Step 1: /data-analytics — 週次パフォーマンスレポート（Feedbackの数値面）
+Step 2: /cmo-review  — 戦略的インサイトの抽出（Feedbackの定性面）
+Step 3: /ceo-review  — 経営インパクトの評価
 Step 4: Next Week    — 来週のアクションプラン策定（次のAsk）
 Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 ```
 
 ## Step 1: Performance Analysis（パフォーマンス分析）
 
-**エージェント**: `/data-analyst`
+**エージェント**: `/data-analytics`
 
 直近1週間のデータを分析:
 
@@ -55,9 +55,9 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 
 ## Step 2: Strategic Insights（戦略的インサイト）
 
-**エージェント**: `/ask-cmo`
+**エージェント**: `/cmo-review`
 
-`/data-analyst` の結果を受けて、戦略的な視点で解釈:
+`/data-analytics` の結果を受けて、戦略的な視点で解釈:
 
 - 数字の裏にある「Why」の考察
 - チャネルミックスの見直し必要性
@@ -69,7 +69,7 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 
 ## Step 3: Business Impact（経営インパクト）
 
-**エージェント**: `/ask-ceo`
+**エージェント**: `/ceo-review`
 
 経営視点での評価:
 - 売上・収益への貢献度
@@ -91,8 +91,8 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 | # | Action | Owner | KPI | Deadline |
 |---|--------|-------|-----|----------|
 | 1 | ... | /ads-manager | ... | Mon |
-| 2 | ... | /contents-editor | ... | Wed |
-| 3 | ... | /seo-specialist | ... | Fri |
+| 2 | ... | /contents-edit | ... | Wed |
+| 3 | ... | /seo | ... | Fri |
 
 ### Should Do（推奨）
 | # | Action | Owner | KPI |
@@ -154,7 +154,7 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 ## How to Use
 
 ```
-/flow-weekly-retro
+/weekly-retro
 
 # 以下の情報を提供してください:
 # - 今週実施した施策の概要

@@ -170,5 +170,5 @@ Read: memory/results/performance-data.md
 ## Chaining
 
 - **前工程**: `/optimize-onboarding`（Early Churn の主因は Activation 失敗）、`/pricing-strategy`（価格起因の解約は価格構造から見直す）
-- **後工程**: `/data-analyst`（Cohort / Churn 計測）、`/contents-editor`（リエンゲージメントメール文面）→ `/feedback`
+- **後工程**: `/data-analytics`（Cohort / Churn 計測）、`/contents-edit`（リエンゲージメントメール文面）→ `/feedback`
 - **関連**: `/optimize-paywall`（押し込みアップセルが Churn を増やしていないか相互確認）

@@ -129,5 +129,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/optimize-page`（フォーム設置ページ自体の CVR）、`/contents-editor`（フォーム周辺コピー）
-- **後工程**: `/data-analyst`（フィールド別離脱計測）、`/ads-manager`（CVR 変化による CPA 再計算）→ `/feedback`
+- **前工程**: `/optimize-page`（フォーム設置ページ自体の CVR）、`/contents-edit`（フォーム周辺コピー）
+- **後工程**: `/data-analytics`（フィールド別離脱計測）、`/ads-manager`（CVR 変化による CPA 再計算）→ `/feedback`

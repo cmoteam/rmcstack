@@ -18,4 +18,4 @@
 
 `/set-update` は AI が公式ソース（Google Ads Blog / Meta for Business / X Business 等の allowlist）を pull 型で巡回し、差分を diff 提示 → ユーザー承認 → 書き込みの順で反映します。手動の intake は行いません（非公開観測は `/feedback` へ）。
 
-`/flow-weekly-retro` ワークフローの中で、外部情報の更新もリマインドされます。
+`/weekly-retro` ワークフローの中で、外部情報の更新もリマインドされます。

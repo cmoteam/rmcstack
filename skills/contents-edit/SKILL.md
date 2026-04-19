@@ -1,5 +1,5 @@
 ---
-name: contents-editor
+name: contents-edit
 description: ブログ・SNS・メール・ホワイトペーパー等のコンテンツ企画・制作を行うコンテンツマーケティングエージェント
 version: 1.0.0
 ---
@@ -42,7 +42,7 @@ Read: knowledge/update/platform-updates.md
 
 **策定プロセス**:
 1. ICPの情報ニーズ分析（ファネル段階別）
-2. トピッククラスター設計（`/seo-specialist`と連携）
+2. トピッククラスター設計（`/seo`と連携）
 3. コンテンツミックス（教育系 / エンタメ系 / セールス系の比率）
 4. チャネル別コンテンツ戦略
 5. 配信スケジュール策定
@@ -141,5 +141,5 @@ Read: knowledge/update/platform-updates.md
 
 ## Chaining
 
-- **前工程**: `/ask-cmo`（コンテンツ戦略）、`/seo-specialist`（キーワード戦略）
-- **後工程**: `/seo-specialist`（SEOレビュー）→ `/creative-director`（品質レビュー）→ `/ask-cmo`（最終承認）
+- **前工程**: `/cmo-review`（コンテンツ戦略）、`/seo`（キーワード戦略）
+- **後工程**: `/seo`（SEOレビュー）→ `/creative-direction`（品質レビュー）→ `/cmo-review`（最終承認）
