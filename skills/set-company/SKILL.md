@@ -135,7 +135,7 @@ Read: knowledge/foundation/saaf-framework.md
 
 ### 次の一手
 - `/saaf-check` で Set の充足を確認
-- `/cmo-review` で最初の戦略レビューを実行できる状態になりました
+- `/ask-cmo` で最初の戦略レビューを実行できる状態になりました
 ```
 
 ## Principles
@@ -157,4 +157,4 @@ Read: knowledge/foundation/saaf-framework.md
 ## Chaining
 
 - **前工程**: なし（SAAFの起点）
-- **後工程**: `/saaf-check`（充足確認）→ `/cmo-review` または `/flow-campaign-launch`（Ask/Actionへ進む）
+- **後工程**: `/saaf-check`（充足確認）→ `/ask-cmo` または `/flow-campaign-launch`（Ask/Actionへ進む）

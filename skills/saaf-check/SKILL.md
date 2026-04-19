@@ -118,4 +118,4 @@ Set→Ask→Action→Feedback のどの段階に今いるかを判定:
 ## Chaining
 
 - **前工程**: なし（いつでも実行可能）
-- **後工程**: 診断結果に応じて `/set-company` `/set-latest` `/cmo-review` `/analytics` 等を推奨
+- **後工程**: 診断結果に応じて `/set-company` `/set-latest` `/ask-cmo` `/analytics` 等を推奨

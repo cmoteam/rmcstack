@@ -26,7 +26,7 @@ CMObotが前提とする、AI時代のマーケティングの基本サイクル
 | SAAF段階 | 人間がやること | CMObotでの対応 |
 |---------|---------------|---------------|
 | **S**et | 事業・ICP・ブランド・制約を言語化してAIに渡す | `knowledge/` 3層に記入 |
-| **A**sk | 誰の視点で・何を・どの形式で出させるか問いを組む | レビュー系スキル（`/cmo-review` 等） |
+| **A**sk | 誰の視点で・何を・どの形式で出させるか問いを組む | レビュー系スキル（`/ask-cmo` 等） |
 | **A**ction | 出てきたアイデアを判断して実装する | 制作系スキル・ワークフロー（`/content` `/flow-landing-page` 等） |
 | **F**eedback | 結果の数字と定性反応をAIに戻す | 分析系スキル（`/analytics` `/flow-weekly-retro`） |
 
@@ -106,14 +106,14 @@ knowledge/results/performance-data.md   ← 直近のパフォーマンスデー
 ### Executive Review（経営レビュー）
 | Command | Role | Description |
 |---------|------|-------------|
-| `/ceo-review` | CEO | 収益性・ROI・事業インパクト評価 |
-| `/cmo-review` | CMO | マーケティング戦略全体の統括レビュー |
+| `/ask-ceo` | CEO | 収益性・ROI・事業インパクト評価 |
+| `/ask-cmo` | CMO | マーケティング戦略全体の統括レビュー |
 
 ### Specialist Agents（専門エージェント）
 | Command | Role | Description |
 |---------|------|-------------|
 | `/seo` | SEO | SEO分析・KW戦略・技術SEO |
-| `/creative-director` | CD | クリエイティブ品質・ブランド一貫性 |
+| `/ask-creative-director` | CD | クリエイティブ品質・ブランド一貫性 |
 | `/ui-review` | UI/UX | LP/WebページのUI・CVR最適化 |
 | `/ads` | Ads | Google/Meta/X広告の設計・最適化 |
 | `/content` | Content | ブログ・SNS・メールの企画・制作 |
@@ -148,10 +148,10 @@ cmobot/
 │   ├── set-latest/SKILL.md      # SAAF: Set
 │   ├── saaf-check/SKILL.md      # SAAF: Meta (diagnostic)
 │   ├── feedback/SKILL.md        # SAAF: Feedback
-│   ├── ceo-review/SKILL.md
-│   ├── cmo-review/SKILL.md
+│   ├── ask-ceo/SKILL.md
+│   ├── ask-cmo/SKILL.md
 │   ├── seo/SKILL.md
-│   ├── creative-director/SKILL.md
+│   ├── ask-creative-director/SKILL.md
 │   ├── ui-review/SKILL.md
 │   ├── ads/SKILL.md
 │   ├── content/SKILL.md

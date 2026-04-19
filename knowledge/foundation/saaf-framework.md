@@ -61,7 +61,7 @@ Setが成立しているかのチェック:
 5. **どの形式で**（表 / チェックリスト / コード / 原稿）
 
 CMObotでは、スラッシュコマンドがこのAskをテンプレート化している:
-- `/ceo-review` = 「CEO視点で、ROI基準で、GO/PIVOT/KILLの判定付きで評価せよ」
+- `/ask-ceo` = 「CEO視点で、ROI基準で、GO/PIVOT/KILLの判定付きで評価せよ」
 - `/ui-review` = 「UI/UX視点で、CVR改善基準で、修正後コード込みでレビューせよ」
 
 ### A — Action（判断して実装）
@@ -97,10 +97,10 @@ Feedbackの反映先:
 ┌─────────────────────────────────────────────────────────────┐
 │  Set              │  Ask             │  Action      │  Feedback │
 ├───────────────────┼──────────────────┼──────────────┼───────────┤
-│ knowledge/company │ /cmo-review      │ /content     │ /analytics│
-│ knowledge/latest  │ /ceo-review      │ /ads         │ /weekly-  │
+│ knowledge/company │ /ask-cmo         │ /content     │ /analytics│
+│ knowledge/latest  │ /ask-ceo         │ /ads         │ /weekly-  │
 │ knowledge/        │ /seo             │ /landing-    │  retro    │
-│  foundation       │ /creative-       │  page        │           │
+│  foundation       │ /ask-creative-   │  page        │           │
 │                   │  director        │ （成果物出力）│ → Setに還元│
 └─────────────────────────────────────────────────────────────┘
 ```

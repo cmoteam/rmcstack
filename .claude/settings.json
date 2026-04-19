@@ -16,20 +16,20 @@
       "path": "skills/feedback/SKILL.md",
       "description": "SAAFのFeedback段階: 施策結果を検証ゲート付きで knowledge 層に反映する"
     },
-    "ceo-review": {
-      "path": "skills/ceo-review/SKILL.md",
+    "ask-ceo": {
+      "path": "skills/ask-ceo/SKILL.md",
       "description": "収益性・ビジネス観点からマーケティング施策をレビュー"
     },
-    "cmo-review": {
-      "path": "skills/cmo-review/SKILL.md",
+    "ask-cmo": {
+      "path": "skills/ask-cmo/SKILL.md",
       "description": "マーケティング戦略全体の統括レビュー"
     },
     "seo": {
       "path": "skills/seo/SKILL.md",
       "description": "SEO分析・キーワード戦略・技術SEO監査"
     },
-    "creative-director": {
-      "path": "skills/creative-director/SKILL.md",
+    "ask-creative-director": {
+      "path": "skills/ask-creative-director/SKILL.md",
       "description": "クリエイティブの品質・ブランド一貫性チェック"
     },
     "ui-review": {

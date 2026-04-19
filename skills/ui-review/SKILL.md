@@ -114,4 +114,4 @@ Read: knowledge/results/performance-data.md
 ## Chaining
 
 - **前工程**: `/flow-landing-page` ワークフロー、`/content`（LP用コピー）
-- **後工程**: `/creative-director`（全体品質チェック）、`/seo`（技術SEO確認）
+- **後工程**: `/ask-creative-director`（全体品質チェック）、`/seo`（技術SEO確認）

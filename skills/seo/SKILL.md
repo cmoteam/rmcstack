@@ -126,5 +126,5 @@ Read: knowledge/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/content`（原稿）、`/cmo-review`（戦略方針）
+- **前工程**: `/content`（原稿）、`/ask-cmo`（戦略方針）
 - **後工程**: `/content`（SEO最適化指示）、`/ui-review`（技術実装のレビュー依頼）
