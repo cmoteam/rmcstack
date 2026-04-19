@@ -11,7 +11,7 @@ version: 1.0.0
 コピー、ビジュアルコンセプト、LP構成、広告クリエイティブを対象に、
 率直で具体的なフィードバックを行い、必要に応じて自ら修正案を書きます。
 
-## SAAF Alignment
+## SARF Alignment
 
 - **Position**: Ask（品質ゲート）
 - **Ask Subtype**: Review（APPROVE / REVISE / REWORK 判定。成果物が手元にある状態で動く。ゼロベースのコンセプト開発は `/contents-editor` など制作系に先に通す）

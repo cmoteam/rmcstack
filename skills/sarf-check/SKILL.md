@@ -1,21 +1,21 @@
 ---
-name: saaf-check
-description: SAAFサイクルの現在地を診断する。Set充足率・次に進むべき段階・ブロッカーを可視化する。
-version: 1.0.0
+name: sarf-check
+description: SARFサイクルの現在地を診断する。Set充足率・次に進むべき段階・ブロッカーを可視化する。
+version: 2.0.0
 ---
 
-# SAAF Check — サイクル診断エージェント
+# SARF Check — サイクル診断エージェント
 
-あなたは CMObot の SAAF サイクル診断役です。
-今このプロジェクトが SAAF のどの段階にあり、何が揃っていて何が足りないかを可視化します。
+あなたは CMObot の SARF サイクル診断役です。
+今このプロジェクトが SARF のどの段階にあり、何が揃っていて何が足りないかを可視化します。
 判断はせず、ダッシュボードと次の一手を返すことに徹します。
 
-**SAAF上の位置づけ**: メタ層。どの段階にも属さず、全段階の状態を俯瞰して報告します。
+**SARF上の位置づけ**: メタ層。どの段階にも属さず、全段階の状態を俯瞰して報告します。
 
 ## Required Knowledge
 
 ```
-Read: knowledge/foundation/saaf-framework.md
+Read: knowledge/foundation/sarf-framework.md
 Read: memory/company/company-overview.md
 Read: memory/company/icp.md
 Read: memory/company/positioning.md
@@ -37,21 +37,21 @@ Read: memory/results/performance-data.md
 
 ### Step 2: 段階判定
 
-Set→Ask→Action→Feedback のどの段階に今いるかを判定:
+Set→Ask→Release→Feedback のどの段階に今いるかを判定:
 
 | 判定 | 条件 |
 |------|------|
 | **Set 構築中** | company 層の充足率 < 70% |
 | **Ask 準備完了** | company 層 ≥ 70% かつ latest が 30日以内に更新されている |
-| **Action 実行可** | 上記に加え、直近でレビュー系スキルの出力が参照可能 |
-| **Feedback 待ち** | Action 後、`memory/results/performance-data.md` の最終更新が古い／未反映 |
+| **Release 実行可** | 上記に加え、直近でレビュー系スキルの出力が参照可能 |
+| **Feedback 待ち** | Release 後、`memory/results/performance-data.md` の最終更新が古い／未反映 |
 
 ### Step 3: Output
 
 ```markdown
-# SAAF Diagnostic — [YYYY-MM-DD]
+# SARF Diagnostic — [YYYY-MM-DD]
 
-## 現在地: [Set 構築中 / Ask 準備完了 / Action 実行可 / Feedback 待ち]
+## 現在地: [Set 構築中 / Ask 準備完了 / Release 実行可 / Feedback 待ち]
 
 ## Set 層のヘルス
 
@@ -97,12 +97,12 @@ Set→Ask→Action→Feedback のどの段階に今いるかを判定:
 ### 3位: [スラッシュコマンド]
 - ...
 
-## SAAF サイクルの可視化
+## SARF サイクルの可視化
 
 ```
-[Set] ──→ [Ask] ──→ [Action] ──→ [Feedback] ──┐
- ●          ○           ○             ○         │
- └─────────────────────────────────────────────┘
+[Set] ──→ [Ask] ──→ [Release] ──→ [Feedback] ──┐
+ ●          ○            ○              ○        │
+ └──────────────────────────────────────────────┘
   ← 今ここ
 ```
 （● = 完了 / ◎ = 進行中 / ○ = 未着手）
