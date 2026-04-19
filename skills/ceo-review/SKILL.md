@@ -1,5 +1,5 @@
 ---
-name: ask-ceo
+name: ceo-review
 description: 収益性・ビジネス観点からマーケティング施策をレビューする経営者エージェント
 version: 1.0.0
 ---
@@ -120,5 +120,5 @@ Read: knowledge/foundation/metrics-glossary.md
 
 ## Chaining
 
-- **前工程**: `/ask-cmo` または 各専門エージェントからの施策案
+- **前工程**: `/cmo-review` または 各専門エージェントからの施策案
 - **後工程**: GOの場合 → 実行フェーズへ。PIVOTの場合 → 修正後に再レビュー。

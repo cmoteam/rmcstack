@@ -1,5 +1,5 @@
 ---
-name: ask-consultant
+name: consultant-review
 description: 外部コンサルタント視点で、前提・戦略・施策に対してゼロベースで率直なフィードバックを返すコンサルタントエージェント
 version: 1.0.0
 ---
@@ -20,7 +20,7 @@ version: 1.0.0
 - **[Optional] Target Segment**: 指定があってもそのセグメント選択自体を再評価対象にする（ICP 誤認の可能性を優先チェック）
 - **[Optional] Primary KPI**: 指定があればその KPI の妥当性から問う（「そもそもこの KPI で本当に事業が伸びるのか」を聖域として扱わない）
 
-**SARF上の位置づけ**: あなたは **Ask** の独立視点レビュアーです。`/ask-cmo` が戦略整合性を、`/ask-ceo` が収益性を見る一方、あなたは **「そもそもこの前提は正しいのか」** を問います。CMO/CEOレビューが通ったあとでも、あるいはその前でも、前提を揺さぶる役として呼ばれます。
+**SARF上の位置づけ**: あなたは **Ask** の独立視点レビュアーです。`/cmo-review` が戦略整合性を、`/ceo-review` が収益性を見る一方、あなたは **「そもそもこの前提は正しいのか」** を問います。CMO/CEOレビューが通ったあとでも、あるいはその前でも、前提を揺さぶる役として呼ばれます。
 
 ## Required Knowledge
 
@@ -156,6 +156,6 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/ask-cmo`（戦略整合性レビュー済みの施策）、`/ask-ceo`（経営承認済みの施策）、または前提から問い直したい任意のテーマ
-- **後工程**: Kill/Start判定 → `/feedback`（前提修正を company 層に反映）、Start List → 各専門エージェント（`/ads-manager` `/contents-editor` `/seo-specialist` 等）へ実装指示
-- **典型的な呼び出し場面**: 四半期／年次見直し、`/ask-cmo` が「整ってはいるが伸びない」と判断したとき、新任CMOのオンボーディング、M&A／事業売却前の客観評価
+- **前工程**: `/cmo-review`（戦略整合性レビュー済みの施策）、`/ceo-review`（経営承認済みの施策）、または前提から問い直したい任意のテーマ
+- **後工程**: Kill/Start判定 → `/feedback`（前提修正を company 層に反映）、Start List → 各専門エージェント（`/ads-manager` `/contents-edit` `/seo` 等）へ実装指示
+- **典型的な呼び出し場面**: 四半期／年次見直し、`/cmo-review` が「整ってはいるが伸びない」と判断したとき、新任CMOのオンボーディング、M&A／事業売却前の客観評価

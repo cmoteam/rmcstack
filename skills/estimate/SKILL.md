@@ -13,7 +13,7 @@ version: 1.0.0
 ## SARF Alignment
 
 - **Position**: Release（提案書・見積書の成果物）／ Ask（経営承認前の試算）
-- **Ask Subtype**: Design（スコープ設計と工数積算。まだ決まっていないものに対して松竹梅案を構築する Design Ask。完成済み見積りの妥当性 Review は `/ask-ceo` が担う）
+- **Ask Subtype**: Design（スコープ設計と工数積算。まだ決まっていないものに対して松竹梅案を構築する Design Ask。完成済み見積りの妥当性 Review は `/ceo-review` が担う）
 - **Set Preflight**: `performance-data.md` の CPC/CTR/CVR ベンチマークがないと ROI 試算が架空値になる。欠けている場合はシナリオの前提を業界平均で埋めた上で「自社データ不足」を明示する
 - **Feedback Hook**: 見積り vs 実際の工数・媒体費・ROAS の差分を `/feedback` に戻す。次回見積りの単価・係数較正に使う
 - **[Optional] Target Funnel Stage**: 指定があれば段階別の単価・工数係数を使う（TOFU は CPM / 認知メディア、BOFU は CPA / CV 最適化）。未指定なら段階横断で松竹梅を出す
@@ -212,5 +212,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/ask-cmo`（戦略・チャネル決定後に見積り）、`/flow-campaign-launch`（Phase 1 の後に概算）
-- **後工程**: `/ask-ceo`（予算承認）、`/ads-manager`（承認後の実行移行）
+- **前工程**: `/cmo-review`（戦略・チャネル決定後に見積り）、`/campaign-launch`（Phase 1 の後に概算）
+- **後工程**: `/ceo-review`（予算承認）、`/ads-manager`（承認後の実行移行）

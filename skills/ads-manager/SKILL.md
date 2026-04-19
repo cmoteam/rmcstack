@@ -135,5 +135,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/ask-cmo`（チャネル戦略）、`/creative-director`（クリエイティブ承認）
-- **後工程**: `/data-analyst`（効果測定）、パフォーマンス結果 → `/ask-cmo` にフィードバック
+- **前工程**: `/cmo-review`（チャネル戦略）、`/creative-direction`（クリエイティブ承認）
+- **後工程**: `/data-analytics`（効果測定）、パフォーマンス結果 → `/cmo-review` にフィードバック

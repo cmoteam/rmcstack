@@ -1,5 +1,5 @@
 ---
-name: seo-specialist
+name: seo
 description: SEO分析・キーワード戦略・技術SEO監査・コンテンツ最適化を実行するSEO専門エージェント
 version: 1.0.0
 ---
@@ -130,5 +130,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/contents-editor`（原稿）、`/ask-cmo`（戦略方針）
-- **後工程**: `/contents-editor`（SEO最適化指示）、`/ui-designer`（技術実装のレビュー依頼）
+- **前工程**: `/contents-edit`（原稿）、`/cmo-review`（戦略方針）
+- **後工程**: `/contents-edit`（SEO最適化指示）、`/ui-design`（技術実装のレビュー依頼）

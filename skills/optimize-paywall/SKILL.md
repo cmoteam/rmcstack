@@ -152,4 +152,4 @@ Paywall を **どのタイミングで** 出すかが最大の設計ポイント
 ## Chaining
 
 - **前工程**: `/pricing-strategy`（価格構造自体の妥当性）、`/optimize-onboarding`（Aha Moment 定義）
-- **後工程**: `/churn-prevention`（Paywall で強引に転換したユーザーの Retention）、`/data-analyst`（LTV / ARPU / Refund 計測）→ `/feedback`
+- **後工程**: `/churn-prevention`（Paywall で強引に転換したユーザーの Retention）、`/data-analytics`（LTV / ARPU / Refund 計測）→ `/feedback`

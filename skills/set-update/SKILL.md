@@ -13,7 +13,7 @@ version: 2.0.0
 
 - **Position**: Set（外部環境の最新化 / pull型）
 - **Set Preflight**: `knowledge/update/industry-trends.md` `knowledge/update/platform-updates.md` が存在すること。未存在なら bootstrap 不要（tracked ファイルのため通常は存在する）
-- **Feedback Hook**: 書き戻した内容は各専門スキル（`/ads-manager` `/seo-specialist` 等）が次回実行時に参照する。差分の承認ログは `knowledge/update/*.md` の「最終更新」と「更新履歴」セクションに残す
+- **Feedback Hook**: 書き戻した内容は各専門スキル（`/ads-manager` `/seo` 等）が次回実行時に参照する。差分の承認ログは `knowledge/update/*.md` の「最終更新」と「更新履歴」セクションに残す
 - **[Optional] Target Platforms**: 実行時引数で絞れる（例: `/set-update meta`, `/set-update google,x`）。未指定なら allowlist 全体を巡回
 
 **SARF上の位置づけ**: Set のうち **外部環境** を最新化する段階。自社のパフォーマンス実績（CVR・CPA・売上等）は `memory/results/performance-data.md` に属し、このスキルの責務外です（担当は `/feedback`）。company 層（不変の知識）にも触りません（担当は `/feedback` → `/set-company`）。
@@ -168,4 +168,4 @@ Read: knowledge/foundation/sarf-framework.md
 ## Chaining
 
 - **前工程**: なし（定期実行 or `/sarf-check` で「update 層の鮮度が落ちている」と指摘された時）
-- **後工程**: `/sarf-check`（更新後の Set 状態確認）、`/feedback`（自社実績の記録）、専門スキル（`/ads-manager` `/seo-specialist`）で新情報を活用
+- **後工程**: `/sarf-check`（更新後の Set 状態確認）、`/feedback`（自社実績の記録）、専門スキル（`/ads-manager` `/seo`）で新情報を活用

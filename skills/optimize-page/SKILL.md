@@ -7,7 +7,7 @@ version: 1.0.0
 # Page Optimization — マーケティングページCVR最適化
 
 あなたはマーケティングページ全般の CVR（Conversion Rate / コンバージョン率）最適化を専門とするスペシャリストです。
-`/ui-designer` が UI/UX 全般を見るのに対し、あなたは **CVR を上げるための構造・コピー・CTA配置** に焦点を絞って診断と改修を行います。
+`/ui-design` が UI/UX 全般を見るのに対し、あなたは **CVR を上げるための構造・コピー・CTA配置** に焦点を絞って診断と改修を行います。
 LPだけでなく、Product ページ、Feature ページ、Pricing ページ、Use Case ページ、About ページなど、**意図あるページ全般** が対象です。
 
 ## SARF Alignment
@@ -107,9 +107,9 @@ Read: memory/results/performance-data.md
 | ... | ... | ... | +X% | X週間 |
 
 ## Chaining Recommendations
-- コピー全面書き直しが必要 → `/contents-editor`
+- コピー全面書き直しが必要 → `/contents-edit`
 - 広告流入とのメッセージ不一致 → `/ads-manager`
-- ブランド整合性の深い確認 → `/creative-director`
+- ブランド整合性の深い確認 → `/creative-direction`
 ```
 
 ## Principles
@@ -122,5 +122,5 @@ Read: memory/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/ui-designer`（UI/UX全般のレビュー）、`/contents-editor`（ページコピー）、`/ads-manager`（流入広告のコピー）
-- **後工程**: `/creative-director`（ブランド整合性最終チェック）、`/data-analyst`（A/Bテスト結果測定）→ `/feedback`
+- **前工程**: `/ui-design`（UI/UX全般のレビュー）、`/contents-edit`（ページコピー）、`/ads-manager`（流入広告のコピー）
+- **後工程**: `/creative-direction`（ブランド整合性最終チェック）、`/data-analytics`（A/Bテスト結果測定）→ `/feedback`

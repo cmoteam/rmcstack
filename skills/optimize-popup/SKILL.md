@@ -140,4 +140,4 @@ Read: memory/results/performance-data.md
 ## Chaining
 
 - **前工程**: `/optimize-page`（ページ全体のCVR診断、ポップアップの要否判断）
-- **後工程**: `/contents-editor`（Lead Magnet 本体の制作）、`/data-analyst`（Guardrail 指標計測）→ `/feedback`
+- **後工程**: `/contents-edit`（Lead Magnet 本体の制作）、`/data-analytics`（Guardrail 指標計測）→ `/feedback`

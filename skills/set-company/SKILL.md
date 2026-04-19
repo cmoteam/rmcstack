@@ -174,7 +174,7 @@ Step 2.5 のフォローアップ回答（あれば）を統合したうえで:
 
 ### 次の一手
 - `/sarf-check` で Set の充足を確認
-- `/ask-cmo` で最初の戦略レビューを実行できる状態になりました
+- `/cmo-review` で最初の戦略レビューを実行できる状態になりました
 ```
 
 ## Principles
@@ -198,4 +198,4 @@ Step 2.5 のフォローアップ回答（あれば）を統合したうえで:
 ## Chaining
 
 - **前工程**: なし（SARFの起点）
-- **後工程**: `/sarf-check`（充足確認）→ `/ask-cmo` または `/flow-campaign-launch`（Ask/Releaseへ進む）
+- **後工程**: `/sarf-check`（充足確認）→ `/cmo-review` または `/campaign-launch`（Ask/Releaseへ進む）
