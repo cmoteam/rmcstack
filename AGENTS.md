@@ -4,55 +4,57 @@ CMObotは、Claude Code / Codex 上で動作する仮想マーケティング組
 企業のマーケティング担当者、スタートアップのグロース担当、広告代理店の担当者が、
 AIエージェントチームと協働してマーケティング業務を遂行するためのフレームワークです。
 各エージェントはSKILL.mdで定義され、明確な責務・入力・出力を持ちます。
-全エージェントは **SAAF**（Set / Ask / Action / Feedback）サイクルの特定の段階を担います。
+全エージェントは **SARF**（Set / Ask / Release / Feedback）サイクル(読み:「サーフ」)の特定の段階を担います。
 
 > このファイルが canonical なプロジェクト定義です。Claude Code 用の `CLAUDE.md` はこのファイルを取り込むスタブになっています。
 
-## Operating Model — SAAF
+## Operating Model — SARF
 
-CMObotの全スキルは **SAAF** サイクルの上で動作します。SAAFはAI時代のマーケティングの基本OSであり、個別のフレームワーク（AARRR・STP・RAM-CE等）の上位に位置する「AIとの関わり方の型」です。
+CMObotの全スキルは **SARF** サイクルの上で動作します。SARFはAI時代のマーケティングの基本OSであり、個別のフレームワーク（AARRR・STP・RAM-CE等）の上位に位置する「AIとの関わり方の型」です。読みは「**サーフ**」で、波乗りのメタファー(波待ち→波の見極め→ライディング→次の波を読む)と整合しています。
 
 ```
-Set ─→ Ask ─→ Action ─→ Feedback ─┐
- ↑                                  │
- └──────────────────────────────────┘
+Set ─→ Ask ─→ Release ─→ Feedback ─┐
+ ↑                                    │
+ └────────────────────────────────────┘
 ```
 
 - **S — Set**: 自分の情報（事業・ICP・ブランド・数字・制約）をAIに伝える
 - **A — Ask**: AIとのコミュニケーション。誰の視点で・何を・どの形式で出させるか問いを組む
-- **A — Action**: 出てきたアイデアの中から判断して実装する（本番反映して初めて完了）
+- **R — Release**: 出てきたアイデアの中から判断して**本番環境に反映**する（本番反映して初めて完了）
 - **F — Feedback**: 結果をAIに戻してリファインし、次のSetを更新する
 
-SAAFの各段階はCMObotの構造に対応しています:
+> **v2.0 改名ノート**: 3段階目は旧版では "Action" と呼んでいたが、「AIに書かせたものを眺めて終わり＝Action完了」と誤解される事例が多かったため、本番反映の意味を強く持つ **Release** に改名した。旧 SAAF → 新 SARF。読みは「サーフ」のまま。
 
-| SAAF | CMObotでの担い手 |
+SARFの各段階はCMObotの構造に対応しています:
+
+| SARF | CMObotでの担い手 |
 |------|-----------------|
-| Set | `/set-company` `/set-latest` `/saaf-check` + `knowledge/`（foundation / latest）と `memory/`（company / results） |
+| Set | `/set-company` `/set-latest` `/sarf-check` + `knowledge/`（foundation / latest）と `memory/`（company / results） |
 | Ask | レビュー系スキル（`/ask-cmo` `/ask-ceo` `/seo-consultant` `/creative-director` 等） |
-| Action | 制作系スキル / ワークフロー（`/contents-editor` `/ads-manager` `/flow-landing-page` `/flow-campaign-launch` 等） |
+| Release | 制作系スキル / ワークフロー（`/contents-editor` `/ads-manager` `/flow-landing-page` `/flow-campaign-launch` 等） |
 | Feedback | 分析系スキル（`/data-analyst` `/flow-weekly-retro`）＋ `/feedback`（検証ゲート付きで results/ 生データと company/ 検証済み知見に還元） |
 
 ```
 Set（情報を渡す）      → /set-company /set-latest + knowledge/（base） + memory/（per-project）
-Meta（サイクル診断）   → /saaf-check
+Meta（サイクル診断）   → /sarf-check
 Ask（問いに答える）    → /ask-ceo /ask-cmo /creative-director /seo-consultant /ui-designer
-Action（実装する）     → /contents-editor /ads-manager /estimate /flow-landing-page /flow-campaign-launch
+Release（本番反映）    → /contents-editor /ads-manager /estimate /flow-landing-page /flow-campaign-launch
 Feedback（結果を戻す） → /data-analyst /flow-weekly-retro /feedback → knowledge 層に還元
 ```
 
 単体スキルを使う場合も、この位置づけを意識することで正しい期待値を持てます。
-レビュー系に「完成品」を求めたり、制作系に「戦略判定」を求めたりすると、SAAFの段階がズレて成果が出ません。
+レビュー系に「完成品」を求めたり、制作系に「戦略判定」を求めたりすると、SARFの段階がズレて成果が出ません。
 
-全ての SKILL.md には冒頭に `SAAF Alignment` セクション（Position / Set Preflight / Feedback Hook）があります。詳細は `knowledge/foundation/saaf-framework.md` を参照。
+全ての SKILL.md には冒頭に `SARF Alignment` セクション（Position / Set Preflight / Feedback Hook）があります。詳細は `knowledge/foundation/sarf-framework.md` を参照。
 
 ## Available Skills
 
 以下のスラッシュコマンドで各エージェントを呼び出せます:
 
-### SAAF Ops（サイクル運用）
+### SARF Ops（サイクル運用）
 - `/set-company` — Set段階。企業情報を対話で一括ヒアリングし `memory/company/` を埋める
 - `/set-latest` — Set段階。業界トレンド・プラットフォーム仕様変更を `knowledge/latest/` に書き戻す（自社実績は対象外 → `/feedback`）
-- `/saaf-check` — サイクル診断。Set充足率・次の一手を提示
+- `/sarf-check` — サイクル診断。Set充足率・次の一手を提示
 - `/feedback` — Feedback段階。施策結果を検証ゲート付きで knowledge 層に反映
 
 ### Executive Review（経営レビュー）
@@ -78,7 +80,7 @@ Feedback（結果を戻す） → /data-analyst /flow-weekly-retro /feedback →
 
 ```
    ┌──────────────┐         ┌──────────────┐
-   │ Set Company  │◀───────▶│ SAAF Check   │◀── いつでも診断
+   │ Set Company  │◀───────▶│ SARF Check   │◀── いつでも診断
    │ Set Latest   │         │  (Meta)      │
    └──────┬───────┘         └──────────────┘
           │ Set が揃ったら
@@ -117,18 +119,18 @@ Feedback（結果を戻す） → /data-analyst /flow-weekly-retro /feedback →
 - **役割**: 企業情報を対話で一括ヒアリングし `memory/company/` を埋める
 - **入力**: ユーザーの事業・ICP・ブランド・競合に関する情報（崩れた文体でも可）
 - **出力**: 5つの company ファイルへの書き込み + 充足率サマリー
-- **知識**: company + saaf-framework
+- **知識**: company + sarf-framework
 - **トリガー**: プロジェクト初回セットアップ、ICP や Positioning 更新時
 
 ### Set Latest (`/set-latest`)
 - **役割**: 最新数値・トレンド・仕様変更を `knowledge/latest/` に書き戻す
 - **入力**: パフォーマンスデータ、業界ニュース、プラットフォーム仕様変更
 - **出力**: 3つの latest ファイルの更新 + 更新サマリー
-- **知識**: latest + saaf-framework
+- **知識**: latest + sarf-framework
 - **トリガー**: 週次（performance-data）、月次（industry-trends）、仕様変更時（platform-updates）
 
-### SAAF Check (`/saaf-check`)
-- **役割**: SAAFサイクルの現在地を診断し、充足率と次の一手を提示
+### SARF Check (`/sarf-check`)
+- **役割**: SARFサイクルの現在地を診断し、充足率と次の一手を提示
 - **入力**: なし（knowledge/ を走査）
 - **出力**: 診断ダッシュボード + 推奨アクション Top 3
 - **知識**: knowledge/ 全層
@@ -138,7 +140,7 @@ Feedback（結果を戻す） → /data-analyst /flow-weekly-retro /feedback →
 - **役割**: 施策結果を検証ゲート付きで knowledge 層に反映
 - **入力**: 数字（KPI実績）＋定性（顧客反応・学び）
 - **出力**: カテゴリ分類（反映 / 候補 / 却下）＋ diff ベースの書き込み
-- **知識**: foundation/saaf-framework + company + latest
+- **知識**: foundation/sarf-framework + company + latest
 - **トリガー**: キャンペーン終了時、`/flow-weekly-retro` の Step 5
 
 ### CEO Review (`/ask-ceo`)
@@ -199,11 +201,11 @@ Feedback（結果を戻す） → /data-analyst /flow-weekly-retro /feedback →
 
 ## Workflow Chains
 
-全ワークフローはSAAFサイクル（Set → Ask → Action → Feedback → Set）を構造として持ちます。
+全ワークフローはSARFサイクル（Set → Ask → Release → Feedback → Set）を構造として持ちます。
 
 ### Campaign Launch Cycle（`/flow-campaign-launch`）
 ```
-SAAF:     Set      → Ask           → Action        → Ask  →Action→ Feedback
+SARF:     Set      → Ask           → Release       → Ask  →Release→ Feedback
           knowledge→ CMO Review    → CD→Content/Ads → CEO → Launch→ Analytics
                    → SEO → UI Review Review        → Review          ↓
                                                                  knowledge/latest/
@@ -211,19 +213,19 @@ SAAF:     Set      → Ask           → Action        → Ask  →Action→ Fee
 
 ### Content Review Cycle（`/flow-content-review`）
 ```
-SAAF:   Set       → Action  → Ask (多角レビュー)          → Action  → Feedback
+SARF:   Set       → Release → Ask (多角レビュー)          → Release → Feedback
         knowledge → Content → SEO → CD → CMO Review       → Publish → Analytics
 ```
 
 ### Landing Page Cycle（`/flow-landing-page`）
 ```
-SAAF:   Set       → Ask        → Action                      → Ask   → Feedback設計
+SARF:   Set       → Ask        → Release                     → Ask   → Feedback設計
         knowledge → CMO Review → UI/CD/SEO/Ads implementation → 品質 → Analytics
 ```
 
-### Weekly Retro（`/flow-weekly-retro` = SAAFの閉じる部分）
+### Weekly Retro（`/flow-weekly-retro` = SARFの閉じる部分）
 ```
-SAAF:   Feedback             → 集約 → 次のSet更新           → 次のAsk
+SARF:   Feedback             → 集約 → 次のSet更新           → 次のAsk
         Analytics → CMO Review → CEO Review → Next Week Plan → knowledge/latest/ 更新
 ```
 
@@ -259,7 +261,7 @@ memory/      — per-project memory (gitignored, 各プロジェクト管理)
 
 ### Results（企業固有の結果ログ / gitignored）
 `memory/results/` — 直近のパフォーマンスデータ（CVR・CPA・ROAS・売上 等）、施策ごとの検証ログ、普遍化前の観測仮説。
-**中から出てくる** 機密性の高い数値のため gitignore 対象。SAAFのFeedback段階で `/feedback` スキルが書き込む保管先。
+**中から出てくる** 機密性の高い数値のため gitignore 対象。SARFのFeedback段階で `/feedback` スキルが書き込む保管先。
 
 > upstream には共通テンプレート `memory/results.example/` のみ。初回は `cp -r memory/results.example memory/results` で複製するか、`/feedback` に任せてください。`memory/results.example/` は書き換え禁止（upstreamに流れます）。
 
@@ -287,37 +289,37 @@ Read: memory/results/performance-data.md
 ```
 
 スキルの性質に応じて読み込む知識層が異なります:
-- **SAAF Ops** → saaf-framework + 対象となる knowledge 層（Set/Feedbackの操作自体が責務）
+- **SARF Ops** → sarf-framework + 対象となる knowledge 層（Set/Feedbackの操作自体が責務）
 - **Executive Review** → foundation + company（戦略判断に必要）
 - **Specialist Agents** → foundation + company + latest + results（実行に必要）
 - **Workflows** → 内包するスキルが個別に読み込む
 
-これはSAAFの **Set** 段階に相当します。スキル実行前に `[TODO]` が残っているファイルがあれば、それは Set が未完成ということ。Ask の前に Set を整えることが、成果物の質を決めます。
+これはSARFの **Set** 段階に相当します。スキル実行前に `[TODO]` が残っているファイルがあれば、それは Set が未完成ということ。Ask の前に Set を整えることが、成果物の質を決めます。
 
 ## Principles
 
 1. **忖度しない** — 数字とロジックに基づいた率直なフィードバック。「いいと思います」で終わらない。
-2. **実行ベース** — アドバイスだけでなく、実際の成果物（コピー、HTML、設定値）を出力する。Actionまで到達して初めて完了。
+2. **実行ベース** — アドバイスだけでなく、実際の成果物（コピー、HTML、設定値）を出力する。Releaseまで到達して初めて完了。
 3. **根拠を示す** — すべての提案に理由・データ・フレームワークの裏付けを添える。
-4. **SAAFサイクルを回す** — Set→Ask→Action→Feedbackのループを1つのワークフローで完結させる。Feedbackを怠らない。
+4. **SARFサイクルを回す** — Set→Ask→Release→Feedbackのループを1つのワークフローで完結させる。Feedbackを怠らない。
 5. **知識を分離する** — 普遍的な知識と揮発性の情報を混ぜない。SetとFeedbackが汚染されないよう、検証済みの知見のみをmemory/companyに記入する。
 
-## Canonical SAAF Flow
+## Canonical SARF Flow
 
 初めてのプロジェクトは以下の順で回すのが推奨フローです:
 
 1. `/set-company` — 企業情報を一括ヒアリング（Set）
-2. `/saaf-check` — 充足率を確認し、不足があれば再 `/set-company`
-3. `/ask-cmo` or `/flow-campaign-launch` — 施策レビュー／全工程開始（Ask + Action）
+2. `/sarf-check` — 充足率を確認し、不足があれば再 `/set-company`
+3. `/ask-cmo` or `/flow-campaign-launch` — 施策レビュー／全工程開始（Ask + Release）
 4. `/data-analyst` or `/flow-weekly-retro` — 結果集約（Feedback）
 5. `/set-latest` + `/feedback` — Set層への還元（サイクルを閉じる）
 
-各 SKILL.md 冒頭には `SAAF Alignment` セクションがあり、そのスキルの **Position / Set Preflight / Feedback Hook** が明記されています。スキル呼び出し前に確認してください。
+各 SKILL.md 冒頭には `SARF Alignment` セクションがあり、そのスキルの **Position / Set Preflight / Feedback Hook** が明記されています。スキル呼び出し前に確認してください。
 
 ## Agent Communication Protocol
 
 エージェント間の引き継ぎは以下のフォーマットで行われます。
-SAAFの観点では、「前のエージェントのAction成果物を、次のエージェントのSet（前提）として渡す」操作に相当します。
+SARFの観点では、「前のエージェントのRelease成果物を、次のエージェントのSet（前提）として渡す」操作に相当します。
 
 ```markdown
 ## Handoff: [送信元Agent] → [受信先Agent]

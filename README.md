@@ -1,7 +1,9 @@
 # CMObot — Virtual Marketing Organization for Claude Code
 
 CMObotは、Claude Code / Codex 上で動作する**仮想マーケティング組織**です。
-AI時代のマーケティングフレームワーク **SAAF**（Set / Ask / Action / Feedback）をそのまま実装したもので、1コマンドでSetからFeedbackまでのサイクルを回せます。
+AI時代のマーケティングフレームワーク **SARF**（Set / Ask / Release / Feedback、読み:「サーフ」）をそのまま実装したもので、1コマンドでSetからFeedbackまでのサイクルを回せます。
+
+> **v2.0 改名**: 3段階目は旧版では "Action" と呼んでいました（旧称 SAAF）。「AIに書かせて眺めて終わり＝Action完了」と誤解される事例が多かったため、本番反映の意味を強く持つ **Release** に改名しました。読みは「サーフ」のまま、波乗りのメタファーも継続しています。
 
 ## Who is this for?
 
@@ -10,27 +12,27 @@ AI時代のマーケティングフレームワーク **SAAF**（Set / Ask / Act
 - 広告代理店の担当者
 - 1人マーケ/1人広報
 
-## The SAAF Framework
+## The SARF Framework
 
 CMObotが前提とする、AI時代のマーケティングの基本サイクル:
 
 ```
 ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
-│   Set    │ →  │   Ask    │ →  │  Action  │ →  │ Feedback │ ─┐
-│ 情報を渡す│    │ 問いを組む│    │ 判断・実装│    │ 結果を戻す│  │
+│   Set    │ →  │   Ask    │ →  │ Release  │ →  │ Feedback │ ─┐
+│ 情報を渡す│    │ 問いを組む│    │ 本番反映  │    │ 結果を戻す│  │
 └──────────┘    └──────────┘    └──────────┘    └──────────┘  │
       ↑                                                           │
       └───────────────────────────────────────────────────────────┘
 ```
 
-| SAAF段階 | 人間がやること | CMObotでの対応 |
+| SARF段階 | 人間がやること | CMObotでの対応 |
 |---------|---------------|---------------|
 | **S**et | 事業・ICP・ブランド・制約を言語化してAIに渡す | `knowledge/`（base）と `memory/`（per-project）に記入 |
 | **A**sk | 誰の視点で・何を・どの形式で出させるか問いを組む | レビュー系スキル（`/ask-cmo` 等） |
-| **A**ction | 出てきたアイデアを判断して実装する | 制作系スキル・ワークフロー（`/contents-editor` `/flow-landing-page` 等） |
+| **R**elease | 出てきたアイデアを判断して**本番環境に反映**する | 制作系スキル・ワークフロー（`/contents-editor` `/flow-landing-page` 等） |
 | **F**eedback | 結果の数字と定性反応をAIに戻す | 分析系スキル（`/data-analyst` `/flow-weekly-retro`） |
 
-詳細は [`knowledge/foundation/saaf-framework.md`](knowledge/foundation/saaf-framework.md) を参照。
+詳細は [`knowledge/foundation/sarf-framework.md`](knowledge/foundation/sarf-framework.md) を参照。
 
 ## Setup
 
@@ -51,9 +53,9 @@ cp -r memory/company.example memory/company
 
 > **なぜ分離しているか**: ICP・競合情報・ブランドガイドラインなどの機密情報を upstream に誤って push する事故を防ぎ、`git pull` でフレームワーク本体のアップデートを素直に取り込めるようにするためです。
 
-### 3. Fill in Company Knowledge（= SAAFのSet）
+### 3. Fill in Company Knowledge（= SARFのSet）
 
-SAAFの **Set** 段階。ここを埋めないとAIは汎用回答しか返せません。成果物の質の9割がここで決まります。
+SARFの **Set** 段階。ここを埋めないとAIは汎用回答しか返せません。成果物の質の9割がここで決まります。
 
 **推奨**: `/set-company` を実行すると、`memory/company/` が無ければ自動でテンプレートから作成し、対話で必要な情報を一括ヒアリングして以下のファイルを埋めます。
 
@@ -69,7 +71,7 @@ memory/company/competitors.md      ← 競合情報
 
 ⚠️ **`memory/company.example/` には実情報を書き込まないでください**。こちらは upstream に push される共通テンプレートです。実データは必ず `memory/company/`（gitignore側）に書きます。
 
-充足率は `/saaf-check` で確認できます。
+充足率は `/sarf-check` で確認できます。
 
 ### 4. Bootstrap Results Knowledge（企業固有の結果ログ）
 
@@ -95,12 +97,12 @@ memory/results/performance-data.md   ← 直近のパフォーマンスデータ
 
 ## Available Skills
 
-### SAAF Ops（サイクル運用）
+### SARF Ops（サイクル運用）
 | Command | Phase | Description |
 |---------|-------|-------------|
 | `/set-company` | Set | 企業情報（ICP・ポジショニング等）を対話で一括ヒアリング |
 | `/set-latest` | Set | 業界トレンド・プラットフォーム仕様変更を `knowledge/latest/` に書き戻す |
-| `/saaf-check` | Meta | Set充足率・次の一手を診断 |
+| `/sarf-check` | Meta | Set充足率・次の一手を診断 |
 | `/feedback` | Feedback | 施策結果を検証ゲート付きで `memory/results/` と `memory/company/` に反映 |
 
 ### Executive Review（経営レビュー）
@@ -131,7 +133,7 @@ memory/results/performance-data.md   ← 直近のパフォーマンスデータ
 
 ```
 cmobot/
-├── AGENTS.md                    # Canonical: agents, SAAF, knowledge, workflows
+├── AGENTS.md                    # Canonical: agents, SARF, knowledge, workflows
 ├── CLAUDE.md                    # Stub importing AGENTS.md (for Claude Code)
 ├── .claude/settings.json        # Skill definitions
 │
@@ -146,10 +148,10 @@ cmobot/
 │   └── results/                 # Company-specific: performance data (gitignored — per-project)
 │
 ├── skills/                      # Individual agents & workflows
-│   ├── set-company/SKILL.md     # SAAF: Set
-│   ├── set-latest/SKILL.md      # SAAF: Set
-│   ├── saaf-check/SKILL.md      # SAAF: Meta (diagnostic)
-│   ├── feedback/SKILL.md        # SAAF: Feedback
+│   ├── set-company/SKILL.md     # SARF: Set
+│   ├── set-latest/SKILL.md      # SARF: Set
+│   ├── sarf-check/SKILL.md      # SARF: Meta (diagnostic)
+│   ├── feedback/SKILL.md        # SARF: Feedback
 │   ├── ask-ceo/SKILL.md
 │   ├── ask-cmo/SKILL.md
 │   ├── seo-consultant/SKILL.md
@@ -209,22 +211,22 @@ Write targets:
   /feedback     → memory/results/ (raw numbers) + memory/company/ (verified learnings)
 ```
 
-## Marketing Cycle = SAAF Cycle
+## Marketing Cycle = SARF Cycle
 
-CMObotのマーケティングサイクルは、そのままSAAFのサイクルです:
+CMObotのマーケティングサイクルは、そのままSARFのサイクルです:
 
 ```
-            SAAF:  Set ──→ Ask ──→ Action ──→ Feedback ──→ (Setに還元)
+            SARF:  Set ──→ Ask ──→ Release ──→ Feedback ──→ (Setに還元)
 
 /flow-campaign-launch or /flow-weekly-retro kicks off the cycle:
 
   ┌──────────┐     ┌───────────┐     ┌───────────┐     ┌───────────┐
-  │   Set    │ ──→ │   Ask     │ ──→ │  Action   │ ──→ │ Feedback  │
+  │   Set    │ ──→ │   Ask     │ ──→ │  Release  │ ──→ │ Feedback  │
   │/set-     │     │/cmo-      │     │/contents- │     │/data-     │
   │ company  │     │  review   │     │  editor   │     │  analyst  │
   │/set-     │     │/ceo-      │     │/ads-      │     │/flow-     │
   │ latest   │     │  review   │     │  manager  │     │  weekly-  │
-  │/saaf-    │     │/seo-      │     │/flow-     │     │  retro    │
+  │/sarf-    │     │/seo-      │     │/flow-     │     │  retro    │
   │  check   │     │  consult. │     │  landing- │     │/feedback  │
   │          │     │/ui-       │     │  page     │     │           │
   │          │     │  designer │     │/estimate  │     │           │

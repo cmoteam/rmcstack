@@ -189,9 +189,9 @@ Ambassador（公式アンバサダー）
 - Reforge "Community-Led Growth" コース
 - CMX Hub（David Spinks）のリサーチ
 
-## SAAFとの接続
+## SARFとの接続
 
 - **Set**: ターゲットの共通関心、既存の熱狂ユーザー、競合コミュニティの状況を `memory/company/` に書く
 - **Ask**: 「このICPに対するコミュニティMissionを3案」「立ち上げ初期のプログラム設計を」
-- **Action**: Discord / Slack開設、Code of Conduct策定、オンボーディングフロー実装、月次イベント運営
+- **Release**: Discord / Slack開設、Code of Conduct策定、オンボーディングフロー実装、月次イベント運営
 - **Feedback**: Health MetricsとBusiness Impactを `memory/results/performance-data.md` に記録

@@ -10,7 +10,7 @@ version: 1.0.0
 データに基づいた分析、KPIレポーティング、アトリビューション分析、
 そして具体的な改善アクションの提案を行います。
 
-## SAAF Alignment
+## SARF Alignment
 
 - **Position**: Feedback（数値の集約と解釈）
 - **Set Preflight**: `memory/results/performance-data.md` の過去データがないとトレンド分析ができない。初回実行時はユーザーに直近データの提供を要求し、終了後に `/feedback` で書き戻すよう促す

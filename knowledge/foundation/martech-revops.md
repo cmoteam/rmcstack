@@ -256,9 +256,9 @@ MarTechの新層として**AI Automation**が台頭：
 - MarTech.org / Chief Martec ブログ
 - Reforge: "Marketing Architecture" コース
 
-## SAAFとの接続
+## SARFとの接続
 
 - **Set**: 現状のツールスタック、データソース、データ定義、既知のデータギャップを `memory/company/` に書く
 - **Ask**: 「このスタックで重複・ギャップを洗い出して」「Reverse ETLで接続すべきデータセットは？」
-- **Action**: ツール選定・導入・データモデリング・Tracking Plan実装・ダッシュボード構築
+- **Release**: ツール選定・導入・データモデリング・Tracking Plan実装・ダッシュボード構築
 - **Feedback**: データ品質スコア、ツールROI、Time to Insightを `knowledge/latest/` に記録

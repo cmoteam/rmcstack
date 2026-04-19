@@ -2,19 +2,19 @@
   "skills": {
     "set-company": {
       "path": "skills/set-company/SKILL.md",
-      "description": "SAAFのSet段階: 企業情報を対話で一気にヒアリングして memory/company/ を埋める"
+      "description": "SARFのSet段階: 企業情報を対話で一気にヒアリングして memory/company/ を埋める"
     },
     "set-latest": {
       "path": "skills/set-latest/SKILL.md",
-      "description": "SAAFのSet段階: 業界トレンド・プラットフォーム仕様変更を knowledge/latest/ に書き戻す"
+      "description": "SARFのSet段階: 業界トレンド・プラットフォーム仕様変更を knowledge/latest/ に書き戻す"
     },
-    "saaf-check": {
-      "path": "skills/saaf-check/SKILL.md",
-      "description": "SAAFサイクルの現在地を診断し、Set充足率と次の一手を提示する"
+    "sarf-check": {
+      "path": "skills/sarf-check/SKILL.md",
+      "description": "SARFサイクルの現在地を診断し、Set充足率と次の一手を提示する"
     },
     "feedback": {
       "path": "skills/feedback/SKILL.md",
-      "description": "SAAFのFeedback段階: 施策結果を検証ゲート付きで knowledge 層に反映する"
+      "description": "SARFのFeedback段階: 施策結果を検証ゲート付きで knowledge 層に反映する"
     },
     "ask-ceo": {
       "path": "skills/ask-ceo/SKILL.md",

@@ -1,6 +1,6 @@
 ---
 name: feedback
-description: SAAFのFeedback段階を担うエージェント。施策の結果（数字＋定性）を受け取り、検証済み知見だけを knowledge/ に書き戻す。
+description: SARFのFeedback段階を担うエージェント。施策の結果（数字＋定性）を受け取り、検証済み知見だけを knowledge/ に書き戻す。
 version: 1.0.0
 ---
 
@@ -10,7 +10,7 @@ version: 1.0.0
 実行された施策の結果をユーザーから受け取り、情報の性質に応じて適切な knowledge 層に書き戻します。
 検証済みでないものを `company/` に混入させない（Set 汚染防止）ことが最重要責務です。
 
-**SAAF上の位置づけ**: **Feedback → Set** のブリッジ。このスキルがなければ SAAF サイクルは閉じず、
+**SARF上の位置づけ**: **Feedback → Set** のブリッジ。このスキルがなければ SARF サイクルは閉じず、
 次サイクルの Set は今サイクルの学びを知らないまま始まります。
 
 ## Step 0: Bootstrap（初回のみ）
@@ -28,7 +28,7 @@ cp -r memory/results.example memory/results
 ## Required Knowledge
 
 ```
-Read: knowledge/foundation/saaf-framework.md
+Read: knowledge/foundation/sarf-framework.md
 Read: memory/company/company-overview.md
 Read: memory/company/icp.md
 Read: memory/company/positioning.md
@@ -128,7 +128,7 @@ Read: memory/results/performance-data.md
 - [施策名]: 却下理由
 
 ### 次の一手
-- `/saaf-check` で更新後の Set 状態を確認
+- `/sarf-check` で更新後の Set 状態を確認
 - 次サイクルの Ask（`/ask-cmo` 等）へ進む
 ```
 
@@ -150,4 +150,4 @@ Read: memory/results/performance-data.md
 ## Chaining
 
 - **前工程**: `/data-analyst` `/flow-weekly-retro` の出力、または実地のキャンペーン結果
-- **後工程**: `/saaf-check`（更新後の状態確認）→ 次サイクルの `/ask-cmo`
+- **後工程**: `/sarf-check`（更新後の状態確認）→ 次サイクルの `/ask-cmo`
