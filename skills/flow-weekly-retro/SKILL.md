@@ -23,8 +23,8 @@ version: 1.0.0
 SAAFでの位置: ──Action結果── → Feedback集約 → Setに還元 → 次のAsk
 
 Step 1: /analytics   — 週次パフォーマンスレポート（Feedbackの数値面）
-Step 2: /cmo-review  — 戦略的インサイトの抽出（Feedbackの定性面）
-Step 3: /ceo-review  — 経営インパクトの評価
+Step 2: /ask-cmo  — 戦略的インサイトの抽出（Feedbackの定性面）
+Step 3: /ask-ceo  — 経営インパクトの評価
 Step 4: Next Week    — 来週のアクションプラン策定（次のAsk）
 Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 ```
@@ -51,7 +51,7 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 
 ## Step 2: Strategic Insights（戦略的インサイト）
 
-**エージェント**: `/cmo-review`
+**エージェント**: `/ask-cmo`
 
 `/analytics` の結果を受けて、戦略的な視点で解釈:
 
@@ -65,7 +65,7 @@ Step 5: Knowledge    — 知識ベースの更新（Setへの還元）
 
 ## Step 3: Business Impact（経営インパクト）
 
-**エージェント**: `/ceo-review`
+**エージェント**: `/ask-ceo`
 
 経営視点での評価:
 - 売上・収益への貢献度

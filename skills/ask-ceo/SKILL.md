@@ -1,5 +1,5 @@
 ---
-name: ceo-review
+name: ask-ceo
 description: 収益性・ビジネス観点からマーケティング施策をレビューする経営者エージェント
 version: 1.0.0
 ---
@@ -12,6 +12,7 @@ version: 1.0.0
 ## SAAF Alignment
 
 - **Position**: Ask（最終ゲート）
+- **Ask Subtype**: Review（施策案を GO / PIVOT / KILL で判定する。ゼロから戦略を設計する Design Ask ではない）
 - **Set Preflight**: 下記 Required Knowledge のいずれかに `[TODO]` が残っていたら、出力冒頭で「Set未充足のため推定を含む」と明示し、`/set-company` の実行をユーザーに促してからレビューを続行する
 - **Feedback Hook**: GO 判定した施策は、実行後に `/feedback` で「判定時の前提 vs 実績」を戻す（判定精度の較正）。KILL 判定は「却下理由＋代替案」をログとして `/feedback` に残す
 
@@ -116,5 +117,5 @@ Read: knowledge/foundation/metrics-glossary.md
 
 ## Chaining
 
-- **前工程**: `/cmo-review` または 各専門エージェントからの施策案
+- **前工程**: `/ask-cmo` または 各専門エージェントからの施策案
 - **後工程**: GOの場合 → 実行フェーズへ。PIVOTの場合 → 修正後に再レビュー。

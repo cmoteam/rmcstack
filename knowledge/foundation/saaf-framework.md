@@ -61,8 +61,28 @@ Setが成立しているかのチェック:
 5. **どの形式で**（表 / チェックリスト / コード / 原稿）
 
 CMObotでは、スラッシュコマンドがこのAskをテンプレート化している:
-- `/ceo-review` = 「CEO視点で、ROI基準で、GO/PIVOT/KILLの判定付きで評価せよ」
+- `/ask-ceo` = 「CEO視点で、ROI基準で、GO/PIVOT/KILLの判定付きで評価せよ」
 - `/ui-review` = 「UI/UX視点で、CVR改善基準で、修正後コード込みでレビューせよ」
+
+#### Ask のサブタイプ: Design Ask / Review Ask
+
+同じ「Ask」でも、何もない状態から設計させる問いと、既存成果物を評価させる問いは性質が異なる。サイクルを回す際は両者を明示的に区別する。
+
+- **Design Ask** — ゼロから設計させる問い（戦略立案、ICP仮説、LP構成案、キーワード戦略）。Set 情報をもとに **新しい選択肢を生成** させる。Action の前段で使う。
+- **Review Ask** — 既存の成果物を評価させる問い（コピー品質、LPのCVR観点、広告の戦略整合性、経営インパクト）。Set 情報を判定基準として **既存物をジャッジ** させる。Action 直前のゲートとして使う。
+
+ワークフローの中では `Design Ask → Action（制作）→ Review Ask → Action（本番反映）` のように Ask-Action が入れ子で回るのが通常。各スキルの SAAF Alignment に `Ask Subtype` が記載されている。
+
+| スキル | Design | Review |
+|--------|--------|--------|
+| `/ask-cmo` | 戦略・チャネル設計 | 成果物の戦略整合性 |
+| `/ask-ceo` | — | GO / PIVOT / KILL |
+| `/ask-creative-director` | — | APPROVE / REVISE / REWORK |
+| `/seo` | キーワード戦略 | 技術監査・既存コンテンツ評価 |
+| `/ui-review` | — | CVR観点のUI評価 |
+| `/estimate` | スコープ設計・工数積算 | — |
+
+**選び方の指針**: 「何もない状態からアイデアを出させたい」なら Design Ask、「手元の成果物を通すか判定したい」なら Review Ask。混ぜると評価軸がブレる。
 
 ### A — Action（判断して実装）
 
@@ -97,10 +117,10 @@ Feedbackの反映先:
 ┌─────────────────────────────────────────────────────────────┐
 │  Set              │  Ask             │  Action      │  Feedback │
 ├───────────────────┼──────────────────┼──────────────┼───────────┤
-│ knowledge/company │ /cmo-review      │ /content     │ /analytics│
-│ knowledge/latest  │ /ceo-review      │ /ads         │ /weekly-  │
+│ knowledge/company │ /ask-cmo         │ /content     │ /analytics│
+│ knowledge/latest  │ /ask-ceo         │ /ads         │ /weekly-  │
 │ knowledge/        │ /seo             │ /landing-    │  retro    │
-│  foundation       │ /creative-       │  page        │           │
+│  foundation       │ /ask-creative-   │  page        │           │
 │                   │  director        │ （成果物出力）│ → Setに還元│
 └─────────────────────────────────────────────────────────────┘
 ```

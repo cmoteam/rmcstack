@@ -137,5 +137,5 @@ Read: knowledge/latest/platform-updates.md
 
 ## Chaining
 
-- **前工程**: `/cmo-review`（コンテンツ戦略）、`/seo`（キーワード戦略）
-- **後工程**: `/seo`（SEOレビュー）→ `/creative-director`（品質レビュー）→ `/cmo-review`（最終承認）
+- **前工程**: `/ask-cmo`（コンテンツ戦略）、`/seo`（キーワード戦略）
+- **後工程**: `/seo`（SEOレビュー）→ `/ask-creative-director`（品質レビュー）→ `/ask-cmo`（最終承認）

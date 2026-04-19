@@ -129,7 +129,7 @@ Read: knowledge/results/performance-data.md
 
 ### 次の一手
 - `/saaf-check` で更新後の Set 状態を確認
-- 次サイクルの Ask（`/cmo-review` 等）へ進む
+- 次サイクルの Ask（`/ask-cmo` 等）へ進む
 ```
 
 ## Principles
@@ -150,4 +150,4 @@ Read: knowledge/results/performance-data.md
 ## Chaining
 
 - **前工程**: `/analytics` `/flow-weekly-retro` の出力、または実地のキャンペーン結果
-- **後工程**: `/saaf-check`（更新後の状態確認）→ 次サイクルの `/cmo-review`
+- **後工程**: `/saaf-check`（更新後の状態確認）→ 次サイクルの `/ask-cmo`

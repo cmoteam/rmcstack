@@ -28,14 +28,14 @@ SAAFの各段階はCMObotの構造に対応しています:
 | SAAF | CMObotでの担い手 |
 |------|-----------------|
 | Set | `/set-company` `/set-latest` `/saaf-check` + `knowledge/` 4層（foundation / company / latest / results） |
-| Ask | レビュー系スキル（`/cmo-review` `/ceo-review` `/seo` `/creative-director` 等） |
+| Ask | レビュー系スキル（`/ask-cmo` `/ask-ceo` `/seo` `/ask-creative-director` 等） |
 | Action | 制作系スキル / ワークフロー（`/content` `/ads` `/flow-landing-page` `/flow-campaign-launch` 等） |
 | Feedback | 分析系スキル（`/analytics` `/flow-weekly-retro`）＋ `/feedback`（検証ゲート付きで results/ 生データと company/ 検証済み知見に還元） |
 
 ```
 Set（情報を渡す）      → /set-company /set-latest + knowledge/ 4層
 Meta（サイクル診断）   → /saaf-check
-Ask（問いに答える）    → /ceo-review /cmo-review /creative-director /seo /ui-review
+Ask（問いに答える）    → /ask-ceo /ask-cmo /ask-creative-director /seo /ui-review
 Action（実装する）     → /content /ads /estimate /flow-landing-page /flow-campaign-launch
 Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → knowledge 層に還元
 ```
@@ -56,14 +56,14 @@ Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → kn
 - `/feedback` — Feedback段階。施策結果を検証ゲート付きで knowledge 層に反映
 
 ### Executive Review（経営レビュー）
-- `/ceo-review` — 収益性・ビジネス観点からの施策レビュー
-- `/cmo-review` — マーケティング戦略全体の統括レビュー
+- `/ask-ceo` — 収益性・ビジネス観点からの施策レビュー
+- `/ask-cmo` — マーケティング戦略全体の統括レビュー
 
 ### Specialist Agents（専門エージェント）
 - `/seo` — SEO分析・キーワード戦略・技術SEO監査
 - `/ui-review` — LP/広告クリエイティブのUI/UXレビュー
 - `/ads` — 広告運用（Google/Meta/X）の設計・分析・最適化
-- `/creative-director` — クリエイティブの品質・ブランド一貫性チェック
+- `/ask-creative-director` — クリエイティブの品質・ブランド一貫性チェック
 - `/content` — コンテンツマーケティング（記事・SNS・メール）
 - `/analytics` — KPI分析・レポーティング・アトリビューション
 - `/estimate` — 見積り・工数計算・費用対効果シミュレーション（代理店視点）
@@ -141,14 +141,14 @@ Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → kn
 - **知識**: foundation/saaf-framework + company + latest
 - **トリガー**: キャンペーン終了時、`/flow-weekly-retro` の Step 5
 
-### CEO Review (`/ceo-review`)
+### CEO Review (`/ask-ceo`)
 - **役割**: 経営者の視点で施策の収益性・ROI・事業インパクトを評価
 - **入力**: マーケティング施策案、予算計画、KPI設定
 - **出力**: GO / PIVOT / KILL 判定 + 理由 + 改善指示
 - **知識**: foundation + company
 - **トリガー**: 新規施策の承認前、大型予算の投下前
 
-### CMO Review (`/cmo-review`)
+### CMO Review (`/ask-cmo`)
 - **役割**: マーケティング戦略全体の整合性・優先順位・リソース配分を統括
 - **入力**: 個別施策、チャネル戦略、ファネル設計
 - **出力**: 戦略評価レポート + 優先順位マトリクス + 具体的な改善指示
@@ -162,7 +162,7 @@ Feedback（結果を戻す） → /analytics /flow-weekly-retro /feedback → kn
 - **知識**: foundation + company + latest
 - **トリガー**: コンテンツ制作時、サイト改修時、順位変動時
 
-### Creative Director (`/creative-director`)
+### Creative Director (`/ask-creative-director`)
 - **役割**: クリエイティブの品質管理・ブランド一貫性・トーン&マナーの監督
 - **入力**: コピー、ビジュアル案、LP構成、広告クリエイティブ
 - **出力**: クリエイティブ評価 + 具体的な修正指示 + ブランド適合度スコア
@@ -285,7 +285,7 @@ Read: knowledge/results/performance-data.md
 
 1. `/set-company` — 企業情報を一括ヒアリング（Set）
 2. `/saaf-check` — 充足率を確認し、不足があれば再 `/set-company`
-3. `/cmo-review` or `/flow-campaign-launch` — 施策レビュー／全工程開始（Ask + Action）
+3. `/ask-cmo` or `/flow-campaign-launch` — 施策レビュー／全工程開始（Ask + Action）
 4. `/analytics` or `/flow-weekly-retro` — 結果集約（Feedback）
 5. `/set-latest` + `/feedback` — Set層への還元（サイクルを閉じる）
 

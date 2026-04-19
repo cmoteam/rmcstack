@@ -20,18 +20,18 @@ LPの設計からコピーライティング、HTML/CSS実装、SEO最適化、C
 ## Workflow
 
 ```
-Step 1: /cmo-review        — LP戦略・構成設計
+Step 1: /ask-cmo        — LP戦略・構成設計
 Step 2: /content            — LPコピーライティング
 Step 3: /ui-review          — UI実装・レビュー
 Step 4: /seo                — SEO・技術最適化
-Step 5: /creative-director  — 全体品質レビュー
+Step 5: /ask-creative-director  — 全体品質レビュー
 Step 6: /ads                — 広告連携設計
 Step 7: /analytics          — 計測設計
 ```
 
 ## Step 1: Strategy & Structure（戦略・構成）
 
-**エージェント**: `/cmo-review`
+**エージェント**: `/ask-cmo`
 
 LPの目的と構成を設計:
 - LPの目的（リード獲得 / 購入 / 資料請求 / 問い合わせ）
@@ -95,7 +95,7 @@ Step 2のコピーを使ってLPをHTML/CSSで実装し、レビュー:
 
 ## Step 5: Creative Quality Check（品質チェック）
 
-**エージェント**: `/creative-director`
+**エージェント**: `/ask-creative-director`
 
 全体を通したクリエイティブ品質レビュー:
 - メッセージの一貫性
