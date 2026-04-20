@@ -1,83 +1,24 @@
 #!/usr/bin/env python3
 """bin/set-organization — fill TODO fields in private/memory/organization/organization-overview.md"""
-import re, sys
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _fill_todos import ensure_from_template, fill_todos  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 ORG_DIR = REPO / "private" / "memory" / "organization"
-ORG_EXAMPLE = REPO / "memory" / "organization.example"
+ORG_TEMPLATE = REPO / "templates" / "memory" / "organization"
 TARGET = ORG_DIR / "organization-overview.md"
-TODO_RE = re.compile(r'\[TODO(?::\s*([^\]]*))?\]')
-
-
-def line_label(content, match):
-    ls = content.rfind('\n', 0, match.start()) + 1
-    le = content.find('\n', match.end())
-    line = content[ls: le if le != -1 else None].strip()
-    label = re.sub(r'\[TODO[^\]]*\]', '', line).strip().strip('*-| ').rstrip(':').strip()
-    return label
 
 
 def main():
-    # Bootstrap if needed
-    if not ORG_DIR.exists():
-        if not ORG_EXAMPLE.exists():
-            print(f"エラー: {ORG_EXAMPLE} が見つかりません")
-            sys.exit(1)
-        import shutil
-        shutil.copytree(str(ORG_EXAMPLE), str(ORG_DIR))
-        print(f"初期化: {ORG_DIR}")
-
-    if not TARGET.exists():
-        print(f"エラー: {TARGET} が見つかりません")
-        sys.exit(1)
-
-    content = TARGET.read_text()
-    matches = list(TODO_RE.finditer(content))
-
-    if not matches:
-        print("TODO はすべて埋まっています。")
-        sys.exit(0)
-
-    total = len(matches)
-    print(f"organization-overview.md — TODO: {total} 件")
-    print("空のまま Enter でスキップできます。")
-    print("─" * 40)
-
-    changes = []
-    filled = 0
-
-    for i, m in enumerate(matches, 1):
-        hint = (m.group(1) or '').strip()
-        label = line_label(content, m)
-        display = label or hint or '値を入力'
-        extra = f"  例: {hint}" if hint and hint != label else ""
-
-        print(f"\n[{i}/{total}] {display}")
-        if extra:
-            print(extra)
-
-        try:
-            value = input("  > ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print("\n中断しました")
-            sys.exit(0)
-
-        if value:
-            changes.append((m.start(), m.end(), value))
-            filled += 1
-
-    result = content
-    for start, end, val in reversed(changes):
-        result = result[:start] + val + result[end:]
-
-    TARGET.write_text(result)
-
-    print(f"\n─── 完了: {filled}/{total} 件 更新 ───")
-    remaining = total - filled
-    if remaining > 0:
-        print(f"残り TODO: {remaining} 件（再実行で補完できます）")
-    print("次のステップ: bin/set-brand でブランドガイドラインを入力")
+    ensure_from_template(ORG_DIR, ORG_TEMPLATE)
+    fill_todos(
+        [TARGET],
+        header=f"organization-overview.md",
+        next_step="bin/set-brand でブランドガイドラインを入力",
+    )
 
 
 if __name__ == "__main__":

@@ -40,7 +40,7 @@ test -d private/memory/organization || echo "NO_ORGANIZATION"
 
 - `private/memory/organization/` が未存在
   - → **推薦**: `/set-organization` で組織情報（ミッション・ビジョン・ブランド）を対話で埋める
-  - 代替: `cp -r memory/organization.example private/memory/organization` で手動ブートストラップ
+  - 代替: `bin/init-private`（または `cp -r templates/memory/organization private/memory/organization`）で手動ブートストラップ
 
 ### Step 1: Set 充足率（organization / profile の [TODO]）
 
@@ -77,7 +77,7 @@ find output -name "*.md" -mtime -7 2>/dev/null | head -5
 
 - **Release が無い**（新規サイクル開始）
   - → **推薦**: 目的別に選ぶ
-    - LP / ページ改善 → `/ui-design` or `/optimize-page`
+    - LP / ページ改善 → `/ui-design` or `/optimize page`
     - コンテンツ制作 → `/contents-edit`
     - 広告配信 → `/ads-manager`
   - 1つに絞れなければ `/cmo-review` に「今期の優先順位は？」と投げる

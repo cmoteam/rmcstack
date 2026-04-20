@@ -14,7 +14,7 @@ SARFStack の各スキルが外部サービス（Figma / Google / Meta / X / Lin
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Figma** | Figma Dev Mode MCP（公式） or figma-context-mcp | デザインファイル読取、LP/広告クリエイティブのスペック抽出、コンポーネント→HTML 生成 | `/ui-design` `/creative-direction` `/optimize-page` `/landing-page` |
+| **Figma** | Figma Dev Mode MCP（公式） or figma-context-mcp | デザインファイル読取、LP/広告クリエイティブのスペック抽出、コンポーネント→HTML 生成 | `/ui-design` `/creative-direction` `/optimize page` `/landing-page` |
 | **Canva** | Canva MCP（公式）| テンプレート生成・バナー量産 | `/creative-direction` `/contents-edit` |
 
 ### Advertising Platforms
@@ -32,12 +32,12 @@ SARFStack の各スキルが外部サービス（Figma / Google / Meta / X / Lin
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Google Analytics 4** | GA4 Data API（MCP ラッパー） | セッション・CV・ファネルデータ取得 | `/data-analytics` `/seo` `/optimize-*` |
+| **Google Analytics 4** | GA4 Data API（MCP ラッパー） | セッション・CV・ファネルデータ取得 | `/data-analytics` `/seo` `/optimize` |
 | **Google Search Console** | Search Console API | 検索クエリ・掲載順位・CTR・カバレッジ | `/seo` `/data-analytics` |
 | **Google Tag Manager** | GTM API | タグ・トリガー・変数の監査 | `/data-analytics` `/ads-manager` |
 | **Google BigQuery** | BigQuery MCP（公式） | 大規模ログ・アトリビューション分析 | `/data-analytics` |
-| **Amplitude / Mixpanel** | 各社 MCP or API | プロダクトアナリティクス、ファネル・リテンション | `/data-analytics` `/optimize-onboarding` `/churn-prevention` |
-| **PostHog** | PostHog MCP | プロダクトアナリティクス・Session Replay | `/optimize-*` `/data-analytics` |
+| **Amplitude / Mixpanel** | 各社 MCP or API | プロダクトアナリティクス、ファネル・リテンション | `/data-analytics` `/optimize onboarding` `/churn-prevention` |
+| **PostHog** | PostHog MCP | プロダクトアナリティクス・Session Replay | `/optimize` `/data-analytics` |
 
 ### CRM / Revenue Ops
 
@@ -70,8 +70,8 @@ SARFStack の各スキルが外部サービス（Figma / Google / Meta / X / Lin
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **GitHub** | GitHub MCP（本環境で利用可能） | LP コード・ドキュメント管理 | `/ui-design` `/optimize-*` `/seo` |
-| **Vercel / Netlify** | 各社 MCP | LP デプロイ・Preview URL | `/landing-page` `/optimize-page` |
+| **GitHub** | GitHub MCP（本環境で利用可能） | LP コード・ドキュメント管理 | `/ui-design` `/optimize` `/seo` |
+| **Vercel / Netlify** | 各社 MCP | LP デプロイ・Preview URL | `/landing-page` `/optimize page` |
 
 ## How Skills Declare Integrations
 

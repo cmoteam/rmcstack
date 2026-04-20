@@ -6,9 +6,9 @@ set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 PRIVATE="$REPO/private/memory"
 WORKSPACES="$PRIVATE/workspaces"
-PROFILE_EXAMPLE="$REPO/memory/profile.example"
-RESULTS_EXAMPLE="$REPO/memory/results.example"
-ORG_EXAMPLE="$REPO/memory/organization.example"
+PROFILE_TEMPLATE="$REPO/templates/memory/profile"
+RESULTS_TEMPLATE="$REPO/templates/memory/results"
+ORG_TEMPLATE="$REPO/templates/memory/organization"
 ACTIVE_LINK="$WORKSPACES/active"
 
 current_slug() {
@@ -73,11 +73,11 @@ cmd_new() {
     exit 1
   fi
   mkdir -p "$WORKSPACES/$slug"
-  cp -r "$PROFILE_EXAMPLE" "$WORKSPACES/$slug/profile"
-  cp -r "$RESULTS_EXAMPLE" "$WORKSPACES/$slug/results"
+  cp -r "$PROFILE_TEMPLATE" "$WORKSPACES/$slug/profile"
+  cp -r "$RESULTS_TEMPLATE" "$WORKSPACES/$slug/results"
   # Organization は組織全体で1つだけ。未存在時のみブートストラップ
   if [ ! -d "$PRIVATE/organization" ]; then
-    cp -r "$ORG_EXAMPLE" "$PRIVATE/organization"
+    cp -r "$ORG_TEMPLATE" "$PRIVATE/organization"
     echo "注意: private/memory/organization/ を初期化しました。bin/set-organization で組織情報を入力してください。"
   fi
   set_active "$slug"

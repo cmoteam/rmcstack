@@ -11,9 +11,18 @@ Thumbs.db
 # Node (if used for tooling)
 node_modules/
 
+# Python bytecode (bin/*.py)
+__pycache__/
+*.pyc
+
 # Private data: organization memory + workspace data + generated artifacts.
-# Managed as a separate private repo under private/.
-# Bootstrap: clone your private repo into private/
+#
+# Convention: private/ is a SEPARATE PRIVATE REPO per company, cloned into this
+# directory. Not registered as a git submodule because the URL differs per
+# company and upstream cannot pin a specific private repo.
+#
+# Bootstrap: git clone <your-company-private-repo> private
+# See README.md §Setup step 2 for details.
 private/
 
 # MCP server config: may contain API keys / tokens for third-party integrations

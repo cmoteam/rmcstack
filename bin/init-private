@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# init-private — seed private/memory/organization/ from templates/memory/organization/
+#
+# Usage:
+#   bin/init-private          # organization 層を初期化（未存在時のみ）
+#   bin/init-private --force  # 既存の organization を上書き（要確認）
+#
+# 「workspace も同時に作りたい」場合は bin/workspace new <slug> を使ってください。
+# 新規 workspace 作成時は未存在なら organization 層も同時にブートストラップされます。
+set -euo pipefail
+
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+ORG_TEMPLATE="$REPO/templates/memory/organization"
+PRIVATE="$REPO/private/memory"
+ORG_DIR="$PRIVATE/organization"
+
+FORCE=0
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --force) FORCE=1; shift ;;
+    -h|--help) sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "エラー: 不明なオプション: $1"; exit 1 ;;
+  esac
+done
+
+if [ ! -d "$ORG_TEMPLATE" ]; then
+  echo "エラー: $ORG_TEMPLATE が見つかりません"
+  exit 1
+fi
+
+mkdir -p "$PRIVATE"
+
+if [ -d "$ORG_DIR" ]; then
+  if [ "$FORCE" = "1" ]; then
+    echo "警告: $ORG_DIR を上書きします。既存内容は失われます。"
+    printf "続けますか? [y/N] "
+    read -r confirm
+    if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+      echo "キャンセルしました"; exit 0
+    fi
+    rm -rf "$ORG_DIR"
+    cp -r "$ORG_TEMPLATE" "$ORG_DIR"
+    echo "再生成: $ORG_DIR"
+  else
+    echo "スキップ: $ORG_DIR は既に存在します（--force で上書き）"
+  fi
+else
+  cp -r "$ORG_TEMPLATE" "$ORG_DIR"
+  echo "作成: $ORG_DIR"
+fi
+
+echo ""
+echo "次のステップ:"
+echo "  bin/set-organization     # 組織情報を入力"
+echo "  bin/set-brand            # ブランドガイドラインを入力"
+echo "  bin/workspace new <slug> # workspace を作成"

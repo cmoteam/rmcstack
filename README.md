@@ -54,9 +54,27 @@ git clone https://github.com/cmoteam/sarfstack.git
 cd sarfstack
 ```
 
-### 2. Bootstrap Company Knowledge（企業情報ディレクトリを作成）
+### 2. Bootstrap `private/`（企業ごとの別リポを clone）
 
-企業固有情報は `memory/profile/` に置きますが、このディレクトリは **gitignore 対象**（upstream には含まれない）です。リポジトリにはテンプレート `memory/profile.example/` のみが入っているので、初回にコピーしてください:
+`private/` 配下（`memory/` と `output/`）は **この upstream リポには含まれません**（gitignore）。企業ごとに実情報が変わるため、各社で **別の private リポジトリを用意し `private/` として clone** する運用を推奨しています。submodule 登録はあえてしていません（企業ごとに URL が異なり upstream に固定できないため）。
+
+```bash
+git clone <your-company-private-repo> private
+```
+
+private リポ側のレイアウトは以下を想定:
+
+```
+private/
+├── memory/        # organization / workspaces / results（実データ）
+└── output/        # 生成成果物（workspace slug で分離）
+```
+
+初回で private リポがまだ無い場合は、空ディレクトリのまま進めても `/set-organization` `/workspace new <slug>` `/feedback` などがテンプレートから自動生成します。あとで `cd private && git init && git remote add origin ...` で切り出せます。
+
+### 3. Bootstrap Company Knowledge（企業情報ディレクトリを作成）
+
+企業固有情報は `private/memory/` 配下に置きますが、このディレクトリは **gitignore 対象**（upstream には含まれない）です。リポジトリにはテンプレート `templates/memory/` のみが入っているので、初回にコピーしてください（`bin/init-private` が自動化してくれます）:
 
 ```bash
 /workspace new <slug>     # 新規 workspace を作成（事業部・プロダクト・クライアント単位）
@@ -66,7 +84,7 @@ cd sarfstack
 
 > **なぜ分離しているか**: ICP・競合情報・ブランドガイドラインなどの機密情報を upstream に誤って push する事故を防ぎ、`git pull` でフレームワーク本体のアップデートを素直に取り込めるようにするためです。
 
-### 3. Fill in Company Knowledge（= SARFのSet）
+### 4. Fill in Company Knowledge（= SARFのSet）
 
 SARFの **Set** 段階。ここを埋めないとAIは汎用回答しか返せません。成果物の質の9割がここで決まります。
 
@@ -91,21 +109,21 @@ memory/profile/positioning.md                ← ポジショニング
 memory/profile/competitors.md                ← 競合情報
 ```
 
-⚠️ **`.example/` ディレクトリには実情報を書き込まないでください**。こちらは upstream に push される共通テンプレートです。実データは必ず gitignore 側（`memory/organization/` / `memory/workspaces/<slug>/profile/`）に書きます。
+⚠️ **`templates/memory/` 配下には実情報を書き込まないでください**。こちらは upstream に push される共通テンプレートです。実データは必ず gitignore 側（`private/memory/organization/` / `private/memory/workspaces/<slug>/profile/`）に書きます。
 
 充足率は `/sarf-check` で確認できます。
 
-### 4. Bootstrap Results Knowledge（企業固有の結果ログ）
+### 5. Bootstrap Results Knowledge（企業固有の結果ログ）
 
-自社の実績数値（CVR・CPA・売上 等）は `memory/results/` に置きます。こちらも **gitignore 対象** なので、初回に `memory/results.example/` からコピーしてください:
+自社の実績数値（CVR・CPA・売上 等）は `private/memory/workspaces/<slug>/results/` に置きます。こちらも **gitignore 対象** なので、初回に `templates/memory/results/` からコピーしてください（`bin/workspace new <slug>` または `bin/workspace new <slug>` が自動化）:
 
 ```bash
-cp -r memory/results.example memory/results
+cp -r templates/memory/results private/memory/workspaces/<slug>/results
 ```
 
 `/feedback` を初回実行した際に未存在なら自動で同じコピーが行われます。
 
-### 5. Refresh Update Knowledge（外部揮発情報）
+### 6. Refresh Update Knowledge（外部揮発情報）
 
 `knowledge/update/` は外部観測・公開情報（プラットフォーム仕様変更、業界トレンド）の最新化レイヤーです。自社数値は対象外（`results/` 側）。
 
@@ -117,7 +135,7 @@ knowledge/update/industry-trends.md     ← 業界トレンド（共有可）
 memory/results/performance-data.md   ← 直近のパフォーマンスデータ（gitignore）
 ```
 
-### 6. Connect Integrations（外部ツール直結・optional）
+### 7. Connect Integrations（外部ツール直結・optional）
 
 Figma / Google Ads / GA4 / Search Console / Meta / X / LinkedIn / TikTok / HubSpot / Salesforce / Stripe / Notion / Slack / BigQuery / PostHog / Amplitude / Intercom などと **MCP サーバ経由で直接繋ぐ** ことができます。接続があれば CSV 手入力をスキップして SARF サイクルが一段速く回ります（未接続でも従来通り動作します）。
 
@@ -162,17 +180,17 @@ cp .mcp.json.example .mcp.json
 | `/pricing-strategy` | Pricing | 価格設定・プラン設計・パッケージング戦略 |
 | `/churn-prevention` | Retention | 解約防止・リテンション改善・Save Offer設計 |
 
-### Optimization Agents（最適化スペシャリスト）
-各ファネル段階でのユーザー行動完了率（CVR）を数字で上げる診断・改修を専門とする。`/ui-design` が UI/UX 全般を見るのに対し、最適化系はファネル段階別に特化。
+### Optimization Agent（`/optimize <target>`）
+各ファネル段階でのユーザー行動完了率（CVR）を数字で上げる診断・改修を専門とする。`/ui-design` が UI/UX 全般を見るのに対し、`/optimize` はファネル段階別に特化（1つのスキルが 6 target に対応）。
 
-| Command | Target | Description |
-|---------|--------|-------------|
-| `/optimize-page` | Marketing Pages | LP/Product/Feature/Pricing等のCVR最適化 |
-| `/optimize-signup-flow` | Signup | 登録〜初回ログインの完了率最適化 |
-| `/optimize-onboarding` | Activation | Aha Moment 到達・Activation 最適化 |
-| `/optimize-form` | Lead Forms | デモ/資料DL/問い合わせフォームの完了率最適化 |
-| `/optimize-popup` | Popups/Modals | Exit intent・Newsletter・告知系の設計と最適化 |
-| `/optimize-paywall` | Paywall/Upsell | Free→Paid・アプリ内アップセルのCVR最適化 |
+| target | Scope | Primary KPI |
+|---|---|---|
+| `page` | LP/Product/Feature/Pricing 等 | CVR |
+| `signup-flow` | 登録〜初回ログイン | Signup Completion |
+| `onboarding` | Aha Moment 到達〜Activation | Activation Rate |
+| `form` | デモ/資料DL/問い合わせ | Form Completion |
+| `popup` | Exit intent / Newsletter / 告知系 | Capture Rate + Guardrail |
+| `paywall` | Free→Paid / アプリ内アップセル | Paywall CVR + LTV |
 
 ### Workflows（統合ワークフロー）
 | Command | Description |
@@ -195,11 +213,16 @@ sarfstack/
 │   ├── foundation/              # Stable: frameworks, mindset
 │   └── update/                  # External volatile: platform updates, industry trends
 │
-├── memory/                      # Per-project memory: company-specific
-│   ├── company.example/         # Template for company/ (tracked)
-│   ├── company/                 # Company-specific: ICP, brand (gitignored — per-project)
-│   ├── results.example/         # Template for results/ (tracked)
-│   └── results/                 # Company-specific: performance data (gitignored — per-project)
+├── templates/memory/            # Templates for private/memory/ (tracked)
+│   ├── organization/            # Template for private/memory/organization/
+│   ├── profile/                 # Template for private/memory/workspaces/<slug>/profile/
+│   └── results/                 # Template for private/memory/workspaces/<slug>/results/
+│
+├── private/                     # All per-project data (gitignored)
+│   ├── memory/
+│   │   ├── organization/        # Organization-wide: mission, brand, portfolio
+│   │   └── workspaces/<slug>/   # Per-workspace: profile/ (ICP, positioning) + results/
+│   └── output/                  # Generated artifacts, per-workspace
 │
 ├── skills/                      # Individual agents & workflows
 │   ├── set-organization/SKILL.md # SARF: Set (organization層)
@@ -219,26 +242,19 @@ sarfstack/
 │   ├── customer-research/SKILL.md
 │   ├── pricing-strategy/SKILL.md
 │   ├── churn-prevention/SKILL.md
-│   ├── optimize-page/SKILL.md
-│   ├── optimize-signup-flow/SKILL.md
-│   ├── optimize-onboarding/SKILL.md
-│   ├── optimize-form/SKILL.md
-│   ├── optimize-popup/SKILL.md
-│   ├── optimize-paywall/SKILL.md
+│   ├── optimize/SKILL.md + targets/{page,signup-flow,onboarding,form,popup,paywall}.md
 │   ├── campaign-launch/SKILL.md
 │   ├── content-review/SKILL.md
 │   ├── landing-page/SKILL.md
 │   └── weekly-retro/SKILL.md
 │
-├── templates/                   # Reusable content templates
+├── templates/                   # Reusable content templates（成果物テンプレ）
 │   ├── ad-copy.md
 │   ├── landing-page.md
 │   ├── email-sequence.md
 │   ├── blog-post.md
-│   └── social-media.md
-│
-├── output/                      # Generated artifacts (gitignored — per-project)
-│   └── README.md                # Convention docs (tracked)
+│   ├── social-media.md
+│   └── memory/                  # memory 層のテンプレ（上記参照）
 │
 └── lib/                         # Shared components
     ├── preamble.md
@@ -248,26 +264,23 @@ sarfstack/
 
 ## Knowledge vs Memory
 
-ベースの `knowledge/`（tracked、共有可）と per-project の `memory/`（gitignored）を分離しています。
+ベースの `knowledge/`（tracked、共有可）と per-project の `private/memory/`（gitignored）を分離しています。`templates/memory/` はその private/memory/ を生成するためのテンプレート。
 
 ```
-knowledge/                                     memory/
-(shared base — tracked)                        (per-project — gitignored)
-┌─────────────────────────────────────┐        ┌─────────────────────────────────────┐
-│ foundation/                         │        │ company/                            │
-│  marketing-mindset, growth-        │        │  company-overview, icp,             │
-│  frameworks, brand-strategy,       │        │  positioning, brand-guidelines,     │
-│  metrics-glossary                  │        │  competitors                        │
-├─────────────────────────────────────┤        ├─────────────────────────────────────┤
-│ update/                             │        │ results/                            │
-│  platform-updates,                 │        │  performance-data                   │
-│  industry-trends                   │        │                                     │
-└─────────────────────────────────────┘        └─────────────────────────────────────┘
-                                                (templates: company.example/,
-                                                 results.example/ are tracked)
+knowledge/                            templates/memory/            private/memory/
+(shared base — tracked)               (templates — tracked)        (per-project — gitignored)
+┌──────────────────────────┐         ┌──────────────────────┐     ┌──────────────────────────────┐
+│ base/                    │         │ organization/        │ ──▶ │ organization/                │
+│  marketing-mindset,      │         │ profile/             │ ──▶ │ workspaces/<slug>/profile/   │
+│  growth-frameworks, ...  │         │ results/             │ ──▶ │ workspaces/<slug>/results/   │
+├──────────────────────────┤         └──────────────────────┘     └──────────────────────────────┘
+│ update/                  │         テンプレから private/ を生成: bin/init-private
+│  platform-updates,       │
+│  industry-trends         │
+└──────────────────────────┘
 
-Executive agents   → knowledge/foundation + memory/company
-Specialist agents  → knowledge/foundation + memory/company + knowledge/update + memory/results
+Executive agents   → knowledge/base + private/memory/organization + profile
+Specialist agents  → knowledge/base + private/memory/ 全層 + knowledge/update
 Workflow agents    → delegates to sub-agents
 
 Write targets:

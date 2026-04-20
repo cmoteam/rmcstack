@@ -2,7 +2,7 @@
   "_comment": "SARFStack MCP server template. Copy to .mcp.json and fill in credentials. DO NOT commit .mcp.json (it is gitignored). For details see knowledge/foundation/integrations.md",
   "mcpServers": {
     "figma": {
-      "_note": "Figma Dev Mode MCP. Design file read for /ui-design /creative-direction /optimize-page /landing-page",
+      "_note": "Figma Dev Mode MCP. Design file read for /ui-design /creative-direction /optimize /landing-page",
       "command": "npx",
       "args": ["-y", "figma-developer-mcp"],
       "env": {

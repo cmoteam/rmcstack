@@ -2,8 +2,9 @@
 # PreToolUse guard for SARFStack protected paths.
 #
 # Policy (see CLAUDE.md):
-#   - memory/profile.example/**   : upstream template. HARD BLOCK writes.
-#   - memory/results.example/**   : upstream template. HARD BLOCK writes.
+#   - templates/memory/profile/**      : upstream template. HARD BLOCK writes.
+#   - templates/memory/results/**      : upstream template. HARD BLOCK writes.
+#   - templates/memory/organization/** : upstream template. HARD BLOCK writes.
 #   - knowledge/base/**           : canonical framework. PR 経由で編集する前提で
 #                                   hook レベルの hard block は外してある
 #                                   （settings.json の allow/deny で制御）。
@@ -53,14 +54,14 @@ block() {
 # --- Hard blocks ---------------------------------------------------------
 
 case "$rel_path" in
-  memory/profile.example/*|memory/profile.example)
-    block "memory/profile.example/ は upstream 共通テンプレート。workspace 固有の情報は private/memory/workspaces/<slug>/profile/ に書くこと（CLAUDE.md §Profile 参照）。"
+  templates/memory/profile/*|templates/memory/profile)
+    block "templates/memory/profile/ は upstream 共通テンプレート。workspace 固有の情報は private/memory/workspaces/<slug>/profile/ に書くこと（CLAUDE.md §Profile 参照）。"
     ;;
-  memory/results.example/*|memory/results.example)
-    block "memory/results.example/ は upstream 共通テンプレート。実績は private/memory/workspaces/active/results/ に書くこと（CLAUDE.md §Results 参照）。"
+  templates/memory/results/*|templates/memory/results)
+    block "templates/memory/results/ は upstream 共通テンプレート。実績は private/memory/workspaces/active/results/ に書くこと（CLAUDE.md §Results 参照）。"
     ;;
-  memory/organization.example/*|memory/organization.example)
-    block "memory/organization.example/ は upstream 共通テンプレート。組織情報は private/memory/organization/ に書くこと（CLAUDE.md §Organization 参照）。"
+  templates/memory/organization/*|templates/memory/organization)
+    block "templates/memory/organization/ は upstream 共通テンプレート。組織情報は private/memory/organization/ に書くこと（CLAUDE.md §Organization 参照）。"
     ;;
 esac
 
