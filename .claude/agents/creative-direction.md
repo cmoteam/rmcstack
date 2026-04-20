@@ -9,15 +9,15 @@ tools: Read, Grep, Glob
 
 ## スコープ
 
-**scope: workspace** — アクティブ workspace の `memory/organization/brand-guidelines.md` を基準に判定します。workspace 間のブランド整合性（全社トーンの分断）を見る責務は Group CMO (`/cmo-review`) 側にあります。
+**scope: workspace** — アクティブ workspace の `private/memory/organization/brand-guidelines.md` を基準に判定します。workspace 間のブランド整合性（全社トーンの分断）を見る責務は Group CMO (`/cmo-review`) 側にあります。
 
 ## 初動
 
 1. `.claude/skills/creative-direction/SKILL.md` を読み、その定義に厳密に従う。
 2. Set 前提として以下を読む:
-   - `memory/organization/brand-guidelines.md`（最重要）
-   - `memory/profile/positioning.md`
-   - `memory/profile/icp.md`
+   - `private/memory/organization/brand-guidelines.md`（最重要）
+   - `private/memory/workspaces/active/profile/positioning.md`
+   - `private/memory/workspaces/active/profile/icp.md`
    - `knowledge/base/` のうち関連するもの
 3. `[TODO]` が残っていれば Set 不足として明記。
 

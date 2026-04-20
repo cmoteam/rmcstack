@@ -1,0 +1,754 @@
+#!/usr/bin/env python3
+"""SARFStack Interactive Setup Wizard — bin/start
+Run directly in your terminal: ! bin/start
+"""
+
+import os
+import re
+import sys
+import shutil
+from pathlib import Path
+
+# ── Paths ──────────────────────────────────────────────────────────────────
+REPO       = Path(__file__).resolve().parent.parent
+PRIVATE    = REPO / "private" / "memory"
+WORKSPACES = PRIVATE / "workspaces"
+ORG_DIR    = PRIVATE / "organization"
+
+# ── ANSI ───────────────────────────────────────────────────────────────────
+R  = "\033[0m"   # reset
+B  = "\033[1m"   # bold
+D  = "\033[2m"   # dim
+GR = "\033[32m"  # green
+YL = "\033[33m"  # yellow
+CY = "\033[36m"  # cyan
+RD = "\033[31m"  # red
+BL = "\033[34m"  # blue
+MG = "\033[35m"  # magenta
+
+TODO_RE = re.compile(r'\[TODO(?::\s*([^\]]*))?\]')
+
+# ── Logo ───────────────────────────────────────────────────────────────────
+LOGO = f"""{CY}{B}
+  ____    _    ____  _____
+ / ___|  / \\  |  _ \\|  ___|
+ \\___ \\ / _ \\ | |_) | |_
+  ___) / ___ \\|  _ <|  _|
+ |____/_/   \\_\\_| \\_\\_|
+{R}{D}         S t a c k{R}   {B}Setup Wizard{R}
+"""
+
+# ── Embedded templates ─────────────────────────────────────────────────────
+# Used when creating a new workspace from scratch (no external template files)
+
+_BUSINESS_OVERVIEW = """\
+# Company Overview — 事業概要
+
+## 基本情報
+
+- **企業名**: [TODO: 企業名]
+- **設立**: [TODO: 設立年]
+- **ステージ**: [TODO: シード / シリーズA / シリーズB / 上場 / etc.]
+- **従業員数**: [TODO: 人数]
+- **主要市場**: [TODO: 日本 / グローバル / etc.]
+
+## ミッション・ビジョン
+
+- **ミッション**: [TODO: 何を実現するために存在するか]
+- **ビジョン**: [TODO: 5-10年後にどうなっていたいか]
+
+## プロダクト/サービス
+
+### メインプロダクト
+- **名称**: [TODO]
+- **概要**: [TODO: 1-2文で説明]
+- **カテゴリ**: [TODO: SaaS / EC / メディア / etc.]
+- **価格帯**: [TODO: 無料 / フリーミアム / 月額XX円〜 / etc.]
+- **主要機能**: [TODO: 3-5個の主要機能]
+
+### ビジネスモデル
+- **収益モデル**: [TODO: サブスクリプション / 従量課金 / 広告 / etc.]
+- **主要KPI**: [TODO: MRR / GMV / DAU / etc.]
+- **現在の規模**: [TODO: ユーザー数、売上規模など]
+
+## 現在の課題・注力領域
+
+1. [TODO: 最も重要なマーケティング課題]
+2. [TODO: 2番目の課題]
+3. [TODO: 3番目の課題]
+
+## マーケティング体制
+
+- **チーム規模**: [TODO: 人数と構成]
+- **月間マーケ予算**: [TODO: 概算]
+- **主要チャネル**: [TODO: 現在注力しているチャネル]
+- **使用ツール**: [TODO: GA4, GSC, 広告プラットフォーム, CRM等]
+"""
+
+_ICP = """\
+# ICP — Ideal Customer Profile（理想的な顧客像）
+
+## Primary ICP
+
+### デモグラフィック
+- **業種**: [TODO]
+- **企業規模**: [TODO: 従業員数 / 売上規模]
+- **役職**: [TODO: 意思決定者の役職]
+- **地域**: [TODO]
+
+### サイコグラフィック
+- **課題・ペイン**: [TODO: 最も深い課題を3つ]
+  1.
+  2.
+  3.
+- **動機・ゴール**: [TODO: 達成したいことを3つ]
+  1.
+  2.
+  3.
+- **現在の代替手段**: [TODO: 今どうやって課題を解決しているか]
+
+### 購買行動
+- **検討期間**: [TODO: 即日 / 1週間 / 1ヶ月 / 3ヶ月以上]
+- **意思決定者**: [TODO: 誰が最終決定するか]
+- **情報収集チャネル**: [TODO: どこで情報を得ているか]
+
+### Jobs to be Done
+```
+When I [TODO: 状況],
+I want to [TODO: 動機],
+So I can [TODO: 期待する成果].
+```
+
+## Secondary ICP（もしあれば）
+
+[TODO: 2番目に重要な顧客像があれば記述]
+
+## Anti-Persona（ターゲットでない人）
+
+以下のような人はターゲットではない:
+- [TODO: 明確にターゲットから外す条件]
+"""
+
+_POSITIONING = """\
+# Positioning — 市場ポジショニング
+
+## Positioning Statement
+
+```
+For [TODO: ターゲット顧客]
+Who [TODO: ニーズ/課題]
+Our [TODO: プロダクト名] is a [TODO: カテゴリ]
+That [TODO: 主要ベネフィット]
+Unlike [TODO: 主要競合]
+We [TODO: 差別化ポイント]
+```
+
+## Value Proposition Canvas
+
+### Customer Side
+- **Jobs**: [TODO: 顧客が達成したいこと]
+- **Pains**: [TODO: 顧客が避けたいこと]
+- **Gains**: [TODO: 顧客が得たいこと]
+
+### Product Side
+- **Products & Services**: [TODO: 提供するもの]
+- **Pain Relievers**: [TODO: どの痛みをどう解消するか]
+- **Gain Creators**: [TODO: どの期待をどう実現するか]
+
+## Messaging Hierarchy
+
+### Primary Message（第一メッセージ）
+[TODO: 1文で表現するコアメッセージ]
+
+### Supporting Messages
+1. [TODO: サポートメッセージ1 + 根拠]
+2. [TODO: サポートメッセージ2 + 根拠]
+3. [TODO: サポートメッセージ3 + 根拠]
+
+### Elevator Pitch（30秒版）
+[TODO: 30秒で伝えるピッチ]
+"""
+
+_COMPETITORS = """\
+# Competitors — 競合情報
+
+## 競合マップ
+
+### Direct Competitors（直接競合）
+
+#### 競合A: [TODO: 企業名]
+- **URL**: [TODO]
+- **強み**: [TODO]
+- **弱み**: [TODO]
+- **価格帯**: [TODO]
+- **主要チャネル**: [TODO]
+
+#### 競合B: [TODO: 企業名]
+- **URL**: [TODO]
+- **強み**: [TODO]
+- **弱み**: [TODO]
+- **価格帯**: [TODO]
+- **主要チャネル**: [TODO]
+
+### Indirect Competitors（間接競合）
+
+#### [TODO: 企業名]
+- **概要**: [TODO: なぜ間接競合か]
+- **脅威レベル**: [TODO: 高/中/低]
+
+## Win/Loss Analysis
+
+### 勝つパターン
+- [TODO: どんな場合に競合に勝つか]
+
+### 負けるパターン
+- [TODO: どんな場合に競合に負けるか]
+"""
+
+_ORG_OVERVIEW = """\
+# Organization Overview — 組織概要
+
+## 基本情報
+
+- **組織名**: [TODO: 組織名]
+- **形態**: [TODO: 株式会社 / 合同会社 / etc.]
+- **設立**: [TODO: 設立年]
+- **規模**: [TODO: 従業員数]
+- **ステージ**: [TODO: スタートアップ / 中小企業 / 大企業]
+
+## ミッション・ビジョン・バリュー
+
+- **ミッション**: [TODO: 組織の存在目的]
+- **ビジョン**: [TODO: 目指す未来像]
+- **バリュー**:
+  1. [TODO: バリュー1]
+  2. [TODO: バリュー2]
+  3. [TODO: バリュー3]
+
+## 事業ポートフォリオ
+
+- **主力事業**: [TODO: 事業名と概要]
+- **サブ事業**: [TODO: あれば記述]
+- **今後の展開**: [TODO: 新規事業・拡大方針]
+"""
+
+_BRAND_GUIDELINES = """\
+# Brand Guidelines — ブランドガイドライン
+
+## Brand Voice
+
+### トーン設定（4軸 / 各 1〜10）
+- **Formality（フォーマル度）**: [TODO: 1=くだけた / 10=堅い]
+- **Energy（エネルギー）**: [TODO: 1=落ち着いた / 10=活発]
+- **Humor（ユーモア）**: [TODO: 1=なし / 10=コミカル]
+- **Authority（権威）**: [TODO: 1=親しみやすい / 10=専門的]
+
+### Voice Attributes
+- **We are**: [TODO: 3語で自社らしさを表現]
+- **We are NOT**: [TODO: 明確に否定するスタイル]
+
+### Writing Rules
+1. [TODO: 最も重要なライティングルール]
+2. [TODO]
+3. [TODO]
+
+## Visual Identity
+
+### Colors
+- **Primary**: [TODO: #XXXXXX]
+- **Secondary**: [TODO: #XXXXXX]
+- **Accent**: [TODO: #XXXXXX]
+- **Background**: [TODO: #XXXXXX]
+- **Text**: [TODO: #XXXXXX]
+
+### Typography
+- **見出し**: [TODO: フォント名]
+- **本文**: [TODO: フォント名]
+
+## Content Guidelines
+
+### 使用OK
+- [TODO: 推奨する表現・スタイルの例]
+
+### 使用NG
+- [TODO: 避けるべき表現・スタイルの例]
+
+### 表記ルール
+- [TODO: 組織名・プロダクト名の正式表記]
+- [TODO: 数字の表記ルール（半角/全角等）]
+"""
+
+PROFILE_TEMPLATES = {
+    "business-overview.md": _BUSINESS_OVERVIEW,
+    "icp.md":               _ICP,
+    "positioning.md":       _POSITIONING,
+    "competitors.md":       _COMPETITORS,
+}
+
+ORG_TEMPLATES = {
+    "organization-overview.md": _ORG_OVERVIEW,
+    "brand-guidelines.md":      _BRAND_GUIDELINES,
+}
+
+# ── Utilities ──────────────────────────────────────────────────────────────
+
+def clear():
+    os.system("clear" if os.name != "nt" else "cls")
+
+
+def hr(char="─", width=46):
+    return f"  {D}{char * width}{R}"
+
+
+def count_todos(path: Path) -> int:
+    if not path.exists():
+        return 0
+    return len(TODO_RE.findall(path.read_text()))
+
+
+def current_workspace() -> str | None:
+    link = PRIVATE / "profile"
+    if link.is_symlink():
+        target = os.readlink(str(link))   # e.g. "workspaces/acme/profile"
+        parts = target.split("/")
+        if len(parts) >= 2:
+            return parts[1]
+    return None
+
+
+def list_workspaces() -> list[str]:
+    if not WORKSPACES.exists():
+        return []
+    return sorted(d.name for d in WORKSPACES.iterdir() if d.is_dir())
+
+
+def todo_badge(n: int) -> str:
+    if n == 0:
+        return f"{GR}✓ 完了{R}"
+    return f"{YL}残り {n} 件{R}"
+
+
+def print_status():
+    slug       = current_workspace()
+    org_todos  = count_todos(ORG_DIR / "organization-overview.md")
+    brand_todos= count_todos(ORG_DIR / "brand-guidelines.md")
+
+    ws_todos = 0
+    if slug:
+        pd = PRIVATE / "workspaces" / slug / "profile"
+        for fname in PROFILE_TEMPLATES:
+            ws_todos += count_todos(pd / fname)
+
+    print(f"  {B}Active workspace{R}  {CY}{slug or '(未設定)'}{R}\n")
+    print(f"  {B}Set 充足率{R}")
+    print(hr())
+    print(f"  Organization     {todo_badge(org_todos)}")
+    print(f"  Brand            {todo_badge(brand_todos)}")
+    if slug:
+        print(f"  Workspace        {todo_badge(ws_todos)}")
+    else:
+        print(f"  Workspace        {D}workspace 未設定{R}")
+    print()
+
+
+# ── Menu helpers ───────────────────────────────────────────────────────────
+
+def show_menu(title: str, options: list[tuple], back_label="戻る") -> tuple[int, object]:
+    """
+    Display a numbered menu. Returns (idx, value) or (-1, None) for back/exit.
+    options: list of (label, value) — use (None, None) for a visual separator.
+    """
+    # Build a map from display number to real index
+    numbered = [(i, label, val) for i, (label, val) in enumerate(options) if label is not None]
+
+    while True:
+        print(f"  {B}{title}{R}\n")
+        num = 0
+        for label, val in options:
+            if label is None:
+                print(f"  {D}{'─' * 36}{R}")
+            else:
+                num += 1
+                print(f"  {CY}{num}{R}  {label}")
+        print(f"\n  {D}0  {back_label}{R}\n")
+
+        try:
+            raw = input(f"  {B}>{R} ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            return -1, None
+
+        if raw == "0":
+            return -1, None
+
+        try:
+            choice = int(raw)
+            if 1 <= choice <= len(numbered):
+                _, label, val = numbered[choice - 1]
+                return choice - 1, val
+        except ValueError:
+            pass
+
+        print(f"\n  {RD}無効な選択です{R}\n")
+
+
+def pause(msg="Enter でメニューに戻る…"):
+    try:
+        input(f"\n  {D}{msg}{R}")
+    except (EOFError, KeyboardInterrupt):
+        pass
+
+
+def ask(prompt: str, hint: str = "") -> str | None:
+    display = f"  {B}{prompt}{R}"
+    if hint:
+        display += f"  {D}({hint}){R}"
+    display += "\n  → "
+    try:
+        return input(display).strip()
+    except (EOFError, KeyboardInterrupt):
+        print()
+        return None
+
+
+def confirm(prompt: str, default: bool = False) -> bool:
+    hint = "Y/n" if default else "y/N"
+    try:
+        val = input(f"  {prompt} [{hint}]: ").strip().lower()
+        return (val == "y") if val else default
+    except (EOFError, KeyboardInterrupt):
+        return False
+
+
+# ── Workspace operations ───────────────────────────────────────────────────
+
+def validate_slug(slug: str) -> str | None:
+    """Return error message or None if valid."""
+    if not slug:
+        return "slug を入力してください"
+    if not re.match(r"^[a-z0-9][a-z0-9-]*$", slug):
+        return "小文字英数字とハイフンのみ使用可能（例: acme-saas）"
+    if slug == "default":
+        return "'default' は使用禁止。実在する事業名を使ってください"
+    return None
+
+
+def _set_active(slug: str):
+    """Update profile/results symlinks to point at the given workspace."""
+    PRIVATE.mkdir(parents=True, exist_ok=True)
+    for name in ("profile", "results"):
+        link = PRIVATE / name
+        if link.is_symlink() or link.exists():
+            link.unlink()
+        link.symlink_to(f"workspaces/{slug}/{name}")
+
+
+def action_new_workspace():
+    print(f"  {B}新規 workspace を作成{R}\n")
+    print(f"  {D}slug: 小文字英数字とハイフンのみ（例: acme-saas）{R}")
+    print(f"  {D}'default' は使用禁止です{R}\n")
+
+    while True:
+        slug = ask("workspace 名 (slug)")
+        if slug is None:
+            return
+
+        err = validate_slug(slug)
+        if err:
+            print(f"\n  {RD}✗ {err}{R}\n")
+            continue
+
+        if (WORKSPACES / slug).exists():
+            print(f"\n  {YL}workspace '{slug}' はすでに存在します{R}")
+            if confirm("アクティブに切り替えますか？"):
+                _set_active(slug)
+                print(f"\n  {GR}✓ workspace '{slug}' に切り替えました{R}")
+            return
+
+        break
+
+    # Create directory structure
+    ws = WORKSPACES / slug
+    ws.mkdir(parents=True)
+    (ws / "profile").mkdir()
+    (ws / "results").mkdir()
+
+    for fname, content in PROFILE_TEMPLATES.items():
+        (ws / "profile" / fname).write_text(content)
+
+    # Bootstrap organization layer if not present
+    if not ORG_DIR.exists():
+        ORG_DIR.mkdir(parents=True)
+        for fname, content in ORG_TEMPLATES.items():
+            (ORG_DIR / fname).write_text(content)
+        print(f"\n  {GR}✓ organization/ を初期化しました{R}")
+
+    _set_active(slug)
+    print(f"\n  {GR}✓ workspace '{slug}' を作成してアクティブにしました{R}")
+    print(f"  {D}「ガイド付きセットアップ」で情報を入力してください{R}")
+
+
+def action_switch_workspace():
+    slugs = list_workspaces()
+    if not slugs:
+        print(f"\n  {YL}workspace がありません。先に新規作成してください。{R}")
+        return
+
+    active = current_workspace()
+    options = [(f"{'★ ' if s == active else '  '}{s}", s) for s in slugs]
+    _, slug = show_menu("切り替え先を選択", options)
+    if slug:
+        _set_active(slug)
+        print(f"\n  {GR}✓ workspace を '{slug}' に切り替えました{R}")
+
+
+def action_remove_workspace():
+    slugs   = list_workspaces()
+    active  = current_workspace()
+    targets = [s for s in slugs if s != active]
+
+    if not targets:
+        msg = "workspace がありません" if not slugs else "削除できる workspace がありません（アクティブは削除不可）"
+        print(f"\n  {YL}{msg}{R}")
+        return
+
+    options = [(s, s) for s in targets]
+    _, slug = show_menu("削除する workspace を選択（アクティブを除く）", options)
+    if not slug:
+        return
+
+    print(f"\n  {RD}警告: workspace '{slug}' を完全に削除します。この操作は元に戻せません。{R}")
+    if confirm("本当に削除しますか？"):
+        shutil.rmtree(str(WORKSPACES / slug))
+        print(f"\n  {GR}✓ workspace '{slug}' を削除しました{R}")
+    else:
+        print(f"\n  {D}キャンセルしました{R}")
+
+
+# ── TODO filling ───────────────────────────────────────────────────────────
+
+def _line_label(content: str, match) -> str:
+    ls    = content.rfind("\n", 0, match.start()) + 1
+    le    = content.find("\n", match.end())
+    line  = content[ls: le if le != -1 else None].strip()
+    return re.sub(r"\[TODO[^\]]*\]", "", line).strip().strip("*-| ").rstrip(":").strip()
+
+
+def fill_file(path: Path, title: str) -> int:
+    """
+    Interactively fill all [TODO] fields in a single file.
+    Returns number of remaining unfilled fields.
+    """
+    if not path.exists():
+        print(f"  {RD}✗ ファイルが見つかりません: {path.name}{R}\n")
+        return 0
+
+    content = path.read_text()
+    matches = list(TODO_RE.finditer(content))
+
+    if not matches:
+        print(f"  {GR}✓ {title}: すべて入力済みです{R}\n")
+        return 0
+
+    total = len(matches)
+    print(f"\n  {B}{title}{R}  {D}({total} 件の未入力 / 空 Enter でスキップ){R}\n")
+
+    changes = []
+    filled  = 0
+
+    for i, m in enumerate(matches, 1):
+        hint    = (m.group(1) or "").strip()
+        label   = _line_label(content, m)
+        display = label or hint or "値を入力"
+
+        sys.stdout.write(f"  {D}[{i}/{total}]{R} {B}{display}{R}")
+        if hint and hint != label:
+            sys.stdout.write(f"\n  {D}例: {hint}{R}")
+        sys.stdout.write("\n  → ")
+        sys.stdout.flush()
+
+        try:
+            value = input("").strip()
+        except (EOFError, KeyboardInterrupt):
+            print(f"\n\n  {YL}中断しました{R}\n")
+            break
+
+        print()
+
+        if value:
+            changes.append((m.start(), m.end(), value))
+            filled += 1
+
+    if changes:
+        result = content
+        for start, end, val in reversed(changes):
+            result = result[:start] + val + result[end:]
+        path.write_text(result)
+
+    remaining = total - filled
+    if filled:
+        print(f"  {GR}✓ {filled} 件 保存{R}", end="")
+    if remaining:
+        print(f"  {D}/{R}  {YL}残り {remaining} 件{R}")
+    else:
+        print()
+    print()
+    return remaining
+
+
+# ── Section fill actions ───────────────────────────────────────────────────
+
+def _ensure_org_dir():
+    if not ORG_DIR.exists():
+        ORG_DIR.mkdir(parents=True)
+        for fname, content in ORG_TEMPLATES.items():
+            (ORG_DIR / fname).write_text(content)
+        print(f"\n  {GR}✓ organization/ を初期化しました{R}")
+
+
+def action_fill_organization():
+    _ensure_org_dir()
+    fill_file(ORG_DIR / "organization-overview.md", "組織情報")
+
+
+def action_fill_brand():
+    _ensure_org_dir()
+    fill_file(ORG_DIR / "brand-guidelines.md", "ブランドガイドライン")
+
+
+def action_fill_workspace_profile():
+    slug = current_workspace()
+    if not slug:
+        print(f"\n  {RD}✗ アクティブ workspace がありません。先に新規作成してください。{R}")
+        return
+
+    pd = PRIVATE / "workspaces" / slug / "profile"
+    file_meta = [
+        ("business-overview.md", "事業概要"),
+        ("icp.md",               "ICP（理想顧客）"),
+        ("positioning.md",       "ポジショニング"),
+        ("competitors.md",       "競合情報"),
+    ]
+
+    rows      = [(fn, lbl, count_todos(pd / fn)) for fn, lbl in file_meta]
+    with_todos= [(fn, lbl, n) for fn, lbl, n in rows if n > 0]
+
+    if not with_todos:
+        print(f"\n  {GR}✓ workspace '{slug}' のプロフィールはすべて入力済みです{R}")
+        return
+
+    options = [(f"{lbl}  {todo_badge(n)}", fn) for fn, lbl, n in with_todos]
+    options += [(None, None)]
+    options += [("すべてのファイルを入力する", "__all__")]
+
+    _, selected = show_menu(f"[{slug}]  どのファイルを入力しますか？", options)
+    if not selected:
+        return
+
+    lbl_map = {fn: lbl for fn, lbl, _ in rows}
+
+    if selected == "__all__":
+        for fn, lbl, n in with_todos:
+            fill_file(pd / fn, lbl)
+    else:
+        fill_file(pd / selected, lbl_map[selected])
+
+
+# ── Guided setup ───────────────────────────────────────────────────────────
+
+def action_guided_setup():
+    print(f"  {B}ガイド付きセットアップ{R}")
+    print(f"  {D}Step 0 → workspace  ·  Step 1 → 組織  ·  Step 2 → ブランド  ·  Step 3 → workspace 情報{R}\n")
+
+    # Step 0: ensure workspace
+    slug = current_workspace()
+    if not slug:
+        print(f"  {YL}workspace がありません。まず作成します。{R}\n")
+        action_new_workspace()
+        slug = current_workspace()
+        if not slug:
+            return
+        try:
+            input(f"\n  {D}Enter で次のステップへ…{R}")
+        except (EOFError, KeyboardInterrupt):
+            return
+        print()
+
+    # Step 1: Organization
+    org_n = count_todos(ORG_DIR / "organization-overview.md") if ORG_DIR.exists() else 1
+    print(f"  {B}Step 1{R} — 組織情報  {todo_badge(org_n)}")
+    if org_n > 0:
+        action_fill_organization()
+        try:
+            input(f"  {D}Enter で次のステップへ…{R}")
+        except (EOFError, KeyboardInterrupt):
+            return
+        print()
+
+    # Step 2: Brand
+    brand_n = count_todos(ORG_DIR / "brand-guidelines.md") if ORG_DIR.exists() else 1
+    print(f"  {B}Step 2{R} — ブランドガイドライン  {todo_badge(brand_n)}")
+    if brand_n > 0:
+        action_fill_brand()
+        try:
+            input(f"  {D}Enter で次のステップへ…{R}")
+        except (EOFError, KeyboardInterrupt):
+            return
+        print()
+
+    # Step 3: Workspace profile
+    pd    = PRIVATE / "workspaces" / slug / "profile"
+    ws_n  = sum(count_todos(pd / fn) for fn in PROFILE_TEMPLATES)
+    print(f"  {B}Step 3{R} — workspace プロフィール [{CY}{slug}{R}]  {todo_badge(ws_n)}")
+    if ws_n > 0:
+        action_fill_workspace_profile()
+
+    print(hr())
+    print(f"  {GR}{B}セットアップ完了！{R}")
+    print(f"  {D}Claude で /sarf-check を実行して充足率を確認できます。{R}\n")
+
+
+# ── Main ───────────────────────────────────────────────────────────────────
+
+MAIN_MENU: list[tuple] = [
+    (f"{B}ガイド付きセットアップ{R}  {D}（推奨）{R}", "guided"),
+    (None, None),
+    ("組織情報を入力する",                 "org"),
+    ("ブランドガイドラインを入力する",     "brand"),
+    ("workspace プロフィールを入力する",   "ws"),
+    (None, None),
+    ("新規 workspace を作成",             "new"),
+    ("workspace を切り替える",            "switch"),
+    ("workspace を削除する",              "remove"),
+]
+
+ACTION_MAP = {
+    "guided": action_guided_setup,
+    "org":    action_fill_organization,
+    "brand":  action_fill_brand,
+    "ws":     action_fill_workspace_profile,
+    "new":    action_new_workspace,
+    "switch": action_switch_workspace,
+    "remove": action_remove_workspace,
+}
+
+
+def main():
+    while True:
+        clear()
+        print(LOGO)
+        print_status()
+
+        _, action = show_menu("何をしますか？", MAIN_MENU, back_label="終了")
+
+        if action is None:
+            print(f"\n  {D}SARFStack Wizard を終了します。{R}\n")
+            break
+
+        print()
+        ACTION_MAP[action]()
+        pause()
+
+
+if __name__ == "__main__":
+    main()

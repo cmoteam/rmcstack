@@ -14,7 +14,8 @@ Exit intent、ニュースレター登録、クーポン配布、機能告知、
 
 - **Position**: Ask（ポップアップ戦略診断）＋ Release（トリガー条件・コピー・デザインを本番反映）
 - **Ask Subtype**: Design（ポップアップの是非・種類の選択）＋ Review（既存ポップアップの改善）
-- **Set Preflight**: `icp.md`（ユーザーの忍耐度）、`brand-guidelines.md`（ポップアップが許容されるトーン）、`performance-data.md`（現状のポップアップ CVR / 離脱影響）が前提
+- **Set Preflight**: `icp.md`（ユーザーの忍耐度）、`performance-data.md`（現状のポップアップ CVR / 離脱影響）が前提
+- **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md`（ポップアップが許容されるトーンの基準）に `[TODO]` が残っている、またはファイル未存在の場合、UI・コピー生成前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します」と明示してユーザー確認を取る
 - **Feedback Hook**: ポップアップ表示後の捕捉率 / 離脱率 / メインファネルへの悪影響を `/feedback` に戻す。ポップアップは諸刃の剣なので「ネガティブ影響が無いこと」の検証が特に重要
 - **[Optional] Target Funnel Stage**: 指定あれば TOFU（Newsletter / Lead Magnet）/ MOFU（Exit intent でリード化）/ BOFU（カート放棄回収）で設計を分岐
 - **[Optional] Target Segment**: モバイル vs デスクトップで設計が全く違う。モバイルでは intrusive popup は Google ペナルティのリスクがあるため慎重に
@@ -23,11 +24,11 @@ Exit intent、ニュースレター登録、クーポン配布、機能告知、
 ## Required Knowledge
 
 ```
-Read: memory/profile/icp.md
-Read: memory/organization/brand-guidelines.md
+Read: private/memory/workspaces/active/profile/icp.md
+Read: private/memory/organization/brand-guidelines.md
 Read: knowledge/base/marketing-mindset.md
 Read: knowledge/update/platform-updates.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Diagnostic Framework

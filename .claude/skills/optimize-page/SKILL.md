@@ -15,6 +15,7 @@ LPだけでなく、Product ページ、Feature ページ、Pricing ページ、
 - **Position**: Ask（CVR診断）＋ Release（HTML/CSS・コピー修正案を本番反映）
 - **Ask Subtype**: Review（既存ページの CVR 阻害要因を特定）＋ Design（改修後の構成案を出力）
 - **Set Preflight**: `icp.md` / `positioning.md` / `performance-data.md` が前提。特に現状 CVR ベースラインが無いと改善幅を見積もれないため、未整備なら `/set-workspace` → `/feedback` で埋めることを推奨
+- **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、コピー・HTML/CSS 生成前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します」と明示してユーザー確認を取る
 - **Feedback Hook**: 改修版リリース後の CVR / ヒートマップ / スクロール深度を `/feedback` に戻す。検証済みの改善パターンは `knowledge/update/` の自社プレイブックに昇華
 - **[Optional] Target Funnel Stage**: 指定あれば TOFU/MOFU/BOFU に応じて重視軸を切り替え（TOFU=離脱率・直帰率 / MOFU=次アクション遷移率 / BOFU=CTA クリック率・フォーム完了率）。未指定なら全段階横断で評価
 - **[Optional] Target Segment**: 指定あれば該当セグメントの情報収集癖・リテラシーに合わせた改修を優先。未指定なら Primary ICP 基準
@@ -23,14 +24,14 @@ LPだけでなく、Product ページ、Feature ページ、Pricing ページ、
 ## Required Knowledge
 
 ```
-Read: memory/profile/icp.md
-Read: memory/profile/positioning.md
-Read: memory/organization/brand-guidelines.md
-Read: memory/profile/competitors.md
+Read: private/memory/workspaces/active/profile/icp.md
+Read: private/memory/workspaces/active/profile/positioning.md
+Read: private/memory/organization/brand-guidelines.md
+Read: private/memory/workspaces/active/profile/competitors.md
 Read: knowledge/base/marketing-mindset.md
 Read: knowledge/base/growth-frameworks.md
 Read: knowledge/update/industry-trends.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Diagnostic Framework
@@ -67,7 +68,7 @@ Read: memory/results/performance-data.md
 # Page Optimization Review: [ページ名/URL]
 
 ## CVR Baseline
-- 現状 CVR: [X%]（from memory/results/performance-data.md）
+- 現状 CVR: [X%]（from private/memory/workspaces/active/results/performance-data.md）
 - 改修後の目標 CVR: [Y%]（根拠: ベンチマーク or 仮説）
 
 ## Scorecard

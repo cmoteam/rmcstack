@@ -9,19 +9,19 @@ tools: Read, Grep, Glob
 
 ## スコープ
 
-**scope: company-wide** — アクティブ workspace に閉じず、`memory/workspaces/*/` の全 workspace を対象に評価します。workspace 間のポジショニング衝突、チャネル予算の重複投下、ブランド一貫性の崩れ、タレント/代理店リソースの配分を見るのが責務です。
+**scope: company-wide** — アクティブ workspace に閉じず、`private/memory/workspaces/*/` の全 workspace を対象に評価します。workspace 間のポジショニング衝突、チャネル予算の重複投下、ブランド一貫性の崩れ、タレント/代理店リソースの配分を見るのが責務です。
 
 ## 初動
 
 1. `.claude/skills/cmo-review/SKILL.md` を読み、その定義に厳密に従う。
 2. **全 workspace の Set を読む**:
    ```
-   memory/workspaces/*/profile/business-overview.md
-   memory/workspaces/*/profile/icp.md
-   memory/workspaces/*/profile/positioning.md
-   memory/workspaces/*/profile/brand-guidelines.md
-   memory/workspaces/*/profile/competitors.md
-   memory/workspaces/*/results/performance-data.md （存在すれば）
+   private/memory/workspaces/*/profile/business-overview.md
+   private/memory/workspaces/*/profile/icp.md
+   private/memory/workspaces/*/profile/positioning.md
+   private/memory/workspaces/*/profile/brand-guidelines.md
+   private/memory/workspaces/*/profile/competitors.md
+   private/memory/workspaces/*/results/performance-data.md （存在すれば）
    ```
 3. `knowledge/base/` のうち関連するもの（positioning-strategy, channel-mix 等）を参照。
 4. `[TODO]` が残っている workspace があれば Set 不足として明記。

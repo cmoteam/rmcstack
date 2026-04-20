@@ -15,9 +15,9 @@ tools: Read, Grep, Glob
 
 1. `.claude/skills/seo/SKILL.md` を読み、その定義に厳密に従う。
 2. Set 前提として以下を読む:
-   - `memory/profile/icp.md`（検索意図の理解）
-   - `memory/profile/positioning.md`
-   - `memory/profile/competitors.md`（SERP 上の競合）
+   - `private/memory/workspaces/active/profile/icp.md`（検索意図の理解）
+   - `private/memory/workspaces/active/profile/positioning.md`
+   - `private/memory/workspaces/active/profile/competitors.md`（SERP 上の競合）
    - `knowledge/update/platform-updates.md`（Google アルゴリズム変更など）
    - `knowledge/base/` のうち関連するもの
 3. `[TODO]` が残っていれば Set 不足として明記。

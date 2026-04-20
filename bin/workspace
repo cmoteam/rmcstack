@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+# workspace — SARFStack workspace management
+# Usage: workspace [list|current|new <slug>|switch <slug>|remove <slug>]
+set -euo pipefail
+
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+PRIVATE="$REPO/private/memory"
+WORKSPACES="$PRIVATE/workspaces"
+PROFILE_EXAMPLE="$REPO/memory/profile.example"
+RESULTS_EXAMPLE="$REPO/memory/results.example"
+ORG_EXAMPLE="$REPO/memory/organization.example"
+ACTIVE_LINK="$WORKSPACES/active"
+
+current_slug() {
+  if [ -L "$ACTIVE_LINK" ]; then
+    readlink "$ACTIVE_LINK" | sed 's|^\./||; s|/$||'
+  else
+    echo "(none)"
+  fi
+}
+
+set_active() {
+  local slug="$1"
+  mkdir -p "$WORKSPACES"
+  # Remove legacy root symlinks if present (migration)
+  rm -f "$PRIVATE/profile" "$PRIVATE/results"
+  rm -f "$ACTIVE_LINK"
+  # Relative symlink inside $WORKSPACES pointing at sibling slug directory
+  (cd "$WORKSPACES" && ln -s "$slug" "active")
+}
+
+cmd_list() {
+  local active
+  active="$(current_slug)"
+  echo "Workspaces:"
+  if [ -d "$WORKSPACES" ]; then
+    for d in "$WORKSPACES"/*/; do
+      [ -d "$d" ] || continue
+      slug="$(basename "$d")"
+      [ "$slug" = "active" ] && continue
+      if [ "$slug" = "$active" ]; then
+        echo "  * $slug  (active)"
+      else
+        echo "    $slug"
+      fi
+    done
+  else
+    echo "  (none)"
+  fi
+}
+
+cmd_current() {
+  echo "$(current_slug)"
+}
+
+cmd_switch() {
+  local slug="$1"
+  validate_slug "$slug"
+  if [ ! -d "$WORKSPACES/$slug" ]; then
+    echo "エラー: workspace '$slug' が見つかりません。先に: workspace new $slug"
+    exit 1
+  fi
+  set_active "$slug"
+  echo "Switched to workspace: $slug"
+  echo "ヒント: bin/set-workspace で情報を埋めてください"
+}
+
+cmd_new() {
+  local slug="$1"
+  validate_slug "$slug"
+  if [ -d "$WORKSPACES/$slug" ]; then
+    echo "workspace '$slug' はすでに存在します。切替: workspace switch $slug"
+    exit 1
+  fi
+  mkdir -p "$WORKSPACES/$slug"
+  cp -r "$PROFILE_EXAMPLE" "$WORKSPACES/$slug/profile"
+  cp -r "$RESULTS_EXAMPLE" "$WORKSPACES/$slug/results"
+  # Organization は組織全体で1つだけ。未存在時のみブートストラップ
+  if [ ! -d "$PRIVATE/organization" ]; then
+    cp -r "$ORG_EXAMPLE" "$PRIVATE/organization"
+    echo "注意: private/memory/organization/ を初期化しました。bin/set-organization で組織情報を入力してください。"
+  fi
+  set_active "$slug"
+  echo "Created workspace: $slug (active)"
+  echo ""
+  echo "次のステップ:"
+  echo "  1. bin/set-organization  # 組織情報（初回のみ）"
+  echo "  2. bin/set-brand         # ブランドガイドライン（初回のみ）"
+  echo "  3. bin/set-workspace     # この workspace の事業概要・ICP・Positioning"
+}
+
+cmd_remove() {
+  local slug="$1"
+  validate_slug "$slug"
+  if [ ! -d "$WORKSPACES/$slug" ]; then
+    echo "エラー: workspace '$slug' が見つかりません"
+    exit 1
+  fi
+  local active
+  active="$(current_slug)"
+  if [ "$slug" = "$active" ]; then
+    echo "エラー: アクティブな workspace は削除できません。先に switch してください"
+    exit 1
+  fi
+  echo "警告: workspace '$slug' を完全に削除します。元に戻せません。"
+  printf "続けますか? [y/N] "
+  read -r confirm
+  if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+    echo "キャンセルしました"
+    exit 0
+  fi
+  rm -rf "$WORKSPACES/$slug"
+  echo "Removed workspace: $slug"
+}
+
+validate_slug() {
+  local slug="$1"
+  if [ -z "$slug" ]; then
+    echo "エラー: slug を指定してください"
+    exit 1
+  fi
+  if ! echo "$slug" | grep -qE '^[a-z0-9][a-z0-9-]*$'; then
+    echo "エラー: slug は小文字英数字とハイフンのみ使用可能です (例: acme-saas)"
+    exit 1
+  fi
+  if [ "$slug" = "default" ]; then
+    echo "エラー: 'default' は使用禁止です。実在する事業名を使ってください"
+    exit 1
+  fi
+  if [ "$slug" = "active" ]; then
+    echo "エラー: 'active' は予約語です（symlink 名と衝突）"
+    exit 1
+  fi
+}
+
+# --- main ---
+case "${1:-list}" in
+  list)    cmd_list ;;
+  current) cmd_current ;;
+  new)     cmd_new "${2:-}" ;;
+  switch)  cmd_switch "${2:-}" ;;
+  remove)  cmd_remove "${2:-}" ;;
+  *)
+    echo "Usage: workspace [list|current|new <slug>|switch <slug>|remove <slug>]"
+    exit 1
+    ;;
+esac

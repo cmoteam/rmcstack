@@ -20,29 +20,29 @@ version: 2.0.0
 
 ## Workspace Preflight
 
-`memory/profile` symlink が無い / `memory/workspaces/` が空の場合は診断を走らせず、以下だけを返してユーザーに `/workspace new <slug>` を案内する:
+`private/memory/workspaces/active` symlink が無い / `private/memory/workspaces/` が空の場合は診断を走らせず、以下だけを返してユーザーに `/workspace new <slug>` を案内する:
 
 > ⚠️ アクティブな workspace がありません。`/workspace new <slug>` で作成してください（`default` は使わない）。
 
 ## SARF Alignment
 
 - **Position**: Meta（サイクル診断 / read-only）
-- **Set Preflight**: `knowledge/base/sarf-framework.md` が存在すること。`memory/profile/*` `memory/results/*` は未存在でも動作する（存在しないこと自体が診断結果になる）。`[TODO]` の残存も診断対象なので Preflight の失格条件にはしない
+- **Set Preflight**: `knowledge/base/sarf-framework.md` が存在すること。`private/memory/workspaces/active/profile/*` `private/memory/workspaces/active/results/*` は未存在でも動作する（存在しないこと自体が診断結果になる）。`[TODO]` の残存も診断対象なので Preflight の失格条件にはしない
 - **Feedback Hook**: このスキルは knowledge 層に書き戻さない（read-only）。診断結果は推奨アクション Top 3 として提示するのみで、実際の書き込みは `/set-organization` `/set-workspace` `/set-update` `/feedback` が担う
 
 ## Required Knowledge
 
 ```
 Read: knowledge/base/sarf-framework.md
-Read: memory/organization/organization-overview.md
-Read: memory/organization/brand-guidelines.md
-Read: memory/profile/business-overview.md
-Read: memory/profile/icp.md
-Read: memory/profile/positioning.md
-Read: memory/profile/competitors.md
+Read: private/memory/organization/organization-overview.md
+Read: private/memory/organization/brand-guidelines.md
+Read: private/memory/workspaces/active/profile/business-overview.md
+Read: private/memory/workspaces/active/profile/icp.md
+Read: private/memory/workspaces/active/profile/positioning.md
+Read: private/memory/workspaces/active/profile/competitors.md
 Read: knowledge/update/industry-trends.md
 Read: knowledge/update/platform-updates.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Diagnostic Protocol
@@ -63,7 +63,7 @@ Set→Ask→Release→Feedback のどの段階に今いるかを判定:
 | **Set 構築中** | organization 層 or profile(workspace) 層の充足率 < 70% |
 | **Ask 準備完了** | organization 層 ≥ 70% かつ profile(workspace) 層 ≥ 70% かつ update が 30日以内に更新されている |
 | **Release 実行可** | 上記に加え、直近でレビュー系スキルの出力が参照可能 |
-| **Feedback 待ち** | Release 後、`memory/results/performance-data.md` の最終更新が古い／未反映 |
+| **Feedback 待ち** | Release 後、`private/memory/workspaces/active/results/performance-data.md` の最終更新が古い／未反映 |
 
 ### Step 3: Marketing Extension のヘルス（advisory）
 

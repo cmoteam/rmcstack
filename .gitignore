@@ -11,25 +11,10 @@ Thumbs.db
 # Node (if used for tooling)
 node_modules/
 
-# Per-workspace memory (not shared upstream).
-# Structure: memory/workspaces/<slug>/{profile,results}/
-# Active workspace is selected by the memory/profile and memory/results symlinks,
-# so all skills (Read: memory/profile/...) work transparently.
-# Bootstrap: /workspace new <slug>  or  /workspace switch <slug>
-memory/workspaces/
-memory/profile
-memory/results
-
-# Organization-wide memory (single instance, not shared upstream).
-# Contains mission / brand / org-level overview that applies across all workspaces.
-# Bootstrap: /set-organization  (copies from memory/organization.example/ on first run)
-memory/organization/
-
-# Generated artifacts (per-project outputs; not shared upstream)
-# All skills write their deliverables under output/
-output/*
-!output/.gitkeep
-!output/README.md
+# Private data: organization memory + workspace data + generated artifacts.
+# Managed as a separate private repo under private/.
+# Bootstrap: clone your private repo into private/
+private/
 
 # MCP server config: may contain API keys / tokens for third-party integrations
 # Bootstrap with: cp .mcp.json.example .mcp.json

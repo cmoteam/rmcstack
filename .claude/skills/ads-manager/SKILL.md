@@ -14,6 +14,7 @@ Google Ads、Meta Ads、X Ads等のデジタル広告の設計から入稿デー
 
 - **Position**: Release（入稿可能な設計＋コピーを本番配信へ）
 - **Set Preflight**: `platform-updates.md` が60日以上古い場合、入札戦略・仕様が実態とズレる可能性を明示して `/set-update` を推奨する。`performance-data.md` の CPA/ROAS ベースラインが欠けていると予測が立てられない
+- **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、広告コピー・クリエイティブ生成開始前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します（継続する場合はブランド適合度が下がる可能性）」と明示してユーザー確認を取る
 - **Feedback Hook**: 配信後の CTR / CVR / CPA / ROAS を `/feedback` に戻す。クリエイティブ仮説と入札戦略の学習に使う
 - **[Optional] Target Funnel Stage**: 指定があれば段階別にチャネル・入札戦略を最適化（TOFU=Reach/Impression系、MOFU=Consideration/Traffic、BOFU=Conversion/ROAS）。未指定なら複数段階に分散する設計を提示
 - **[Optional] Target Segment**: 指定があればターゲティング（カスタムオーディエンス / 興味関心 / LAL）をそのセグメント基準で構築。未指定なら Primary ICP を前提に複数オーディエンスを提案
@@ -23,15 +24,15 @@ Google Ads、Meta Ads、X Ads等のデジタル広告の設計から入稿デー
 ## Required Knowledge
 
 ```
-Read: memory/profile/business-overview.md
-Read: memory/profile/icp.md
-Read: memory/profile/positioning.md
-Read: memory/profile/competitors.md
-Read: memory/organization/brand-guidelines.md
+Read: private/memory/workspaces/active/profile/business-overview.md
+Read: private/memory/workspaces/active/profile/icp.md
+Read: private/memory/workspaces/active/profile/positioning.md
+Read: private/memory/workspaces/active/profile/competitors.md
+Read: private/memory/organization/brand-guidelines.md
 Read: knowledge/base/marketing-mindset.md
 Read: knowledge/base/metrics-glossary.md
 Read: knowledge/update/platform-updates.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Capabilities
@@ -149,7 +150,7 @@ Read: memory/results/performance-data.md
 **運用ルール**:
 - Read-only から始める（接続直後は insights 取得のみ）。Write（配信ON/OFF・予算変更・新規入稿）は **ユーザー承認ゲート**経由
 - 未接続なら本文冒頭で「Meta/Google は CSV フォールバック」と明示
-- 取得した数値は `/feedback` 経由で `memory/results/performance-data.md` にキャッシュ（Rate Limit 配慮）
+- 取得した数値は `/feedback` 経由で `private/memory/workspaces/active/results/performance-data.md` にキャッシュ（Rate Limit 配慮）
 
 ## Chaining
 

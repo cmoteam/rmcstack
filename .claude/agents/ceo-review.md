@@ -9,18 +9,18 @@ tools: Read, Grep, Glob
 
 ## スコープ
 
-**scope: company-wide** — アクティブ workspace に閉じず、`memory/workspaces/*/` 配下の全事業部を対象にレビューします。特定 workspace の施策でも、他 workspace への波及効果・全社リソース配分との整合性を問います。
+**scope: company-wide** — アクティブ workspace に閉じず、`private/memory/workspaces/*/` 配下の全事業部を対象にレビューします。特定 workspace の施策でも、他 workspace への波及効果・全社リソース配分との整合性を問います。
 
 ## 初動
 
 1. `.claude/skills/ceo-review/SKILL.md` を読み、その定義に厳密に従う。
 2. **全 workspace の Set を読む**:
    ```
-   memory/workspaces/*/profile/business-overview.md
-   memory/workspaces/*/profile/icp.md
-   memory/workspaces/*/results/performance-data.md （存在すれば）
+   private/memory/workspaces/*/profile/business-overview.md
+   private/memory/workspaces/*/profile/icp.md
+   private/memory/workspaces/*/results/performance-data.md （存在すれば）
    ```
-   `Glob` で `memory/workspaces/*/profile/*.md` を列挙し、各 workspace の概要を把握する。
+   `Glob` で `private/memory/workspaces/*/profile/*.md` を列挙し、各 workspace の概要を把握する。
 3. `knowledge/base/` のうち関連するもの（growth-frameworks, unit-economics 等）を参照。
 4. `[TODO]` が残っている workspace があれば Set 不足として報告。対象施策が属する workspace を特定し、周辺 workspace との関係も併記する。
 

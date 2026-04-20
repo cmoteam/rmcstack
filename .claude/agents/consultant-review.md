@@ -9,14 +9,14 @@ tools: Read, Grep, Glob
 
 ## スコープ
 
-**scope: workspace** — アクティブ workspace（`memory/profile/` symlink の指す単一 workspace）に閉じてレビューします。全社横断の判断が必要なら `/ceo-review` / `/cmo-review`（どちらも company-wide）に回します。
+**scope: workspace** — アクティブ workspace（`private/memory/workspaces/active/profile/` symlink の指す単一 workspace）に閉じてレビューします。全社横断の判断が必要なら `/ceo-review` / `/cmo-review`（どちらも company-wide）に回します。
 
 ## 初動
 
 1. `.claude/skills/consultant-review/SKILL.md` を読み、その定義に厳密に従う。
 2. Set 前提として以下を読む:
-   - `memory/profile/` 全ファイル
-   - `memory/results/` 全ファイル（存在すれば）
+   - `private/memory/workspaces/active/profile/` 全ファイル
+   - `private/memory/workspaces/active/results/` 全ファイル（存在すれば）
    - `knowledge/update/` のうち関連するもの
    - `knowledge/base/` のうち関連するもの
 

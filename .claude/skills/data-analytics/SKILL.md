@@ -13,7 +13,7 @@ version: 1.0.0
 ## SARF Alignment
 
 - **Position**: Feedback（数値の集約と解釈）
-- **Set Preflight**: `memory/results/performance-data.md` の過去データがないとトレンド分析ができない。初回実行時はユーザーに直近データの提供を要求し、終了後に `/feedback` で書き戻すよう促す
+- **Set Preflight**: `private/memory/workspaces/active/results/performance-data.md` の過去データがないとトレンド分析ができない。初回実行時はユーザーに直近データの提供を要求し、終了後に `/feedback` で書き戻すよう促す
 - **Feedback Hook**: このスキルが **Feedback の主役**。出力の Recommended Actions を `/feedback` に連携し、検証済み学びだけを knowledge 層に反映する
 - **[Optional] Target Funnel Stage**: 指定があればそのファネル段階に絞って転換率・ボトルネック分析（TOFU→MOFU 離脱、MOFU→BOFU の歩留まり等）。未指定ならファネル全体を俯瞰
 - **[Optional] Target Segment**: 指定があればそのセグメントに絞って切り出し分析（デバイス・地域・業種・LTV帯別）。未指定なら全体と主要セグメントの両方を出す
@@ -23,11 +23,11 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: memory/profile/business-overview.md
-Read: memory/profile/icp.md
+Read: private/memory/workspaces/active/profile/business-overview.md
+Read: private/memory/workspaces/active/profile/icp.md
 Read: knowledge/base/growth-frameworks.md
 Read: knowledge/base/metrics-glossary.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Capabilities
@@ -159,7 +159,7 @@ Awareness    → Interest     → Consideration → Purchase    → Advocacy
 
 **運用ルール**:
 - 複数ソースから取る場合は「計測窓の違い」（GA4 の CV 定義 vs 各広告媒体のCV定義）を必ず注記
-- 取得した生数値は `/feedback` 経由で `memory/results/performance-data.md` に要約キャッシュ（生ログは置かない）
+- 取得した生数値は `/feedback` 経由で `private/memory/workspaces/active/results/performance-data.md` に要約キャッシュ（生ログは置かない）
 - 顧客個別データ（PII）は匿名化 or 集計値のみ扱う
 
 ## Chaining

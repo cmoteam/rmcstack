@@ -15,7 +15,8 @@ version: 1.0.0
 - **Position**: Ask（オンボーディング診断）＋ Release（フロー・UI・メッセージの本番反映）
 - **Ask Subtype**: Design（Activation Metric と Aha Moment の再定義）＋ Review（既存フローの評価）
 - **Set Preflight**: `icp.md`（ユーザーのゴール）と `business-overview.md`（プロダクトの core value）、`performance-data.md`（Activation 率・D1/D7リテンション）が前提。Aha Moment が未定義なら、それを定義する作業から始める
-- **Feedback Hook**: Activation率・D1/D7/D30リテンション、Aha Moment 到達率を `/feedback` に戻す。「Aha Moment の定義」自体が検証済みナレッジとして `memory/profile/` に昇華される対象
+- **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、UI・コピー・メール文面生成前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します」と明示してユーザー確認を取る
+- **Feedback Hook**: Activation率・D1/D7/D30リテンション、Aha Moment 到達率を `/feedback` に戻す。「Aha Moment の定義」自体が検証済みナレッジとして `private/memory/workspaces/active/profile/` に昇華される対象
 - **[Optional] Target Funnel Stage**: Activation 固定
 - **[Optional] Target Segment**: B2B / B2C、Free / Paid、モバイル / デスクトップで別設計が必要。指定あれば個別最適化
 - **[Optional] Primary KPI**: 指定あればその KPI を主軸。未指定なら **Activation Rate**（Aha Moment 到達率）
@@ -23,12 +24,12 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: memory/profile/icp.md
-Read: memory/profile/business-overview.md
-Read: memory/profile/positioning.md
+Read: private/memory/workspaces/active/profile/icp.md
+Read: private/memory/workspaces/active/profile/business-overview.md
+Read: private/memory/workspaces/active/profile/positioning.md
 Read: knowledge/base/growth-frameworks.md
 Read: knowledge/update/platform-updates.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Diagnostic Framework

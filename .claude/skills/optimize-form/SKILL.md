@@ -15,6 +15,7 @@ version: 1.0.0
 - **Position**: Ask（フォーム診断）＋ Release（HTML/CSS・フィールド設計・バリデーション改修）
 - **Ask Subtype**: Review（既存フォームのフィールド評価）＋ Design（最適フィールドセットの再設計）
 - **Set Preflight**: `icp.md`（情報提供に対する心理的抵抗）、`positioning.md`（フォーム送信で得られる価値）、`performance-data.md`（現状フォームCVR）が前提
+- **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、フォーム UI・コピー生成前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します」と明示してユーザー確認を取る
 - **Feedback Hook**: 改修後のフォーム送信率 / リード質 / フィールド別離脱率を `/feedback` に戻す。「このフィールドが CVR を X% 下げる」の定量ナレッジが蓄積されていく
 - **[Optional] Target Funnel Stage**: 主に MOFU（リード獲得）。BOFU（購入直前フォーム）の場合は決済離脱の観点も加味
 - **[Optional] Target Segment**: B2B では enrichment 可能な最小フィールドで始める戦略、B2C では email のみでスタートが原則。指定あれば分岐
@@ -23,12 +24,12 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: memory/profile/icp.md
-Read: memory/profile/positioning.md
-Read: memory/organization/brand-guidelines.md
+Read: private/memory/workspaces/active/profile/icp.md
+Read: private/memory/workspaces/active/profile/positioning.md
+Read: private/memory/organization/brand-guidelines.md
 Read: knowledge/base/growth-frameworks.md
 Read: knowledge/update/platform-updates.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Diagnostic Framework

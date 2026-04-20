@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""bin/set-workspace — fill TODO fields in private/memory/workspaces/active/profile/*.md"""
+import re, sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+PROFILE = REPO / "private" / "memory" / "profile"
+FILES = ["business-overview.md", "icp.md", "positioning.md", "competitors.md"]
+TODO_RE = re.compile(r'\[TODO(?::\s*([^\]]*))?\]')
+
+
+def count_todos(files):
+    total = 0
+    for fname in files:
+        p = PROFILE / fname
+        if p.exists():
+            total += len(TODO_RE.findall(p.read_text()))
+    return total
+
+
+def line_label(content, match):
+    ls = content.rfind('\n', 0, match.start()) + 1
+    le = content.find('\n', match.end())
+    line = content[ls: le if le != -1 else None].strip()
+    label = re.sub(r'\[TODO[^\]]*\]', '', line).strip().strip('*-| ').rstrip(':').strip()
+    return label
+
+
+def fill_file(path, counter, total):
+    content = path.read_text()
+    matches = list(TODO_RE.finditer(content))
+    if not matches:
+        return content, 0
+
+    changes = []
+    filled = 0
+
+    for m in matches:
+        hint = (m.group(1) or '').strip()
+        label = line_label(content, m)
+        counter[0] += 1
+
+        display = label or hint or '値を入力'
+        extra = f"  例: {hint}" if hint and hint != label else ""
+
+        print(f"\n[{counter[0]}/{total}] {path.name} > {display}")
+        if extra:
+            print(extra)
+        print("  (空Enter でスキップ)")
+
+        try:
+            value = input("  > ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n中断しました")
+            sys.exit(0)
+
+        if value:
+            changes.append((m.start(), m.end(), value))
+            filled += 1
+
+    result = content
+    for start, end, val in reversed(changes):
+        result = result[:start] + val + result[end:]
+
+    return result, filled
+
+
+def main():
+    if not PROFILE.exists() or not PROFILE.is_dir():
+        print(f"エラー: {PROFILE} が見つかりません。先に bin/workspace new <slug> を実行してください。")
+        sys.exit(1)
+
+    # Show active workspace
+    symlink = REPO / "private" / "memory" / "profile"
+    if symlink.is_symlink():
+        slug = symlink.resolve().parent.name
+        print(f"アクティブ workspace: {slug}")
+    print("─" * 40)
+
+    total = count_todos(FILES)
+    if total == 0:
+        print("TODO はすべて埋まっています。/sarf-check で確認してください。")
+        sys.exit(0)
+
+    print(f"TODO: {total} 件。空のまま Enter でスキップできます。\n")
+
+    counter = [0]
+    summary = {}
+    for fname in FILES:
+        p = PROFILE / fname
+        if not p.exists():
+            continue
+        new_content, filled = fill_file(p, counter, total)
+        p.write_text(new_content)
+        summary[fname] = filled
+
+    print("\n\n─── 完了 ───")
+    for fname, count in summary.items():
+        print(f"  {fname}: {count} 件 更新")
+    remaining = total - sum(summary.values())
+    if remaining > 0:
+        print(f"  残り TODO: {remaining} 件（再実行で補完できます）")
+    print("\n次のステップ: /sarf-check で充足率を確認")
+
+
+if __name__ == "__main__":
+    main()

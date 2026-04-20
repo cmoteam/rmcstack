@@ -54,13 +54,13 @@ block() {
 
 case "$rel_path" in
   memory/profile.example/*|memory/profile.example)
-    block "memory/profile.example/ は upstream 共通テンプレート。workspace 固有の情報は memory/workspaces/<slug>/profile/ に書くこと（CLAUDE.md §Profile 参照）。"
+    block "memory/profile.example/ は upstream 共通テンプレート。workspace 固有の情報は private/memory/workspaces/<slug>/profile/ に書くこと（CLAUDE.md §Profile 参照）。"
     ;;
   memory/results.example/*|memory/results.example)
-    block "memory/results.example/ は upstream 共通テンプレート。実績は memory/results/ に書くこと（CLAUDE.md §Results 参照）。"
+    block "memory/results.example/ は upstream 共通テンプレート。実績は private/memory/workspaces/active/results/ に書くこと（CLAUDE.md §Results 参照）。"
     ;;
   memory/organization.example/*|memory/organization.example)
-    block "memory/organization.example/ は upstream 共通テンプレート。組織情報は memory/organization/ に書くこと（CLAUDE.md §Organization 参照）。"
+    block "memory/organization.example/ は upstream 共通テンプレート。組織情報は private/memory/organization/ に書くこと（CLAUDE.md §Organization 参照）。"
     ;;
 esac
 
@@ -75,7 +75,7 @@ if [[ "$rel_path" != */* ]]; then
       case "$rel_path" in
         README.md|CLAUDE.md|AGENTS.md|.mcp.json|.mcp.json.example) ;;
         *)
-          echo "[SARFStack guard] WARN: 一次成果物はルート直下ではなく output/ 配下に置いてください（CLAUDE.md §Output Directory）。path: $rel_path" >&2
+          echo "[SARFStack guard] WARN: 一次成果物はルート直下ではなく private/output/ 配下に置いてください（CLAUDE.md §Output Directory）。path: $rel_path" >&2
           ;;
       esac
       ;;

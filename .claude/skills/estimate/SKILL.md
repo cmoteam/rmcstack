@@ -23,11 +23,11 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: memory/profile/business-overview.md
-Read: memory/profile/icp.md
+Read: private/memory/workspaces/active/profile/business-overview.md
+Read: private/memory/workspaces/active/profile/icp.md
 Read: knowledge/base/marketing-mindset.md
 Read: knowledge/base/metrics-glossary.md
-Read: memory/results/performance-data.md
+Read: private/memory/workspaces/active/results/performance-data.md
 ```
 
 ## Capabilities

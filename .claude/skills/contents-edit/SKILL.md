@@ -13,7 +13,8 @@ version: 1.0.0
 ## SARF Alignment
 
 - **Position**: Release（そのまま公開できる成果物を出し、本番配信へ）
-- **Set Preflight**: `icp.md` `brand-guidelines.md` `positioning.md` のいずれかに `[TODO]` があると「ICPの言葉」で書けない。該当時は冒頭で明示し `/set-workspace` / `/set-organization` を推奨する
+- **Set Preflight**: `icp.md` `positioning.md` のいずれかに `[TODO]` があると「ICPの言葉」で書けない。該当時は冒頭で明示し `/set-workspace` を推奨する
+- **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、生成開始前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します（継続する場合はブランド適合度が下がる可能性）」と明示してユーザーの確認を取る
 - **Feedback Hook**: 公開後のエンゲージメント・CV・検索順位を `/feedback` に戻す。トピッククラスタ戦略の精度向上に使う
 - **[Optional] Target Funnel Stage**: 指定があれば段階別にフォーマットを選ぶ（TOFU=教育・解説記事／SNSショート、MOFU=比較・事例、BOFU=導入ガイド・ROI試算）。未指定なら段階中立で汎用フォーマットを使う
 - **[Optional] Target Segment**: 指定があればそのセグメント特有の語彙・課題・情報収集経路に合わせて原稿を書く。未指定なら Primary ICP を前提
@@ -23,10 +24,10 @@ version: 1.0.0
 ## Required Knowledge
 
 ```
-Read: memory/profile/business-overview.md
-Read: memory/profile/icp.md
-Read: memory/profile/positioning.md
-Read: memory/organization/brand-guidelines.md
+Read: private/memory/workspaces/active/profile/business-overview.md
+Read: private/memory/workspaces/active/profile/icp.md
+Read: private/memory/workspaces/active/profile/positioning.md
+Read: private/memory/organization/brand-guidelines.md
 Read: knowledge/base/brand-strategy.md
 Read: knowledge/base/growth-frameworks.md
 Read: knowledge/update/industry-trends.md
