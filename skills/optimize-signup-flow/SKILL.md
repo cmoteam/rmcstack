@@ -114,6 +114,18 @@ Read: memory/results/performance-data.md
 - **Step-by-step ではなくSingle-step を優先** — マルチステップフォームは完了率を下げがち。例外は B2B で信用性を演出する場面のみ
 - **モバイル前提** — フィールド設計・キーボード型・オートフィル対応をモバイルで検証
 
+## Integrations（optional）
+
+ステップ別完了率を直接観測する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 |
+|---------|-----------|------|
+| PostHog / Amplitude / Mixpanel | 各 MCP | ステップ別 funnel・Session Replay |
+| GA4 | `ga4` MCP | 流入元別のサインアップ完了率差分 |
+| HubSpot / Salesforce | 各 MCP | サインアップ後のリード品質（営業側での温度） |
+
+Fallback は従来通り手入力ステップ計測データ。
+
 ## Chaining
 
 - **前工程**: `/optimize-page`（サインアップを誘導する LP のCVR改善）、`/ads-manager`（流入広告のコピー整合）

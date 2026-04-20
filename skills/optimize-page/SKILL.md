@@ -120,6 +120,20 @@ Read: memory/results/performance-data.md
 - **Trust Stack を早めに** — ファーストビュー or その直後に社会的証明を置く
 - **Fix は必ず HTML/CSS で返す** — 「改善余地あり」で終わらせない
 
+## Integrations（optional）
+
+挙動観察と配信実装を直結する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 |
+|---------|-----------|------|
+| PostHog / Hotjar | `posthog` MCP | Session Replay・ヒートマップで離脱箇所を特定 |
+| GA4 | `ga4` MCP | 流入元別 CVR・デバイス別差分 |
+| Figma | `figma` MCP | 現行/改修案のデザイン参照 |
+| Google Ads / Meta | 各 MCP | 流入広告の Message Match 突合 |
+| GitHub / Vercel | 各 MCP | 改修 HTML の PR 化・Preview URL 取得 |
+
+Fallback は従来通り手入力 HTML / スクリーンショット。
+
 ## Chaining
 
 - **前工程**: `/ui-design`（UI/UX全般のレビュー）、`/contents-edit`（ページコピー）、`/ads-manager`（流入広告のコピー）

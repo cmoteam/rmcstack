@@ -137,6 +137,18 @@ Read: memory/results/performance-data.md
 - **価値の大きさを語る** — 「Newsletter」より「このテーマで週1本、独占コンテンツ」
 - **閉じる選択肢を隠さない** — 閉じられないポップアップはブランド毀損
 
+## Integrations（optional）
+
+表示トリガーと Capture Rate を直結する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 |
+|---------|-----------|------|
+| PostHog | `posthog` MCP | Exit Intent / Scroll Depth の Session Replay 検証 |
+| GA4 | `ga4` MCP | ページ別 Guardrail 指標（直帰率・滞在時間） |
+| Mailchimp / Customer.io | 各 MCP | Newsletter 登録後のシーケンス配信 |
+
+Fallback は従来通り手入力の表示・Capture データ。
+
 ## Chaining
 
 - **前工程**: `/optimize-page`（ページ全体のCVR診断、ポップアップの要否判断）

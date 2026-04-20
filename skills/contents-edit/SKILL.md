@@ -139,6 +139,24 @@ Read: knowledge/update/platform-updates.md
 - **1コンテンツ1メッセージ** — 欲張って複数のメッセージを詰め込まない
 - **再利用可能** — 1つのコンテンツを複数チャネル・フォーマットに展開する視点
 
+## Integrations（optional）
+
+接続されていれば配信先 CMS・配信スケジュール管理に直結する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 | Fallback |
+|---------|-----------|------|----------|
+| Notion | `notion` MCP | エディトリアルカレンダー・ブリーフ管理 | Markdown をユーザー管理 |
+| Google Drive / Docs | `google-drive` MCP | 原稿共有・レビュー | ファイルをユーザーが貼る |
+| WordPress / Ghost / Webflow | 各 CMS MCP | ブログ記事の公開・予約投稿 | 手動入稿 |
+| Mailchimp / SendGrid / Customer.io | 各 MCP | メール配信・シーケンス | 手動入稿 |
+| Google Search Console | `search-console` MCP | 公開後の検索パフォーマンス | ユーザー CSV |
+| Slack | `slack` MCP | 公開通知・レビュー依頼 | 手動通知 |
+
+**運用ルール**:
+- CMS への Write は **下書き保存**までを既定。公開は必ずユーザー承認
+- UTM / OGP / canonical を入稿時に自動付与（Release Gate の計測チェックリストと連動）
+- 公開後 7 / 30 日の数字を `/feedback` 経由でトピッククラスタ戦略に戻す
+
 ## Chaining
 
 - **前工程**: `/cmo-review`（コンテンツ戦略）、`/seo`（キーワード戦略）

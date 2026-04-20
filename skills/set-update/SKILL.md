@@ -68,6 +68,16 @@ Read: knowledge/foundation/sarf-framework.md
 - 不足があれば `WebSearch` で補う（ただし結果URLが allowlist 外なら採用しない）
 - 取得できなかったソースは「Fetch 失敗」として Pending に記録（勝手に既存値で埋めない）
 
+**Integrations 経由の pull（接続があれば優先）**
+
+`.mcp.json` に対応サーバが設定されている場合、WebFetch より先に MCP 経由で公式発表フィードを取りに行く（詳細: [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)）:
+
+- Google Ads / GA4 の新機能アナウンスは `google-ads` / `ga4` MCP のリリースノート API
+- Meta のプラットフォーム変更は `meta-ads` MCP の Changelog
+- それでも取れない項目は WebFetch にフォールバック
+
+MCP 経由で取った情報も **Official / Beta / Rumor の確度タグ**は必須。allowlist の考え方は同じ（契約済みサーバのみ使用）。
+
 ### Step 3: 差分抽出
 
 取得内容を以下の粒度で構造化:

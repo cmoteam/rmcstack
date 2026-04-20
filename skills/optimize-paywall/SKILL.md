@@ -149,6 +149,19 @@ Paywall を **どのタイミングで** 出すかが最大の設計ポイント
 - **逃げ道を用意する** — 「後で」導線があると短期 CVR は下がるが長期 LTV は上がる
 - **Pricing が間違っていれば Paywall は効かない** — Paywall を磨く前に `/pricing-strategy` で価格構造を確認
 
+## Integrations（optional）
+
+課金・行動・アップセル UI を直結する。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 |
+|---------|-----------|------|
+| Stripe | `stripe` MCP | プラン別転換率・Annual 比率・Refund率・LTV |
+| Amplitude / Mixpanel / PostHog | 各 MCP | Paywall 表示トリガー条件の検証・Session Replay |
+| Intercom | `intercom` MCP | アプリ内 Upgrade モーダルの配信 |
+| Customer.io | MCP / API | Trial 終了前のリマインダーメール |
+
+Fallback は従来通り手入力の Paywall 指標データ。
+
 ## Chaining
 
 - **前工程**: `/pricing-strategy`（価格構造自体の妥当性）、`/optimize-onboarding`（Aha Moment 定義）

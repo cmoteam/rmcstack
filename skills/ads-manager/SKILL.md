@@ -133,6 +133,24 @@ Read: memory/results/performance-data.md
 - **プラットフォームの特性尊重** — Google検索は顕在層、Metaは潜在層。同じコピーを使い回さない
 - **LTVベースの判断** — 初回CPAだけでなく、LTVベースのROASで判断する
 
+## Integrations（optional）
+
+接続されていれば CSV 手入力をスキップして直接 pull する。詳細カタログは [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 | Fallback |
+|---------|-----------|------|----------|
+| Google Ads | `google-ads` MCP | キャンペーン構造・入札・Insights 取得、入稿下書き | ユーザー CSV |
+| Meta Marketing | `meta-ads` MCP | Ads Manager の Campaign / AdSet / Ad / Insights | ユーザー CSV |
+| X Ads | `x-ads` MCP | キャンペーン・Insights | ユーザー CSV |
+| LinkedIn Ads | `linkedin-ads` MCP | Sponsored Content / Lead Gen Forms | ユーザー CSV |
+| TikTok Ads | `tiktok-ads` MCP | キャンペーン・Insights | ユーザー CSV |
+| GA4 | `ga4` MCP | CV・ファネル突合（広告 → サイト内CV） | ユーザー CSV |
+
+**運用ルール**:
+- Read-only から始める（接続直後は insights 取得のみ）。Write（配信ON/OFF・予算変更・新規入稿）は **ユーザー承認ゲート**経由
+- 未接続なら本文冒頭で「Meta/Google は CSV フォールバック」と明示
+- 取得した数値は `/feedback` 経由で `memory/results/performance-data.md` にキャッシュ（Rate Limit 配慮）
+
 ## Chaining
 
 - **前工程**: `/cmo-review`（チャネル戦略）、`/creative-direction`（クリエイティブ承認）

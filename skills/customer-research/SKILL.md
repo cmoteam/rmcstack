@@ -183,6 +183,23 @@ Positioning / コピー候補を実際のターゲットに見せて反応を測
 - **バイアスを管理する** — 誘導質問（「X は良いと感じましたか？」）禁止、「X をどう感じましたか？」の開放質問
 - **社内で解釈を揺さぶる** — 報告書にはそのまま出てきた発言を載せ、解釈は複数人でレビュー
 
+## Integrations（optional）
+
+会話データ・調査回答を直接取り込む。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 | Fallback |
+|---------|-----------|------|----------|
+| Intercom / Zendesk | 各 MCP | サポート会話・NPS コメント・FAQ の頻出語抽出 | ログをユーザーが貼る |
+| Gong / Chorus | 各 API | セールスコール書き起こし（Win/Loss 分析） | 手動書き起こし |
+| Typeform / SurveyMonkey | 各 API | インタビュー事前質問票・回答集計 | CSV |
+| HubSpot / Salesforce | 各 MCP | Closed Lost の理由タグ・Champion 情報 | ユーザー CSV |
+| Notion | `notion` MCP | インタビュー設計書・Insight ライブラリ | Markdown 管理 |
+
+**運用ルール**:
+- 顧客の実名・所属企業等の PII は `memory/results/` に生のまま書かない。匿名 ID 化 or 集計値に
+- 会話ログの要約・引用は本人許可を前提とする
+- JTBD のステートメントは最終的に `memory/company/icp.md` に落とす（`/feedback` 経由）
+
 ## Chaining
 
 - **前工程**: `/set-company`（既存 ICP の棚卸し）、`/consultant-review`（ICP 前提を揺さぶる）

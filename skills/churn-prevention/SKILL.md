@@ -167,6 +167,22 @@ Read: memory/results/performance-data.md
 - **解約導線を隠さない** — 見つかりにくい解約ページは信頼を破壊し、NPS とブランドを毀損する
 - **LTV で測る** — Save 率だけ見ると、強引に残留させて後で解約される罠に陥る
 
+## Integrations（optional）
+
+接続されていれば解約トリガー・顧客会話を直接取れる。詳細は [`knowledge/foundation/integrations.md`](../../knowledge/foundation/integrations.md)。
+
+| Service | MCP / API | 用途 | Fallback |
+|---------|-----------|------|----------|
+| Stripe | `stripe` MCP | Churn Rate / MRR 減少 / 失敗決済（Involuntary Churn） | ユーザー CSV |
+| HubSpot / Salesforce | 各 MCP | 解約理由・チケット履歴・NPS | ユーザー CSV |
+| Intercom / Zendesk | 各 MCP | 解約前会話・Save Offer 提示履歴 | ユーザー CSV |
+| Amplitude / Mixpanel / PostHog | 各 MCP | 解約前の行動ログ（Early Warning System） | ユーザー CSV |
+| Customer.io / Mailchimp | 各 MCP | リエンゲージメントメールの配信 | 手動配信 |
+
+**運用ルール**:
+- 解約会話の PII（顧客名・メアド）は `memory/results/` に生のまま置かない。匿名化 or 集計
+- Save Offer の提示は **ユーザー承認**経由（料金改定が絡むため）
+
 ## Chaining
 
 - **前工程**: `/optimize-onboarding`（Early Churn の主因は Activation 失敗）、`/pricing-strategy`（価格起因の解約は価格構造から見直す）
