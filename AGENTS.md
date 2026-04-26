@@ -4,8 +4,6 @@
 
 Codex など AGENTS.md を参照するハーネスはこのファイル経由で CLAUDE.md を読み込んでください。Claude Code は CLAUDE.md を自動で読み込みます。
 
-> リポジトリ名は移行期のため `sarfstack` のまま運用していますが、論理名・フレームワーク名は **SURFStack / SURF**（Syncing / Understanding / Releasing / Fitting）に統一済みです。
-
 ## ⚠️ Skills に関する注意（重要）
 
 **SURFStack の各スキル（`/set-workspace` `/cmo-review` `/ads-manager` 等）はリポジトリ単位では動作しません。**
