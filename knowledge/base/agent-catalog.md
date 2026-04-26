@@ -1,39 +1,39 @@
-# Agent Catalog — SARFStack スキル詳細定義
+# Agent Catalog — SURFStack スキル詳細定義
 
 各スキルの **役割 / 入力 / 出力 / 知識 / トリガー** を網羅的に記載。`CLAUDE.md` の `## Available Skills` 一覧から詳細が必要になった時に参照する。
 
-## Set / Meta（SARF Ops）
+## Set / Meta（SURF Ops）
 
 ### Set Organization (`/set-organization`)
 - **役割**: 組織プロフィールを対話でヒアリングし `private/memory/organization/organization-overview.md` を埋める
 - **入力**: 組織・ミッション・事業ポートフォリオに関する情報（崩れた文体でも可）
 - **出力**: organization-overview.md への書き込み + 充足率サマリー
-- **知識**: organization + sarf-framework
+- **知識**: organization + surf-framework
 - **トリガー**: 組織の初回セットアップ、新規事業追加時
 
 ### Set Brand (`/set-brand`)
 - **役割**: 組織共通のブランドガイドラインを対話でヒアリングし `private/memory/organization/brand-guidelines.md` を埋める
 - **入力**: トーン・ビジュアル・表記ルール・Logo Usage・OK/NG表現
 - **出力**: brand-guidelines.md への書き込み + 充足率サマリー
-- **知識**: organization + brand-strategy + sarf-framework
+- **知識**: organization + brand-strategy + surf-framework
 - **トリガー**: ブランド初回セットアップ、リブランディング時、クリエイティブ生成系スキルが `[TODO]` を検知してアラートしたとき
 
 ### Set Workspace (`/set-workspace`)
 - **役割**: workspace 固有情報を対話でヒアリングし `private/memory/workspaces/active/profile/` を埋める
 - **入力**: 事業概要・ICP・Positioning・競合
 - **出力**: business-overview.md / icp.md / positioning.md / competitors.md + 充足率サマリー
-- **知識**: profile + organization + sarf-framework
+- **知識**: profile + organization + surf-framework
 - **トリガー**: workspace 初回セットアップ、ICP や Positioning 更新時
 
 ### Set Update (`/set-update`)
 - **役割**: 最新数値・トレンド・仕様変更を `knowledge/update/` に書き戻す
 - **入力**: パフォーマンスデータ、業界ニュース、プラットフォーム仕様変更
 - **出力**: update ファイルの更新 + 更新サマリー
-- **知識**: update + sarf-framework
+- **知識**: update + surf-framework
 - **トリガー**: 週次（performance-data）、月次（industry-trends）、仕様変更時（platform-updates）
 
-### SARF Check (`/sarf-check`)
-- **役割**: SARFサイクルの現在地を診断し、充足率と次の一手を提示
+### SURF Check (`/surf-check`)
+- **役割**: SURFサイクルの現在地を診断し、充足率と次の一手を提示
 - **入力**: なし（knowledge/ を走査）
 - **出力**: 診断ダッシュボード + 推奨アクション Top 3
 - **知識**: knowledge/ 全層
@@ -43,11 +43,11 @@
 - **役割**: 施策結果を検証ゲート付きで knowledge 層に反映
 - **入力**: 数字（KPI実績）＋定性（顧客反応・学び）
 - **出力**: カテゴリ分類（反映 / 候補 / 却下）＋ diff ベースの書き込み
-- **知識**: base/sarf-framework + profile + update
+- **知識**: base/surf-framework + profile + update
 - **トリガー**: キャンペーン終了時、`/weekly-retro` の Step 5
 
 ### Next (`/next`)
-- **役割**: 未初期化検知＋次の一歩を1件推薦。詳細モードは `/sarf-check`
+- **役割**: 未初期化検知＋次の一歩を1件推薦。詳細モードは `/surf-check`
 - **入力**: なし
 - **出力**: 推薦コマンド1つ＋理由1〜2文
 - **トリガー**: 何を叩けばいいかわからない時の最初の一押し

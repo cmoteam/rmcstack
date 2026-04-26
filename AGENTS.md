@@ -1,12 +1,14 @@
-# SARFStack
+# SURFStack
 
 このファイルは互換性のためのスタブです。**canonical なプロジェクト定義・エージェント仕様は [`CLAUDE.md`](CLAUDE.md)** に統合されています。
 
 Codex など AGENTS.md を参照するハーネスはこのファイル経由で CLAUDE.md を読み込んでください。Claude Code は CLAUDE.md を自動で読み込みます。
 
+> リポジトリ名は移行期のため `sarfstack` のまま運用していますが、論理名・フレームワーク名は **SURFStack / SURF**（Syncing / Understanding / Releasing / Fitting）に統一済みです。
+
 ## ⚠️ Skills に関する注意（重要）
 
-**SARFStack の各スキル（`/set-profile` `/cmo-review` `/ads-manager` 等）はレポジトリ単位では動作しません。**
+**SURFStack の各スキル（`/set-workspace` `/cmo-review` `/ads-manager` 等）はリポジトリ単位では動作しません。**
 
 Claude Code / Codex は現時点で **project-local な `skills/` ディレクトリを自動読み込みしません**。スキルとして呼び出すには、ユーザー側（`~/.claude/skills/` など）あるいは plugin として事前にインストールされている必要があります。
 

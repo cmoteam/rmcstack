@@ -1,6 +1,6 @@
-# private/ — SARFStack Private Data
+# private/ — SURFStack Private Data
 
-SARFStack の **会社ごとのプライベートリポジトリ**。`sarfstack/private/` にクローンして使う。upstream（sarfstack 本体）からは gitignore されているため、ここに書いたものは流出しない。
+SURFStack の **会社ごとのプライベートリポジトリ**。`sarfstack/private/` にクローンして使う。upstream（sarfstack 本体）からは gitignore されているため、ここに書いたものは流出しない。
 
 ## なぜ別リポジトリか
 
@@ -10,7 +10,7 @@ SARFStack の **会社ごとのプライベートリポジトリ**。`sarfstack/
 
 ```
 private/
-├── memory/                     — SARF の Set 層の実体（全スキルが参照）
+├── memory/                     — SURF の Syncing 層の実体（全スキルが参照）
 │   ├── organization/           組織全体（ミッション / ポートフォリオ / ブランド）
 │   └── workspaces/
 │       ├── active → <slug>     現在のアクティブ workspace（symlink）
@@ -47,4 +47,4 @@ bin/workspace new <slug>
 - `output/` は成果物置き場。必要なら `.gitignore` で除外しても良い
 - シークレット（API キー等）は memory/ に書かず、環境変数 or `.mcp.json` に置く
 
-詳細は upstream の `CLAUDE.md` と `knowledge/base/sarf-framework.md` を参照。
+詳細は upstream の `CLAUDE.md` と `knowledge/base/surf-framework.md` を参照。

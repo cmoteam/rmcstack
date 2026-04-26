@@ -1,8 +1,8 @@
 # Integrations — 外部ツール直結レイヤー
 
-SARFStack の各スキルが外部サービス（Figma / Google / Meta / X / LinkedIn / HubSpot / Slack / Notion 等）と **直接** 接続するための共通カタログです。
+SURFStack の各スキルが外部サービス（Figma / Google / Meta / X / LinkedIn / HubSpot / Slack / Notion 等）と **直接** 接続するための共通カタログです。
 
-> **位置づけ**: Integrations は SARF の **Set（データ取り込み）** と **Release（本番反映）** の両方を加速するための I/O 層です。Set で外部から数字・アセットを pull し、Release で成果物を push する両方向をカバーします。
+> **位置づけ**: Integrations は SURF の **Syncing（データ取り込み）** と **Fitting（本番反映）** の両方を加速するための I/O 層です。Set で外部から数字・アセットを pull し、Release で成果物を push する両方向をカバーします。
 > knowledge 層のどこにも書かれていない揮発データは、ここに列挙された接続経由で取得します。allowlist 外のソースは使いません（hallucination 防止）。
 
 ## Integration Catalog
@@ -124,7 +124,7 @@ SARFStack の各スキルが外部サービス（Figma / Google / Meta / X / Lin
 ## Feedback Loop
 
 接続したツールから取得した数値 / アセットは、最終的には `/feedback` を経由して `memory/results/` と `knowledge/update/` に蓄積される。
-「MCP から直接取れる」= 「Set / Feedback の自動化ができる」。接続が増えるほど SARF サイクルの回転速度が上がる。
+「MCP から直接取れる」= 「Set / Feedback の自動化ができる」。接続が増えるほど SURF サイクルの回転速度が上がる。
 
 - Ads / Analytics 系 → `/data-analytics` → `/feedback` → `memory/results/performance-data.md`
 - Platform 公式ブログ → `/set-update`（既存の allowlist を通す）→ `knowledge/update/platform-updates.md`
@@ -133,7 +133,7 @@ SARFStack の各スキルが外部サービス（Figma / Google / Meta / X / Lin
 
 ## References
 
-- SARF サイクル全体: [`sarf-framework.md`](sarf-framework.md)
+- SURF サイクル全体: [`surf-framework.md`](surf-framework.md)
 - MarTech / RevOps 観点: [`martech-revops.md`](martech-revops.md)
 - Set の手動更新: [`../../skills/set-update/SKILL.md`](../../skills/set-update/SKILL.md)
 - Feedback の書き戻し: [`../../skills/feedback/SKILL.md`](../../skills/feedback/SKILL.md)

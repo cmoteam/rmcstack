@@ -7,7 +7,7 @@
 
 ## 位置づけ
 
-SARFStack の memory は **2層** で構成されています:
+SURFStack の memory は **2層** で構成されています:
 
 | 層 | パス | スコープ | 担当スキル | 典型的な内容 |
 |---|---|---|---|---|
@@ -44,6 +44,6 @@ SARFStack の memory は **2層** で構成されています:
 
 ## 注意事項
 
-- 情報が不十分でも SARFStack は動作しますが、レビューの精度が下がります
+- 情報が不十分でも SURFStack は動作しますが、レビューの精度が下がります
 - 機密情報を書き込む先は **必ず `private/memory/workspaces/<slug>/profile/`**（gitignore対象）側です。`templates/memory/profile/` に書き込むと upstream に push されうるので注意
 - 定期的に情報を更新してください（特に競合情報とポジショニング）

@@ -39,7 +39,7 @@
 
 ## Marketing Extension (Optional)
 
-> **任意項目**: SARFの Marketing Extension に対応する optional フィールド。埋めると `/cmo-review` `/ads-manager` 等の出力精度が上がるが、空欄でも SARF は通常動作する。詳細は `knowledge/base/sarf-framework.md` の末尾を参照。
+> **任意項目**: SURF の Marketing Extension に対応する optional フィールド。埋めると `/cmo-review` `/ads-manager` 等の出力精度が上がるが、空欄でも SURF は通常動作する。詳細は `knowledge/base/surf-framework.md` の末尾を参照。
 
 ### Measurement（計測基盤）
 - **North Star KPI**: [OPTIONAL: 例 MRR / CVR / CAC / LTV / ROAS のうち、単一の North Star は？]

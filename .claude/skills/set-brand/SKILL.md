@@ -1,16 +1,16 @@
 ---
 name: set-brand
-description: SARFのSet段階（brand層）。bin/set-brand でフォーム入力を促し、完了後に充足チェックを行う。
+description: SURFのSyncing段階（brand層）。bin/set-brand でフォーム入力を促し、完了後に充足チェックを行う。
 version: 2.0.0
 ---
 
 # Set Brand
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Set（organization 層のブランドガイドラインを埋める）
-- **Set Preflight**: `bin/set-organization` 完了済み（organization コンテキストが前提）
-- **Feedback Hook**: 実配信後のブランド反応（トーン受容度・認知調査）は `/feedback` 経由で `organization/brand-guidelines.md` に検証ゲート付きで反映
+- **Position**: Syncing（organization 層のブランドガイドラインを埋める）
+- **Sync Preflight**: `bin/set-organization` 完了済み（organization コンテキストが前提）
+- **Fitting Hook**: 実配信後のブランド反応（トーン受容度・認知調査）は `/feedback` 経由で `organization/brand-guidelines.md` に検証ゲート付きで反映
 
 `bin/set-brand` に委譲します。以下を Bash ツールで実行してください。
 
@@ -23,7 +23,7 @@ bin/set-brand
 
 ## 実行後の確認（Claude の役割）
 
-スクリプト完了後、`/sarf-check` を使ってブランドガイドラインの充足率と一貫性を確認してください。
+スクリプト完了後、`/surf-check` を使ってブランドガイドラインの充足率と一貫性を確認してください。
 
 ## Preflight
 

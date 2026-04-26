@@ -1,16 +1,16 @@
 ---
 name: init-private
-description: SARFStack の private/ をブートストラップする。private/memory/organization・private/memory/workspaces・private/output・private/README.md を生成する。`bin/init-private` に委譲する薄いラッパー。
+description: SURFStack の private/ をブートストラップする。private/memory/organization・private/memory/workspaces・private/output・private/README.md を生成する。`bin/init-private` に委譲する薄いラッパー。
 version: 1.0.0
 ---
 
 # Init Private
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Set 段階の起点（private/ のディレクトリ構造を用意する）
-- **Set Preflight**: なし（これ自体が起点）
-- **Feedback Hook**: なし
+- **Position**: Syncing 段階の起点（private/ のディレクトリ構造を用意する）
+- **Sync Preflight**: なし（これ自体が起点）
+- **Fitting Hook**: なし
 
 `bin/init-private` に委譲します。以下を Bash ツールで実行してください。
 

@@ -10,11 +10,11 @@ version: 1.0.0
 データに基づいた分析、KPIレポーティング、アトリビューション分析、
 そして具体的な改善アクションの提案を行います。
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Feedback（数値の集約と解釈）
-- **Set Preflight**: `private/memory/workspaces/active/results/performance-data.md` の過去データがないとトレンド分析ができない。初回実行時はユーザーに直近データの提供を要求し、終了後に `/feedback` で書き戻すよう促す
-- **Feedback Hook**: このスキルが **Feedback の主役**。出力の Recommended Actions を `/feedback` に連携し、検証済み学びだけを knowledge 層に反映する
+- **Position**: Understanding（数値の集約と解釈）／ Fitting への入力
+- **Sync Preflight**: `private/memory/workspaces/active/results/performance-data.md` の過去データがないとトレンド分析ができない。初回実行時はユーザーに直近データの提供を要求し、終了後に `/feedback` で書き戻すよう促す
+- **Fitting Hook**: このスキルが **Feedback の主役**。出力の Recommended Actions を `/feedback` に連携し、検証済み学びだけを knowledge 層に反映する
 - **[Optional] Target Funnel Stage**: 指定があればそのファネル段階に絞って転換率・ボトルネック分析（TOFU→MOFU 離脱、MOFU→BOFU の歩留まり等）。未指定ならファネル全体を俯瞰
 - **[Optional] Target Segment**: 指定があればそのセグメントに絞って切り出し分析（デバイス・地域・業種・LTV帯別）。未指定なら全体と主要セグメントの両方を出す
 - **[Optional] Primary KPI**: 指定があればその KPI を主軸にレポート構成を組む。未指定なら CVR / CPA / ROAS / LTV を並列で扱う

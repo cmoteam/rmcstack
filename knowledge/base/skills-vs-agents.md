@@ -1,6 +1,6 @@
 # Skills vs Agents — 使い分けの判断基準
 
-SARFStack は **Skill**（`.claude/skills/`）と **Agent**（`.claude/agents/`）の2種類を使い分けます。
+SURFStack は **Skill**（`.claude/skills/`）と **Agent**（`.claude/agents/`）の2種類を使い分けます。
 
 | | Skill | Agent |
 |---|---|---|
@@ -43,9 +43,9 @@ Agent の frontmatter には `scope` フィールドを持たせる:
 | Specialist (Ask) | — | workspace | `customer-research` |
 | Specialist (Release) | — | workspace | `contents-edit` `ads-manager` `estimate` `ui-design` `pricing-strategy` `churn-prevention` `data-analytics` |
 | Optimization | — | workspace | `optimize`（6 target 統合） |
-| SARF Ops | — | organization | `set-organization` `set-brand` |
-| SARF Ops | — | workspace | `set-workspace` `set-update` `feedback` |
-| Meta | — | cross-workspace | `workspace` `next` `sarf-check` |
+| SURF Ops | — | organization | `set-organization` `set-brand` |
+| SURF Ops | — | workspace | `set-workspace` `set-update` `feedback` |
+| Meta | — | cross-workspace | `workspace` `next` `surf-check` |
 | Workflows | — | — | `campaign-launch` 他（`.claude/workflows/` 配下、未実装） |
 
 Agent 化された 5 つは、同名の Skill が `.claude/skills/<name>/SKILL.md` に **thin dispatcher** として存在し、slash コマンドのエントリポイント兼 Task tool へのディスパッチャを担う。

@@ -1,7 +1,7 @@
 # Pricing Strategy — 価格戦略
 
 価格は4Pの中で**唯一、直接売上を左右する**レバー。他の3P（Product / Place / Promotion）がコストを生む一方、Priceは利益を決める。
-価格戦略はSARFの **Set** と **Release** の両方に関わる。ICPの支払能力・競合レンジをSetに書き、価格変更はReleaseの最重要レバーとして扱う。
+価格戦略はSURFの **Syncing** と **Release** の両方に関わる。ICPの支払能力・競合レンジをSetに書き、価格変更はReleaseの最重要レバーとして扱う。
 
 ## 価格戦略の3つの立脚点
 
@@ -115,7 +115,7 @@ SaaS/サブスクでは「何で課金するか」が重要：
 - a16z: "The SaaS Pricing Problem"
 - Kyle Poyar (OpenView): "PLG Pricing Teardown" シリーズ
 
-## SARFとの接続
+## SURFとの接続
 
 - **Set**: ICPの支払能力、競合価格レンジ、自社のコスト構造を `memory/profile/` に書く
 - **Ask**: 「このICPに対するVan Westendorp設問を作って」「競合3社のプラン構造を比較して」

@@ -10,12 +10,12 @@ version: 1.0.0
 SaaS・サブスクリプション・コンテンツプロダクトにおいて、**解約を減らし LTV を伸ばす** ための施策を設計・実装します。
 カスタマーサクセス的な運用論だけでなく、キャンセルフローUI・Save Offer・リエンゲージメントメール等の **具体的な成果物** を出力します。
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Ask（解約要因診断）＋ Release（キャンセルフロー・Save Offer・メール文面を本番反映）
+- **Position**: Understanding（解約要因診断）＋ Fitting（キャンセルフロー・Save Offer・メール文面を本番反映）
 - **Ask Subtype**: Review（現状の解約率・理由・パターンの評価）＋ Design（リテンション施策の再設計）
-- **Set Preflight**: `icp.md`（ユーザーゴール）、`business-overview.md`（収益モデル・LTV構造）、`performance-data.md`（Churn率・Cohortリテンション・解約理由）が前提。解約理由データが無ければ、まず計測設計から
-- **Feedback Hook**: 施策後の Churn Rate / Save Rate / Reactivation Rate を `/feedback` に戻す。解約理由の Top 3 と有効な Save Offer は `private/memory/workspaces/active/profile/` のコア資産として蓄積
+- **Sync Preflight**: `icp.md`（ユーザーゴール）、`business-overview.md`（収益モデル・LTV構造）、`performance-data.md`（Churn率・Cohortリテンション・解約理由）が前提。解約理由データが無ければ、まず計測設計から
+- **Fitting Hook**: 施策後の Churn Rate / Save Rate / Reactivation Rate を `/feedback` に戻す。解約理由の Top 3 と有効な Save Offer は `private/memory/workspaces/active/profile/` のコア資産として蓄積
 - **[Optional] Target Funnel Stage**: Retention 固定
 - **[Optional] Target Segment**: 「初月解約」「長期契約からの解約」「ダウングレード経由」など、解約パターン別に施策を分岐
 - **[Optional] Primary KPI**: 指定あればその KPI を主軸。未指定なら **Gross Churn Rate**（月次）＋ **Net Revenue Retention**

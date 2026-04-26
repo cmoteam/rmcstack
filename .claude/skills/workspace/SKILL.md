@@ -1,13 +1,13 @@
 ---
 name: workspace
-description: SARFStack のアクティブ workspace を切り替え・一覧・新規作成する。bin/workspace に委譲する薄いラッパー。
+description: SURFStack のアクティブ workspace を切り替え・一覧・新規作成する。bin/workspace に委譲する薄いラッパー。
 ---
 
 # Workspace
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Set（workspace コンテナ管理。Set の入れ物を作る前提操作）
+- **Position**: Syncing（workspace コンテナ管理。Syncing の入れ物を作る前提操作）
 
 `bin/workspace` に委譲します。以下のコマンドを Bash ツールで実行してください。
 

@@ -220,7 +220,7 @@ MarTechの新層として**AI Automation**が台頭：
 - **AI Analyst**: Hex Magic / Julius / ThoughtSpot Sage
 - **Agent Framework / Workflow**: Claude Agent SDK / LangChain / n8n / Zapier
 
-**SARFStackもこの層に位置する。** AIが各機能を横断して"オペレーションの接着剤"になる。
+**SURFStackもこの層に位置する。** AIが各機能を横断して"オペレーションの接着剤"になる。
 
 ## ツール選定の原則
 
@@ -256,7 +256,7 @@ MarTechの新層として**AI Automation**が台頭：
 - MarTech.org / Chief Martec ブログ
 - Reforge: "Marketing Architecture" コース
 
-## SARFとの接続
+## SURFとの接続
 
 - **Set**: 現状のツールスタック、データソース、データ定義、既知のデータギャップを `memory/profile/` に書く
 - **Ask**: 「このスタックで重複・ギャップを洗い出して」「Reverse ETLで接続すべきデータセットは？」

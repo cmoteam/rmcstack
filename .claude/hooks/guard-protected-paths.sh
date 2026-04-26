@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# PreToolUse guard for SARFStack protected paths.
+# PreToolUse guard for SURFStack protected paths.
 #
 # Policy (see CLAUDE.md):
 #   - templates/memory/profile/**      : upstream template. HARD BLOCK writes.
@@ -45,7 +45,7 @@ fi
 
 block() {
   local reason="$1"
-  echo "[SARFStack guard] BLOCKED: $reason" >&2
+  echo "[SURFStack guard] BLOCKED: $reason" >&2
   echo "  path: $rel_path" >&2
   echo "  hook: .claude/hooks/guard-protected-paths.sh" >&2
   exit 2
@@ -76,7 +76,7 @@ if [[ "$rel_path" != */* ]]; then
       case "$rel_path" in
         README.md|CLAUDE.md|AGENTS.md|.mcp.json|.mcp.json.example) ;;
         *)
-          echo "[SARFStack guard] WARN: 一次成果物はルート直下ではなく private/output/ 配下に置いてください（CLAUDE.md §Output Directory）。path: $rel_path" >&2
+          echo "[SURFStack guard] WARN: 一次成果物はルート直下ではなく private/output/ 配下に置いてください（CLAUDE.md §Output Directory）。path: $rel_path" >&2
           ;;
       esac
       ;;
