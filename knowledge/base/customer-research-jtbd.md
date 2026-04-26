@@ -1,7 +1,7 @@
 # Customer Research & JTBD — 顧客リサーチとJobs to be Done
 
 マーケティング施策の根拠は**常に顧客の言葉**にある。フレームワーク・データも重要だが、N1の生々しい発言を聞いていないマーケは漂流する。
-顧客リサーチはSARFの **Set** を更新する最重要活動であり、N1インタビューの内容は必ず `memory/profile/icp.md` に反映させる。
+顧客リサーチはSURFの **Syncing** を更新する最重要活動であり、N1インタビューの内容は必ず `memory/profile/icp.md` に反映させる。
 
 ## なぜJTBD（Jobs to be Done）か
 
@@ -187,7 +187,7 @@ Problemが浅いのにSolutionを磨いても、**誰も買わないプロダク
 - JTBD.info（コミュニティ・ライブラリ）
 - Strategyn（Anthony Ulwick）: Outcome-Driven Innovation
 
-## SARFとの接続
+## SURFとの接続
 
 - **Set**: インタビューから得たJTBD / 競合 / 反論 / Anxietiesを `memory/profile/icp.md` `competitors.md` に書く
 - **Ask**: 「このSwitch Interviewログから主要ジョブを3つ抽出して」「Problem検証のインタビュースクリプトを作って」

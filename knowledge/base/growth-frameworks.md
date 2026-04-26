@@ -1,12 +1,12 @@
 # Growth Frameworks — グロースフレームワーク集
 
-以下のフレームワークは、いずれも **SARF**（Set / Ask / Release / Feedback、読み:「サーフ」）サイクルの中で使われる「考える道具」として位置づけられる。
-- **Set段階**で使う: STP / JTBD（誰に・何の仕事のために売るかをAIに伝える材料）
-- **Ask段階**で使う: AARRR / RAM-CE / Content Marketing Matrix（どのレンズで評価・制作させるかを指定）
-- **Release段階**で使う: Hook Model / MVP（何をどう実装・本番反映するかの型）
-- **Feedback段階**で使う: North Star Metric / ユニットエコノミクス / AARRR指標（何を測って戻すか）
+以下のフレームワークは、いずれも **SURF**（Syncing / Understanding / Releasing / Fitting、読み:「サーフ」）サイクルの中で使われる「考える道具」として位置づけられる。
+- **Syncing 段階**で使う: STP / JTBD（誰に・何の仕事のために売るかをチームと AI に共有する材料）
+- **Understanding 段階**で使う: AARRR / RAM-CE / Content Marketing Matrix（どのレンズで評価・診断させるかを指定）
+- **Releasing 段階**で使う: 既成の North Star や AARRR 指標を**意図的に疑い直す**（`/release-assumptions` の触媒として）
+- **Fitting 段階**で使う: Hook Model / MVP（何をどう実装・本番反映するか）/ North Star Metric / ユニットエコノミクス / AARRR 指標（何を測って次サイクルに還流するか）
 
-SARFの詳細は `knowledge/base/sarf-framework.md`。
+SURF の詳細は `knowledge/base/surf-framework.md`。
 
 ## AARRR（Pirate Metrics）
 

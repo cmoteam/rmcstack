@@ -85,7 +85,7 @@ def fill_todos(paths: list[Path], header: str, next_step: str | None = None) -> 
 
     total = count_todos(existing)
     if total == 0:
-        print("TODO はすべて埋まっています。/sarf-check で確認してください。")
+        print("TODO はすべて埋まっています。/surf-check で確認してください。")
         return
 
     print(f"{header}")

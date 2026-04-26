@@ -1,6 +1,6 @@
 # .claude/workflows/
 
-統合ワークフロー（SARF の複数段階を横断する束ね役）の置き場。
+統合ワークフロー（SURF の複数段階を横断する束ね役）の置き場。
 単体スキル（`.claude/skills/`）との違いは CLAUDE.md §Skills vs Agents を参照。
 
 現状 **未実装**。以下のスタブが実装予定:

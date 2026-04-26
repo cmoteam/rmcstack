@@ -1,16 +1,16 @@
 ---
 name: set-workspace
-description: SARFのSet段階（workspace層）。bin/set-workspace でフォーム入力を促し、完了後に充足チェックを行う。
+description: SURFのSyncing段階（workspace層）。bin/set-workspace でフォーム入力を促し、完了後に充足チェックを行う。
 version: 2.0.0
 ---
 
 # Set Workspace
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Set（workspace 固有の ICP / Positioning / Competitors を埋める）
-- **Set Preflight**: アクティブ workspace が存在すること（`bin/workspace new <slug>`）、organization 層整備済み
-- **Feedback Hook**: 施策検証で ICP・Positioning に更新が出たら `/feedback` 経由で `workspaces/active/profile/` に検証ゲート付きで反映
+- **Position**: Syncing（workspace 固有の ICP / Positioning / Competitors を埋める）
+- **Sync Preflight**: アクティブ workspace が存在すること（`bin/workspace new <slug>`）、organization 層整備済み
+- **Fitting Hook**: 施策検証で ICP・Positioning に更新が出たら `/feedback` 経由で `workspaces/active/profile/` に検証ゲート付きで反映
 
 `bin/set-workspace` に委譲します。以下を Bash ツールで実行してください。
 
@@ -23,7 +23,7 @@ bin/set-workspace
 
 ## 実行後の確認（Claude の役割）
 
-スクリプト完了後、`/sarf-check` を使って充足率と品質を確認してください。
+スクリプト完了後、`/surf-check` を使って充足率と品質を確認してください。
 
 ## Preflight
 

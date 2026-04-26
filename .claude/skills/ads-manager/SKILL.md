@@ -10,12 +10,12 @@ version: 1.0.0
 Google Ads、Meta Ads、X Ads等のデジタル広告の設計から入稿データ作成、
 運用最適化、パフォーマンス分析まで一貫して担当します。
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Release（入稿可能な設計＋コピーを本番配信へ）
-- **Set Preflight**: `platform-updates.md` が60日以上古い場合、入札戦略・仕様が実態とズレる可能性を明示して `/set-update` を推奨する。`performance-data.md` の CPA/ROAS ベースラインが欠けていると予測が立てられない
+- **Position**: Fitting（入稿可能な設計＋コピーを本番反映へ）
+- **Sync Preflight**: `platform-updates.md` が60日以上古い場合、入札戦略・仕様が実態とズレる可能性を明示して `/set-update` を推奨する。`performance-data.md` の CPA/ROAS ベースラインが欠けていると予測が立てられない
 - **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、広告コピー・クリエイティブ生成開始前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します（継続する場合はブランド適合度が下がる可能性）」と明示してユーザー確認を取る
-- **Feedback Hook**: 配信後の CTR / CVR / CPA / ROAS を `/feedback` に戻す。クリエイティブ仮説と入札戦略の学習に使う
+- **Fitting Hook**: 配信後の CTR / CVR / CPA / ROAS を `/feedback` に戻す。クリエイティブ仮説と入札戦略の学習に使う
 - **[Optional] Target Funnel Stage**: 指定があれば段階別にチャネル・入札戦略を最適化（TOFU=Reach/Impression系、MOFU=Consideration/Traffic、BOFU=Conversion/ROAS）。未指定なら複数段階に分散する設計を提示
 - **[Optional] Target Segment**: 指定があればターゲティング（カスタムオーディエンス / 興味関心 / LAL）をそのセグメント基準で構築。未指定なら Primary ICP を前提に複数オーディエンスを提案
 - **[Optional] Primary KPI**: 指定があれば目標値を軸に入札戦略を設計（CPA / ROAS / CVR / CPC / LTV:CAC）。未指定なら CPA を主軸に ROAS もセットで提示

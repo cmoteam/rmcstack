@@ -28,13 +28,13 @@ version: 2.0.0
 
 `<target>` が確定したら、必ず対応する `targets/<target>.md` を Read して、そこに書かれた **Diagnostic Framework / Output Format / Target-specific Principles / Chaining** を適用してください。
 
-## SARF Alignment（全 target 共通）
+## SURF Alignment（全 target 共通）
 
-- **Position**: Ask（CVR診断）＋ Release（HTML/CSS・UI・コピー・トリガー条件を本番反映）
+- **Position**: Understanding（CVR 診断）＋ Fitting（HTML/CSS・UI・コピー・トリガー条件を本番反映）
 - **Ask Subtype**: Review（既存の評価）＋ Design（改修後の再設計）
-- **Set Preflight**: `icp.md` / `positioning.md` / `performance-data.md` が前提。現状ベースラインが無いと改善幅を見積もれないため、未整備なら `/set-workspace` → `/feedback` で埋めることを推奨
+- **Sync Preflight**: `icp.md` / `positioning.md` / `performance-data.md` が前提。現状ベースラインが無いと改善幅を見積もれないため、未整備なら `/set-workspace` → `/feedback` で埋めることを推奨
 - **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、コピー・HTML/CSS・UI 生成前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します」と明示してユーザー確認を取る
-- **Feedback Hook**: 改修版リリース後の target 固有 KPI を `/feedback` に戻す。検証済みパターンは `knowledge/update/` の自社プレイブックに昇華
+- **Fitting Hook**: 改修版リリース後の target 固有 KPI を `/feedback` に戻す。検証済みパターンは `knowledge/update/` の自社プレイブックに昇華
 - **[Optional] Target Funnel Stage**: target によって暗黙の stage が変わる（例: `onboarding` は Activation 固定）。`targets/<target>.md` に記載あり
 - **[Optional] Target Segment**: 指定あれば該当セグメントの情報収集癖・リテラシー・デバイスに合わせて優先
 - **[Optional] Primary KPI**: 上表参照。未指定ならそれをデフォルトに
@@ -95,7 +95,7 @@ Fallback は従来通り手入力データ。詳細は [`knowledge/base/integrat
 
 1. `<target>` を確認（未指定なら質問）
 2. Required Knowledge と `targets/<target>.md` を Read
-3. Set Preflight / Brand Preflight Alert を実行（問題があれば明示）
+3. Sync Preflight / Brand Preflight Alert を実行（問題があれば明示）
 4. Diagnostic Framework に沿って現状を評価（ユーザーから URL / スクリーンショット / 現状コード を受け取る）
 5. Output Format に沿って改修案・コード・A/B ロードマップを出力
 6. Chaining（前後工程スキル）を末尾で提案

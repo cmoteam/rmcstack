@@ -10,13 +10,13 @@ version: 1.0.0
 LP（ランディングページ）、広告LP、Webページのコンバージョン最適化を目的としたUI/UXレビューと改善を行います。
 レビューだけでなく、具体的なHTML/CSSの修正コードも出力します。
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Ask（UXレビュー）＋ Release（HTML/CSS 修正コードを本番反映）
+- **Position**: Understanding（UX レビュー）＋ Fitting（HTML/CSS 修正コードを本番反映）
 - **Ask Subtype**: Review（既存 HTML/CSS・ワイヤーフレームを CVR 観点で評価。ゼロから LP 構成を設計するのは `/landing-page` の Step 1 で `/cmo-review` が担当）
-- **Set Preflight**: `icp.md` が未整備だと CVR 改善判断が汎用になる。[TODO] がある場合は「ICP推定で進める」旨を明示し `/set-workspace` を推奨
+- **Sync Preflight**: `icp.md` が未整備だと CVR 改善判断が汎用になる。[TODO] がある場合は「ICP推定で進める」旨を明示し `/set-workspace` を推奨
 - **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、HTML/CSS・コピー生成開始前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します（継続する場合はブランド適合度が下がる可能性）」と明示してユーザー確認を取る
-- **Feedback Hook**: 修正コード反映後の CVR 変化・ヒートマップ観測を `/feedback` に戻す。LP構成テンプレの改善に使う
+- **Fitting Hook**: 修正コード反映後の CVR 変化・ヒートマップ観測を `/feedback` に戻す。LP構成テンプレの改善に使う
 - **[Optional] Target Funnel Stage**: 指定があればその段階向けの構成（TOFU=スクロール誘導の強さ、MOFU=比較表・FAQ、BOFU=CTAの断定性）を評価軸に入れる。未指定なら CVR 一般則で評価
 - **[Optional] Target Segment**: 指定があればそのセグメントのリテラシー・情報収集癖に合わせた UX 評価。未指定なら Primary ICP 基準
 - **[Optional] Primary KPI**: 指定があれば CVR / フォーム到達率 / スクロール深度 / 滞在時間 のいずれを軸にするか明示。未指定なら CVR を主軸

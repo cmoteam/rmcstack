@@ -10,12 +10,12 @@ version: 1.0.0
 コンテンツ戦略の策定からの実際の原稿執筆、SEO最適化、配信計画まで一貫して担当します。
 アドバイスだけでなく、そのまま使える完成原稿を出力します。
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Release（そのまま公開できる成果物を出し、本番配信へ）
-- **Set Preflight**: `icp.md` `positioning.md` のいずれかに `[TODO]` があると「ICPの言葉」で書けない。該当時は冒頭で明示し `/set-workspace` を推奨する
+- **Position**: Fitting（そのまま公開できる成果物を出し、本番反映へ）
+- **Sync Preflight**: `icp.md` `positioning.md` のいずれかに `[TODO]` があると「ICPの言葉」で書けない。該当時は冒頭で明示し `/set-workspace` を推奨する
 - **Brand Preflight Alert**: `private/memory/organization/brand-guidelines.md` に `[TODO]` が残っている、またはファイル未存在の場合、生成開始前に「⚠️ ブランドガイドラインが未整備です。`/set-brand` で整備してから再実行を推奨します（継続する場合はブランド適合度が下がる可能性）」と明示してユーザーの確認を取る
-- **Feedback Hook**: 公開後のエンゲージメント・CV・検索順位を `/feedback` に戻す。トピッククラスタ戦略の精度向上に使う
+- **Fitting Hook**: 公開後のエンゲージメント・CV・検索順位を `/feedback` に戻す。トピッククラスタ戦略の精度向上に使う
 - **[Optional] Target Funnel Stage**: 指定があれば段階別にフォーマットを選ぶ（TOFU=教育・解説記事／SNSショート、MOFU=比較・事例、BOFU=導入ガイド・ROI試算）。未指定なら段階中立で汎用フォーマットを使う
 - **[Optional] Target Segment**: 指定があればそのセグメント特有の語彙・課題・情報収集経路に合わせて原稿を書く。未指定なら Primary ICP を前提
 - **[Optional] Primary KPI**: 指定があればその KPI に最適化（Organic CV / エンゲージメント率 / リード獲得 / 読了率 / シェア数）。未指定なら Organic CV と読了率を両立

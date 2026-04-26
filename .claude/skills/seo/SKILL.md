@@ -8,9 +8,9 @@ version: 1.0.0
 
 この skill は `/seo` を slash コマンドから呼び出すための薄いラッパーです。実体は `.claude/agents/seo.md`（SEO Specialist agent）にあります。
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Ask（canonical は agent 側）
+- **Position**: Understanding（canonical は agent 側）
 
 ## 動作
 
@@ -21,7 +21,7 @@ version: 1.0.0
 ## 指示テンプレ（agent への prompt）
 
 ```
-SARFStack リポジトリ（/Users/yumaendo/repos/cmoteam/sarfstack）で SEO レビューを実行してください。
+SURFStack リポジトリ（/Users/yumaendo/repos/cmoteam/sarfstack）で SEO レビューを実行してください。
 
 依頼:
 <ユーザーの依頼をそのまま貼る>

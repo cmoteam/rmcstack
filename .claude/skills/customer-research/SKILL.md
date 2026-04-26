@@ -10,12 +10,12 @@ version: 1.0.0
 顧客インタビュー、Win/Loss 分析、JTBD（Jobs to be Done）探索、ペルソナ検証、NPS・CSAT 深掘り等を設計・実施支援し、
 **ICP を仮説から実証データに昇華** させます。出力は `private/memory/workspaces/active/profile/icp.md` `private/memory/workspaces/active/profile/positioning.md` を鍛える素材となります。
 
-## SARF Alignment
+## SURF Alignment
 
-- **Position**: Ask（既存 ICP の検証）＋ Set の強化（調査結果を `/feedback` 経由で company 層に昇華）
+- **Position**: Understanding（既存 ICP の検証）＋ Syncing の強化（調査結果を `/feedback` 経由で company 層に昇華）
 - **Ask Subtype**: Design（インタビュー設計書・質問票の作成）＋ Review（既存 ICP の妥当性評価）
-- **Set Preflight**: `icp.md` `positioning.md` が必須入力。[TODO] のままでも可だが、その場合は「現状の仮説 ICP を検証する」調査になる（埋まっていれば「ICP を深堀りする」調査になる）
-- **Feedback Hook**: インタビュー結果・調査データを `/feedback` に渡し、検証ゲート通過分を `private/memory/workspaces/active/profile/icp.md` `positioning.md` に反映。このスキルの最終成果は **Set 層の精度向上** に他ならない
+- **Sync Preflight**: `icp.md` `positioning.md` が必須入力。[TODO] のままでも可だが、その場合は「現状の仮説 ICP を検証する」調査になる（埋まっていれば「ICP を深堀りする」調査になる）
+- **Fitting Hook**: インタビュー結果・調査データを `/feedback` に渡し、検証ゲート通過分を `private/memory/workspaces/active/profile/icp.md` `positioning.md` に反映。このスキルの最終成果は **Set 層の精度向上** に他ならない
 - **[Optional] Target Funnel Stage**: 全段階対象。ただし対象ユーザー選定は funnel stage 別（未登録リード / 新規顧客 / 長期顧客 / 解約顧客）で設計を分岐
 - **[Optional] Target Segment**: 複数 segment を横断して調査する場合、segment 別のインタビュー計画を推奨
 - **[Optional] Primary KPI**: 調査スキルなので直接 KPI に紐付かないが、「このインタビューで何を意思決定するか」を Primary Question として事前定義
