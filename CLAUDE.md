@@ -2,8 +2,6 @@
 
 SURFStack は Claude Code / Codex 上で動作する仮想マーケティング組織。各エージェントは SKILL.md で定義され、全員が **SURF**（Syncing / Understanding / Releasing / Fitting、読み:「サーフ」）サイクルの特定段階を担います。`CLAUDE.md` が canonical、`AGENTS.md` はこのファイルを参照するスタブ（Codex 他ハーネス向け）。
 
-> リポジトリ名は移行期のため `sarfstack` のまま運用していますが、論理名・フレームワーク名は **SURFStack / SURF** に統一済みです。リポジトリ名変更は別途実施。
-
 ## Operating Model — SURF
 
 **AI 時代のマーケティング OS**。個別フレームワーク（AARRR・STP・RAM-CE 等）の上位に位置し、それらを**組織学習として機能させる**ための型を定義します。マーケ固有ディメンション（ファネル段階 / セグメント / ユニットエコノミクス / KPI / アトリビューション）を重ねる **Marketing Extension** で特化性を担保（optional）。詳細は `knowledge/base/surf-framework.md`。
@@ -19,8 +17,6 @@ Syncing ─→ Understanding ─→ Releasing ─→ Fitting ─┐
 - **U — Understanding**（理解／出力）: 何を理解しているか／していないかを可視化し、視点を切り替えて選択肢を出す
 - **R — Releasing**（解放）: 既成の KPI・聖域・「ねばならない」を手放し、リフレーミングの余白を作る
 - **F — Fitting**（適合・本番反映・還流）: 自社プロダクトに適合した目標とステップに再構成し、shipping し、結果を次の Syncing に還流する
-
-> **Release vs Releasing**: 旧 SARF の "Release"（本番反映）と SURF の "Releasing"（既成枠の解放）は意味が逆です。本番反映は **Fitting** の責務として `shipping` / `deploy` / 「本番反映」と表記し、Releasing は**認知・前提の解放専用**に固定します。
 
 | SURF | 担い手 |
 |------|-------|

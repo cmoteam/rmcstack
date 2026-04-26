@@ -57,8 +57,6 @@ SURF（Syncing / Understanding / Releasing / Fitting、読み:「サーフ」）
 - **Releasing**（解放）: 既成の KPI・聖域・「ねばならない」を手放し、リフレーミングの余白を作る
 - **Fitting**（適合・本番反映・還流）: 自社プロダクトに適合した目標とステップに再構成し、本番反映（shipping）し、結果を次の Syncing に還流する
 
-> 旧 SARF（Set / Ask / Release / Feedback）からの転換。詳細は `knowledge/base/surf-framework.md`。
-
 AARRR・STP・RAM-CE といったフレームワークが「何を考えるか」の地図を提供するのに対し、SURF は「AI とどう関わりながら組織として学習するか」の型を提供する。
 SURFStack では知識ベース構造（base / update）と memory が SURF の Syncing 層を、レビュー / 分析系スキルが Understanding 層を、`/release-assumptions` `/consultant-review` が Releasing 層を、制作系スキル + `/feedback` が Fitting 層（適合・shipping・還流）を担う。
 
@@ -161,6 +159,10 @@ AMA（アメリカ・マーケティング協会）の定義: 「マーケティ
 
 ## Anti-Patterns（避けるべきパターン）
 
+- **前提共有の不在**: チーム内で「マーケティング」の指す範囲がバラバラ、個々のメンバーが「自分は何のためにここにいるか」を即答できない状態のまま施策議論に入る。同じ言葉で別のことを話しているため何も決まらない（詳細 `marketing-structural-issues.md` Section 0）。
+- **戦略課題の戦術解決**: 製品プロセスから切り離されたまま、プロダクト・価格・ポジショニングのずれを広告コピーやファネル最適化で解決しようとする。原理的に不可能。
+- **閉じた指標への固執**: CPA・CVR・PV など自部署で動かせる狭い指標に異常に執着し、事業収益への寄与は問わない。戦略レベルの失敗からの逃避である。
+- **施策の自己目的化**: 指標すら出ないと、今度は「施策をやった感」「報告会の枚数」が目的化する。事業の何も変わらない。AI 時代はこれが洗練された形で加速する。
 - **Feature Listing**: 機能を並べるだけのコピー。顧客のベネフィットに翻訳すること。
 - **Spray and Pray**: ターゲットを絞らず全方位に撃つ。ICPを明確にしてから動く。
 - **Vanity Metrics**: いいね数・PVだけを追う。収益に繋がる指標を重視する。
