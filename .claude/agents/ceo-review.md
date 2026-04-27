@@ -31,7 +31,7 @@ tools: Read, Grep, Glob
    private/memory/workspaces/*/results/performance-data.md （存在すれば）
    ```
    `Glob` で `private/memory/workspaces/*/profile/*.md` を列挙し、各 workspace の概要を把握する。
-3. `knowledge/base/` のうち関連するもの（growth-frameworks, unit-economics 等）を参照。
+3. `knowledge/base/` のうち関連するもの（marketing-frameworks, unit-economics 等）を参照。
 4. `[TODO]` が残っている workspace があれば Set 不足として報告。対象施策が属する workspace を特定し、周辺 workspace との関係も併記する。
 
 ## アウトプット

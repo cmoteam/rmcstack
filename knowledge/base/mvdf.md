@@ -232,6 +232,6 @@ MVDF は SURFStack のスキル群と次のように対応する。**MVDF の 8 
 - `knowledge/base/surf-framework.md` — SURF サイクル本体
 - `knowledge/base/marketing-mindset.md` — マーケティングの基本マインドセット
 - `knowledge/base/marketing-structural-issues.md` — MVDF が解こうとしている構造的問題
-- `knowledge/base/growth-frameworks.md` — 個別フレームワーク（AARRR / STP / JTBD / RAM-CE）
+- `knowledge/base/marketing-frameworks.md` — 個別フレームワーク（AARRR / STP / JTBD / RAM-CE）
 - `knowledge/base/learning-organization.md` — 原則 6（学習速度）の理論的背景
 - `knowledge/base/responsibility-design.md` — 原則 7（倫理・信頼）の運用論

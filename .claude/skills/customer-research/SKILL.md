@@ -28,7 +28,7 @@ Read: private/memory/workspaces/active/profile/positioning.md
 Read: private/memory/workspaces/active/profile/business-overview.md
 Read: private/memory/workspaces/active/profile/competitors.md
 Read: knowledge/base/marketing-mindset.md
-Read: knowledge/base/growth-frameworks.md
+Read: knowledge/base/marketing-frameworks.md
 Read: knowledge/base/brand-strategy.md
 Read: private/memory/workspaces/active/results/performance-data.md
 ```
