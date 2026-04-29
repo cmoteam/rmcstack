@@ -202,9 +202,9 @@ flowchart TD
 
 ---
 
-# Part II. RMCStack で頻出する手法の深掘り
+# Part II. CMOFlow で頻出する手法の深掘り
 
-総覧表ではメタ情報のみ示した手法のうち、**RMCStack のスキル群（`/insight ceo` `/learn` 等）と knowledge/base/ プレイブック（`web-analytics-practice.md` `cvr-optimization-playbook.md` `retention-lifecycle.md` 等）が前提として参照する代表手法**を以下で深掘りする。
+総覧表ではメタ情報のみ示した手法のうち、**CMOFlow のスキル群（`/insight ceo` `/learn` 等）と knowledge/base/ プレイブック（`web-analytics-practice.md` `cvr-optimization-playbook.md` `retention-lifecycle.md` 等）が前提として参照する代表手法**を以下で深掘りする。
 
 ## AARRR（Pirate Metrics）
 

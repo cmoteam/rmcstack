@@ -4,7 +4,7 @@
 
 ## このプレイブックの位置づけ
 
-SEO は**チャネル / 専門領域**であり、Insight 段の「視点」軸とは別物。RMCStack では skill 化せず、`knowledge/base/` プレイブックとしてカバーする。`digital-advertising.md` `content-marketing.md` 等と並列に参照する。
+SEO は**チャネル / 専門領域**であり、Insight 段の「視点」軸とは別物。CMOFlow では skill 化せず、`knowledge/base/` プレイブックとしてカバーする。`digital-advertising.md` `content-marketing.md` 等と並列に参照する。
 
 参照する Listen 入力（アクティブ workspace の前提）:
 

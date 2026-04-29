@@ -7,7 +7,7 @@
 
 ## 位置づけ
 
-RMCStack の memory は **2層** で構成されています:
+CMOFlow の memory は **2層** で構成されています:
 
 | 層 | パス | スコープ | 担当スキル | 典型的な内容 |
 |---|---|---|---|---|
@@ -24,7 +24,7 @@ RMCStack の memory は **2層** で構成されています:
 これにより:
 - `git pull` で upstream のテンプレート更新を素直に取り込める
 - ICP・競合情報などの機密情報が誤って public に漏れない
-- 同じ `rmcstack` クローンを複数 workspaceで使い分けやすい
+- 同じ `cmoflow` クローンを複数 workspaceで使い分けやすい
 
 ## セットアップ手順
 
@@ -46,6 +46,6 @@ RMCStack の memory は **2層** で構成されています:
 
 ## 注意事項
 
-- 情報が不十分でも RMCStack は動作しますが、レビューの精度が下がります
+- 情報が不十分でも CMOFlow は動作しますが、レビューの精度が下がります
 - 機密情報を書き込む先は **必ず `private/memory/workspaces/<slug>/profile/`**（gitignore対象）側です。`templates/memory/profile/` に書き込むと upstream に push されうるので注意
 - 定期的に情報を更新してください（特に競合情報とポジショニング）
