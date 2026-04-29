@@ -56,7 +56,7 @@ So I can [TODO: 期待する成果].
 
 ## Marketing Extension (Optional)
 
-> **任意項目**: SURF の Marketing Extension に対応する optional フィールド。`/cmo-review` `/contents-edit` `/ads-manager` 等に `Target Funnel Stage` `Target Segment` として引き継がれる。
+> **任意項目**: RMC の Marketing Extension に対応する optional フィールド。`/insight ceo` `content-marketing.md` `digital-advertising.md` 等に `Target Funnel Stage` `Target Segment` として引き継がれる。
 
 ### Funnel Stage マッピング
 自社のファネル段階（AARRR / STP / 独自段階名でも可）:

@@ -12,11 +12,11 @@
 
 | Agent | 判定 |
 |-------|------|
-| CEO Review | GO / PIVOT / KILL |
-| CMO Review | A / B / C / D （総合評価） |
-| Creative Director | APPROVE / REVISE / REWORK |
-| SEO | A / B / C / D / F |
-| UI Review | A / B / C / D / F |
+| Insight: CEO | GO / PIVOT / KILL |
+| Insight: Consultant | KEEP / REFRAME / STOP |
+| Insight: Gemba | FEASIBLE / RISKY / BLOCKED |
+| Insight: Customer | CLEAR / UNCLEAR / REJECT |
+| Brand | APPROVE / REVISE / REWORK |
 
 ### 3. Scorecard（スコアカード）
 各評価軸のスコアをテーブルで表示。

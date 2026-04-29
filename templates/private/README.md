@@ -10,13 +10,13 @@ RMCStack の **会社ごとのプライベートリポジトリ**。`rmcstack/pr
 
 ```
 private/
-├── memory/                     — SURF の Syncing 層の実体（全スキルが参照）
+├── memory/                     — RMC の Listen 層の実体（全スキルが参照）
 │   ├── organization/           組織全体（ミッション / ポートフォリオ / ブランド）
 │   └── workspaces/
 │       ├── active → <slug>     現在のアクティブ workspace（symlink）
 │       └── <slug>/
 │           ├── profile/        ICP / Positioning / Competitors
-│           └── results/        実績数値・施策検証ログ（/feedback が書く）
+│           └── results/        実績数値・施策検証ログ（/learn が書く）
 └── output/                     — 全スキルの一次成果物（YYYYMMDD-{skill}-{slug}.{ext}）
     └── <workspace>/
 ```
@@ -47,4 +47,4 @@ bin/workspace new <slug>
 - `output/` は成果物置き場。必要なら `.gitignore` で除外しても良い
 - シークレット（API キー等）は memory/ に書かず、環境変数 or `.mcp.json` に置く
 
-詳細は upstream の `CLAUDE.md` と `knowledge/base/surf-framework.md` を参照。
+詳細は upstream の `CLAUDE.md` と `knowledge/base/reframing-marketing-cycle.md` を参照。

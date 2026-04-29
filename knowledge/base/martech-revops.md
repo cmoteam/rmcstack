@@ -256,7 +256,7 @@ MarTechの新層として**AI Automation**が台頭：
 - MarTech.org / Chief Martec ブログ
 - Reforge: "Marketing Architecture" コース
 
-## SURFとの接続
+## RMC との接続
 
 - **Set**: 現状のツールスタック、データソース、データ定義、既知のデータギャップを `memory/profile/` に書く
 - **Ask**: 「このスタックで重複・ギャップを洗い出して」「Reverse ETLで接続すべきデータセットは？」

@@ -10,8 +10,8 @@ RMCStack の memory は **2層** で構成されています:
 
 | 層 | パス | スコープ | 担当スキル | 典型的な内容 |
 |---|---|---|---|---|
-| **Organization** | `private/memory/organization/` | 組織全体（全 workspace 共通） | `/set-organization` `/set-brand` | ミッション / ビジョン / 組織ブランド / 事業ポートフォリオ |
-| **Workspace (Profile)** | `private/memory/workspaces/active/profile/`（symlink） | 単一 workspace（事業部・プロダクト・クライアント） | `/set-workspace` | 事業概要 / ICP / Positioning / 競合 |
+| **Organization** | `private/memory/organization/` | 組織全体（全 workspace 共通） | `/listen team-org` `/listen team-brand` | ミッション / ビジョン / 組織ブランド / 事業ポートフォリオ |
+| **Workspace (Profile)** | `private/memory/workspaces/active/profile/`（symlink） | 単一 workspace（事業部・プロダクト・クライアント） | `/listen team-workspace` | 事業概要 / ICP / Positioning / 競合 |
 
 **使い分けの原則**: 全 workspace に共通する情報は organization 層へ。workspace ごとに異なる情報は workspace 層へ。
 
@@ -23,14 +23,14 @@ RMCStack の memory は **2層** で構成されています:
 bin/init-private
 ```
 
-または `/set-organization` を実行すると、未存在時に自動でコピーされます。
+または `/listen team-org` を実行すると、未存在時に自動でコピーされます。
 
 ### 2. 以下のファイルを、あなたの組織の情報で埋める
 
 1. **organization-overview.md** — 組織全体のミッション・ビジョン・事業ポートフォリオ
 2. **brand-guidelines.md** — 組織として共有するブランドガイドライン・トーン&マナー
 
-`[TODO]` マーカーを実際の情報で置き換えてください。対話でまとめて埋めるには `/set-organization` `/set-brand` を使います。
+`[TODO]` マーカーを実際の情報で置き換えてください。対話でまとめて埋めるには `/listen team-org` `/listen team-brand` を使います。
 
 ## 注意事項
 

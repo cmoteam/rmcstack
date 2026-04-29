@@ -14,7 +14,7 @@ tools: Read, Grep, Glob
 ## RMC Alignment
 
 - **Position**: Insight（4 視点のうち「外から（受け手）」）
-- **Sync Preflight**: `profile/icp.md` `profile/positioning.md` `profile/customer-signal.md` を走査。**`customer-signal.md` が空または痩せている場合は明確に警告し、レビュー品質が一般論に堕ちることを告知**
+- **Listen Preflight**: `profile/icp.md` `profile/positioning.md` `profile/customer-signal.md` を走査。**`customer-signal.md` が空または痩せている場合は明確に警告し、レビュー品質が一般論に堕ちることを告知**
 - **Learn Hook**: なし（書き込み副作用なし、判断材料の提示のみ）
 
 ## 視点の特徴
