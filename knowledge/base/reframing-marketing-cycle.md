@@ -2,7 +2,7 @@
 
 ## 定義
 
-**RMC（Reframing Marketing Cycle）** は SURFStack の canonical マーケティング OS である。**AI エージェントと協働しながら学習し続ける、マーケ組織のためのオペレーティング・システム**であり、個別フレームワーク（AARRR・STP・RAM-CE 等）の上位に位置して、それらを**組織学習として機能させる**ための型を定義する。
+**RMC（Reframing Marketing Cycle）** は RMCStack の canonical マーケティング OS である。**AI エージェントと協働しながら学習し続ける、マーケ組織のためのオペレーティング・システム**であり、個別フレームワーク（AARRR・STP・RAM-CE 等）の上位に位置して、それらを**組織学習として機能させる**ための型を定義する。
 
 5 段階のサイクル ── **Listen → Insight → Release → Activate → Learn**。
 
@@ -265,7 +265,7 @@ Release は人間にしか引き受けられない判断である。AI は「聖
 
 **設計思想**: 専門領域の実行（広告運用・コンテンツ・CVR 最適化・価格・解約・調査・分析・UI レビュー・見積り）は skill 化せず `knowledge/base/` のプレイブックでカバーする。skill は「サイクルを駆動する」「workspace 知識を前提に判断する」役割に絞る（詳細: `agent-catalog.md`）。
 
-`/surf-check` `/next` は Meta（サイクル全体の進行確認）として現状名で運用。命名は SURFStack ブランドに紐付くため変更しない。
+`/surf-check` `/next` は Meta（サイクル全体の進行確認）として現状名で運用。命名は RMCStack ブランドに紐付くため変更しない。
 
 ## アンチパターン
 

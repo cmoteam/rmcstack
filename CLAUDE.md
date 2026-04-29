@@ -1,8 +1,8 @@
-# SURFStack Agents — Virtual Marketing Organization
+# RMCStack Agents — Virtual Marketing Organization
 
-SURFStack は Claude Code / Codex 上で動作する仮想マーケティング組織。各エージェントは SKILL.md で定義され、全員が **RMC**（Reframing Marketing Cycle: Listen / Insight / Release / Activate / Learn、読み:「アール・エム・シー」）サイクルの特定段階を担います。`CLAUDE.md` が canonical、`AGENTS.md` はこのファイルを参照するスタブ（Codex 他ハーネス向け）。
+RMCStack は Claude Code / Codex 上で動作する仮想マーケティング組織。各エージェントは SKILL.md で定義され、全員が **RMC**（Reframing Marketing Cycle: Listen / Insight / Release / Activate / Learn、読み:「アール・エム・シー」）サイクルの特定段階を担います。`CLAUDE.md` が canonical、`AGENTS.md` はこのファイルを参照するスタブ（Codex 他ハーネス向け）。
 
-> 旧名称「SURF」（Syncing / Understanding / Releasing / Fitting）は RMC の前身。プロダクト・リポジトリ名「SURFStack」はブランド継続性のため維持。詳細は `knowledge/base/surf-framework.md`（歴史的経緯）。
+> 旧フレームワーク名「SURF」（Syncing / Understanding / Releasing / Fitting）は RMC の前身。プロダクト・リポジトリ名はリリース前に **SURFStack → RMCStack** にリネームし、フレームワーク名と揃えた。詳細は `knowledge/base/surf-framework.md`（歴史的経緯）。
 
 ## Operating Model — RMC
 

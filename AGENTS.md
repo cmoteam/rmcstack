@@ -1,4 +1,4 @@
-# SURFStack
+# RMCStack
 
 このファイルは互換性のためのスタブです。**canonical なプロジェクト定義・エージェント仕様は [`CLAUDE.md`](CLAUDE.md)** に統合されています。
 
@@ -6,7 +6,7 @@ Codex など AGENTS.md を参照するハーネスはこのファイル経由で
 
 ## ⚠️ Skills に関する注意（重要）
 
-**SURFStack の各スキル（`/set-workspace` `/cmo-review` `/seo` 等）はリポジトリ単位では動作しません。**
+**RMCStack の各スキル（`/set-workspace` `/cmo-review` `/seo` 等）はリポジトリ単位では動作しません。**
 
 Claude Code / Codex は現時点で **project-local な `skills/` ディレクトリを自動読み込みしません**。スキルとして呼び出すには、ユーザー側（`~/.claude/skills/` など）あるいは plugin として事前にインストールされている必要があります。
 
