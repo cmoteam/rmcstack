@@ -23,7 +23,7 @@ tools: Read, Grep, Glob
 
 ## 初動
 
-1. `.claude/skills/ceo-review/SKILL.md` を読み、その定義に厳密に従う。
+1. `.claude/skills/insight/SKILL.md` を読み、その定義（特に role=ceo の責務）に厳密に従う。
 2. **全 workspace の Set を読む**:
    ```
    private/memory/workspaces/*/profile/business-overview.md

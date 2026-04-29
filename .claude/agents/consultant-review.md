@@ -206,5 +206,5 @@ Read: private/memory/workspaces/active/results/performance-data.md
 ## Chaining
 
 - **前工程**: `/cmo-review`（戦略整合性レビュー済みの施策）、`/ceo-review`（経営承認済みの施策）、または前提から問い直したい任意のテーマ
-- **後工程**: Kill/Start判定 → `/feedback`（前提修正を company 層に反映）、Start List → 各専門エージェント（`/ads-manager` `/contents-edit` `/seo` 等）へ実装指示
+- **後工程**: Kill/Start判定 → `/feedback`（前提修正を company 層に反映）、Start List → `/seo` や `knowledge/base/digital-advertising.md` `content-marketing.md` `cvr-optimization-playbook.md` 等を参照したインライン実行セッションへ展開
 - **典型的な呼び出し場面**: 四半期／年次見直し、`/cmo-review` が「整ってはいるが伸びない」と判断したとき、新任CMOのオンボーディング、M&A／事業売却前の客観評価

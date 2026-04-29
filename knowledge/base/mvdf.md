@@ -180,16 +180,16 @@ MVDF は SURFStack のスキル群と次のように対応する。**MVDF の 8 
 
 ### MVDF 領域 × SURFStack スキル
 
-| MVDF 領域 | 主に使うスキル |
+| MVDF 領域 | 主に使う SURFStack の道具 |
 |-----------|----------------|
-| 1. 市場・顧客理解 | `/customer-research`、`/set-workspace`（ICP 入力） |
+| 1. 市場・顧客理解 | `customer-research-jtbd.md`、`/set-workspace`（ICP 入力） |
 | 2. 戦略・ポジショニング | `/cmo-review`、`/release-assumptions`、`/consultant-review` |
 | 3. ブランド・コミュニケーション | `/set-brand`、`/creative-direction` |
-| 4. 提供価値・商品連携 | `/pricing-strategy`、`/cmo-review` |
-| 5. チャネル・顧客接点 | `/ui-design`、`/optimize`、`/seo` |
-| 6. 需要創出・キャンペーン | `/ads-manager`、`/contents-edit`、`/seo` |
-| 7. 顧客関係・成長 | `/churn-prevention`、`/optimize signup-flow / onboarding` |
-| 8. 測定・ガバナンス | `/data-analytics`、`/feedback`、`/ceo-review` |
+| 4. 提供価値・商品連携 | `pricing-strategy.md`、`/cmo-review` |
+| 5. チャネル・顧客接点 | `cvr-optimization-playbook.md`、`/seo` |
+| 6. 需要創出・キャンペーン | `digital-advertising.md`、`content-marketing.md`、`/seo` |
+| 7. 顧客関係・成長 | `retention-lifecycle.md`、`cvr-optimization-playbook.md` (signup-flow / onboarding) |
+| 8. 測定・ガバナンス | `web-analytics-practice.md`、`/feedback`、`/ceo-review` |
 
 ### MVDF 領域 × SURF 段階での使い方
 
@@ -202,11 +202,11 @@ MVDF は SURFStack のスキル群と次のように対応する。**MVDF の 8 
 
 | MVDF ライフサイクル | 対応する SURFStack の動き |
 |---------------------|--------------------------|
-| Diagnose | `/next` → `/surf-check` → `/customer-research` |
+| Diagnose | `/next` → `/surf-check` → `customer-research-jtbd.md` 参照のインライン調査 |
 | Define | `/set-workspace` + `/cmo-review`（戦略レビュー） |
 | Design | `/creative-direction` + `/release-assumptions` |
-| Deliver | `/contents-edit` / `/ads-manager` / `/optimize` |
-| Measure | `/data-analytics` |
+| Deliver | `content-marketing.md` / `digital-advertising.md` / `cvr-optimization-playbook.md` 参照のインライン実行 |
+| Measure | `web-analytics-practice.md` 参照のインライン分析 |
 | Adapt | `/feedback` → 次サイクルの `/set-update` |
 
 ## 命名の経緯

@@ -106,6 +106,49 @@ SaaS/サブスクでは「何で課金するか」が重要：
 | **LTV:CAC** | LTV / CAC | >3（<3は価格が低すぎか獲得コストが高すぎ） |
 | **Discount Rate** | 値引き率の平均 | <15%が目安 |
 
+## Feature Packaging（機能の振り分け）
+
+各機能を「どのプランに入れるか」で CVR と ARPU が同時に大きく変わる。機能を **3 つの役割**に分類して配置する：
+
+| 役割 | 配置先 | 例 | 設計意図 |
+|-----|-------|-----|---------|
+| **Acquisition Features** | 下位プラン / Free | 基本ダッシュボード、検索、無料枠の API 呼び出し | **入口になる**機能。下位を魅力的にして取り込む |
+| **Differentiation Features** | 上位プラン | 高度な分析、無制限プロジェクト、優先サポート | **アップグレード理由を作る**機能。中位 → 上位の境界を作る |
+| **Expansion Features** | Enterprise / アドオン | SSO、監査ログ、SLA、カスタムロール、SCIM | **大企業要件**。NRR を押し上げる源泉 |
+
+加えて **Usage Limits**（メンバー数・プロジェクト数・ストレージ・API レート）も重要な差別化軸。機能の有無で分けにくいプロダクトは制限値で差をつける。
+
+### Packaging Audit のチェック
+
+- ❌ Acquisition Feature が上位プランに入っている → 入口が狭い、CVR 機会損失
+- ❌ Differentiation Feature が下位に入っている → アップグレード理由が消える
+- ❌ Expansion Feature が中位プランに入っている → Enterprise 単価が伸びない
+- ✅ 中位プランから上位プランへの「次に欲しくなる機能」が明確
+
+## Price Signaling & Copy（価格の見せ方）
+
+価格表のコピーと提示方法も価格戦略の一部：
+
+- **「Contact us」 vs 明示価格**:
+  - Enterprise / 高 ACV ゾーンでは Contact us（価格交渉余地・高 LTV 顧客の捕捉）
+  - SMB / Mid-market は**透明性**を取る（明示価格の方が CVR 高い、Contact 乱発は信頼を毀損）
+- **Value translation**: 「$X / 月」の下に「= 10 人チームで月 Y 時間節約」等の換算を添える
+- **Anchoring**: 上位プランを左 or 「最も人気」バッジで中位プランを誘導
+- **Annual default**: トグル切り替えではなく Annual を初期表示（LTV・Cashflow が同時に上がる最強設計）
+
+## プラン名のつけ方
+
+`Good / Better / Best` より、**ターゲット別の名称**（Starter / Professional / Enterprise / Team / Business）の方が機能しやすい。顧客が「自分はどれか」を即決できる。
+
+## 価格変更の運用（補足）
+
+実際の価格変更は **1 回に 1 レバーまで**。複数同時変更は原因分析不能。
+
+実験プロセスの基本形:
+1. **Phase 1**: 新規顧客のみに新価格、既存は旧価格で N 週間
+2. **Phase 2**: 効果確認後、既存顧客に段階的移行（Grandfathering の期間設計）
+3. **Guardrail**: CVR / ARPU / Churn / NPS を連続監視、悪化したら即ロールバック
+
 ## 参考文献
 
 - *Monetizing Innovation* — Madhavan Ramanujam（Simon-Kucher）
