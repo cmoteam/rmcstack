@@ -45,7 +45,7 @@ Marketing Diveの調査によれば、顧客の71%はパーソナライズされ
 
 マーケティング3.0では、マーケターは人びとを単に消費者とみなすのではなく、マインドとハートと精神を持つ全人的存在としてとらえる。消費者はグローバル化した世界をよりよい場所にしたいという思いから、ミッションやビジョンや価値観で対応しようとしている企業を探している。
 
-マーケティング5.0（コトラー『Marketing 5.0』2021年）はAI・IoT・ビッグデータなど「次世代テクノロジー」を人間中心の価値提供のために使うという立場。マーケティング6.0（コトラー『Marketing 6.0』2024年）ではメタバースやAR/VRなど没入型メディアが主役となる「フィジタル」顧客体験が中心テーマ。SURFStackのSURFサイクルはこの5.0/6.0期におけるAI協働の実装形と位置づけられる。
+マーケティング5.0（コトラー『Marketing 5.0』2021年）はAI・IoT・ビッグデータなど「次世代テクノロジー」を人間中心の価値提供のために使うという立場。マーケティング6.0（コトラー『Marketing 6.0』2024年）ではメタバースやAR/VRなど没入型メディアが主役となる「フィジタル」顧客体験が中心テーマ。RMCStackのSURFサイクルはこの5.0/6.0期におけるAI協働の実装形と位置づけられる。
 
 ## AI時代の基本サイクル — SURF
 
@@ -58,7 +58,7 @@ SURF（Syncing / Understanding / Releasing / Fitting、読み:「サーフ」）
 - **Fitting**（適合・本番反映・還流）: 自社プロダクトに適合した目標とステップに再構成し、本番反映（shipping）し、結果を次の Syncing に還流する
 
 AARRR・STP・RAM-CE といったフレームワークが「何を考えるか」の地図を提供するのに対し、SURF は「AI とどう関わりながら組織として学習するか」の型を提供する。
-SURFStack では知識ベース構造（base / update）と memory が SURF の Syncing 層を、レビュー / 分析系スキルが Understanding 層を、`/release-assumptions` `/consultant-review` が Releasing 層を、制作系スキル + `/feedback` が Fitting 層（適合・shipping・還流）を担う。
+RMCStack では知識ベース構造（base / update）と memory が SURF の Syncing 層を、レビュー / 分析系スキルが Understanding 層を、`/release-assumptions` `/consultant-review` が Releasing 層を、制作系スキル + `/feedback` が Fitting 層（適合・shipping・還流）を担う。
 
 詳細は `knowledge/base/surf-framework.md` を参照。
 

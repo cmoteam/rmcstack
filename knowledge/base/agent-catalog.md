@@ -1,10 +1,10 @@
-# Agent Catalog — SURFStack スキル詳細定義
+# Agent Catalog — RMCStack スキル詳細定義
 
 各スキルの **役割 / 入力 / 出力 / 知識 / トリガー** を網羅的に記載。`CLAUDE.md` の `## Available Skills` 一覧から詳細が必要になった時に参照する。
 
 ## 設計思想（2026-04 改訂、RMC 移行版）
 
-SURFStack の skill は「**RMC サイクルを駆動する**」「**workspace 知識を前提に判断する**」役割に絞っている。RMC（Reframing Marketing Cycle: Listen / Insight / Release / Activate / Learn、`reframing-marketing-cycle.md`）の各段に対応する skill を 1 つずつ + Ops 2 個の **計 7 skills** で構成する。
+RMCStack の skill は「**RMC サイクルを駆動する**」「**workspace 知識を前提に判断する**」役割に絞っている。RMC（Reframing Marketing Cycle: Listen / Insight / Release / Activate / Learn、`reframing-marketing-cycle.md`）の各段に対応する skill を 1 つずつ + Ops 2 個の **計 7 skills** で構成する。
 
 ### 残した skill の判定基準
 

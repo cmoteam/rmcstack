@@ -36,7 +36,7 @@ ls private/memory/workspaces/ 2>/dev/null
 ```
 
 - `private/memory/workspaces/active` symlink が無い、または `private/memory/workspaces/` が空
-  - → **⚠️ 警告**: 「アクティブな workspace がありません。SURFStack は workspace を 1 つ作らないと動作しません」
+  - → **⚠️ 警告**: 「アクティブな workspace がありません。RMCStack は workspace を 1 つ作らないと動作しません」
   - → **推薦**: `/workspace new <slug>`（slug は実在する事業名。`default` は使わない）
   - これ以降のステップはスキップ
 

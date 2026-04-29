@@ -1,6 +1,6 @@
 # Integrations — 外部ツール直結レイヤー
 
-SURFStack の各スキルが外部サービス（Figma / Google / Meta / X / LinkedIn / HubSpot / Slack / Notion 等）と **直接** 接続するための共通カタログです。
+RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / LinkedIn / HubSpot / Slack / Notion 等）と **直接** 接続するための共通カタログです。
 
 > **位置づけ**: Integrations は SURF の **Syncing（データ取り込み）** と **Fitting（本番反映）** の両方を加速するための I/O 層です。Set で外部から数字・アセットを pull し、Release で成果物を push する両方向をカバーします。
 > knowledge 層のどこにも書かれていない揮発データは、ここに列挙された接続経由で取得します。allowlist 外のソースは使いません（hallucination 防止）。

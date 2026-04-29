@@ -1,6 +1,6 @@
-# private/ — SURFStack Private Data
+# private/ — RMCStack Private Data
 
-SURFStack の **会社ごとのプライベートリポジトリ**。`sarfstack/private/` にクローンして使う。upstream（sarfstack 本体）からは gitignore されているため、ここに書いたものは流出しない。
+RMCStack の **会社ごとのプライベートリポジトリ**。`rmcstack/private/` にクローンして使う。upstream（rmcstack 本体）からは gitignore されているため、ここに書いたものは流出しない。
 
 ## なぜ別リポジトリか
 
@@ -27,8 +27,8 @@ private/
 
 ```bash
 # 1. 本体を clone
-git clone <sarfstack-upstream> sarfstack
-cd sarfstack
+git clone <rmcstack-upstream> rmcstack
+cd rmcstack
 
 # 2. この private リポを clone
 git clone <your-company-private-repo> private
