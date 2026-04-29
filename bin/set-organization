@@ -17,7 +17,7 @@ def main():
     fill_todos(
         [TARGET],
         header=f"organization-overview.md",
-        next_step="bin/set-brand でブランドガイドラインを入力",
+        next_step="/listen team-brand でブランドガイドラインを入力",
     )
 
 

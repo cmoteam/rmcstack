@@ -61,6 +61,8 @@ fi
 
 echo ""
 echo "次のステップ:"
-echo "  bin/set-organization     # 組織情報を入力"
-echo "  bin/set-brand            # ブランドガイドラインを入力"
-echo "  bin/workspace new <slug> # workspace を作成"
+echo "  /workspace new <slug>    # workspace を作成（bin/workspace new <slug> 直叩きでも可）"
+echo "  /listen team-org         # 組織情報を入力"
+echo "  /listen team-brand       # ブランドガイドラインを入力"
+echo "  /listen team-workspace   # workspace 固有情報を入力"
+echo "  /listen customer         # Customer Sync を入力"
