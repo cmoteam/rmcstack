@@ -1,12 +1,12 @@
 ---
 name: workspace
-description: RMCStack のアクティブ workspace を初期化・切替・一覧・新規作成・削除する。bin/workspace と bin/init-private に委譲する薄いラッパー。
+description: CMOFlow のアクティブ workspace を初期化・切替・一覧・新規作成・削除する。bin/workspace と bin/init-private に委譲する薄いラッパー。
 version: 2.0.0
 ---
 
 # Workspace — Workspace 操作の統一エントリ
 
-`/workspace <subcommand>` の形で呼び出す。RMCStack の workspace（事業部・クライアント・プロダクト単位）を扱うすべての ops を担う。
+`/workspace <subcommand>` の形で呼び出す。CMOFlow の workspace（事業部・クライアント・プロダクト単位）を扱うすべての ops を担う。
 
 ## RMC Alignment
 

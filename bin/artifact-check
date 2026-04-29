@@ -1,0 +1,171 @@
+#!/usr/bin/env bash
+# artifact-check — check RMC artifact completion for the active workspace
+# Usage: bin/artifact-check [--strict]
+set -euo pipefail
+
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+ACTIVE_LINK="$REPO/private/memory/workspaces/active"
+
+STRICT=0
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --strict) STRICT=1; shift ;;
+    -h|--help)
+      sed -n '2,3p' "$0" | sed 's/^# \{0,1\}//'
+      echo ""
+      echo "Options:"
+      echo "  --strict  exit 1 when any required artifact is missing"
+      exit 0
+      ;;
+    *)
+      echo "エラー: 不明なオプション: $1"
+      exit 1
+      ;;
+  esac
+done
+
+if [ ! -L "$ACTIVE_LINK" ] || [ ! -d "$ACTIVE_LINK" ]; then
+  echo "エラー: アクティブ workspace が見つかりません。先に: bin/workspace new <slug>"
+  exit 1
+fi
+
+WORKSPACE="$(basename "$(readlink "$ACTIVE_LINK")")"
+OUTPUT_DIR="$REPO/private/output/$WORKSPACE"
+PROFILE_DIR="$ACTIVE_LINK/profile"
+RESULTS_DIR="$ACTIVE_LINK/results"
+
+missing=0
+
+has_file() {
+  local pattern="$1"
+  compgen -G "$pattern" >/dev/null
+}
+
+has_non_todo_file() {
+  local file="$1"
+  [ -s "$file" ] && ! grep -q '\[TODO' "$file"
+}
+
+check_item() {
+  local rmc="$1"
+  local required="$2"
+  local status="$3"
+  local next="$4"
+
+  printf "| %s | %s | %s | %s |\n" "$rmc" "$required" "$status" "$next"
+  if [ "$status" != "OK" ]; then
+    missing=$((missing + 1))
+  fi
+}
+
+status_customer_signal() {
+  local file="$PROFILE_DIR/customer-signal.md"
+  if has_non_todo_file "$file"; then echo "OK"; else echo "Missing"; fi
+}
+
+status_baseline() {
+  local file="$RESULTS_DIR/performance-data.md"
+  if [ -s "$file" ]; then echo "OK"; else echo "Missing"; fi
+}
+
+status_insight() {
+  if has_file "$OUTPUT_DIR/"'*insight-options*.md' || has_file "$OUTPUT_DIR/"'*evidence-map*.md'; then
+    echo "OK"
+  else
+    echo "Missing"
+  fi
+}
+
+status_release() {
+  if has_file "$OUTPUT_DIR/"'*release-candidates*.md' || [ -s "$RESULTS_DIR/release-log.md" ]; then
+    echo "OK"
+  else
+    echo "Missing"
+  fi
+}
+
+status_activate_brief() {
+  if has_file "$OUTPUT_DIR/"'*activation-brief*.md'; then echo "OK"; else echo "Missing"; fi
+}
+
+status_measurement() {
+  if has_file "$OUTPUT_DIR/"'*measurement-plan*.md'; then echo "OK"; else echo "Missing"; fi
+}
+
+status_result_log() {
+  if has_file "$RESULTS_DIR/"'*result-log*.md'; then echo "OK"; else echo "Missing"; fi
+}
+
+status_ai_decision() {
+  if has_file "$RESULTS_DIR/"'*ai-decision-log*.md'; then echo "OK"; else echo "Missing"; fi
+}
+
+status_next_listen() {
+  if has_file "$OUTPUT_DIR/"'*next-listen-input*.md'; then echo "OK"; else echo "Missing"; fi
+}
+
+print_evidence_levels() {
+  local levels
+  levels="$(mktemp)"
+  if [ -d "$RESULTS_DIR" ] || [ -d "$OUTPUT_DIR" ]; then
+    rg --no-filename -o 'E[0-3](:|\b)' "$RESULTS_DIR" "$OUTPUT_DIR" 2>/dev/null \
+      | sed 's/[: ]$//' \
+      | sort \
+      | uniq -c > "$levels" || true
+  fi
+
+  echo ""
+  echo "## Evidence Level"
+  echo ""
+  echo "| Level | Count | Meaning |"
+  echo "|---|---:|---|"
+  for level in E0 E1 E2 E3; do
+    local count
+    count="$(awk -v level="$level" '$2 == level { print $1 }' "$levels")"
+    count="${count:-0}"
+    case "$level" in
+      E0) meaning="Hypothesis: profile 反映不可" ;;
+      E1) meaning="Observation: customer-signal / results に留める" ;;
+      E2) meaning="Repeated Signal: profile 反映候補" ;;
+      E3) meaning="Validated Learning: profile / update 反映候補" ;;
+    esac
+    printf "| %s | %s | %s |\n" "$level" "$count" "$meaning"
+  done
+  rm -f "$levels"
+}
+
+echo "# Artifact Check — $WORKSPACE"
+echo ""
+echo "Output: $OUTPUT_DIR"
+echo "Profile: $PROFILE_DIR"
+echo "Results: $RESULTS_DIR"
+echo ""
+echo "## Artifact Completion"
+echo ""
+echo "| RMC | Required | Status | Next |"
+echo "|---|---|---|---|"
+
+check_item "Listen" "customer-signal.md" "$(status_customer_signal)" "/listen customer"
+check_item "Listen" "performance-data.md" "$(status_baseline)" "/learn or baseline input"
+check_item "Insight" "insight-options / evidence-map" "$(status_insight)" "/insight <role>"
+check_item "Release" "release-candidates / release-log" "$(status_release)" "/release"
+check_item "Activate" "activation-brief" "$(status_activate_brief)" "create activation brief"
+check_item "Activate" "measurement-plan" "$(status_measurement)" "create measurement plan"
+check_item "Learn" "result-log" "$(status_result_log)" "/learn"
+check_item "Learn" "ai-decision-log" "$(status_ai_decision)" "/learn AI Decision Log"
+check_item "Learn -> Listen" "next-listen-input" "$(status_next_listen)" "/learn handoff"
+
+print_evidence_levels
+
+echo ""
+echo "## Summary"
+echo ""
+if [ "$missing" -eq 0 ]; then
+  echo "OK: RMC artifact cycle is complete."
+else
+  echo "Missing: $missing required artifact(s)."
+fi
+
+if [ "$STRICT" -eq 1 ] && [ "$missing" -gt 0 ]; then
+  exit 1
+fi

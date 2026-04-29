@@ -1,6 +1,6 @@
 # Skills vs Agents — 使い分けの判断基準
 
-RMCStack は **Skill**（`.claude/skills/`）と **Agent**（`.claude/agents/`）の2種類を使い分けます。
+CMOFlow は **Skill**（`.claude/skills/`）と **Agent**（`.claude/agents/`）の2種類を使い分けます。
 
 | | Skill | Agent |
 |---|---|---|

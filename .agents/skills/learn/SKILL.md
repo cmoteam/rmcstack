@@ -89,7 +89,7 @@ Read: private/memory/workspaces/active/results/performance-data.md
 
 ### カテゴリ 2: profile 層への反映候補（要検証）
 
-次の条件を **すべて** 満たす場合のみ：
+Evidence Level が **E2 以上** で、次の条件を **すべて** 満たす場合のみ：
 
 - [ ] N ≥ 統計的に意味のある数（目安: CV 30 件以上 / 記事 10 本以上 / 広告 2 週間以上）
 - [ ] 単一施策ではなく複数施策で同じ傾向が観測されている
@@ -103,6 +103,7 @@ Read: private/memory/workspaces/active/results/performance-data.md
 
 ### カテゴリ 3: 却下（書き込まない）
 
+- Evidence Level が E0 のまま
 - N が小さすぎる
 - 仮説段階の解釈
 - 一時的な外部要因（季節性・ニュース）によるブレ

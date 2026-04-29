@@ -1,6 +1,6 @@
-# private/ — RMCStack Private Data
+# private/ — CMOFlow Private Data
 
-RMCStack の **会社ごとのプライベートリポジトリ**。`rmcstack/private/` にクローンして使う。upstream（rmcstack 本体）からは gitignore されているため、ここに書いたものは流出しない。
+CMOFlow の **会社ごとのプライベートリポジトリ**。`cmoflow/private/` にクローンして使う。upstream（cmoflow 本体）からは gitignore されているため、ここに書いたものは流出しない。
 
 ## なぜ別リポジトリか
 
@@ -27,8 +27,8 @@ private/
 
 ```bash
 # 1. 本体を clone
-git clone <rmcstack-upstream> rmcstack
-cd rmcstack
+git clone <cmoflow-upstream> cmoflow
+cd cmoflow
 
 # 2. この private リポを clone
 git clone <your-company-private-repo> private

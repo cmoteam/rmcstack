@@ -1,7 +1,7 @@
 ---
 name: next
 description: 「今何をしたらいいかわからない」時に最初に押すスキル。RMC サイクル現在地（Listen 充足率・直近の Activate / Learn 還流の有無）から、次に踏むべき一歩を 1 つだけ推薦。--verbose で詳細ダッシュボード。
-version: 2.0.0
+version: 2.1.0
 ---
 
 # Next — 迷ったらこれ
@@ -22,7 +22,7 @@ version: 2.0.0
 | モード | 起動 | 出力 |
 |-------|------|------|
 | **default** | `/next` | 1 行推薦（次に踏むべき一歩のみ） |
-| **verbose** | `/next --verbose` または `/next dashboard` | RMC サイクルの詳細ダッシュボード（充足率・ブロッカー・Marketing Extension） |
+| **verbose** | `/next --verbose` または `/next dashboard` | RMC サイクルの詳細ダッシュボード（充足率・ブロッカー・Artifact Completion・Evidence Level・Marketing Extension） |
 
 ## Default モードの動作
 
@@ -36,7 +36,7 @@ ls private/memory/workspaces/ 2>/dev/null
 ```
 
 - `private/memory/workspaces/active` symlink が無い、または `private/memory/workspaces/` が空
-  - → **⚠️ 警告**: 「アクティブな workspace がありません。RMCStack は workspace を 1 つ作らないと動作しません」
+  - → **⚠️ 警告**: 「アクティブな workspace がありません。CMOFlow は workspace を 1 つ作らないと動作しません」
   - → **推薦**: `/workspace new <slug>`（slug は実在する事業名。`default` は使わない）
   - これ以降のステップはスキップ
 
@@ -112,8 +112,8 @@ RMC サイクル全体の現在地を詳細に診断する。
 ### 2. ブロッカー一覧
 
 - 高優先度: ハード停止条件（workspace 未作成、organization 未作成）
-- 中優先度: Customer Sync 空、Listen の TODO 過半数
-- 低優先度: 30 日以上の Learn 未実行
+- 中優先度: Customer Sync 空、Listen の TODO 過半数、Activate artifact 不足、Evidence Level 不整合
+- 低優先度: 30 日以上の Learn 未実行、next-listen-input 未作成
 
 ### 3. Marketing Extension 充足
 
@@ -132,7 +132,72 @@ RMC サイクル全体の現在地を詳細に診断する。
 - 直近 Learn 還流の数
 - AI Decision Log の有無
 
-### 5. 推薦（Default モードと同じ）
+### 5. Artifact Completion
+
+`agent-catalog.md` の Artifact Completion Rule に沿って、1 サイクルが閉じているかを診断する。実チェックは以下を実行する：
+
+```bash
+bin/artifact-check
+```
+
+内部ではアクティブ workspace を以下で取得する：
+
+```bash
+workspace="$(basename "$(readlink private/memory/workspaces/active 2>/dev/null)")"
+output_dir="private/output/$workspace"
+results_dir="private/memory/workspaces/active/results"
+profile_dir="private/memory/workspaces/active/profile"
+```
+
+#### 必須 artifact チェック
+
+| 条件 | 判定方法 | 未充足時の扱い |
+|---|---|---|
+| Listen: `customer-signal.md` | `test -s "$profile_dir/customer-signal.md"` かつ `[TODO]` が残っていない | `/listen customer` |
+| Listen: baseline | `test -s "$results_dir/performance-data.md"` | `/learn` または baseline 入力 |
+| Insight: options / evidence | `$output_dir/*insight-options*.md` または `$output_dir/*evidence-map*.md` がある | `/insight <role>` |
+| Release: candidates / log | `$output_dir/*release-candidates*.md` または `$results_dir/release-log.md` がある | `/release` |
+| Activate: brief | `$output_dir/*activation-brief*.md` がある | Activate brief 作成 |
+| Activate: measurement | `$output_dir/*measurement-plan*.md` がある | measurement plan 作成 |
+| Learn: result | `$results_dir/*result-log*.md` がある | `/learn` |
+| Learn: AI decision | `$results_dir/*ai-decision-log*.md` がある | `/learn` で AI Decision Log 作成 |
+| Learn → Listen: next input | `$output_dir/*next-listen-input*.md` がある | `/learn` の引き継ぎ作成 |
+
+#### 出力フォーマット
+
+```markdown
+### Artifact Completion
+| RMC | Required | Status | Next |
+|---|---|---|---|
+| Listen | customer-signal / baseline | OK / Missing | ... |
+| Insight | options / evidence-map | OK / Missing | ... |
+| Release | release-candidates / release-log | OK / Missing | ... |
+| Activate | activation-brief / measurement-plan | OK / Missing | ... |
+| Learn | result-log / ai-decision-log / next-listen-input | OK / Missing | ... |
+```
+
+### 6. Evidence Level 分布
+
+`reframing-marketing-cycle.md` の Evidence Level（E0〜E3）に沿って、`results/` と `private/output/<workspace>/` 内の知見の検証度を集計する。通常は `bin/artifact-check` の Evidence Level セクションをそのまま使う。手動確認する場合は以下：
+
+```bash
+rg --no-filename -o "E[0-3](:|\\b)" "$results_dir" "$output_dir" 2>/dev/null | sed 's/[: ]$//' | sort | uniq -c
+```
+
+表示する観点:
+
+- **E0 が残っている数**: 仮説のまま残っている。profile 反映不可
+- **E1 の数**: 単発観測。`customer-signal.md` / `results/` に留める
+- **E2 の数**: profile 反映候補。承認待ちがないか確認
+- **E3 の数**: 検証済み知見。profile / update への反映漏れがないか確認
+
+#### Evidence ブロッカー
+
+- E0 / E1 しかないのに `profile/` 更新が提案されている → **高優先度ブロッカー**
+- E2 以上の記録があるが、承認ログや diff がない → **中優先度ブロッカー**
+- E3 があるが `next-listen-input.md` がない → **中優先度ブロッカー**
+
+### 7. 推薦（Default モードと同じ）
 
 最初にぶつかった壁を 1 つ。
 
