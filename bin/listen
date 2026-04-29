@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+# listen — RMC Listen dispatcher
+# Usage: bin/listen [team-org|team-brand|team-workspace|customer|market]
+set -euo pipefail
+
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+PROFILE="$REPO/private/memory/workspaces/active/profile"
+CUSTOMER_TEMPLATE="$REPO/templates/memory/profile/customer-signal.md"
+CUSTOMER_SIGNAL="$PROFILE/customer-signal.md"
+
+usage() {
+  sed -n '2,3p' "$0" | sed 's/^# \{0,1\}//'
+  echo ""
+  echo "Scopes:"
+  echo "  team-org         -> bin/set-organization"
+  echo "  team-brand       -> bin/set-brand"
+  echo "  team-workspace   -> bin/set-workspace"
+  echo "  customer         -> bootstrap private/memory/workspaces/active/profile/customer-signal.md"
+  echo "  market           -> bin/set-update"
+}
+
+require_active_workspace() {
+  if [ ! -d "$PROFILE" ]; then
+    echo "エラー: アクティブ workspace が見つかりません。先に: bin/workspace new <slug>"
+    exit 1
+  fi
+}
+
+bootstrap_customer_signal() {
+  require_active_workspace
+  if [ ! -f "$CUSTOMER_TEMPLATE" ]; then
+    echo "エラー: $CUSTOMER_TEMPLATE が見つかりません"
+    exit 1
+  fi
+
+  if [ -f "$CUSTOMER_SIGNAL" ]; then
+    echo "スキップ: $CUSTOMER_SIGNAL は既に存在します"
+  else
+    cp "$CUSTOMER_TEMPLATE" "$CUSTOMER_SIGNAL"
+    echo "作成: $CUSTOMER_SIGNAL"
+  fi
+
+  echo ""
+  echo "次のステップ:"
+  echo "  1. $CUSTOMER_SIGNAL を開き、顧客の生の声・離脱理由・ICPとの差分を埋める"
+  echo "  2. /next で次の一歩を確認"
+}
+
+case "${1:-}" in
+  team-org)
+    exec "$REPO/bin/set-organization"
+    ;;
+  team-brand)
+    exec "$REPO/bin/set-brand"
+    ;;
+  team-workspace)
+    exec "$REPO/bin/set-workspace"
+    ;;
+  customer)
+    bootstrap_customer_signal
+    ;;
+  market)
+    exec "$REPO/bin/set-update"
+    ;;
+  -h|--help|"")
+    usage
+    ;;
+  *)
+    echo "エラー: 不明な listen scope: $1"
+    echo ""
+    usage
+    exit 1
+    ;;
+esac

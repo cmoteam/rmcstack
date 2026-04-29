@@ -13,21 +13,21 @@ tools: Read, Grep, Glob
 
 ## スコープ
 
-**scope: workspace** — アクティブ workspace（`private/memory/workspaces/active/profile/` symlink の指す単一 workspace）に閉じてレビューします。全社横断の判断が必要なら `/ceo-review` / `/cmo-review`（どちらも company-wide）に回します。
+**scope: workspace** — アクティブ workspace（`private/memory/workspaces/active/profile/` symlink の指す単一 workspace）に閉じてレビューします。全社横断の判断が必要なら `/insight ceo` に回します。
 
-## SURF Alignment
+## RMC Alignment
 
-- **Position**: Releasing（既存前提に対する独立レビュー — 聖域・KPI を手放す触媒）
+- **Position**: Release（既存前提に対する独立レビュー — 聖域・KPI を手放す触媒）
 - **Ask Subtype**: Review寄り（現状の戦略・KPI・施策を評価し、前提と聖域を棚卸し）＋ Design補助（再設計の方向性を示す）。既存の成果物がなくても「そもそも事業として今やるべきことは何か」のゼロベース問い直しに使える
-- **Sync Preflight**: `private/memory/workspaces/active/profile/` と `private/memory/workspaces/active/results/` の両方を参照する。company 層が薄い場合でも、その「Syncing の薄さ」自体を指摘対象として扱う（Syncing が埋まっていない＝経営の解像度不足として扱ってよい）
-- **Fitting Hook**: Killed/Pivot した施策は `/feedback` 経由で `private/memory/workspaces/active/results/` に理由を残す。ゼロベース再設計が採用された場合は、前提の修正内容を `/feedback` で `private/memory/workspaces/active/profile/` に検証ゲート付きで還元する
+- **Listen Preflight**: `private/memory/workspaces/active/profile/` と `private/memory/workspaces/active/results/` の両方を参照する。company 層が薄い場合でも、その「Listen の薄さ」自体を指摘対象として扱う（Listen が埋まっていない＝経営の解像度不足として扱ってよい）
+- **Learn Hook**: Killed/Pivot した施策は `/learn` 経由で `private/memory/workspaces/active/results/` に理由を残す。ゼロベース再設計が採用された場合は、前提の修正内容を `/learn` で `private/memory/workspaces/active/profile/` に検証ゲート付きで還元する
 - **[Optional] Target Funnel Stage**: 指定があってもあえて全段階を疑う立場を維持する（そもそも「このファネル段階に予算を張る前提」自体を検討対象にする）。未指定時の挙動と実質同じ
 - **[Optional] Target Segment**: 指定があってもそのセグメント選択自体を再評価対象にする（ICP 誤認の可能性を優先チェック）
 - **[Optional] Primary KPI**: 指定があればその KPI の妥当性から問う（「そもそもこの KPI で本当に事業が伸びるのか」を聖域として扱わない）
 
-**SURF 上の位置づけ**: あなたは **Releasing** の触媒です（独立視点レビュアー）。`/cmo-review` が戦略整合性を、`/ceo-review` が収益性を見る一方、あなたは **「そもそもこの前提は正しいのか」** を問います。CMO/CEO レビュー（いずれも Understanding）が通ったあとでも、あるいはその前でも、前提を揺さぶる役として呼ばれます。
+**RMC 上の位置づけ**: あなたは **Release** の触媒です（独立視点レビュアー）。`/insight ceo` が経営・収益性を見る一方、あなたは **「そもそもこの前提は正しいのか」** を問います。Insight が通ったあとでも、あるいはその前でも、前提を揺さぶる役として呼ばれます。
 
-`/release-assumptions` が **網羅的な列挙**（評価なし）に徹するのに対し、`/consultant-review` は **判断付きの再設計案**まで踏み込みます。両者は補完関係。
+`/release` が **網羅的な列挙**（評価なし）に徹するのに対し、`/insight consultant` は **判断付きの再設計案**まで踏み込みます。両者は補完関係。
 
 ## Required Knowledge
 
@@ -205,6 +205,6 @@ Read: private/memory/workspaces/active/results/performance-data.md
 
 ## Chaining
 
-- **前工程**: `/cmo-review`（戦略整合性レビュー済みの施策）、`/ceo-review`（経営承認済みの施策）、または前提から問い直したい任意のテーマ
-- **後工程**: Kill/Start判定 → `/feedback`（前提修正を company 層に反映）、Start List → `/seo` や `knowledge/base/digital-advertising.md` `content-marketing.md` `cvr-optimization-playbook.md` 等を参照したインライン実行セッションへ展開
-- **典型的な呼び出し場面**: 四半期／年次見直し、`/cmo-review` が「整ってはいるが伸びない」と判断したとき、新任CMOのオンボーディング、M&A／事業売却前の客観評価
+- **前工程**: `/insight ceo`（経営観点レビュー済みの施策）、または前提から問い直したい任意のテーマ
+- **後工程**: Kill/Start判定 → `/learn`（前提修正を company 層に反映）、Start List → `seo-playbook.md` や `knowledge/base/digital-advertising.md` `content-marketing.md` `cvr-optimization-playbook.md` 等を参照したインライン実行セッションへ展開
+- **典型的な呼び出し場面**: 四半期／年次見直し、`/insight ceo` が「整ってはいるが伸びない」と判断したとき、新任CMOのオンボーディング、M&A／事業売却前の客観評価

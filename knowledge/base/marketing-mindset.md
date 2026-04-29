@@ -45,22 +45,22 @@ Marketing Diveの調査によれば、顧客の71%はパーソナライズされ
 
 マーケティング3.0では、マーケターは人びとを単に消費者とみなすのではなく、マインドとハートと精神を持つ全人的存在としてとらえる。消費者はグローバル化した世界をよりよい場所にしたいという思いから、ミッションやビジョンや価値観で対応しようとしている企業を探している。
 
-マーケティング5.0（コトラー『Marketing 5.0』2021年）はAI・IoT・ビッグデータなど「次世代テクノロジー」を人間中心の価値提供のために使うという立場。マーケティング6.0（コトラー『Marketing 6.0』2024年）ではメタバースやAR/VRなど没入型メディアが主役となる「フィジタル」顧客体験が中心テーマ。RMCStackのSURFサイクルはこの5.0/6.0期におけるAI協働の実装形と位置づけられる。
+マーケティング5.0（コトラー『Marketing 5.0』2021年）はAI・IoT・ビッグデータなど「次世代テクノロジー」を人間中心の価値提供のために使うという立場。マーケティング6.0（コトラー『Marketing 6.0』2024年）ではメタバースやAR/VRなど没入型メディアが主役となる「フィジタル」顧客体験が中心テーマ。RMCStackのRMCサイクルはこの5.0/6.0期におけるAI協働の実装形と位置づけられる。
 
-## AI時代の基本サイクル — SURF
+## AI時代の基本サイクル — RMC
 
 マーケティング 1.0〜4.0 の延長線上に、現代は **AI 協働型マーケティング** の時代が到来している。
-SURF（Syncing / Understanding / Releasing / Fitting、読み:「サーフ」）は、AI エージェントと協働しながら**学習する組織を作る**ための基本サイクル。
+RMC（Listen / Insight / Release / Activate / Learn、読み:「アール・エム・シー」）は、AI エージェントと協働しながら**学習する組織を作る**ための基本サイクル。
 
-- **Syncing**（共有 / 入力）: 情報・認識・リソース・課題のサイロを解消し、共有された前提から始める
-- **Understanding**（理解 / 出力）: 何を理解しているか／していないかを可視化し、視点を切り替えて選択肢と判断材料を出す
-- **Releasing**（解放）: 既成の KPI・聖域・「ねばならない」を手放し、リフレーミングの余白を作る
-- **Fitting**（適合・本番反映・還流）: 自社プロダクトに適合した目標とステップに再構成し、本番反映（shipping）し、結果を次の Syncing に還流する
+- **Listen**（共有 / 入力）: 情報・認識・リソース・課題のサイロを解消し、共有された前提から始める
+- **Insight**（理解 / 出力）: 何を理解しているか／していないかを可視化し、視点を切り替えて選択肢と判断材料を出す
+- **Release**（解放）: 既成の KPI・聖域・「ねばならない」を手放し、リフレーミングの余白を作る
+- **Activate / Learn**（適合・本番反映・還流）: 自社プロダクトに適合した目標とステップに再構成し、本番反映（shipping）し、結果を次の Listen に還流する
 
-AARRR・STP・RAM-CE といったフレームワークが「何を考えるか」の地図を提供するのに対し、SURF は「AI とどう関わりながら組織として学習するか」の型を提供する。
-RMCStack では知識ベース構造（base / update）と memory が SURF の Syncing 層を、レビュー / 分析系スキルが Understanding 層を、`/release-assumptions` `/consultant-review` が Releasing 層を、制作系スキル + `/feedback` が Fitting 層（適合・shipping・還流）を担う。
+AARRR・STP・RAM-CE といったフレームワークが「何を考えるか」の地図を提供するのに対し、RMC は「AI とどう関わりながら組織として学習するか」の型を提供する。
+RMCStack では知識ベース構造（base / update）と memory が RMC の Listen 層を、レビュー / 分析系スキルが Insight 層を、`/release` `/insight consultant` が Release 層を、制作系スキル + `/learn` が Activate / Learn 層（適合・shipping・還流）を担う。
 
-詳細は `knowledge/base/surf-framework.md` を参照。
+詳細は `knowledge/base/reframing-marketing-cycle.md` を参照。
 
 ## Core Principles
 
@@ -167,8 +167,8 @@ AMA（アメリカ・マーケティング協会）の定義: 「マーケティ
 - **Spray and Pray**: ターゲットを絞らず全方位に撃つ。ICPを明確にしてから動く。
 - **Vanity Metrics**: いいね数・PVだけを追う。収益に繋がる指標を重視する。
 - **Copy-Cat Marketing**: 競合の施策をそのままコピー。自社のポジショニングに基づく独自の打ち手を。
-- **Ship and Forget**: 施策を打って放置。必ず効果測定と還流を組み込む（SURF の Fitting 終端の還流を欠く典型）。
-- **AI 丸投げ**: 「いい感じにして」と投げるだけ。SURF の Syncing と Understanding を省略すると AI の平均回答しか返らない。
+- **Ship and Forget**: 施策を打って放置。必ず効果測定と還流を組み込む（RMC の Activate / Learn 終端の還流を欠く典型）。
+- **AI 丸投げ**: 「いい感じにして」と投げるだけ。RMC の Listen と Insight を省略すると AI の平均回答しか返らない。
 - **還流断絶**: AI の出力に満足して結果を memory に戻さない。次サイクルが毎回ゼロから始まる。
 - **「AI が言ったから」病**: AI の出力を判断の根拠にする。責任の所在が組織から蒸発する（詳細 `responsibility-design.md`）。
 

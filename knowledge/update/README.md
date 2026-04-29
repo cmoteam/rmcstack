@@ -14,8 +14,8 @@
 ## 使い方
 
 各スキル（特に実行系: SEO, Ads, Content）がこのディレクトリを参照します。
-情報が古いと施策の精度が下がるので、`/set-update` で定期的に更新してください。
+情報が古いと施策の精度が下がるので、`/listen market` で定期的に更新してください。
 
-`/set-update` は AI が公式ソース（Google Ads Blog / Meta for Business / X Business 等の allowlist）を pull 型で巡回し、差分を diff 提示 → ユーザー承認 → 書き込みの順で反映します。手動の intake は行いません（非公開観測は `/feedback` へ）。
+`/listen market` は `bin/set-update` を通じて `platform-updates.md` / `industry-trends.md` の TODO を埋める入口です。MCP やブラウザで公式ソース（Google Ads Blog / Meta for Business / X Business 等）を確認できる場合は、差分をユーザーに提示してから書き込みます。非公開観測や自社実績は `/learn` へ回します。
 
 `/weekly-retro` ワークフローの中で、外部情報の更新もリマインドされます。

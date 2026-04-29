@@ -2,7 +2,7 @@
 
 RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / LinkedIn / HubSpot / Slack / Notion 等）と **直接** 接続するための共通カタログです。
 
-> **位置づけ**: Integrations は SURF の **Syncing（データ取り込み）** と **Fitting（本番反映）** の両方を加速するための I/O 層です。Set で外部から数字・アセットを pull し、Release で成果物を push する両方向をカバーします。
+> **位置づけ**: Integrations は RMC の **Listen（データ取り込み）** と **Activate / Learn（本番反映）** の両方を加速するための I/O 層です。Set で外部から数字・アセットを pull し、Release で成果物を push する両方向をカバーします。
 > knowledge 層のどこにも書かれていない揮発データは、ここに列挙された接続経由で取得します。allowlist 外のソースは使いません（hallucination 防止）。
 
 ## Integration Catalog
@@ -14,8 +14,8 @@ RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / Link
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Figma** | Figma Dev Mode MCP（公式） or figma-context-mcp | デザインファイル読取、LP/広告クリエイティブのスペック抽出、コンポーネント→HTML 生成 | `cvr-optimization-playbook.md` `/creative-direction` `cvr-optimization-playbook.md` (page) `/landing-page` |
-| **Canva** | Canva MCP（公式）| テンプレート生成・バナー量産 | `/creative-direction` `content-marketing.md` |
+| **Figma** | Figma Dev Mode MCP（公式） or figma-context-mcp | デザインファイル読取、LP/広告クリエイティブのスペック抽出、コンポーネント→HTML 生成 | `cvr-optimization-playbook.md` `/brand` `cvr-optimization-playbook.md` (page) `/landing-page` |
+| **Canva** | Canva MCP（公式）| テンプレート生成・バナー量産 | `/brand` `content-marketing.md` |
 
 ### Advertising Platforms
 
@@ -32,8 +32,8 @@ RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / Link
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Google Analytics 4** | GA4 Data API（MCP ラッパー） | セッション・CV・ファネルデータ取得 | `web-analytics-practice.md` `/seo` `cvr-optimization-playbook.md` |
-| **Google Search Console** | Search Console API | 検索クエリ・掲載順位・CTR・カバレッジ | `/seo` `web-analytics-practice.md` |
+| **Google Analytics 4** | GA4 Data API（MCP ラッパー） | セッション・CV・ファネルデータ取得 | `web-analytics-practice.md` `seo-playbook.md` `cvr-optimization-playbook.md` |
+| **Google Search Console** | Search Console API | 検索クエリ・掲載順位・CTR・カバレッジ | `seo-playbook.md` `web-analytics-practice.md` |
 | **Google Tag Manager** | GTM API | タグ・トリガー・変数の監査 | `web-analytics-practice.md` `digital-advertising.md` |
 | **Google BigQuery** | BigQuery MCP（公式） | 大規模ログ・アトリビューション分析 | `web-analytics-practice.md` |
 | **Amplitude / Mixpanel** | 各社 MCP or API | プロダクトアナリティクス、ファネル・リテンション | `web-analytics-practice.md` `cvr-optimization-playbook.md` (onboarding) `retention-lifecycle.md` |
@@ -44,7 +44,7 @@ RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / Link
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
 | **HubSpot** | HubSpot MCP（公式） | Contacts / Deals / Campaigns / Workflows | `web-analytics-practice.md` `retention-lifecycle.md` `pricing-strategy.md` |
-| **Salesforce** | Salesforce MCP | Leads / Opportunities / アトリビューション | `web-analytics-practice.md` `/cmo-review` |
+| **Salesforce** | Salesforce MCP | Leads / Opportunities / アトリビューション | `web-analytics-practice.md` `/insight ceo` |
 | **Stripe** | Stripe MCP（公式） | 課金・MRR・Churn・プラン | `pricing-strategy.md` `retention-lifecycle.md` `web-analytics-practice.md` |
 
 ### Content / Social / Comms
@@ -54,7 +54,7 @@ RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / Link
 | **Notion** | Notion MCP（公式） | コンテンツカレンダー・ブリーフ管理 | `content-marketing.md` `/campaign-launch` |
 | **Slack** | Slack MCP（公式） | 承認フロー・通知・FAQ 収集 | `/campaign-launch` `/weekly-retro` `customer-research-jtbd.md` |
 | **Google Drive / Docs** | Google Drive MCP（公式） | ドキュメント・スプレッドシート | `content-marketing.md` `estimate-playbook.md` `customer-research-jtbd.md` |
-| **WordPress / Ghost / Webflow** | 各 CMS の MCP or REST API | ブログ記事の公開 | `content-marketing.md` `/seo` |
+| **WordPress / Ghost / Webflow** | 各 CMS の MCP or REST API | ブログ記事の公開 | `content-marketing.md` `seo-playbook.md` |
 | **YouTube Data API** | Google MCP ファミリー | 動画パフォーマンス・チャンネル分析 | `web-analytics-practice.md` `content-marketing.md` |
 | **Mailchimp / SendGrid / Customer.io** | 各社 MCP or API | メール配信・シーケンス | `content-marketing.md` `retention-lifecycle.md` |
 
@@ -70,7 +70,7 @@ RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / Link
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **GitHub** | GitHub MCP（本環境で利用可能） | LP コード・ドキュメント管理 | `cvr-optimization-playbook.md` `cvr-optimization-playbook.md` `/seo` |
+| **GitHub** | GitHub MCP（本環境で利用可能） | LP コード・ドキュメント管理 | `cvr-optimization-playbook.md` `cvr-optimization-playbook.md` `seo-playbook.md` |
 | **Vercel / Netlify** | 各社 MCP | LP デプロイ・Preview URL | `/landing-page` `cvr-optimization-playbook.md` (page) |
 
 ## How Skills Declare Integrations
@@ -123,17 +123,17 @@ RMCStack の各スキルが外部サービス（Figma / Google / Meta / X / Link
 
 ## Feedback Loop
 
-接続したツールから取得した数値 / アセットは、最終的には `/feedback` を経由して `memory/results/` と `knowledge/update/` に蓄積される。
-「MCP から直接取れる」= 「Set / Feedback の自動化ができる」。接続が増えるほど SURF サイクルの回転速度が上がる。
+接続したツールから取得した数値 / アセットは、最終的には `/learn` を経由して `memory/results/` と `knowledge/update/` に蓄積される。
+「MCP から直接取れる」= 「Set / Feedback の自動化ができる」。接続が増えるほど RMC サイクルの回転速度が上がる。
 
-- Ads / Analytics 系 → `web-analytics-practice.md` → `/feedback` → `memory/results/performance-data.md`
-- Platform 公式ブログ → `/set-update`（既存の allowlist を通す）→ `knowledge/update/platform-updates.md`
+- Ads / Analytics 系 → `web-analytics-practice.md` → `/learn` → `memory/results/performance-data.md`
+- Platform 公式ブログ → `/listen market`（既存の allowlist を通す）→ `knowledge/update/platform-updates.md`
 - Figma / Canva → 各クリエイティブスキルがその場で消費（永続化不要）
 - CRM / Stripe → `web-analytics-practice.md` + `pricing-strategy.md` + `retention-lifecycle.md` で共有
 
 ## References
 
-- SURF サイクル全体: [`surf-framework.md`](surf-framework.md)
+- RMC サイクル全体: [`reframing-marketing-cycle.md`](reframing-marketing-cycle.md)
 - MarTech / RevOps 観点: [`martech-revops.md`](martech-revops.md)
-- Set の手動更新: [`../../skills/set-update/SKILL.md`](../../skills/set-update/SKILL.md)
-- Feedback の書き戻し: [`../../skills/feedback/SKILL.md`](../../skills/feedback/SKILL.md)
+- Set の手動更新: [`../../skills/listen market/SKILL.md`](../../skills/listen market/SKILL.md)
+- Feedback の書き戻し: [`../../skills/learn/SKILL.md`](../../skills/learn/SKILL.md)

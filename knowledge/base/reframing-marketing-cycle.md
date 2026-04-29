@@ -39,14 +39,30 @@ RMC が前提とするマーケティングの定義（`marketing-structural-iss
 
 勝者になることでも数字を増やすことでもなく、**自社の能力・リソース・現在地に合わせて適した戦略・目標・ポジショニング・チャネル・KPI を選び、整合させ続ける営為**。RMC の Activate（適合させて shipping する）はこの定義を段階として動詞化したものである。
 
-### MVDF との関係
+### MVDF Domains — マーケティング活動の 8 領域（Listen 充足チェックリスト）
 
-| 層 | 名前 | 役割 | canonical doc |
-|----|------|------|---------------|
-| サイクル | **RMC** | マーケ組織がどう学習し続けるかの OS | `reframing-marketing-cycle.md` |
-| 管理対象 | **MVDF** | サイクル内で何を管理・指標化するか | `mvdf.md` |
+RMC は AMA 定義（マーケティング = 顧客・クライアント・パートナー・社会にとって価値ある提供物を創造・伝達・届け・交換する活動）の全工程を扱う。Listen 段で「自社のマーケが**どの領域をカバーできていて、どこが空白か**」を点検するためのチェックリストが以下 8 領域。RMC は **どう回すか**（サイクル）、8 領域は **何を見落とさないか**（カバレッジ）を担う。
 
-RMC が「**どう回すか**」、MVDF が「**何を管理するか**」を担う。
+この 8 領域を RMCStack では **MVDF Domains** と呼ぶ。MVDF（Marketing Value Delivery Framework）は RMC と並ぶ別サイクルではなく、RMC に内蔵される coverage model である。RMC の canonical な段階は常に **Listen / Insight / Release / Activate / Learn** の 5 段であり、MVDF Domains は各段階で点検する管理対象を定義する。
+
+| # | 領域 | 価値提供フェーズ | 主な問い |
+|---|------|----------------|---------|
+| 1 | **市場・顧客理解** | （前提） | 誰のどんな問題を扱うのか |
+| 2 | **戦略・ポジショニング** | 創造 | どこで勝つのか |
+| 3 | **ブランド・コミュニケーション** | 伝達 | 何者として記憶されるか |
+| 4 | **提供価値・商品連携** | 創造 | 何をどう価値化するか |
+| 5 | **チャネル・顧客接点** | 提供 | どこで出会い、どう体験させるか |
+| 6 | **需要創出・キャンペーン** | 伝達 + 提供 | どう認知・興味・検討・購買を生むか |
+| 7 | **顧客関係・成長** | 交換 | どう継続・拡張・紹介につなげるか |
+| 8 | **測定・ガバナンス** | （横断） | 成果をどう判断し、改善するか |
+
+8 領域はすべて**並行して動く**（プロジェクトのフェーズではない）。あるキャンペーンが進行中でも、市場理解は更新され続け、ブランドは検証され続ける。
+
+#### Listen 段での使い方
+
+- `/listen team-workspace` `/listen customer` 後に、「うちは領域 7（顧客関係）が空白」「領域 8（測定）の KPI ツリーがない」を可視化する
+- 空白領域は次サイクルの Listen 入力 / Release 候補になる
+- 領域別の道具対応は本ドキュメント末尾「MVDF Domains × RMCStack スキル対応表」を参照
 
 ## 5 段階の詳細
 
@@ -79,7 +95,7 @@ RMC が「**どう回すか**」、MVDF が「**何を管理するか**」を担
 - **個人の存在意義を言語化する**: 各メンバーが「自分は事業のどの課題に効いているのか」を自分の言葉で言える状態にする
 - **同期的戦略の駆動**: 各メンバーが独立に書き出した認識（自社認識 / 市場認識 / 目標 / 優先順位）を**同期して合成する**。一致箇所を確からしい前提に、不一致箇所を Release の入力にする（詳細は `marketing-structural-issues.md` Section 0.7）
 - **顧客接点の構造的吸い上げ**: 営業・サポート・解約・レビュー・問い合わせ・サイト行動を、**個人の頭の中ではなく** `customer-signal.md` 等に書き戻す
-- **市場・競合・プラットフォームの揮発情報**を `/set-update` 経由で取り込む
+- **市場・競合・プラットフォームの揮発情報**を `/listen market` 経由で取り込む
 - **過去の成功・失敗、現在のパフォーマンス**を `private/memory/results/` に記録する
 
 #### Listen が成立しているかのチェック
@@ -94,9 +110,9 @@ RMC が「**どう回すか**」、MVDF が「**何を管理するか**」を担
 
 #### 担い手スキル
 
-`/set-organization`（Team Sync）/ `/set-brand`（Team Sync）/ `/set-workspace`（Team + Customer Sync）/ `/set-update`（Market Sync）/ `/init-private` / `/workspace`
+`/listen team-org`（Team Sync）/ `/listen team-brand`（Team Sync）/ `/listen team-workspace`（Team Sync）/ `/listen customer`（Customer Sync）/ `/listen market`（Market Sync）/ `/workspace`
 
-実装上、Customer Sync は現状 `/set-workspace` の ICP 記述に部分的に吸収されているが、**`profile/customer-signal.md` を新設して顧客の生の声・行動ログを独立に保持する**ことが推奨される（`customer-research-jtbd.md` プレイブック参照）。
+Customer Sync は `/listen customer` で **`profile/customer-signal.md` に顧客の生の声・行動ログを独立に保持する**。ICP 仮説は `icp.md`、顧客実態は `customer-signal.md` に分ける（`customer-research-jtbd.md` プレイブック参照）。
 
 ### I — Insight（抽出する）
 
@@ -104,7 +120,7 @@ RMC が「**どう回すか**」、MVDF が「**何を管理するか**」を担
 
 #### やること
 
-- 視点を切り替えて選択肢と判断材料を出す（CEO / CMO / SEO / ICP 本人 / 新規訪問者）
+- 視点を切り替えて選択肢と判断材料を出す（ceo / consultant / gemba / customer）
 - JTBD（Job To Be Done）・潜在需要・購買決定要因を顧客の言葉で抽出する
 - 自社の Positioning と市場期待のギャップを言語化する
 - 既存施策の効率と感応度（`marketing-structural-issues.md` Section 2.2）を診断する
@@ -112,7 +128,7 @@ RMC が「**どう回すか**」、MVDF が「**何を管理するか**」を担
 
 #### 良い Insight の構造
 
-1. **誰の視点で**（CEO / CMO / SEO / ICP 本人 / 新規訪問者）
+1. **誰の視点で**（ceo / consultant / gemba / customer）
 2. **何を**（評価 / 制作 / 分析 / 比較 / 予測）
 3. **どの深さで**（案出し 3 つ / 完成品 / レビュー付き / A/B パターン）
 4. **何を判断基準に**（ICE / ROI / ブランド整合 / CVR 予測）
@@ -122,8 +138,8 @@ RMC が「**どう回すか**」、MVDF が「**何を管理するか**」を担
 
 | サブタイプ | 何をするか | 主な skill / playbook |
 |----------|----------|---------------------|
-| **Design** | ゼロから設計（戦略 / ICP 仮説 / LP 構成案 / キーワード戦略） | `/seo` `/cmo-review`、`customer-research-jtbd.md` |
-| **Review** | 既存成果物を評価（コピー / LP CVR / 広告整合 / 経営インパクト） | `/ceo-review` `/creative-direction` |
+| **Design** | ゼロから設計（戦略 / ICP 仮説 / LP 構成案 / キーワード戦略） | `seo-playbook.md` `customer-research-jtbd.md` とインライン対話 |
+| **Review** | 既存成果物を評価（コピー / LP CVR / 広告整合 / 経営インパクト） | `/insight ceo` `/insight customer` `/brand` |
 | **Analytics** | データから理解を更新する | `web-analytics-practice.md` `measurement-incrementality.md` |
 
 #### サイクル内での回り方
@@ -132,7 +148,7 @@ RMC が「**どう回すか**」、MVDF が「**何を管理するか**」を担
 
 #### 担い手スキル
 
-`/cmo-review` `/ceo-review` `/seo` `/creative-direction`（判断ゲート）。専門領域の Design / Analytics は `knowledge/base/` のプレイブックを参照しながらインライン対話で進める。
+`/insight <ceo|consultant|gemba|customer>` と `/brand`（判断ゲート）。専門領域の Design / Analytics は `knowledge/base/` のプレイブックを参照しながらインライン対話で進める。
 
 ### R — Release（手放す）
 
@@ -167,7 +183,7 @@ Release は人間にしか引き受けられない判断である。AI は「聖
 
 #### 担い手スキル
 
-`/release-assumptions`（前提・KPI・聖域の機械的列挙→手放し議論の触媒）/ `/consultant-review`（外部コンサル視点でのゼロベース率直レビュー）
+`/release`（前提・KPI・聖域の機械的列挙→手放し議論の触媒）/ `/insight consultant`（外部コンサル視点でのゼロベース率直レビュー）
 
 ### A — Activate（起動する）
 
@@ -208,7 +224,7 @@ Release は人間にしか引き受けられない判断である。AI は「聖
 | UI / LP レビュー | `cvr-optimization-playbook.md` の page セクション |
 | データ分析・計測 | `web-analytics-practice.md` `measurement-incrementality.md` |
 
-判断ゲートとしては `/creative-direction` がブランド適合を見る。
+判断ゲートとしては `/brand` がブランド適合を見る。
 
 #### Activate の同時着地条件
 
@@ -237,7 +253,7 @@ Release は人間にしか引き受けられない判断である。AI は「聖
    - `private/memory/workspaces/active/profile/` — ICP / Positioning の更新（仮説ではなく検証済みの事実のみ）
    - `private/memory/workspaces/active/profile/customer-signal.md` — 顧客の新しい声・行動パターン
    - `knowledge/update/` — 外部揮発情報（プラットフォーム仕様変更等）
-4. **AI 出力の採否ログ**: AI が出した提案のうち何を採用し何を捨てたか、なぜかを `/feedback` の差分セクションに残す（`responsibility-design.md`）
+4. **AI 出力の採否ログ**: AI が出した提案のうち何を採用し何を捨てたか、なぜかを `/learn` の差分セクションに残す（`responsibility-design.md`）
 5. **次サイクルへの引き継ぎ**: 残課題と新仮説を Listen 段の入力として明示する
 
 #### Learn が成立しているかのチェック
@@ -250,22 +266,36 @@ Release は人間にしか引き受けられない判断である。AI は「聖
 
 #### 担い手スキル
 
-`/feedback`（次サイクル還流のゲート）/ `/set-update`（外部揮発情報の更新）
+`/learn`（次サイクル還流のゲート）/ `/listen market`（外部揮発情報の更新）
 
 ## RMC のスキル対応表
 
-| Listen（受信） | Insight（抽出） | Release（手放し） | Activate（起動・shipping） | Learn（還流） | Meta |
+| Listen（受信） | Insight（抽出） | Release（手放し） | Activate（起動・shipping） | Learn（還流） | Meta / Ops |
 |---|---|---|---|---|---|
-| /set-organization | /cmo-review | /release-assumptions | （`knowledge/base/` プレイブックを参照したインライン対話） | /feedback | /surf-check |
-| /set-brand | /ceo-review | /consultant-review | /creative-direction | /set-update | /next |
-| /set-workspace | /seo | | | | |
-| /set-update | /creative-direction | | | | |
-| /init-private | | | | | |
-| /workspace | | | | | |
+| `/listen team-org` | `/insight ceo` | `/release` | `knowledge/base/` プレイブック参照のインライン実行 | `/learn` | `/next` |
+| `/listen team-brand` | `/insight consultant` |  |  |  | `/next --verbose` |
+| `/listen team-workspace` | `/insight gemba` |  |  |  | `/workspace` |
+| `/listen customer` | `/insight customer` |  |  |  |  |
+| `/listen market` | `/brand` |  |  |  |  |
 
 **設計思想**: 専門領域の実行（広告運用・コンテンツ・CVR 最適化・価格・解約・調査・分析・UI レビュー・見積り）は skill 化せず `knowledge/base/` のプレイブックでカバーする。skill は「サイクルを駆動する」「workspace 知識を前提に判断する」役割に絞る（詳細: `agent-catalog.md`）。
 
-`/surf-check` `/next` は Meta（サイクル全体の進行確認）として現状名で運用。命名は RMCStack ブランドに紐付くため変更しない。
+`/next` と `/next --verbose` は Meta（サイクル全体の進行確認）として運用する。
+
+## MVDF Domains × RMCStack スキル対応表
+
+Listen 充足チェックリスト（前出 MVDF Domains）を各 RMCStack の道具にマップしたもの。「自社のマーケで領域 X が空白」と分かったとき、どの skill / プレイブックから手を付けるかの早見表。
+
+| 領域 | 主に使う RMCStack の道具 |
+|------|------------------------|
+| 1. 市場・顧客理解 | `customer-research-jtbd.md`、`/listen team-workspace`（ICP 入力）、`/listen customer` |
+| 2. 戦略・ポジショニング | `/insight ceo`、`/release`、`/insight consultant` |
+| 3. ブランド・コミュニケーション | `/listen team-brand`、`/brand` |
+| 4. 提供価値・商品連携 | `pricing-strategy.md`、`/insight ceo` |
+| 5. チャネル・顧客接点 | `cvr-optimization-playbook.md`、`seo-playbook.md` |
+| 6. 需要創出・キャンペーン | `digital-advertising.md`、`content-marketing.md`、`seo-playbook.md` |
+| 7. 顧客関係・成長 | `retention-lifecycle.md`、`cvr-optimization-playbook.md`（signup-flow / onboarding） |
+| 8. 測定・ガバナンス | `web-analytics-practice.md`、`/learn`、`/insight ceo` |
 
 ## アンチパターン
 
@@ -299,21 +329,21 @@ Release は人間にしか引き受けられない判断である。AI は「聖
 初回プロジェクトの推奨順:
 
 0. `/workspace new <slug>` — workspace を 1 つ作成（実在する事業名で）
-1. `/set-organization` — 組織情報（Listen / Team Sync）
-2. `/set-brand` — ブランドガイドライン（Listen / Team Sync）
-3. `/set-workspace` — workspace 固有情報（Listen / Team + Customer Sync）
-4. `/next` — 次の一歩確認（詳細は `/surf-check`）。不足があれば 1〜3 に戻る
-5. `/cmo-review`（Insight 単体）or 横断ワークフロー（Listen〜Learn、未実装）
-6. `/release-assumptions` or `/consultant-review` — Release。既成枠の手放し
+1. `/listen team-org` — 組織情報（Listen / Team Sync）
+2. `/listen team-brand` — ブランドガイドライン（Listen / Team Sync）
+3. `/listen team-workspace` — workspace 固有情報（Listen / Team + Customer Sync）
+4. `/next` — 次の一歩確認（詳細は `/next --verbose`）。不足があれば 1〜3 に戻る
+5. `/insight ceo`（Insight 単体）or 横断ワークフロー（Listen〜Learn、未実装）
+6. `/release` or `/insight consultant` — Release。既成枠の手放し
 7. 実行（広告運用・コンテンツ・CVR 改善・分析等）は `knowledge/base/` プレイブックを参照しながらインライン対話で進め、shipping（Activate）
-8. `/set-update` + `/feedback` — Listen 層への還流（Learn → 次サイクルへ）
+8. `/listen market` + `/learn` — Listen 層への還流（Learn → 次サイクルへ）
 
 ## 関連ドキュメント
 
-- `knowledge/base/mvdf.md` — RMC サイクル内で何を管理・指標化するか
 - `knowledge/base/marketing-structural-issues.md` — RMC が解こうとしているマーケの構造的病理
 - `knowledge/base/signature-frameworks.md` — 他のマーケティング体系（AARRR / STP / ZMOT 等）との並置
 - `knowledge/base/learning-organization.md` — 学習プロセスをチームに埋め込む方法
 - `knowledge/base/responsibility-design.md` — 責任の所在の設計、AI 委譲時代の責任外部化問題
 - `knowledge/base/customer-research-jtbd.md` — Customer Sync の実装プレイブック
+- `knowledge/base/mvdf.md` — RMC に内蔵される coverage model（MVDF Domains）の詳細
 - `knowledge/base/surf-framework.md` — RMC の前身となった SURF（4 段汎用ループ）の歴史的経緯

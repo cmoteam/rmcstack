@@ -208,7 +208,7 @@ Affiliate（発信者） → Unique Link / Coupon → Landing Page
 - Partnership Leaders コミュニティ
 - Reforge "Partnership-Led Growth"
 
-## SURFとの接続
+## RMC との接続
 
 - **Set**: 自社のICP・補完的サービス・潜在パートナー候補を `memory/profile/` に書く
 - **Ask**: 「この商材に最適なCo-Marketingパートナー候補を10社」「Referralプログラム設計を3案」

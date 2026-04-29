@@ -232,7 +232,7 @@ Podcast音声のみ配信
 - Later / Buffer / Hootsuite 年次Social Mediaレポート
 - TubeBuddy / VidIQ データ
 
-## SURFとの接続
+## RMC との接続
 
 - **Set**: ブランドトーン・NG表現・ICPの利用プラットフォームを `memory/profile/` に書く
 - **Ask**: 「このトピックのTikTok Hookを10案」「リテンショングラフから学ぶ改善点を分析して」

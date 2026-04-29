@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# workspace — SURFStack workspace management
+# workspace — RMCStack workspace management
 # Usage: workspace [list|current|new <slug>|switch <slug>|remove <slug>]
 set -euo pipefail
 

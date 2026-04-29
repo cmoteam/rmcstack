@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""bin/set-update - fill TODO fields in knowledge/update/*.md"""
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _fill_todos import fill_todos  # noqa: E402
+
+REPO = Path(__file__).resolve().parent.parent
+UPDATE_DIR = REPO / "knowledge" / "update"
+FILES = ["platform-updates.md", "industry-trends.md"]
+
+
+def main():
+    if not UPDATE_DIR.exists() or not UPDATE_DIR.is_dir():
+        print(f"エラー: {UPDATE_DIR} が見つかりません。")
+        sys.exit(1)
+
+    fill_todos(
+        [UPDATE_DIR / f for f in FILES],
+        header="Market Sync: knowledge/update/",
+        next_step="/next で更新後の状態を確認",
+    )
+
+
+if __name__ == "__main__":
+    main()

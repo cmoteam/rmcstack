@@ -181,7 +181,7 @@ Attribution / Last Click  ─ 運用レベル（日々の最適化）
 - Avinash Kaushik *Web Analytics 2.0*
 - IAB / MMA 公式ガイドライン
 
-## SURFとの接続
+## RMC との接続
 
 - **Set**: 現状の計測スタック、主要KPIツリー、計測の既知の穴を `memory/profile/` に書く
 - **Ask**: 「このチャネルでIncrementality Testを設計して」「このMMM結果を解釈して」

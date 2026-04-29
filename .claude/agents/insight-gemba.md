@@ -14,7 +14,7 @@ tools: Read, Grep, Glob
 ## RMC Alignment
 
 - **Position**: Insight（4 視点のうち「下から / 現場から」）
-- **Sync Preflight**: `profile/business-overview.md` / `profile/customer-signal.md` / `results/performance-data.md` を走査。`[TODO]` 残存は Listen 不足として明記
+- **Listen Preflight**: `profile/business-overview.md` / `profile/customer-signal.md` / `results/performance-data.md` を走査。`[TODO]` 残存は Listen 不足として明記
 - **Learn Hook**: なし（書き込み副作用なし、判断材料の提示のみ）
 
 ## 視点の特徴

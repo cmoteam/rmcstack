@@ -57,7 +57,7 @@
 
 ## Marketing Extension (Optional)
 
-> **任意項目**: SURF の Marketing Extension のうち **Baseline KPI** と **Unit Economics** に対応。`/feedback` の 4-Axis 出力と `/surf-check` の Marketing Extension advisory が参照する。空欄でも従来どおり動作する。
+> **任意項目**: RMC の Marketing Extension のうち **Baseline KPI** と **Unit Economics** に対応。`/learn` の 4-Axis 出力と `/next --verbose` の Marketing Extension advisory が参照する。空欄でも従来どおり動作する。
 
 ### Baseline KPI（各施策の比較対象となる基準値）
 施策リリース時点で記録し、Feedback で差分を見るための定点。

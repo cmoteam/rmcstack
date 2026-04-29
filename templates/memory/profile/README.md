@@ -11,8 +11,8 @@ RMCStack の memory は **2層** で構成されています:
 
 | 層 | パス | スコープ | 担当スキル | 典型的な内容 |
 |---|---|---|---|---|
-| **Organization** | `private/memory/organization/` | 組織全体（全 workspace 共通） | `/set-organization` `/set-brand` | ミッション / ビジョン / 組織ブランド / 事業ポートフォリオ |
-| **Workspace (Profile)** | `private/memory/workspaces/active/profile/`（symlink） | 単一 workspace（事業部・プロダクト・クライアント） | `/set-workspace` | 事業概要 / ICP / Positioning / 競合 |
+| **Organization** | `private/memory/organization/` | 組織全体（全 workspace 共通） | `/listen team-org` `/listen team-brand` | ミッション / ビジョン / 組織ブランド / 事業ポートフォリオ |
+| **Workspace (Profile)** | `private/memory/workspaces/active/profile/`（symlink） | 単一 workspace（事業部・プロダクト・クライアント） | `/listen team-workspace` `/listen customer` | 事業概要 / ICP / Positioning / 競合 / Customer Sync |
 
 **使い分けの原則**: 全 workspace に共通する情報は organization 層へ。workspace ごとに異なる情報は workspace 層へ。
 
@@ -36,8 +36,10 @@ RMCStack の memory は **2層** で構成されています:
 2. **icp.md** — 理想的な顧客像（Ideal Customer Profile）
 3. **positioning.md** — 市場ポジショニング、競合との差別化
 4. **competitors.md** — 競合情報、競合との比較
+5. **customer-signal.md** — 顧客の生の声・行動・反応。ICP 仮説とは混ぜず、Release / Insight の入力にする
 
-`[TODO]` マーカーを実際の情報で置き換えてください。対話でまとめて埋めるには `/set-workspace` を使います。
+`[TODO]` マーカーを実際の情報で置き換えてください。対話でまとめて埋めるには `/listen team-workspace` を使います。
+顧客接点ログを埋めるには `/listen customer` を使います。
 
 > **ブランドガイドライン** は組織層（`private/memory/organization/brand-guidelines.md`）に集約されています。
 > workspace 固有のブランド差分が必要になったら、`private/memory/workspaces/<slug>/profile/` 側に `brand-guidelines.md` を追加して **override** する運用を推奨。

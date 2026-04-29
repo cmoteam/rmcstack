@@ -210,7 +210,7 @@ Category Designの一類型：**既存大カテゴリの中で、特定業界向
 - *Crossing the Chasm* — Geoffrey Moore（カテゴリ普及の章）
 - April Dunford ブログ / YouTube
 
-## SURFとの接続
+## RMC との接続
 
 - **Set**: 既存カテゴリの限界、顧客のJTBD、競合のカテゴリ命名を `memory/profile/positioning.md` に書く
 - **Ask**: 「このプロダクトに新カテゴリ名を3案」「POVステートメントを書いて」
