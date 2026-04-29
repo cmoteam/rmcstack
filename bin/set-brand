@@ -17,7 +17,7 @@ def main():
     fill_todos(
         [TARGET],
         header="brand-guidelines.md",
-        next_step="bin/set-workspace でワークスペース情報を入力",
+        next_step="/listen team-workspace で workspace 情報を入力",
     )
 
 

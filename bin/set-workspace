@@ -13,7 +13,7 @@ FILES = ["business-overview.md", "icp.md", "positioning.md", "competitors.md"]
 
 def main():
     if not PROFILE.exists() or not PROFILE.is_dir():
-        print(f"エラー: {PROFILE} が見つかりません。先に bin/workspace new <slug> を実行してください。")
+        print(f"エラー: {PROFILE} が見つかりません。先に /workspace new <slug> を実行してください。")
         sys.exit(1)
 
     active = REPO / "private" / "memory" / "workspaces" / "active"
@@ -24,7 +24,7 @@ def main():
     fill_todos(
         [PROFILE / f for f in FILES],
         header=f"アクティブ workspace: {slug}",
-        next_step="/sarf-check で充足率を確認",
+        next_step="/listen customer で Customer Sync を埋め、その後 /next で次の一歩を確認",
     )
 
 

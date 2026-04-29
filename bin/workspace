@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# workspace — SARFStack workspace management
+# workspace — SURFStack workspace management
 # Usage: workspace [list|current|new <slug>|switch <slug>|remove <slug>]
 set -euo pipefail
 
@@ -62,7 +62,7 @@ cmd_switch() {
   fi
   set_active "$slug"
   echo "Switched to workspace: $slug"
-  echo "ヒント: bin/set-workspace で情報を埋めてください"
+  echo "ヒント: /listen team-workspace で情報を埋めてください（bin/set-workspace 直叩きでも可）"
 }
 
 cmd_new() {
@@ -78,15 +78,17 @@ cmd_new() {
   # Organization は組織全体で1つだけ。未存在時のみブートストラップ
   if [ ! -d "$PRIVATE/organization" ]; then
     cp -r "$ORG_TEMPLATE" "$PRIVATE/organization"
-    echo "注意: private/memory/organization/ を初期化しました。bin/set-organization で組織情報を入力してください。"
+    echo "注意: private/memory/organization/ を初期化しました。/listen team-org で組織情報を入力してください。"
   fi
   set_active "$slug"
   echo "Created workspace: $slug (active)"
   echo ""
-  echo "次のステップ:"
-  echo "  1. bin/set-organization  # 組織情報（初回のみ）"
-  echo "  2. bin/set-brand         # ブランドガイドライン（初回のみ）"
-  echo "  3. bin/set-workspace     # この workspace の事業概要・ICP・Positioning"
+  echo "次のステップ（RMC Listen 段の 4 同期源を埋める）:"
+  echo "  1. /listen team-org        # 組織情報（初回のみ。bin/set-organization 直叩きでも可）"
+  echo "  2. /listen team-brand      # ブランドガイドライン（初回のみ）"
+  echo "  3. /listen team-workspace  # この workspace の事業概要・ICP・Positioning"
+  echo "  4. /listen customer        # Customer Sync（顧客の生の声・JTBD・離脱理由）"
+  echo "  5. /next                   # 次の一歩確認"
 }
 
 cmd_remove() {
