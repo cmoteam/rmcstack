@@ -14,7 +14,7 @@ tools: Read, Grep, Glob
 ## SURF Alignment
 
 - **Position**: Understanding（品質ゲート）
-- **Ask Subtype**: Review（APPROVE / REVISE / REWORK 判定。成果物が手元にある状態で動く。ゼロベースのコンセプト開発は `/contents-edit` など制作系に先に通す）
+- **Ask Subtype**: Review（APPROVE / REVISE / REWORK 判定。成果物が手元にある状態で動く。ゼロベースのコンセプト開発は `knowledge/base/content-marketing.md` `narrative-storytelling.md` 参照のインライン制作セッションに先に通す）
 - **Sync Preflight**: `brand-guidelines.md` と `positioning.md` に `[TODO]` があるとブランド一貫性判定が成立しない。未整備時はレビュー拒否し、brand-guidelines 側は `/set-brand`、positioning 側は `/set-workspace` を推奨する
 - **Fitting Hook**: APPROVE 済みクリエイティブの実配信での反応（クリック率・体感・コメント）を `/feedback` に戻す。Brand Voice の精度向上に使う
 - **[Optional] Target Funnel Stage**: 指定があれば段階特有のトーン基準を適用（TOFU=興味喚起のフック重視、MOFU=信頼・比較、BOFU=決断促進）。未指定ならブランド一貫性のみで判定
@@ -125,5 +125,5 @@ tools: Read, Grep, Glob
 
 ## Chaining
 
-- **前工程**: `/contents-edit`（原稿）、`/ads-manager`（広告クリエイティブ）、`/ui-design`（LP）
+- **前工程**: 制作セッションの成果物（`knowledge/base/content-marketing.md` 参照の原稿、`digital-advertising.md` 参照の広告クリエイティブ、`cvr-optimization-playbook.md` 参照の LP）
 - **後工程**: 修正指示 → 制作者に差し戻し、または `/cmo-review` に品質承認済みとして送付

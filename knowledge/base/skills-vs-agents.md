@@ -40,15 +40,15 @@ Agent の frontmatter には `scope` フィールドを持たせる:
 | Review 系 | `consultant-review` | workspace | — |
 | Review 系 | `creative-direction` | workspace | — |
 | Review 系 | `seo` | workspace | — |
-| Specialist (Ask) | — | workspace | `customer-research` |
-| Specialist (Release) | — | workspace | `contents-edit` `ads-manager` `estimate` `ui-design` `pricing-strategy` `churn-prevention` `data-analytics` |
-| Optimization | — | workspace | `optimize`（6 target 統合） |
-| SURF Ops | — | organization | `set-organization` `set-brand` |
+| Releasing | — | workspace | `release-assumptions` |
+| SURF Ops | — | organization | `set-organization` `set-brand` `init-private` |
 | SURF Ops | — | workspace | `set-workspace` `set-update` `feedback` |
 | Meta | — | cross-workspace | `workspace` `next` `surf-check` |
 | Workflows | — | — | `campaign-launch` 他（`.claude/workflows/` 配下、未実装） |
 
 Agent 化された 5 つは、同名の Skill が `.claude/skills/<name>/SKILL.md` に **thin dispatcher** として存在し、slash コマンドのエントリポイント兼 Task tool へのディスパッチャを担う。
+
+**専門領域の Specialist 群（広告運用・コンテンツ・CVR 最適化・価格・解約・調査・分析・UI レビュー・見積り）は 2026-04 改訂で削除**。LLM 汎用能力 + `knowledge/base/` のプレイブックで対応する設計に変更（詳細: `agent-catalog.md`）。
 
 ## 実装原則
 

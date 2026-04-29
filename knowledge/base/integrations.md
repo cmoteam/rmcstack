@@ -14,64 +14,64 @@ SURFStack の各スキルが外部サービス（Figma / Google / Meta / X / Lin
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Figma** | Figma Dev Mode MCP（公式） or figma-context-mcp | デザインファイル読取、LP/広告クリエイティブのスペック抽出、コンポーネント→HTML 生成 | `/ui-design` `/creative-direction` `/optimize page` `/landing-page` |
-| **Canva** | Canva MCP（公式）| テンプレート生成・バナー量産 | `/creative-direction` `/contents-edit` |
+| **Figma** | Figma Dev Mode MCP（公式） or figma-context-mcp | デザインファイル読取、LP/広告クリエイティブのスペック抽出、コンポーネント→HTML 生成 | `cvr-optimization-playbook.md` `/creative-direction` `cvr-optimization-playbook.md` (page) `/landing-page` |
+| **Canva** | Canva MCP（公式）| テンプレート生成・バナー量産 | `/creative-direction` `content-marketing.md` |
 
 ### Advertising Platforms
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Google Ads** | Google Ads API（MCP ラッパー or Google Ads MCP） | キャンペーン構造・入札・パフォーマンス取得、入稿 | `/ads-manager` `/data-analytics` |
-| **Meta Marketing** | Meta Graph API（MCP ラッパー） | Ads Manager のキャンペーン/広告セット/広告の取得・作成、Insights 取得 | `/ads-manager` `/data-analytics` |
-| **X Ads** | X Ads API | キャンペーン管理・Insights | `/ads-manager` |
-| **LinkedIn Ads** | LinkedIn Marketing API | Sponsored Content / Lead Gen Forms 管理 | `/ads-manager` |
-| **TikTok Ads** | TikTok Marketing API | キャンペーン管理・Insights | `/ads-manager` |
-| **Yahoo!広告 / LINEヤフー** | 公式API（国内向け） | 検索・ディスプレイの入稿・取得 | `/ads-manager` |
+| **Google Ads** | Google Ads API（MCP ラッパー or Google Ads MCP） | キャンペーン構造・入札・パフォーマンス取得、入稿 | `digital-advertising.md` `web-analytics-practice.md` |
+| **Meta Marketing** | Meta Graph API（MCP ラッパー） | Ads Manager のキャンペーン/広告セット/広告の取得・作成、Insights 取得 | `digital-advertising.md` `web-analytics-practice.md` |
+| **X Ads** | X Ads API | キャンペーン管理・Insights | `digital-advertising.md` |
+| **LinkedIn Ads** | LinkedIn Marketing API | Sponsored Content / Lead Gen Forms 管理 | `digital-advertising.md` |
+| **TikTok Ads** | TikTok Marketing API | キャンペーン管理・Insights | `digital-advertising.md` |
+| **Yahoo!広告 / LINEヤフー** | 公式API（国内向け） | 検索・ディスプレイの入稿・取得 | `digital-advertising.md` |
 
 ### Analytics / Measurement
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Google Analytics 4** | GA4 Data API（MCP ラッパー） | セッション・CV・ファネルデータ取得 | `/data-analytics` `/seo` `/optimize` |
-| **Google Search Console** | Search Console API | 検索クエリ・掲載順位・CTR・カバレッジ | `/seo` `/data-analytics` |
-| **Google Tag Manager** | GTM API | タグ・トリガー・変数の監査 | `/data-analytics` `/ads-manager` |
-| **Google BigQuery** | BigQuery MCP（公式） | 大規模ログ・アトリビューション分析 | `/data-analytics` |
-| **Amplitude / Mixpanel** | 各社 MCP or API | プロダクトアナリティクス、ファネル・リテンション | `/data-analytics` `/optimize onboarding` `/churn-prevention` |
-| **PostHog** | PostHog MCP | プロダクトアナリティクス・Session Replay | `/optimize` `/data-analytics` |
+| **Google Analytics 4** | GA4 Data API（MCP ラッパー） | セッション・CV・ファネルデータ取得 | `web-analytics-practice.md` `/seo` `cvr-optimization-playbook.md` |
+| **Google Search Console** | Search Console API | 検索クエリ・掲載順位・CTR・カバレッジ | `/seo` `web-analytics-practice.md` |
+| **Google Tag Manager** | GTM API | タグ・トリガー・変数の監査 | `web-analytics-practice.md` `digital-advertising.md` |
+| **Google BigQuery** | BigQuery MCP（公式） | 大規模ログ・アトリビューション分析 | `web-analytics-practice.md` |
+| **Amplitude / Mixpanel** | 各社 MCP or API | プロダクトアナリティクス、ファネル・リテンション | `web-analytics-practice.md` `cvr-optimization-playbook.md` (onboarding) `retention-lifecycle.md` |
+| **PostHog** | PostHog MCP | プロダクトアナリティクス・Session Replay | `cvr-optimization-playbook.md` `web-analytics-practice.md` |
 
 ### CRM / Revenue Ops
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **HubSpot** | HubSpot MCP（公式） | Contacts / Deals / Campaigns / Workflows | `/data-analytics` `/churn-prevention` `/pricing-strategy` |
-| **Salesforce** | Salesforce MCP | Leads / Opportunities / アトリビューション | `/data-analytics` `/cmo-review` |
-| **Stripe** | Stripe MCP（公式） | 課金・MRR・Churn・プラン | `/pricing-strategy` `/churn-prevention` `/data-analytics` |
+| **HubSpot** | HubSpot MCP（公式） | Contacts / Deals / Campaigns / Workflows | `web-analytics-practice.md` `retention-lifecycle.md` `pricing-strategy.md` |
+| **Salesforce** | Salesforce MCP | Leads / Opportunities / アトリビューション | `web-analytics-practice.md` `/cmo-review` |
+| **Stripe** | Stripe MCP（公式） | 課金・MRR・Churn・プラン | `pricing-strategy.md` `retention-lifecycle.md` `web-analytics-practice.md` |
 
 ### Content / Social / Comms
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Notion** | Notion MCP（公式） | コンテンツカレンダー・ブリーフ管理 | `/contents-edit` `/campaign-launch` |
-| **Slack** | Slack MCP（公式） | 承認フロー・通知・FAQ 収集 | `/campaign-launch` `/weekly-retro` `/customer-research` |
-| **Google Drive / Docs** | Google Drive MCP（公式） | ドキュメント・スプレッドシート | `/contents-edit` `/estimate` `/customer-research` |
-| **WordPress / Ghost / Webflow** | 各 CMS の MCP or REST API | ブログ記事の公開 | `/contents-edit` `/seo` |
-| **YouTube Data API** | Google MCP ファミリー | 動画パフォーマンス・チャンネル分析 | `/data-analytics` `/contents-edit` |
-| **Mailchimp / SendGrid / Customer.io** | 各社 MCP or API | メール配信・シーケンス | `/contents-edit` `/churn-prevention` |
+| **Notion** | Notion MCP（公式） | コンテンツカレンダー・ブリーフ管理 | `content-marketing.md` `/campaign-launch` |
+| **Slack** | Slack MCP（公式） | 承認フロー・通知・FAQ 収集 | `/campaign-launch` `/weekly-retro` `customer-research-jtbd.md` |
+| **Google Drive / Docs** | Google Drive MCP（公式） | ドキュメント・スプレッドシート | `content-marketing.md` `estimate-playbook.md` `customer-research-jtbd.md` |
+| **WordPress / Ghost / Webflow** | 各 CMS の MCP or REST API | ブログ記事の公開 | `content-marketing.md` `/seo` |
+| **YouTube Data API** | Google MCP ファミリー | 動画パフォーマンス・チャンネル分析 | `web-analytics-practice.md` `content-marketing.md` |
+| **Mailchimp / SendGrid / Customer.io** | 各社 MCP or API | メール配信・シーケンス | `content-marketing.md` `retention-lifecycle.md` |
 
 ### Customer / Research
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **Intercom / Zendesk** | 各社 MCP | サポートチケット・会話ログ・NPS | `/customer-research` `/churn-prevention` |
-| **Typeform / SurveyMonkey** | API | アンケート回収 | `/customer-research` |
-| **Gong / Chorus** | API | セールスコール書き起こし（Win/Loss） | `/customer-research` |
+| **Intercom / Zendesk** | 各社 MCP | サポートチケット・会話ログ・NPS | `customer-research-jtbd.md` `retention-lifecycle.md` |
+| **Typeform / SurveyMonkey** | API | アンケート回収 | `customer-research-jtbd.md` |
+| **Gong / Chorus** | API | セールスコール書き起こし（Win/Loss） | `customer-research-jtbd.md` |
 
 ### Dev / Infra
 
 | Service | 接続経由 | 用途 | 主に使うスキル |
 |---------|---------|------|---------------|
-| **GitHub** | GitHub MCP（本環境で利用可能） | LP コード・ドキュメント管理 | `/ui-design` `/optimize` `/seo` |
-| **Vercel / Netlify** | 各社 MCP | LP デプロイ・Preview URL | `/landing-page` `/optimize page` |
+| **GitHub** | GitHub MCP（本環境で利用可能） | LP コード・ドキュメント管理 | `cvr-optimization-playbook.md` `cvr-optimization-playbook.md` `/seo` |
+| **Vercel / Netlify** | 各社 MCP | LP デプロイ・Preview URL | `/landing-page` `cvr-optimization-playbook.md` (page) |
 
 ## How Skills Declare Integrations
 
@@ -126,10 +126,10 @@ SURFStack の各スキルが外部サービス（Figma / Google / Meta / X / Lin
 接続したツールから取得した数値 / アセットは、最終的には `/feedback` を経由して `memory/results/` と `knowledge/update/` に蓄積される。
 「MCP から直接取れる」= 「Set / Feedback の自動化ができる」。接続が増えるほど SURF サイクルの回転速度が上がる。
 
-- Ads / Analytics 系 → `/data-analytics` → `/feedback` → `memory/results/performance-data.md`
+- Ads / Analytics 系 → `web-analytics-practice.md` → `/feedback` → `memory/results/performance-data.md`
 - Platform 公式ブログ → `/set-update`（既存の allowlist を通す）→ `knowledge/update/platform-updates.md`
 - Figma / Canva → 各クリエイティブスキルがその場で消費（永続化不要）
-- CRM / Stripe → `/data-analytics` + `/pricing-strategy` + `/churn-prevention` で共有
+- CRM / Stripe → `web-analytics-practice.md` + `pricing-strategy.md` + `retention-lifecycle.md` で共有
 
 ## References
 

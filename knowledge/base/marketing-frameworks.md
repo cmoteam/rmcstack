@@ -204,7 +204,7 @@ flowchart TD
 
 # Part II. SURFStack で頻出する手法の深掘り
 
-総覧表ではメタ情報のみ示した手法のうち、**SURFStack のスキル群（`/cmo-review` `/data-analytics` `/optimize` `/feedback` 等）が前提として参照する代表手法**を以下で深掘りする。
+総覧表ではメタ情報のみ示した手法のうち、**SURFStack のスキル群（`/cmo-review` `/feedback` 等）と knowledge/base/ プレイブック（`web-analytics-practice.md` `cvr-optimization-playbook.md` `retention-lifecycle.md` 等）が前提として参照する代表手法**を以下で深掘りする。
 
 ## AARRR（Pirate Metrics）
 

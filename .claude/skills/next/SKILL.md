@@ -1,24 +1,32 @@
 ---
 name: next
-description: 「今何をしたらいいかわからない」時に最初に押すスキル。現在の workspace 状態（Syncing 充足率・直近の shipping / 還流の有無）を見て、**次に踏むべき一歩を 1 つだけ** 推薦する。迷ったらこれ。
+description: 「今何をしたらいいかわからない」時に最初に押すスキル。RMC サイクル現在地（Listen 充足率・直近の Activate / Learn 還流の有無）から、次に踏むべき一歩を 1 つだけ推薦。--verbose で詳細ダッシュボード。
+version: 2.0.0
 ---
 
 # Next — 迷ったらこれ
 
-「何をしたらいいかわからない」「前回どこまでやったか忘れた」「このプロジェクトでAIに何を頼めるんだっけ」という状態からの入口。
-現在のリポジトリ状態を最小限走査して、**次の一歩を1つだけ提案する**（ダッシュボードではなく「ボタン」）。
+「何をしたらいいかわからない」「前回どこまでやったか忘れた」「このプロジェクトで AI に何を頼めるんだっけ」という状態からの入口。
+現在のリポジトリ状態を最小限走査して、**次の一歩を 1 つだけ提案する**（ダッシュボードではなく「ボタン」）。
 
-`/surf-check` はこの `/next` の **詳細モード**（充足率・ブロッカー・Marketing Extension を多角的に可視化）です。迷ってる人向けの短い答えが欲しければ `/next`、数値ダッシュボードが欲しければ `/surf-check`。
+`--verbose` フラグで RMC サイクル全体の詳細ダッシュボード（旧 `/surf-check`）に切り替わる。
 
-## SURF Alignment
+## RMC Alignment
 
-- **Position**: Meta（SURF のどの段階かを判断して次の段階への入口を示す）
-- **Sync Preflight**: 不要（未完了の Set や workspace 未作成を検出することが責務）
-- **Fitting Hook**: なし（推薦のみ、書き込み副作用なし）
+- **Position**: Meta（RMC のどの段階かを判断して次の段階への入口を示す）
+- **Sync Preflight**: 不要（未完了の Listen や workspace 未作成を検出することが責務）
+- **Learn Hook**: なし（推薦のみ、書き込み副作用なし）
 
-## 動作
+## モード
 
-以下を **順番に** 確認し、最初に該当した条件に対応する推薦を出す。**最初にぶつかった壁だけ**を取り上げる（詳細は `/surf-check`）。
+| モード | 起動 | 出力 |
+|-------|------|------|
+| **default** | `/next` | 1 行推薦（次に踏むべき一歩のみ） |
+| **verbose** | `/next --verbose` または `/next dashboard` | RMC サイクルの詳細ダッシュボード（充足率・ブロッカー・Marketing Extension） |
+
+## Default モードの動作
+
+以下を **順番に** 確認し、最初に該当した条件に対応する推薦を出す。**最初にぶつかった壁だけ**を取り上げる。
 
 ### Step 0: Workspace が未作成（最優先 / ハード停止）
 
@@ -27,110 +35,120 @@ test -L private/memory/workspaces/active && test -d "private/memory/workspaces/a
 ls private/memory/workspaces/ 2>/dev/null
 ```
 
-- `private/memory/workspaces/active` symlink が存在しない、または `private/memory/workspaces/` が空
-  - → **⚠️ 警告**: 「アクティブな workspace がありません。SURFStack は workspace（事業部・クライアント・プロダクト単位）を1つ作らないと動作しません」
-  - → **推薦**: `/workspace new <slug>`（slug は実在する事業名: `acme-saas` / `client-beta` 等。**`default` は使わない**）
-  - これ以降のステップはスキップし、ここで止める
+- `private/memory/workspaces/active` symlink が無い、または `private/memory/workspaces/` が空
+  - → **⚠️ 警告**: 「アクティブな workspace がありません。SURFStack は workspace を 1 つ作らないと動作しません」
+  - → **推薦**: `/workspace new <slug>`（slug は実在する事業名。`default` は使わない）
+  - これ以降のステップはスキップ
 
-### Step 0.5: Organization 層が未作成（organization 固有の壁）
+### Step 0.5: Organization 層が未作成
 
 ```bash
 test -d private/memory/organization || echo "NO_ORGANIZATION"
 ```
 
-- `private/memory/organization/` が未存在
-  - → **推薦**: `/set-organization` で組織情報（ミッション・ビジョン・ブランド）を対話で埋める
-  - 代替: `bin/init-private`（または `cp -r templates/memory/organization private/memory/organization`）で手動ブートストラップ
+- 未存在 → **推薦**: `/listen team-org`
+- 代替: `/workspace init` で全体ブートストラップ
 
-### Step 1: Syncing 充足率（organization / profile の [TODO]）
+### Step 1: Listen 充足率（Team Sync の `[TODO]`）
 
 ```bash
 grep -l "\[TODO\]" private/memory/organization/*.md private/memory/workspaces/active/profile/*.md 2>/dev/null | wc -l
 ```
 
-- organization ファイルの過半数に `[TODO]` が残っている
-  - → **推薦**: `/set-organization` で組織情報を対話で埋める
-- profile ファイル（workspace 固有）の過半数に `[TODO]` が残っている
-  - → **推薦**: `/set-workspace` で workspace 固有情報を対話で埋める
-- どちらも残る場合は organization を先に（上位コンテキスト優先）
-  - 代替: 詳細診断なら `/surf-check`
+- organization ファイルの過半数に `[TODO]` → **推薦**: `/listen team-org`
+- profile ファイルの過半数に `[TODO]` → **推薦**: `/listen team-workspace`
+- 両方なら organization を先に（上位コンテキスト優先）
 
-### Step 2: 直近の Results / 還流（Fitting の終端）
+### Step 1.5: Customer Sync が空（マーケ OS の構造的要件）
 
 ```bash
-ls -t private/memory/workspaces/active/results/*.md 2>/dev/null | head -1
+test -f private/memory/workspaces/active/profile/customer-signal.md && test -s private/memory/workspaces/active/profile/customer-signal.md || echo "NO_CUSTOMER_SIGNAL"
 ```
 
-- `private/memory/workspaces/active/results/` が空 or 最終更新が 14 日以上前
-  - → **推薦**: `/feedback` で直近の施策結果（数字＋定性）を記録
-  - 代替: 数字が無いなら `/data-analytics` でまず集計
+- `customer-signal.md` が無い、または空 → **推薦**: `/listen customer`
+- 理由: Customer Sync が無いと `/insight customer` も `/release` も顧客実態を参照できない（一般論しか出ない）
 
-### Step 3: shipping（本番反映）の有無で分岐
+### Step 2: 直近の Results / 還流（Learn の終端）
 
-```bash
-find output -name "*.md" -mtime -7 2>/dev/null | head -5
+- `results/performance-data.md` の最終更新が 30 日以上前 → **推薦**: `/learn`（直近施策の還流）
+- 走った施策ログがあるが Learn 未実行 → **推薦**: `/learn`
+
+### Step 3: 全部揃っている → 次サイクルへ
+
+- → **推薦**: `/insight ceo` または `/release`（前回サイクルからの懸案による）
+
+### 出力フォーマット（Default）
+
+```markdown
+## Next — [現在の RMC 段階]
+
+⚠️ [ブロッカーがあれば 1 行]
+
+### 推薦
+[skill 名] — [なぜこれか、1 行]
+
+### 詳細が知りたい
+`/next --verbose`
 ```
 
-- **最近 shipping したものがある**（7 日以内）
-  - → **推薦**: `/cmo-review` でその成果物をレビュー
-  - 代替: `/ceo-review` / `/consultant-review`
+## Verbose モードの動作（旧 /surf-check 機能）
 
-- **shipping が無い**（新規サイクル開始）
-  - → **推薦**: 目的別に選ぶ
-    - LP / ページ改善 → `/ui-design` or `/optimize page`
-    - コンテンツ制作 → `/contents-edit`
-    - 広告配信 → `/ads-manager`
-  - 1つに絞れなければ `/cmo-review` に「今期の優先順位は？」と投げる
+RMC サイクル全体の現在地を詳細に診断する。
 
-### Step 4: 全部クリアならサイクルの次の波
+### 1. RMC サイクル充足率
 
-- Syncing / Results / shipping が揃っている
-  - → **推薦**: `/surf-check` で全体診断 → 次の波を決める
+| 段 | skill | 状態 | 充足度 |
+|----|-------|-----|--------|
+| Listen / team-org | /listen team-org | [TODO] N 件 | x% |
+| Listen / team-brand | /listen team-brand | [TODO] N 件 | x% |
+| Listen / team-workspace | /listen team-workspace | [TODO] N 件 | x% |
+| Listen / customer | /listen customer | customer-signal.md 行数 | x% |
+| Listen / market | /listen market | knowledge/update/ 最終更新 | 経過日数 |
+| Learn | /learn | results/ 最終更新 | 経過日数 |
 
-## アウトプット形式
+### 2. ブロッカー一覧
 
-短く、1スクリーンに収まる形で返す。
+- 高優先度: ハード停止条件（workspace 未作成、organization 未作成）
+- 中優先度: Customer Sync 空、Listen の TODO 過半数
+- 低優先度: 30 日以上の Learn 未実行
 
-**Step 0 に該当した場合（workspace 未作成）** はこの形式を使わず、警告と `/workspace new <slug>` 誘導だけを返す:
+### 3. Marketing Extension 充足
+
+`reframing-marketing-cycle.md` の以下が埋まっているか:
+
+- Funnel Stage（TOFU / MOFU / BOFU）
+- Segment（Primary / Secondary / Anti-Persona）
+- Unit Economics（CAC / LTV / Payback / 許容 CPA）
+- Measurement（使用ツール）
+- Baseline KPI（現状 CVR / CPA / ROAS / 順位）
+
+### 4. 直近のサイクル動向
+
+- 直近 Activate（shipping）の数
+- 直近 Release 決定の数
+- 直近 Learn 還流の数
+- AI Decision Log の有無
+
+### 5. 推薦（Default モードと同じ）
+
+最初にぶつかった壁を 1 つ。
+
+## Required Knowledge
 
 ```
-⚠️  アクティブな workspace がありません
-
-SURFStack は workspace（事業部 / クライアント / プロダクト単位）を1つ作らないと動作しません。
-private/memory/workspaces/active がどの workspace も指していない状態です。
-
-👉 最初のステップ: /workspace new <slug>
-   slug は実在する事業名を使います（例: acme-saas, client-beta）。
-   ❌ default は使わないでください（複数事業を扱う時に境界が引けなくなります）。
+Read: knowledge/base/reframing-marketing-cycle.md
+Read: private/memory/workspaces/active/profile/*.md
+Read: private/memory/workspaces/active/results/*.md
 ```
 
-**それ以外**:
+## Principles
 
-```
-🏄 今のあなたの SURF 状態
+- **Default は 1 行推薦**: ダッシュボードを出さない。「次にどのボタンを押すか」だけ
+- **Verbose は --verbose 明示時のみ**: デフォルトでダッシュボードを出すと「迷ったらこれ」の入口価値が薄れる
+- **書き込みなし**: 副作用なし、診断のみ
+- **Customer Sync を独立にチェック**: マーケ OS の構造的要件として優先度を高く扱う
 
-Active workspace : <slug>
-Syncing 充足率   : N/5 ファイル（[TODO] 残 M 箇所）
-直近の還流       : YYYY-MM-DD （または 「なし」）
-直近の shipping  : YYYY-MM-DD （または 「なし」）
+## Chaining
 
-👉 次の一歩: /<skill-name>
-   理由: <なぜこれが最優先か、1〜2文>
-
-もしこれを選ばないなら:
-- /<代替1> — <短い動機>
-- /<代替2> — <短い動機>
-```
-
-## 原則
-
-- **1つだけ推薦する**。リストで迷わせない（代替は小さく併記）。
-- **数字を先に出す**（充足率・経過日数）。主観で推薦しない。
-- **理由を1〜2文で**。長い解説はしない。
-- **見つからない情報は「なし」と明記**。「推測しない」。
-- **workspace 未作成は最優先でブロック**。他のステップを先に走らせない。
-- 書き込み副作用なし（推薦を返すだけ）。
-
-## Integrations（optional）
-
-外部連携は不要。ローカル走査のみ。
+- **前工程**: なし（迷ったときの入口）
+- **後工程**: 推薦された skill

@@ -29,85 +29,33 @@
     ]
   },
   "skills": {
+    "listen": {
+      "path": "skills/listen/SKILL.md",
+      "description": "RMC Listen 段。4 同期源（team-org / team-brand / team-workspace / customer / market）を引数で切替"
+    },
+    "insight": {
+      "path": "skills/insight/SKILL.md",
+      "description": "RMC Insight 段。4 視点（ceo / consultant / gemba / customer）を引数で切替"
+    },
+    "brand": {
+      "path": "skills/brand/SKILL.md",
+      "description": "ブランド適合チェック。creative-direction agent を呼ぶ"
+    },
+    "release": {
+      "path": "skills/release/SKILL.md",
+      "description": "RMC Release 段。既成 KPI・聖域・前提を機械的に列挙して手放し議論を起動"
+    },
+    "learn": {
+      "path": "skills/learn/SKILL.md",
+      "description": "RMC Learn 段。施策結果を検証ゲート付きで memory に書き戻し、AI 採否ログを残す"
+    },
     "next": {
       "path": "skills/next/SKILL.md",
-      "description": "「何をしたらいいかわからない」時の入口。現在の workspace 状態を見て次の一歩を1つだけ推薦する"
+      "description": "次の一歩を 1 行で推薦。--verbose で RMC サイクル詳細ダッシュボード"
     },
     "workspace": {
       "path": "skills/workspace/SKILL.md",
-      "description": "アクティブ workspace の切替・一覧・新規作成（memory/workspaces/<slug>/ と memory/profile / memory/results symlink を操作）"
-    },
-    "set-organization": {
-      "path": "skills/set-organization/SKILL.md",
-      "description": "SARFのSet段階(organization層): 組織全体のミッション・ビジョン・ブランド・事業ポートフォリオを対話で memory/organization/ に埋める"
-    },
-    "set-workspace": {
-      "path": "skills/set-workspace/SKILL.md",
-      "description": "SARFのSet段階(workspace層): アクティブ workspace の事業概要・ICP・Positioning・競合を対話で memory/profile/ に埋める"
-    },
-    "set-update": {
-      "path": "skills/set-update/SKILL.md",
-      "description": "SARFのSet段階: プラットフォーム公式ソースを pull 型で巡回し、差分を承認ゲート経由で knowledge/update/ に書き戻す"
-    },
-    "sarf-check": {
-      "path": "skills/sarf-check/SKILL.md",
-      "description": "SARFサイクルの現在地を診断し、Set充足率と次の一手を提示する"
-    },
-    "feedback": {
-      "path": "skills/feedback/SKILL.md",
-      "description": "SARFのFeedback段階: 施策結果を検証ゲート付きで knowledge 層に反映する"
-    },
-    "ceo-review": {
-      "path": "skills/ceo-review/SKILL.md",
-      "description": "収益性・ビジネス観点からマーケティング施策をレビュー"
-    },
-    "cmo-review": {
-      "path": "skills/cmo-review/SKILL.md",
-      "description": "マーケティング戦略全体の統括レビュー"
-    },
-    "consultant-review": {
-      "path": "skills/consultant-review/SKILL.md",
-      "description": "外部コンサル視点でのゼロベース率直フィードバック"
-    },
-    "seo": {
-      "path": "skills/seo/SKILL.md",
-      "description": "SEO分析・キーワード戦略・技術SEO監査"
-    },
-    "creative-direction": {
-      "path": "skills/creative-direction/SKILL.md",
-      "description": "クリエイティブの品質・ブランド一貫性チェック"
-    },
-    "ui-design": {
-      "path": "skills/ui-design/SKILL.md",
-      "description": "LP/広告LPのUI/UXレビューと改善"
-    },
-    "ads-manager": {
-      "path": "skills/ads-manager/SKILL.md",
-      "description": "デジタル広告の設計・運用・最適化"
-    },
-    "contents-edit": {
-      "path": "skills/contents-edit/SKILL.md",
-      "description": "コンテンツマーケティングの企画・制作"
-    },
-    "data-analytics": {
-      "path": "skills/data-analytics/SKILL.md",
-      "description": "KPI分析・レポーティング・改善提案"
-    },
-    "customer-research": {
-      "path": "skills/customer-research/SKILL.md",
-      "description": "顧客インタビュー・JTBD・Win/Loss分析の設計と実施支援（ICPをデータで鍛える）"
-    },
-    "pricing-strategy": {
-      "path": "skills/pricing-strategy/SKILL.md",
-      "description": "価格設定・プラン設計・パッケージング戦略"
-    },
-    "churn-prevention": {
-      "path": "skills/churn-prevention/SKILL.md",
-      "description": "解約防止・リテンション改善・Save Offer設計"
-    },
-    "optimize": {
-      "path": "skills/optimize/SKILL.md",
-      "description": "CVR最適化（page / signup-flow / onboarding / form / popup / paywall の6targetに対応）"
+      "description": "Workspace ops。init / list / current / new / switch / remove"
     }
   },
   "workflows": {
