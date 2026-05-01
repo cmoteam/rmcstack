@@ -41,11 +41,15 @@ RMC Stage: Activate
 |---|---|---|---|
 | [TODO] | [TODO] | [TODO] | [TODO] |
 
+詳細な milestone / dependency / blocker は必要に応じて `delivery-plan.md` に分離する。
+
 ## Risk
 
 | リスク | 種別 | 影響 | 対応 |
 |---|---|---|---|
 | [TODO] | [TODO: ブランド / 法務 / 顧客体験 / 計測 / 運用] | [TODO] | [TODO] |
+
+High impact risk がある場合は `risk-register.md` に分離する。
 
 ## Activate Gate
 
@@ -56,6 +60,7 @@ RMC Stage: Activate
 - [ ] `measurement-plan.md` が作成済み
 - [ ] 必要な承認が `approval-log.md` に残っている
 - [ ] Rollback 条件が決まっている
+- [ ] Standard / Full 運用では delivery artifacts（delivery-plan / stakeholder-map / risk-register / change-log / resource-plan）の要否を判断済み
 
 ## Exception
 

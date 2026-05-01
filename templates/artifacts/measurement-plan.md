@@ -42,6 +42,8 @@ RMC Stage: Activate
 |---|---|---|
 | [TODO] | [TODO] | [TODO] |
 
+Rollback 条件を変更した場合は `change-log.md` に理由と承認者を残す。
+
 ## Learn Handoff
 
 - `/learn` に渡す数値: [TODO]

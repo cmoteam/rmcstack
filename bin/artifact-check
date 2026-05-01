@@ -58,6 +58,15 @@ check_item() {
   fi
 }
 
+check_optional_item() {
+  local rmc="$1"
+  local artifact="$2"
+  local status="$3"
+  local when="$4"
+
+  printf "| %s | %s | %s | %s |\n" "$rmc" "$artifact" "$status" "$when"
+}
+
 status_customer_signal() {
   local file="$PROFILE_DIR/customer-signal.md"
   if has_non_todo_file "$file"; then echo "OK"; else echo "Missing"; fi
@@ -90,6 +99,26 @@ status_activate_brief() {
 
 status_measurement() {
   if has_file "$OUTPUT_DIR/"'*measurement-plan*.md'; then echo "OK"; else echo "Missing"; fi
+}
+
+status_delivery_plan() {
+  if has_file "$OUTPUT_DIR/"'*delivery-plan*.md'; then echo "OK"; else echo "Optional"; fi
+}
+
+status_stakeholder_map() {
+  if has_file "$OUTPUT_DIR/"'*stakeholder-map*.md'; then echo "OK"; else echo "Optional"; fi
+}
+
+status_risk_register() {
+  if has_file "$OUTPUT_DIR/"'*risk-register*.md'; then echo "OK"; else echo "Optional"; fi
+}
+
+status_change_log() {
+  if has_file "$OUTPUT_DIR/"'*change-log*.md'; then echo "OK"; else echo "Optional"; fi
+}
+
+status_resource_plan() {
+  if has_file "$OUTPUT_DIR/"'*resource-plan*.md'; then echo "OK"; else echo "Optional"; fi
 }
 
 status_result_log() {
@@ -154,6 +183,19 @@ check_item "Activate" "measurement-plan" "$(status_measurement)" "create measure
 check_item "Learn" "result-log" "$(status_result_log)" "/learn"
 check_item "Learn" "ai-decision-log" "$(status_ai_decision)" "/learn AI Decision Log"
 check_item "Learn -> Listen" "next-listen-input" "$(status_next_listen)" "/learn handoff"
+
+echo ""
+echo "## Activate Delivery Readiness"
+echo ""
+echo "PMBOK 由来の delivery artifacts は Lite では任意。ただし Standard / Full、または複数人・複数日・外部依存・承認・高リスクを含む Activate では作成推奨。"
+echo ""
+echo "| RMC | Artifact | Status | Use When |"
+echo "|---|---|---|---|"
+check_optional_item "Activate / Delivery" "delivery-plan" "$(status_delivery_plan)" "複数日 / 依存関係 / blocker 管理"
+check_optional_item "Activate / Delivery" "stakeholder-map" "$(status_stakeholder_map)" "承認 / 部門調整 / 顧客影響"
+check_optional_item "Activate / Delivery" "risk-register" "$(status_risk_register)" "高影響または継続監視リスク"
+check_optional_item "Activate / Delivery" "change-log" "$(status_change_log)" "scope / budget / KPI / schedule 変更"
+check_optional_item "Activate / Delivery" "resource-plan" "$(status_resource_plan)" "人員 / 外注 / ツール / AI capacity 制約"
 
 print_evidence_levels
 

@@ -95,3 +95,4 @@ RMC の各段階で、誰が何の責任を持つかの基本配分:
 - `knowledge/base/reframing-marketing-cycle.md` — RMC の定義
 - `knowledge/base/marketing-structural-issues.md` — 責任不明瞭がなぜ生まれるか
 - `knowledge/base/learning-organization.md` — 学習を組織に埋め込む方法
+- `knowledge/base/marketing-misconceptions.md` — 責任の判断連鎖（②）・外部業者の責任境界（⑥）・同期 → DRI 選択（⑦）の運用定式

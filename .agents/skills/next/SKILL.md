@@ -163,6 +163,18 @@ profile_dir="private/memory/workspaces/active/profile"
 | Learn: AI decision | `$results_dir/*ai-decision-log*.md` がある | `/learn` で AI Decision Log 作成 |
 | Learn → Listen: next input | `$output_dir/*next-listen-input*.md` がある | `/learn` の引き継ぎ作成 |
 
+#### Activate Delivery readiness（任意）
+
+PMBOK 由来の delivery artifacts は Lite では任意。ただし Standard / Full、または複数人・複数日・外部依存・承認・高リスクを含む Activate では作成を推奨する。`bin/artifact-check` はこれらを Missing ではなく Optional として表示する。
+
+| 条件 | 判定方法 | 推奨タイミング |
+|---|---|---|
+| Delivery plan | `$output_dir/*delivery-plan*.md` がある | milestone / dependency / blocker がある |
+| Stakeholder map | `$output_dir/*stakeholder-map*.md` がある | 承認・部門調整・顧客影響がある |
+| Risk register | `$output_dir/*risk-register*.md` がある | High impact risk を継続監視する |
+| Change log | `$output_dir/*change-log*.md` がある | scope / budget / KPI / schedule を変更する |
+| Resource plan | `$output_dir/*resource-plan*.md` がある | 工数・外注・ツール・AI 委譲が制約になる |
+
 #### 出力フォーマット
 
 ```markdown
@@ -174,6 +186,11 @@ profile_dir="private/memory/workspaces/active/profile"
 | Release | release-candidates / release-log | OK / Missing | ... |
 | Activate | activation-brief / measurement-plan | OK / Missing | ... |
 | Learn | result-log / ai-decision-log / next-listen-input | OK / Missing | ... |
+
+### Activate Delivery Readiness
+| RMC | Artifact | Status | Use When |
+|---|---|---|---|
+| Activate / Delivery | delivery-plan | OK / Optional | ... |
 ```
 
 ### 6. Evidence Level 分布
